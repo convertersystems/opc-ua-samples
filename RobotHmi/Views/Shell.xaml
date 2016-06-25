@@ -1,0 +1,55 @@
+﻿<metro:MetroWindow x:Class="RobotHmi.Views.Shell"
+                   xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                   xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+                   xmlns:prism="http://prismlibrary.com/"
+                   prism:ViewModelLocator.AutoWireViewModel="True"
+                   xmlns:v="clr-namespace:RobotHmi.Views"
+                   Title="Workstation"
+                   MinWidth="800"
+                   MinHeight="600"
+                   Icon="/Properties/application.ico"
+                   WindowStartupLocation="CenterScreen"
+                   d:DesignHeight="600"
+                   d:DesignWidth="800"
+                   xml:lang="en-us"
+                   mc:Ignorable="d">
+
+    <metro:MetroWindow.CommandBindings>
+        <CommandBinding CanExecute="OnBrowseBackCanExecute"
+                        Command="NavigationCommands.BrowseBack"
+                        Executed="OnBrowseBackExecuted" />
+        <CommandBinding Command="NavigationCommands.GoToPage" Executed="OnGoToPageExecuted" />
+        <CommandBinding Command="{x:Static v:ShellCommands.Settings}" Executed="OnSettingsExecuted" />
+        <CommandBinding Command="{x:Static v:ShellCommands.SignIn}" Executed="OnSignInExecuted" />
+        <CommandBinding Command="{x:Static v:ShellCommands.About}" Executed="OnAboutExecuted" />
+    </metro:MetroWindow.CommandBindings>
+
+    <metro:MetroWindow.RightWindowCommands>
+        <metro:WindowCommands>
+            <Button Command="{x:Static v:ShellCommands.Settings}"
+                    Style="{DynamicResource MetroWindowButtonStyle}"
+                    ToolTip="Settings">
+                <Path Margin="7"
+                      Data="M58.171875,43.7339553833008L53.9472618103027,44.149974822998 49.9921875,45.3980178833008 46.412109375,47.355052947998 43.3125,49.8980178833008 40.7578125,52.985912322998 38.8125,56.5777053833008 37.58203125,60.5503616333008 37.171875,64.7808303833008 37.58203125,69.0054397583008 38.8125,72.9605178833008 40.7578125,76.5405960083008 43.3125,79.6402053833008 46.412109375,82.1948928833008 49.9921875,84.1402053833008 53.9472618103027,85.3706741333008 58.171875,85.7808303833008 62.4023399353027,85.3706741333008 66.375,84.1402053833008 69.966796875,82.1948928833008 73.0546875,79.6402053833008 75.59765625,76.5405960083008 77.5546875,72.9605178833008 78.802734375,69.0054397583008 79.21875,64.7808303833008 78.802734375,60.5503616333008 77.5546875,56.5777053833008 75.59765625,52.985912322998 73.0546875,49.8980178833008 69.966796875,47.355052947998 66.375,45.3980178833008 62.4023399353027,44.149974822998 58.171875,43.7339553833008z M53.578125,19.7808303833008L58.640625,30.2339553833008 66.65625,31.6870803833008 75.609375,22.4527053833008 87.234375,30.2339553833008 83.390625,40.6402053833008 87.234375,47.1558303833008 100.3125,45.9839553833008 104.203125,60.2339553833008 92.578125,65.3433303833008 91.125,73.0777053833008 101.53125,80.8589553833008 93.796875,93.9370803833008 82.171875,88.5933303833008 75.609375,93.9370803833008 76.828125,105.562080383301 62.53125,109.452705383301 58.640625,98.9995803833008 49.6875,97.7808303833008 41.953125,107.015205383301 28.875,98.9995803833008 34.21875,88.5933303833008 28.875,82.3120803833008 17.25,83.5308303833008 13.359375,68.0152053833008 24.984375,64.1245803833008 24.984375,56.1558303833008 15.7968759536743,48.3745803833008 23.765625,35.5308303833008 35.390625,40.6402053833008 40.5,35.5308303833008 39.28125,23.6714553833008 53.578125,19.7808303833008z"
+                      Fill="{DynamicResource IdealForegroundColorBrush}"
+                      Stretch="Uniform" />
+            </Button>
+        </metro:WindowCommands>
+    </metro:MetroWindow.RightWindowCommands>
+
+    <metro:MetroWindow.Flyouts>
+        <metro:FlyoutsControl>
+            <v:SettingsFlyout x:Name="SettingsFlyout"
+                              Position="Right"
+                              Theme="Accent" />
+            <v:SignInFlyout x:Name="SignInFlyout"
+                            Position="Right"
+                            Theme="Accent" />
+        </metro:FlyoutsControl>
+    </metro:MetroWindow.Flyouts>
+
+    <ContentControl x:Name="MainContent" prism:RegionManager.RegionName="{x:Static v:RegionNames.MainContent}" />
+</metro:MetroWindow>

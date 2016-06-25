@@ -1,0 +1,227 @@
+﻿<UserControl x:Class="RobotHmi.Views.RobotView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:RobotHmi.ViewModels"
+             xmlns:prism="http://prismlibrary.com/"
+             d:DataContext="{d:DesignInstance Type=vm:MainViewModel}"
+             d:DesignHeight="700"
+             d:DesignWidth="1024"
+             mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources\Robot3dResources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
+    <Grid x:Name="LayoutRoot">
+        <Viewport3D ClipToBounds="True"
+                    IsHitTestVisible="False"
+                    RenderOptions.EdgeMode="Aliased">
+            <Viewport3D.Camera>
+                <PerspectiveCamera FarPlaneDistance="100000"
+                                   FieldOfView="55"
+                                   LookDirection="0,5000,750"
+                                   NearPlaneDistance="0.1"
+                                   Position="0,-5000,500"
+                                   UpDirection="0,0,1">
+                    <PerspectiveCamera.Transform>
+                        <RotateTransform3D>
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Angle="0" Axis="0,0,1" />
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                    </PerspectiveCamera.Transform>
+                </PerspectiveCamera>
+            </Viewport3D.Camera>
+            <ModelVisual3D x:Name="World">
+                <ModelVisual3D x:Name="AmbientLightContainer">
+                    <ModelVisual3D.Content>
+                        <AmbientLight x:Name="AmbientLight" Color="#C0C0C0" />
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+                <ModelVisual3D x:Name="DirectionalLightContainer">
+                    <ModelVisual3D.Content>
+                        <DirectionalLight x:Name="DirectionalLight"
+                                          Direction="0,0,-1"
+                                          Color="#A0A0A0">
+                            <DirectionalLight.Transform>
+                                <Transform3DGroup>
+                                    <TranslateTransform3D OffsetX="0"
+                                                          OffsetY="0"
+                                                          OffsetZ="0" />
+                                    <ScaleTransform3D ScaleX="1"
+                                                      ScaleY="1"
+                                                      ScaleZ="1" />
+                                    <RotateTransform3D d:EulerAngles="-40.016,16.242,-202.893">
+                                        <RotateTransform3D.Rotation>
+                                            <AxisAngleRotation3D Angle="195.776" Axis="0.199,0.309,-0.93" />
+                                        </RotateTransform3D.Rotation>
+                                    </RotateTransform3D>
+                                    <TranslateTransform3D OffsetX="0"
+                                                          OffsetY="0"
+                                                          OffsetZ="0" />
+                                    <TranslateTransform3D OffsetX="-693.349"
+                                                          OffsetY="-968.397"
+                                                          OffsetZ="2512.812" />
+                                </Transform3DGroup>
+                            </DirectionalLight.Transform>
+                        </DirectionalLight>
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+                <ModelVisual3D x:Name="Base">
+                    <ModelVisual3D.Content>
+                        <Model3DGroup>
+                            <GeometryModel3D Geometry="{StaticResource BaseGeometry3D}"
+                                             Material="{StaticResource MaterialOrange}"
+                                             d:Bounds="-410.764129638672,-395.356536865234,-10,1136.43374633789,790,350" />
+                        </Model3DGroup>
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+
+                <ModelVisual3D x:Name="ShoulderAssembly">
+                    <ModelVisual3D.Transform>
+                        <RotateTransform3D>
+                            <RotateTransform3D.Rotation>
+                                <AxisAngleRotation3D Angle="{Binding Robot1Axis1}" Axis="0,0,1" />
+                            </RotateTransform3D.Rotation>
+                        </RotateTransform3D>
+                    </ModelVisual3D.Transform>
+
+                    <ModelVisual3D x:Name="Shoulder">
+                        <ModelVisual3D.Content>
+                            <Model3DGroup>
+                                <GeometryModel3D x:Name="ShoulderGeo"
+                                                 Geometry="{StaticResource ShoulderGeometry3D}"
+                                                 Material="{StaticResource MaterialOrange}"
+                                                 d:Bounds="-570.209411621094,-312.356536865234,203.5,919.457763671875,767,816.086303710938" />
+                                <GeometryModel3D x:Name="ShoulderMotorGeo"
+                                                 Geometry="{StaticResource ShoulderMotorGeometry3D}"
+                                                 Material="{StaticResource MaterialOrange}"
+                                                 d:Bounds="-90.7641448974609,-311.356536865234,416,180,180,269" />
+                                <GeometryModel3D x:Name="LowerArmMotorGeo"
+                                                 Geometry="{StaticResource LowerArmMotorGeometry3D}"
+                                                 Material="{StaticResource MaterialOrange}"
+                                                 d:Bounds="-410.764129638672,-391.856536865234,680,179.999984741211,268.999984741211,180" />
+                                <GeometryModel3D x:Name="BaseMotor2Geo"
+                                                 Geometry="{StaticResource BaseMotor2Geometry3D}"
+                                                 Material="{StaticResource MaterialOrange}"
+                                                 d:Bounds="-133.307189941406,15.1056575775146,422.753967285156,622.697143554688,374.537805557251,456.283996582031" />
+                            </Model3DGroup>
+                        </ModelVisual3D.Content>
+                    </ModelVisual3D>
+
+                    <ModelVisual3D x:Name="LowerArmAssembly">
+                        <ModelVisual3D.Transform>
+                            <RotateTransform3D CenterX="-350" CenterZ="700">
+                                <RotateTransform3D.Rotation>
+                                    <AxisAngleRotation3D Angle="{Binding Robot1Axis2}" Axis="0,1,0" />
+                                </RotateTransform3D.Rotation>
+                            </RotateTransform3D>
+                        </ModelVisual3D.Transform>
+
+                        <ModelVisual3D x:Name="LowerArm">
+                            <ModelVisual3D.Content>
+                                <GeometryModel3D x:Name="LowerArmGeo"
+                                                 Geometry="{StaticResource LowerArmGeometry3D}"
+                                                 Material="{StaticResource MaterialOrange}"
+                                                 d:Bounds="-536.064880371094,-13.856538772583,626.205383300781,429.330741882324,449.000001907349,1368.79461669922" />
+                            </ModelVisual3D.Content>
+                        </ModelVisual3D>
+
+                        <ModelVisual3D x:Name="UpperArm2Assembly">
+                            <ModelVisual3D.Transform>
+                                <RotateTransform3D CenterX="-320" CenterZ="1800">
+                                    <RotateTransform3D.Rotation>
+                                        <AxisAngleRotation3D Angle="{Binding Robot1Axis3}" Axis="0,1,0" />
+                                    </RotateTransform3D.Rotation>
+                                </RotateTransform3D>
+                            </ModelVisual3D.Transform>
+
+                            <ModelVisual3D x:Name="UpperArm2">
+                                <ModelVisual3D.Content>
+                                    <Model3DGroup>
+                                        <GeometryModel3D x:Name="UpperArm2Geo"
+                                                         Geometry="{StaticResource UpperArm2Geometry3D}"
+                                                         Material="{StaticResource MaterialOrange}"
+                                                         d:Bounds="-673.651062011719,-339.251800537109,1626.39086914063,576.112892150879,620.395263671875,665.7109375" />
+                                        <GeometryModel3D x:Name="Logo3Geo"
+                                                         Geometry="{StaticResource Logo3Geometry3D}"
+                                                         Material="{StaticResource MaterialBlack}"
+                                                         d:Bounds="-222.667587280273,-285.424499511719,2111.57543945313,58.8603057861328,136.99479675293,65.277099609375" />
+                                        <GeometryModel3D x:Name="UpperArmTwistMotorGeo"
+                                                         Geometry="{StaticResource UpperArmTwistMotorGeometry3D}"
+                                                         Material="{StaticResource MaterialOrange}"
+                                                         d:Bounds="-528.303527832031,-314.338562011719,1851.21606445313,281.023468017578,129.999984741211,233.66455078125" />
+                                        <GeometryModel3D x:Name="UpperArmMotorGeometry"
+                                                         Geometry="{StaticResource UpperArmMotorGeometry3D}"
+                                                         Material="{StaticResource MaterialOrange}"
+                                                         d:Bounds="-429.461364746094,-146.856552124023,1736.302734375,217.394439697266,269.000022888184,217.39453125" />
+                                    </Model3DGroup>
+                                </ModelVisual3D.Content>
+                            </ModelVisual3D>
+
+                            <ModelVisual3D x:Name="TwistAssembly">
+                                <ModelVisual3D.Transform>
+                                    <RotateTransform3D CenterX="-320" CenterZ="2080">
+                                        <RotateTransform3D.Rotation>
+                                            <AxisAngleRotation3D Angle="{Binding Robot1Axis4}" Axis="100,0,57" />
+                                        </RotateTransform3D.Rotation>
+                                    </RotateTransform3D>
+                                </ModelVisual3D.Transform>
+
+                                <ModelVisual3D x:Name="UpperArm">
+                                    <ModelVisual3D.Content>
+                                        <Model3DGroup>
+                                            <GeometryModel3D x:Name="UpperArmGeo"
+                                                             Geometry="{StaticResource UpperArmGeometry3D}"
+                                                             Material="{StaticResource MaterialOrange}"
+                                                             d:Bounds="-1551.55737304688,-170.356536865234,1334.36389160156,984.0791015625,350.994964599609,668.015502929688" />
+                                            <GeometryModel3D x:Name="Logo1Geo"
+                                                             Geometry="{StaticResource Logo1Geometry3D}"
+                                                             Material="{StaticResource MaterialBlack}"
+                                                             d:Bounds="-1444.01745605469,148.643463134766,1409.50939941406,48.5592041015625,33.75,123.309936523438" />
+                                            <GeometryModel3D x:Name="Logo2Geo"
+                                                             Geometry="{StaticResource Logo2Geometry3D}"
+                                                             Material="{StaticResource MaterialBlack}"
+                                                             d:Bounds="-1437.92419433594,-174.106536865234,1435.43371582031,111.3125,33.75,96.415771484375" />
+                                        </Model3DGroup>
+                                    </ModelVisual3D.Content>
+                                </ModelVisual3D>
+
+                                <ModelVisual3D x:Name="WristBendAssembly">
+                                    <ModelVisual3D.Transform>
+                                        <RotateTransform3D CenterX="-1420" CenterZ="1440">
+                                            <RotateTransform3D.Rotation>
+                                                <AxisAngleRotation3D Angle="60" Axis="0,1,0" />
+                                            </RotateTransform3D.Rotation>
+                                        </RotateTransform3D>
+                                    </ModelVisual3D.Transform>
+
+                                    <ModelVisual3D x:Name="Wrist">
+                                        <ModelVisual3D.Content>
+                                            <Model3DGroup>
+                                                <GeometryModel3D x:Name="WristGeo"
+                                                                 Geometry="{StaticResource WristGeometry3D}"
+                                                                 Material="{StaticResource MaterialOrange}"
+                                                                 d:Bounds="-1519.89184570313,-97.3565521240234,1307.69262695313,205.024658203125,192,288.381225585938" />
+                                                <GeometryModel3D x:Name="ToolFlangeGeo"
+                                                                 Geometry="{StaticResource ToolFlangeGeometry3D}"
+                                                                 Material="{StaticResource MaterialOrange}"
+                                                                 d:Bounds="-1517.31372070313,-100.356544494629,1270.67028808594,200.020385742188,200.000007629395,37.17138671875" />
+                                            </Model3DGroup>
+                                        </ModelVisual3D.Content>
+                                    </ModelVisual3D>
+                                </ModelVisual3D>
+                            </ModelVisual3D>
+                        </ModelVisual3D>
+                    </ModelVisual3D>
+                </ModelVisual3D>
+            </ModelVisual3D>
+        </Viewport3D>
+    </Grid>
+</UserControl>
