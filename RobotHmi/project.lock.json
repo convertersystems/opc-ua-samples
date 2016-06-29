@@ -2605,8 +2605,9 @@
       ]
     },
     "Workstation.UaClient/1.0.0": {
-      "sha512": "iQbgsLiOgCMU4MdWLGdCUcBEWbrqDKlfqjTwfYaCPtQNU5U7DfoE4UyHTKyU0y1ZXbbxNrUWz6AGSOXPH5ij1Q==",
+      "sha512": "WjEfISLhcDnL9lj0o3xUyKL9BzXovO8f3goqejZXLOaa0yOxzzQUTp3NSpGUtdamV6267uYeCM84UZWIYhgNBQ==",
       "type": "package",
+      "path": "Workstation.UaClient/1.0.0",
       "files": [
         "Workstation.UaClient.1.0.0.nupkg.sha512",
         "Workstation.UaClient.nuspec",
