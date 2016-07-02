@@ -32,7 +32,7 @@ namespace RobotApp.ViewModels
         {
             if (!this.KeepAlive)
             {
-                return this.Session.UnsubscribeAsync(this);
+                this.Session.Subscriptions.Remove(this);
             }
 
             return Task.CompletedTask;
@@ -40,7 +40,13 @@ namespace RobotApp.ViewModels
 
         public virtual Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
-            return this.Session.SubscribeAsync(this);
+
+            if (!this.Session.Subscriptions.Contains(this))
+            {
+                this.Session.Subscriptions.Add(this);
+            }
+
+            return Task.CompletedTask;
         }
 
         [JsonIgnore]

@@ -26,30 +26,16 @@ namespace RobotHmi.ViewModels
         {
             if (!this.KeepAlive)
             {
-                this.Session.UnsubscribeAsync(this)
-                    .ContinueWith(
-                        t =>
-                        {
-                            foreach (var ex in t.Exception.InnerExceptions)
-                            {
-                                Log.Warn($"Error unsubscribing {this.GetType().Name}. {ex.Message}");
-                            }
-                        }, TaskContinuationOptions.OnlyOnFaulted);
-
+                this.Session.Subscriptions.Remove(this);
             }
         }
 
         public virtual void OnNavigatedTo(NavigationContext navigationContext)
         {
-            this.Session.SubscribeAsync(this)
-                .ContinueWith(
-                    t =>
-                    {
-                        foreach (var ex in t.Exception.InnerExceptions)
-                        {
-                            Log.Warn($"Error subscribing {this.GetType().Name}. {ex.Message}");
-                        }
-                    }, TaskContinuationOptions.OnlyOnFaulted);
+            if (!this.Session.Subscriptions.Contains(this))
+            {
+                this.Session.Subscriptions.Add(this);
+            }
         }
     }
 }

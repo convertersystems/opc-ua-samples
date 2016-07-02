@@ -397,7 +397,7 @@
           "lib/net45/Microsoft.Practices.Unity.dll": {}
         }
       },
-      "Workstation.UaClient/1.0.0": {
+      "Workstation.UaClient/1.0.1": {
         "dependencies": {
           "MetroLog": "1.0.1",
           "Microsoft.Win32.Primitives": "4.0.1",
@@ -809,7 +809,7 @@
           "lib/net45/Microsoft.Practices.Unity.dll": {}
         }
       },
-      "Workstation.UaClient/1.0.0": {
+      "Workstation.UaClient/1.0.1": {
         "dependencies": {
           "MetroLog": "1.0.1",
           "Microsoft.Win32.Primitives": "4.0.1",
@@ -2604,12 +2604,12 @@
         "package/services/metadata/core-properties/924820f073a54dfda4a033e3efb68c3c.psmdcp"
       ]
     },
-    "Workstation.UaClient/1.0.0": {
-      "sha512": "WjEfISLhcDnL9lj0o3xUyKL9BzXovO8f3goqejZXLOaa0yOxzzQUTp3NSpGUtdamV6267uYeCM84UZWIYhgNBQ==",
+    "Workstation.UaClient/1.0.1": {
+      "sha512": "IONrzKIAvneDK0b67bIrZyjfRzc/79mV/PZjaZP6JUDCsXdwsDoKUhXhKQw4Nskb0cA0i94PqV3bOhm+FV0kkQ==",
       "type": "package",
-      "path": "Workstation.UaClient/1.0.0",
+      "path": "Workstation.UaClient/1.0.1",
       "files": [
-        "Workstation.UaClient.1.0.0.nupkg.sha512",
+        "Workstation.UaClient.1.0.1.nupkg.sha512",
         "Workstation.UaClient.nuspec",
         "lib/net46/Workstation.UaClient.dll",
         "lib/netstandard1.4/Workstation.UaClient.dll"
@@ -2623,7 +2623,7 @@
       "Prism.Unity >= 6.2.0-pre3",
       "StyleCop.Analyzers >= 1.0.0",
       "System.Security.Cryptography.X509Certificates >= 4.1.0",
-      "Workstation.UaClient >= 1.0.0"
+      "Workstation.UaClient >= 1.0.1"
     ],
     ".NETFramework,Version=v4.6.1": []
   }
