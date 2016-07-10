@@ -16,12 +16,9 @@ namespace RobotApp.ViewModels
     /// </summary>
     public class NavigableSubscriptionBase : Subscription, INavigable
     {
-        public NavigableSubscriptionBase(UaTcpSessionService service)
-            : base(service)
+        public NavigableSubscriptionBase()
         {
         }
-
-        public bool KeepAlive { get; set; }
 
         public virtual Task OnNavigatingFromAsync(NavigatingEventArgs args)
         {
@@ -30,22 +27,11 @@ namespace RobotApp.ViewModels
 
         public virtual Task OnNavigatedFromAsync(IDictionary<string, object> pageState, bool suspending)
         {
-            if (!this.KeepAlive)
-            {
-                this.Session.Subscriptions.Remove(this);
-            }
-
             return Task.CompletedTask;
         }
 
         public virtual Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
-
-            if (!this.Session.Subscriptions.Contains(this))
-            {
-                this.Session.Subscriptions.Add(this);
-            }
-
             return Task.CompletedTask;
         }
 

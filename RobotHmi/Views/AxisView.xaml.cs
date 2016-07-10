@@ -15,13 +15,9 @@ namespace RobotHmi.Views
             this.InitializeComponent();
         }
 
-        // Indicates whether this view and viewmodel are kept alive while in the navigation history.
-        public bool KeepAlive
-        {
-            get
-            {
-                return false;
-            }
-        }
+        /// <summary>
+        /// Gets a value indicating whether this view and viewmodel are kept alive while in the navigation history.
+        /// </summary>
+        public bool KeepAlive => false;
     }
 }

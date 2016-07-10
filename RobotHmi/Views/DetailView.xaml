@@ -15,21 +15,21 @@
     <Grid x:Name="LayoutRoot">
         <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
             <Button Command="NavigationCommands.BrowseBack" Content="Back" />
-            <!--  two parameters are passed in the url  -->
+            <!--  parameters are passed in the url  -->
             <!--  ? marks the start of the first parameter  -->
             <!--  &amp; marks the start of the second, third parameters, etc  -->
             <Button Command="NavigationCommands.GoToPage"
-                    CommandParameter="RobotHmi.Views.AxisView?nodeId=ns=2;s=Robot1_Axis1&amp;displayName=Axis 1"
-                    Content="Axis1" />
+                    CommandParameter="RobotHmi.Views.AxisView?displayName=Axis 1"
+                    Content="Axis 1" />
             <Button Command="NavigationCommands.GoToPage"
-                    CommandParameter="RobotHmi.Views.AxisView?nodeId=ns=2;s=Robot1_Axis2&amp;displayName=Axis 2"
-                    Content="Axis2" />
+                    CommandParameter="RobotHmi.Views.AxisView?displayName=Axis 2"
+                    Content="Axis 2" />
             <Button Command="NavigationCommands.GoToPage"
-                    CommandParameter="RobotHmi.Views.AxisView?nodeId=ns=2;s=Robot1_Axis3&amp;displayName=Axis 3"
-                    Content="Axis3" />
+                    CommandParameter="RobotHmi.Views.AxisView?displayName=Axis 3"
+                    Content="Axis 3" />
             <Button Command="NavigationCommands.GoToPage"
-                    CommandParameter="RobotHmi.Views.AxisView?nodeId=ns=2;s=Robot1_Axis4&amp;displayName=Axis 4"
-                    Content="Axis4" />
+                    CommandParameter="RobotHmi.Views.AxisView?displayName=Axis 4"
+                    Content="Axis 4" />
         </StackPanel>
     </Grid>
 </UserControl>

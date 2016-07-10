@@ -28,20 +28,20 @@ namespace RobotApp.ViewModels
     /// </summary>
     public class MainPageViewModel : NavigableSubscriptionBase // Step 2: Add base class of type NavigableSubscriptionBase.
     {
-        public MainPageViewModel(PLC1Service session)
-            : base(session) // Step 3: Call the base constructor, passing in an instance of PLC1Service.
+        public MainPageViewModel(PLC1Service service) // Step 3: Shared PLC1Service instance provided by Unity's dependency injection.
         {
             // Step 4: Adjust the subscription properties.
             this.PublishingInterval = 250;
             this.KeepAliveCount = 40;
 
-            this.KeepAlive = true; // Keep subscription publishing, even when navigated from.
+            // Step 5: Add this subscription to the service's collection.
+            service.Subscriptions.Add(this);
         }
 
         /// <summary>
         /// Gets or sets the value of Robot1Mode.
         /// </summary>
-        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")] // Step 5: Add a [MonitoredItem] attribute.
+        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")] // Step 6: Add a [MonitoredItem] attribute.
         public short Robot1Mode
         {
             get { return this.robot1Mode; }

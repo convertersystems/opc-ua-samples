@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Converter Systems LLC. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using Prism.Mvvm;
 using Prism.Regions;
 using RobotHmi.Services;
 using System;
@@ -12,65 +13,76 @@ namespace RobotHmi.ViewModels
     /// A view model for AxisView. Shows how to pass parameters to the view model.
     /// </summary>
     /// <remarks>
-    /// In this example, two query parameters are passed in the navigation url:
-    /// nodeId := a string representation of the nodeId to monitor.
-    /// displayName := a string to display in the view.
+    /// In this example, a parameter is passed in the navigation url
+    /// that indicates the particular axis to display.
     /// </remarks>
     public class AxisViewModel : NavigationAwareSubscriptionBase
     {
+        private PLC1Service service;
 
         public AxisViewModel(PLC1Service service)
-            : base(service)
         {
+            this.service = service;
             this.PublishingInterval = 250;
             this.KeepAliveCount = 40;
         }
 
-        public override void OnNavigatedTo(NavigationContext navigationContext)
-        {
-            // Read the NavigationParameters passed by the caller.
-            this.AxisNodeId = navigationContext.Parameters["nodeId"] as string;
-            this.AxisDisplayName = navigationContext.Parameters["displayName"] as string;
-
-            // Alter the NodeId of the MonitoredItem for property 'Axis'.
-            this.MonitoredItems[nameof(this.Axis)].NodeId = NodeId.Parse(this.AxisNodeId);
-
-            // Calling base will initiate subscribing.
-            base.OnNavigatedTo(navigationContext);
-        }
-
         /// <summary>
-        /// Gets the value of Axis.
+        /// Gets the value of the Axis.
         /// </summary>
-        [MonitoredItem]
         public float Axis
         {
-            get { return this.axisField; }
-            private set { this.SetProperty(ref this.axisField, value); }
+            get { return this.axis; }
+            private set { this.SetProperty(ref this.axis, value); }
         }
 
-        private float axisField;
-
-        /// <summary>
-        /// Gets the NodeId.
-        /// </summary>
-        public string AxisNodeId
-        {
-            get { return this.axisNodeId; }
-            private set { this.SetProperty(ref this.axisNodeId, value); }
-        }
-
-        private string axisNodeId;
+        private float axis;
 
         /// <summary>
         /// Gets the DisplayName.
         /// </summary>
-        public string AxisDisplayName
+        public string DisplayName
         {
-            get { return this.axisDisplayName; }
-            private set { this.SetProperty(ref this.axisDisplayName, value); }
+            get { return this.displayName; }
+            private set { this.SetProperty(ref this.displayName, value); }
         }
 
-        private string axisDisplayName;
+        private string displayName;
+
+        public override void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            // Read the NavigationParameters passed by the caller.
+            var name = navigationContext.Parameters["displayName"] as string;
+            switch (name)
+            {
+                case "Axis 1":
+                    this.DisplayName = "Axis 1";
+                    this.MonitoredItems.Add(new MonitoredItem { NodeId = NodeId.Parse("ns=2;s=Robot1_Axis1"), Property = this.GetType().GetProperty(nameof(this.Axis)) });
+                    break;
+                case "Axis 2":
+                    this.DisplayName = "Axis 2";
+                    this.MonitoredItems.Add(new MonitoredItem { NodeId = NodeId.Parse("ns=2;s=Robot1_Axis2"), Property = this.GetType().GetProperty(nameof(this.Axis)) });
+                    break;
+                case "Axis 3":
+                    this.DisplayName = "Axis 3";
+                    this.MonitoredItems.Add(new MonitoredItem { NodeId = NodeId.Parse("ns=2;s=Robot1_Axis3"), Property = this.GetType().GetProperty(nameof(this.Axis)) });
+                    break;
+                case "Axis 4":
+                    this.DisplayName = "Axis 4";
+                    this.MonitoredItems.Add(new MonitoredItem { NodeId = NodeId.Parse("ns=2;s=Robot1_Axis4"), Property = this.GetType().GetProperty(nameof(this.Axis)) });
+                    break;
+
+                default:
+                    break;
+            }
+
+            this.service.Subscriptions.Add(this);
+        }
+
+        public override void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+            this.service.Subscriptions.Remove(this);
+            this.MonitoredItems.Clear();
+        }
     }
 }

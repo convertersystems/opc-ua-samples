@@ -22,18 +22,16 @@ namespace RobotApp
     /// </summary>
     public sealed partial class App : Template10.Common.BootStrapper
     {
-        private static readonly MetroLog.ILogger Log;
         private UnityContainer container = new UnityContainer();
 
         static App()
         {
             MetroLog.LogManagerFactory.DefaultConfiguration = new MetroLog.LoggingConfiguration();
 #if DEBUG
-            MetroLog.LogManagerFactory.DefaultConfiguration.AddTarget(MetroLog.LogLevel.Debug, MetroLog.LogLevel.Fatal, new MetroLog.Targets.DebugTarget());
+            MetroLog.LogManagerFactory.DefaultConfiguration.AddTarget(MetroLog.LogLevel.Trace, MetroLog.LogLevel.Fatal, new MetroLog.Targets.DebugTarget());
 #else
             MetroLog.LogManagerFactory.DefaultConfiguration.AddTarget(MetroLog.LogLevel.Info, MetroLog.LogLevel.Fatal, new MetroLog.Targets.StreamingFileTarget());
 #endif
-            Log = MetroLog.LogManagerFactory.DefaultLogManager.GetLogger<App>();
         }
 
         public App()

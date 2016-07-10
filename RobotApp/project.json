@@ -1,11 +1,10 @@
 ﻿{
   "dependencies": {
-    "MetroLog": "1.0.1",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.0",
     "StyleCop.Analyzers": "1.0.0",
     "Template10": "1.1.11",
     "Unity": "4.0.1",
-    "Workstation.UaClient": "1.0.1"
+    "Workstation.UaClient": "1.0.2"
   },
   "frameworks": {
     "uap10.0": {}

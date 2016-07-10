@@ -155,8 +155,12 @@ server.on("post_initialize", function () {
 
     var _modeVariable = addressSpace.findNode(makeNodeId("Robot1_Mode", nsi));
     _modeVariable.bindVariable({
-        get: function () {
-            return new Variant({ dataType: DataType.Int16, value: _mode });
+        timestamped_get: function () {
+            return new DataValue({
+                value: { dataType: DataType.Int16, value: _mode },
+                statusCode: StatusCodes.Good,
+                sourceTimestamp: _timestamp
+            });
         },
         set: function (val) {
             _mode = parseInt(val.value);
@@ -176,8 +180,12 @@ server.on("post_initialize", function () {
 
     var _speedVariable = addressSpace.findNode(makeNodeId("Robot1_Speed", nsi));
     _speedVariable.bindVariable({
-        get: function () {
-            return new Variant({ dataType: DataType.Int16, value: _speed });
+        timestamped_get: function () {
+            return new DataValue({
+                value: { dataType: DataType.Int16, value: _speed },
+                statusCode: StatusCodes.Good,
+                sourceTimestamp: _timestamp
+            });
         },
         set: function (val) {
             _speed = val.value;
@@ -187,8 +195,12 @@ server.on("post_initialize", function () {
 
     var _laserVariable = addressSpace.findNode(makeNodeId("Robot1_Laser", nsi));
     _laserVariable.bindVariable({
-        get: function () {
-            return new Variant({ dataType: DataType.Boolean, value: _laser });
+        timestamped_get: function () {
+            return new DataValue({
+                value: { dataType: DataType.Boolean, value: _laser },
+                statusCode: StatusCodes.Good,
+                sourceTimestamp: _timestamp
+            });
         },
         set: function (val) {
             _laser = val.value;

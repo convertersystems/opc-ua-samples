@@ -2,8 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using Prism.Regions;
-using System;
-using System.Threading.Tasks;
 using Workstation.ServiceModel.Ua;
 
 namespace RobotHmi.ViewModels
@@ -11,31 +9,20 @@ namespace RobotHmi.ViewModels
     /// <summary>
     /// A base class that implements Subscription and Prism's INavigationAware
     /// </summary>
-    public class NavigationAwareSubscriptionBase : Subscription, INavigationAware, IRegionMemberLifetime
+    public class NavigationAwareSubscriptionBase : Subscription, INavigationAware
     {
-        public NavigationAwareSubscriptionBase(UaTcpSessionService service)
-            : base(service)
+        public NavigationAwareSubscriptionBase()
         {
         }
-
-        public bool KeepAlive { get; set; }
 
         public virtual bool IsNavigationTarget(NavigationContext navigationContext) => true;
 
         public virtual void OnNavigatedFrom(NavigationContext navigationContext)
         {
-            if (!this.KeepAlive)
-            {
-                this.Session.Subscriptions.Remove(this);
-            }
         }
 
         public virtual void OnNavigatedTo(NavigationContext navigationContext)
         {
-            if (!this.Session.Subscriptions.Contains(this))
-            {
-                this.Session.Subscriptions.Add(this);
-            }
         }
     }
 }

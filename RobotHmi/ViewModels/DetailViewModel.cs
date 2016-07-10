@@ -13,8 +13,8 @@ namespace RobotHmi.ViewModels
     public class DetailViewModel : NavigationAwareSubscriptionBase
     {
         public DetailViewModel(PLC1Service service)
-            : base(service)
         {
+            service.Subscriptions.Add(this);
         }
 
         // add properties here

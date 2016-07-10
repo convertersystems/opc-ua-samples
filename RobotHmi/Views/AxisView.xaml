@@ -40,18 +40,18 @@
                    Grid.ColumnSpan="2"
                    Style="{StaticResource BasicTextStyle}" Margin="5">
             <Run>When navigating to a view, you can pass parameters in the query string that may be used by the view or view-model. In this example, the navigation command passed parameter '</Run>
-            <Run Text="{Binding AxisNodeId, Mode=OneWay}" FontStyle="Italic"/>
-            <Run>' that the view-model used to modify the MonitoredValue of the Subscription.</Run>
+            <Run Text="{Binding DisplayName, Mode=OneWay}" FontStyle="Italic"/>
+            <Run>' that the view-model used to select the correct axis to view.</Run>
         </TextBlock>
 
         <Label Grid.Row="3"
                HorizontalAlignment="Left"
                VerticalAlignment="Center"
-               Content="{Binding AxisDisplayName}" />
+               Content="{Binding DisplayName, Mode=OneWay}" />
         <TextBlock Grid.Row="3"
                    Grid.Column="1"
                    HorizontalAlignment="Left"
                    VerticalAlignment="Center"
-                   Text="{Binding Axis}" />
+                   Text="{Binding Axis, Mode=OneWay}" />
     </Grid>
 </UserControl>
