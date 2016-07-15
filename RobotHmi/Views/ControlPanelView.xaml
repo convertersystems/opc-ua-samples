@@ -92,7 +92,7 @@
                         Minimum="-180"
                         TickFrequency="30"
                         TickPlacement="TopLeft"
-                        Value="{Binding Robot1Axis1, Delay=250}" />
+                        Value="{Binding Robot1Axis1}" />
                 <TextBlock Grid.Row="1"
                            Grid.Column="0"
                            Text="Axis 2, °" />
@@ -105,7 +105,7 @@
                         Minimum="-45"
                         TickFrequency="15"
                         TickPlacement="TopLeft"
-                        Value="{Binding Robot1Axis2, Delay=250}" />
+                        Value="{Binding Robot1Axis2}" />
                 <TextBlock Grid.Row="2"
                            Grid.Column="0"
                            Text="Axis 3, °" />
@@ -117,7 +117,7 @@
                         Minimum="-45"
                         TickFrequency="15"
                         TickPlacement="TopLeft"
-                        Value="{Binding Robot1Axis3, Delay=250}" />
+                        Value="{Binding Robot1Axis3}" />
                 <TextBlock Grid.Row="3"
                            Grid.Column="0"
                            Text="Axis 4, °" />
@@ -131,7 +131,7 @@
                         SmallChange="5"
                         TickFrequency="30"
                         TickPlacement="TopLeft"
-                        Value="{Binding Robot1Axis4, Delay=250}" />
+                        Value="{Binding Robot1Axis4}" />
             </Grid>
             <TextBlock Grid.Row="4"
                        Grid.Column="0"

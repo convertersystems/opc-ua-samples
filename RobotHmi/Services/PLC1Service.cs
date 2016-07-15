@@ -8,7 +8,7 @@ namespace RobotHmi.Services
     /// <summary>
     /// A service for communicating with PLC1 opc ua server.
     /// </summary>
-    public class PLC1Service : UaTcpSessionService
+    public class PLC1Service : UaTcpSessionClient
     {
         public PLC1Service(AppDescription description)
             : base(description, description.GetCertificate(), null, "opc.tcp://localhost:26543")

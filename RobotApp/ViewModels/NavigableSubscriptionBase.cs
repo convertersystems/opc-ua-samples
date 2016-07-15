@@ -16,7 +16,14 @@ namespace RobotApp.ViewModels
     /// </summary>
     public class NavigableSubscriptionBase : Subscription, INavigable
     {
-        public NavigableSubscriptionBase()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="NavigableSubscriptionBase"/> class.
+        /// </summary>
+        /// <param name="session">The session service.</param>
+        /// <param name="publishingInterval">The publishing interval in milliseconds.</param>
+        /// <param name="keepAliveCount">The number of PublishingIntervals before the server should return an empty Publish response.</param>
+        public NavigableSubscriptionBase(UaTcpSessionClient session, double publishingInterval = 1000f, uint keepAliveCount = 10)
+            : base(session, publishingInterval: publishingInterval, keepAliveCount: keepAliveCount)
         {
         }
 

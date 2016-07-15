@@ -26,22 +26,17 @@ namespace RobotHmi.ViewModels
     /// <summary>
     /// A view model for MainView.
     /// </summary>
-    public class MainViewModel : NavigationAwareSubscriptionBase // Step 2: Add base class of type Subscription (or NavigationAwareSubscriptionBase).
+    public class MainViewModel : Subscription // Step 2: Add base class of type Subscription.
     {
-        public MainViewModel(PLC1Service service) // Step 3: Shared PLC1Service instance provided by Unity's dependency injection.
+        public MainViewModel(PLC1Service session) // Step 3: Shared PLC1Service instance provided by Unity's dependency injection.
+            : base(session, publishingInterval: 250.0, keepAliveCount: 40) // Step 4: Call base constuctor passing in service and desired intervals.
         {
-            // Step 4: Adjust the properties of this subscription.
-            this.PublishingInterval = 250;
-            this.KeepAliveCount = 40;
-
-            // Step 5: Add this subscription to the service's collection.
-            service.Subscriptions.Add(this);
         }
 
         /// <summary>
         /// Gets or sets the value of Robot1Mode.
         /// </summary>
-        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")] // Step 6: Add a [MonitoredItem] attribute.
+        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")] // Step 5: Add a [MonitoredItem] attribute.
         public short Robot1Mode
         {
             get { return this.robot1Mode; }

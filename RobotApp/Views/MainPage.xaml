@@ -64,16 +64,7 @@
                              RelativePanel.AlignRightWithPanel="True"
                              RelativePanel.AlignTopWithPanel="True"
                              Frame="{x:Bind Frame}"
-                             Text="Main Page">
-            <!--  secondary commands  -->
-            <controls:PageHeader.SecondaryCommands>
-                <AppBarButton Click="{x:Bind ViewModel.GotoSettings}"
-                              Label="Settings" />
-                <AppBarButton Click="{x:Bind ViewModel.GotoPrivacy}"
-                              Label="Privacy" />
-                <AppBarButton Click="{x:Bind ViewModel.GotoAbout}"
-                              Label="About" />
-            </controls:PageHeader.SecondaryCommands>
+                             Content="Main Page">
         </controls:PageHeader>
 
         <ScrollViewer RelativePanel.Below="pageHeader"

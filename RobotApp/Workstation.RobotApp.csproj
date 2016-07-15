@@ -109,11 +109,20 @@
     <Compile Include="Services\AppDescription.cs" />
     <Compile Include="Services\PLC1Service.cs" />
     <Compile Include="Services\SettingsServices\SettingsService.cs" />
+    <Compile Include="ViewModels\Axis1ViewModel.cs" />
+    <Compile Include="ViewModels\Axis2ViewModel.cs" />
+    <Compile Include="ViewModels\Axis3ViewModel.cs" />
+    <Compile Include="ViewModels\Axis4ViewModel.cs" />
+    <Compile Include="ViewModels\AxisPageViewModel.cs" />
+    <Compile Include="ViewModels\IAxisViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\NavigableSubscriptionBase.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
     <Compile Include="Views\Busy.xaml.cs">
       <DependentUpon>Busy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AxisPage.xaml.cs">
+      <DependentUpon>AxisPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
@@ -157,6 +166,10 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Page>
     <Page Include="Views\Busy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AxisPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

@@ -26,16 +26,11 @@ namespace RobotApp.ViewModels
     /// <summary>
     /// A view model for MainPage.
     /// </summary>
-    public class MainPageViewModel : NavigableSubscriptionBase // Step 2: Add base class of type NavigableSubscriptionBase.
+    public class MainPageViewModel : NavigableSubscriptionBase // Step 2: Add base class of type Subscription (or NavigableSubscriptionBase).
     {
-        public MainPageViewModel(PLC1Service service) // Step 3: Shared PLC1Service instance provided by Unity's dependency injection.
+        public MainPageViewModel(PLC1Service session) // Step 3: Shared PLC1Service instance provided by Unity's dependency injection.
+            : base(session, publishingInterval: 250.0, keepAliveCount: 40) // Step 4: Call base constuctor passing in service and desired intervals.
         {
-            // Step 4: Adjust the subscription properties.
-            this.PublishingInterval = 250;
-            this.KeepAliveCount = 40;
-
-            // Step 5: Add this subscription to the service's collection.
-            service.Subscriptions.Add(this);
         }
 
         /// <summary>

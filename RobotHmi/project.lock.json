@@ -397,10 +397,11 @@
           "lib/net45/Microsoft.Practices.Unity.dll": {}
         }
       },
-      "Workstation.UaClient/1.0.2": {
+      "Workstation.UaClient/1.1.0": {
         "dependencies": {
           "MetroLog": "1.0.1",
           "Microsoft.Win32.Primitives": "4.0.1",
+          "Prism.Core": "6.1.0",
           "System.Collections": "4.0.11",
           "System.Collections.Concurrent": "4.0.12",
           "System.Diagnostics.Debug": "4.0.11",
@@ -809,10 +810,11 @@
           "lib/net45/Microsoft.Practices.Unity.dll": {}
         }
       },
-      "Workstation.UaClient/1.0.2": {
+      "Workstation.UaClient/1.1.0": {
         "dependencies": {
           "MetroLog": "1.0.1",
           "Microsoft.Win32.Primitives": "4.0.1",
+          "Prism.Core": "6.1.0",
           "System.Collections": "4.0.11",
           "System.Collections.Concurrent": "4.0.12",
           "System.Diagnostics.Debug": "4.0.11",
@@ -955,11 +957,11 @@
     },
     "Prism.Core/6.1.0": {
       "sha512": "JDUhYt+w3cawTVgLR1Hsbf59sytjsyFIdTmrbJKkKtHW7CCWAHFM9DGesWSU7cmUgbHm7MYZx5hQA+xiBTQeVg==",
-      "type": "Package",
+      "type": "package",
+      "path": "Prism.Core/6.1.0",
       "files": [
+        "Prism.Core.6.1.0.nupkg.sha512",
         "Prism.Core.nuspec",
-        "[Content_Types].xml",
-        "_rels/.rels",
         "lib/MonoAndroid10/Prism.dll",
         "lib/MonoAndroid10/Prism.xml",
         "lib/MonoTouch10/Prism.dll",
@@ -975,8 +977,7 @@
         "lib/wp81/Prism.dll",
         "lib/wp81/Prism.xml",
         "lib/wpa81/Prism.dll",
-        "lib/wpa81/Prism.xml",
-        "package/services/metadata/core-properties/0435939d80aa4e7a8aa2f9784faad02c.psmdcp"
+        "lib/wpa81/Prism.xml"
       ]
     },
     "Prism.Unity/6.2.0-pre3": {
@@ -2628,12 +2629,12 @@
         "package/services/metadata/core-properties/924820f073a54dfda4a033e3efb68c3c.psmdcp"
       ]
     },
-    "Workstation.UaClient/1.0.2": {
-      "sha512": "ha90NgnfFviLHa9QAOtmzJMJi7mCqLghNNzmxTSVI42ZrQaNU6CmUenO2ZYRGLQc38WPIQwGIN4U7mqGJA9rbA==",
+    "Workstation.UaClient/1.1.0": {
+      "sha512": "sKckswC1xsWIRHzWxVQ98h38Lox+r8o4tnQHXlVLzZbf5Z45IzhFXxdDk8G4/ko/xCZIH8qWJlouEsSqbrqRtg==",
       "type": "package",
-      "path": "Workstation.UaClient/1.0.2",
+      "path": "Workstation.UaClient/1.1.0",
       "files": [
-        "Workstation.UaClient.1.0.2.nupkg.sha512",
+        "Workstation.UaClient.1.1.0.nupkg.sha512",
         "Workstation.UaClient.nuspec",
         "lib/net46/Workstation.UaClient.dll",
         "lib/netstandard1.4/Workstation.UaClient.dll"
@@ -2646,7 +2647,7 @@
       "Prism.Unity >= 6.2.0-pre3",
       "StyleCop.Analyzers >= 1.0.0",
       "System.Security.Cryptography.X509Certificates >= 4.1.0",
-      "Workstation.UaClient >= 1.0.2"
+      "Workstation.UaClient >= 1.1.0"
     ],
     ".NETFramework,Version=v4.6.1": []
   }

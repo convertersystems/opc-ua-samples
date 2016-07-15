@@ -52,6 +52,7 @@ namespace RobotApp
             // Register view models using the name of the view.
             this.container.RegisterType<INavigable, MainPageViewModel>(nameof(MainPage)/*, new ContainerControlledLifetimeManager()*/);
             this.container.RegisterType<INavigable, SettingsPageViewModel>(nameof(SettingsPage)/*, new ContainerControlledLifetimeManager()*/);
+            this.container.RegisterType<INavigable, AxisPageViewModel>(nameof(AxisPage)/*, new ContainerControlledLifetimeManager()*/);
 
             if (Window.Current.Content as ModalDialog == null)
             {

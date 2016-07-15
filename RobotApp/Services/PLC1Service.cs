@@ -8,7 +8,7 @@ namespace RobotApp.Services
     /// <summary>
     /// A service for communicating with OPC UA server at "opc.tcp://localhost:26543".
     /// </summary>
-    public class PLC1Service : UaTcpSessionService
+    public class PLC1Service : UaTcpSessionClient
     {
         public PLC1Service(AppDescription description)
             : base(description, description.GetCertificate(), null, "opc.tcp://localhost:26543")
