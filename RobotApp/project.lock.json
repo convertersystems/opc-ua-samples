@@ -2103,7 +2103,7 @@
           }
         }
       },
-      "Workstation.UaClient/1.1.0": {
+      "Workstation.UaClient/1.2.0": {
         "dependencies": {
           "MetroLog": "1.0.1",
           "Microsoft.Win32.Primitives": "4.0.1",
@@ -2111,6 +2111,7 @@
           "System.Collections": "4.0.11",
           "System.Collections.Concurrent": "4.0.12",
           "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tracing": "4.1.0",
           "System.Globalization": "4.0.11",
           "System.IO": "4.1.0",
           "System.Linq": "4.1.0",
@@ -4307,7 +4308,7 @@
           "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Workstation.UaClient/1.1.0": {
+      "Workstation.UaClient/1.2.0": {
         "dependencies": {
           "MetroLog": "1.0.1",
           "Microsoft.Win32.Primitives": "4.0.1",
@@ -4315,6 +4316,7 @@
           "System.Collections": "4.0.11",
           "System.Collections.Concurrent": "4.0.12",
           "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tracing": "4.1.0",
           "System.Globalization": "4.0.11",
           "System.IO": "4.1.0",
           "System.Linq": "4.1.0",
@@ -6547,7 +6549,7 @@
           "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Workstation.UaClient/1.1.0": {
+      "Workstation.UaClient/1.2.0": {
         "dependencies": {
           "MetroLog": "1.0.1",
           "Microsoft.Win32.Primitives": "4.0.1",
@@ -6555,6 +6557,7 @@
           "System.Collections": "4.0.11",
           "System.Collections.Concurrent": "4.0.12",
           "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tracing": "4.1.0",
           "System.Globalization": "4.0.11",
           "System.IO": "4.1.0",
           "System.Linq": "4.1.0",
@@ -8760,7 +8763,7 @@
           "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Workstation.UaClient/1.1.0": {
+      "Workstation.UaClient/1.2.0": {
         "dependencies": {
           "MetroLog": "1.0.1",
           "Microsoft.Win32.Primitives": "4.0.1",
@@ -8768,6 +8771,7 @@
           "System.Collections": "4.0.11",
           "System.Collections.Concurrent": "4.0.12",
           "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tracing": "4.1.0",
           "System.Globalization": "4.0.11",
           "System.IO": "4.1.0",
           "System.Linq": "4.1.0",
@@ -11009,7 +11013,7 @@
           "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Workstation.UaClient/1.1.0": {
+      "Workstation.UaClient/1.2.0": {
         "dependencies": {
           "MetroLog": "1.0.1",
           "Microsoft.Win32.Primitives": "4.0.1",
@@ -11017,6 +11021,7 @@
           "System.Collections": "4.0.11",
           "System.Collections.Concurrent": "4.0.12",
           "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tracing": "4.1.0",
           "System.Globalization": "4.0.11",
           "System.IO": "4.1.0",
           "System.Linq": "4.1.0",
@@ -13222,7 +13227,7 @@
           "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Workstation.UaClient/1.1.0": {
+      "Workstation.UaClient/1.2.0": {
         "dependencies": {
           "MetroLog": "1.0.1",
           "Microsoft.Win32.Primitives": "4.0.1",
@@ -13230,6 +13235,7 @@
           "System.Collections": "4.0.11",
           "System.Collections.Concurrent": "4.0.12",
           "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tracing": "4.1.0",
           "System.Globalization": "4.0.11",
           "System.IO": "4.1.0",
           "System.Linq": "4.1.0",
@@ -15471,7 +15477,7 @@
           "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Workstation.UaClient/1.1.0": {
+      "Workstation.UaClient/1.2.0": {
         "dependencies": {
           "MetroLog": "1.0.1",
           "Microsoft.Win32.Primitives": "4.0.1",
@@ -15479,6 +15485,7 @@
           "System.Collections": "4.0.11",
           "System.Collections.Concurrent": "4.0.12",
           "System.Diagnostics.Debug": "4.0.11",
+          "System.Diagnostics.Tracing": "4.1.0",
           "System.Globalization": "4.0.11",
           "System.IO": "4.1.0",
           "System.Linq": "4.1.0",
@@ -21626,12 +21633,12 @@
         "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll"
       ]
     },
-    "Workstation.UaClient/1.1.0": {
-      "sha512": "sKckswC1xsWIRHzWxVQ98h38Lox+r8o4tnQHXlVLzZbf5Z45IzhFXxdDk8G4/ko/xCZIH8qWJlouEsSqbrqRtg==",
+    "Workstation.UaClient/1.2.0": {
+      "sha512": "15ObgBlF1eqGAbIAidMg/MXXQtXMXqgCmmSS37GDXtwSPONCmZS5cCnU8FGWn5WYxSWdR8TnMCwYdu/md15gCA==",
       "type": "package",
-      "path": "Workstation.UaClient/1.1.0",
+      "path": "Workstation.UaClient/1.2.0",
       "files": [
-        "Workstation.UaClient.1.1.0.nupkg.sha512",
+        "Workstation.UaClient.1.2.0.nupkg.sha512",
         "Workstation.UaClient.nuspec",
         "lib/net46/Workstation.UaClient.dll",
         "lib/netstandard1.4/Workstation.UaClient.dll"
@@ -21644,7 +21651,7 @@
       "StyleCop.Analyzers >= 1.0.0",
       "Template10 >= 1.1.11",
       "Unity >= 4.0.1",
-      "Workstation.UaClient >= 1.1.0"
+      "Workstation.UaClient >= 1.2.0"
     ],
     "UAP,Version=v10.0": []
   }

@@ -4,7 +4,7 @@
     "StyleCop.Analyzers": "1.0.0",
     "Template10": "1.1.11",
     "Unity": "4.0.1",
-    "Workstation.UaClient": "1.1.0"
+    "Workstation.UaClient": "1.2.0"
   },
   "frameworks": {
     "uap10.0": {}
