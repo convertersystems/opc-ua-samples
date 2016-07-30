@@ -6,7 +6,6 @@ using RobotApp.Services;
 using RobotApp.ViewModels;
 using RobotApp.Views;
 using System;
-using System.Linq;
 using System.Threading.Tasks;
 using Template10.Controls;
 using Template10.Services.NavigationService;
@@ -14,6 +13,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Workstation.ServiceModel.Ua;
 
 namespace RobotApp
 {
@@ -23,16 +23,6 @@ namespace RobotApp
     public sealed partial class App : Template10.Common.BootStrapper
     {
         private UnityContainer container = new UnityContainer();
-
-        static App()
-        {
-            MetroLog.LogManagerFactory.DefaultConfiguration = new MetroLog.LoggingConfiguration();
-#if DEBUG
-            MetroLog.LogManagerFactory.DefaultConfiguration.AddTarget(MetroLog.LogLevel.Trace, MetroLog.LogLevel.Fatal, new MetroLog.Targets.DebugTarget());
-#else
-            MetroLog.LogManagerFactory.DefaultConfiguration.AddTarget(MetroLog.LogLevel.Info, MetroLog.LogLevel.Fatal, new MetroLog.Targets.StreamingFileTarget());
-#endif
-        }
 
         public App()
         {
@@ -46,14 +36,6 @@ namespace RobotApp
 
         public override async Task OnInitializeAsync(IActivatedEventArgs args)
         {
-            // Register services with container's lifetime to create singletons that will be disposed when the container is disposed.
-            this.container.RegisterType<PLC1Service>(new ContainerControlledLifetimeManager());
-
-            // Register view models using the name of the view.
-            this.container.RegisterType<INavigable, MainPageViewModel>(nameof(MainPage)/*, new ContainerControlledLifetimeManager()*/);
-            this.container.RegisterType<INavigable, SettingsPageViewModel>(nameof(SettingsPage)/*, new ContainerControlledLifetimeManager()*/);
-            this.container.RegisterType<INavigable, AxisPageViewModel>(nameof(AxisPage)/*, new ContainerControlledLifetimeManager()*/);
-
             if (Window.Current.Content as ModalDialog == null)
             {
                 // create a new frame
@@ -73,14 +55,37 @@ namespace RobotApp
 
         public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
+            // Register shared services with the application's dependency injection container.
+            var appDescription = new ApplicationDescription()
+            {
+                ApplicationName = "Workstation.RobotApp",
+                ApplicationUri = $"urn:{System.Net.Dns.GetHostName()}:Workstation.RobotApp",
+                ApplicationType = ApplicationType.Client
+            };
+            var appCertificate = appDescription.GetCertificate();
+            var userIdentity = new AnonymousIdentity();
+            var endpointUrl = Services.SettingsServices.SettingsService.Instance.PLC1EndpointUrl;
+            this.container.RegisterType<PLC1Service>(new ContainerControlledLifetimeManager(), new InjectionConstructor(appDescription, appCertificate, userIdentity, endpointUrl));
+
+            // Register view models using the name of the view.
+            this.container.RegisterType<INavigable, MainPageViewModel>(nameof(MainPage)/*, new ContainerControlledLifetimeManager()*/);
+            this.container.RegisterType<INavigable, SettingsPageViewModel>(nameof(SettingsPage)/*, new ContainerControlledLifetimeManager()*/);
+            this.container.RegisterType<INavigable, AxisPageViewModel>(nameof(AxisPage)/*, new ContainerControlledLifetimeManager()*/);
+
             this.NavigationService.Navigate(typeof(Views.MainPage));
             await Task.CompletedTask;
         }
 
-        public override Task OnSuspendingAsync(object s, SuspendingEventArgs e, bool prelaunchActivated)
+        public async override Task OnSuspendingAsync(object s, SuspendingEventArgs e, bool prelaunchActivated)
         {
-            this.container.Dispose();
-            return base.OnSuspendingAsync(s, e, prelaunchActivated);
+            var session = this.container.Resolve<PLC1Service>();
+            await session.SuspendAsync();
+        }
+
+        public override void OnResuming(object s, object e, AppExecutionState previousExecutionState)
+        {
+            var session = this.container.Resolve<PLC1Service>();
+            session.Resume();
         }
 
         public override INavigable ResolveForPage(Page page, NavigationService navigationService)

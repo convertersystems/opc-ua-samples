@@ -18,6 +18,6 @@ namespace RobotHmi.Views
         /// <summary>
         /// Gets a value indicating whether this view and viewmodel are kept alive while in the navigation history.
         /// </summary>
-        public bool KeepAlive => true;
+        public bool KeepAlive => false;
     }
 }

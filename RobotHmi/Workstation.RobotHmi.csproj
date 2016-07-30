@@ -141,7 +141,11 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Data\ThemeToBrushConverter.cs" />
-    <Compile Include="Services\AppDescription.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Services\PLC1Service.cs" />
     <Compile Include="ViewModels\Axis1ViewModel.cs" />
     <Compile Include="ViewModels\Axis2ViewModel.cs" />
@@ -212,6 +216,10 @@
     </None>
     <AdditionalFiles Include="stylecop.json" />
     <None Include="project.json" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

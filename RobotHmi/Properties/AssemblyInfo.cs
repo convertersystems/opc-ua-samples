@@ -11,7 +11,7 @@ using System.Windows;
 [assembly: AssemblyDescription("A client to demonstrate OPC UA")]
 [assembly: AssemblyCompany("Converter Systems LLC")]
 [assembly: AssemblyProduct("Workstation")]
-[assembly: AssemblyCopyright("Copyright © Converter Systems LLC.")]
+[assembly: AssemblyCopyright("Copyright © 2016 Converter Systems LLC.")]
 [assembly: AssemblyTrademark("")]
 [assembly: ComVisible(false)]
 [assembly: CLSCompliant(false)]

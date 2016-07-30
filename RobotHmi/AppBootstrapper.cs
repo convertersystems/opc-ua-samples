@@ -2,10 +2,8 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using Microsoft.Practices.ServiceLocation;
-using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Unity;
-using RobotHmi.Services;
 using RobotHmi.Views;
 using System;
 using System.Windows;
@@ -43,13 +41,6 @@ namespace RobotHmi
         {
             // Shows the Shell window.
             Application.Current.MainWindow.Show();
-        }
-
-        protected override void ConfigureContainer()
-        {
-            base.ConfigureContainer();
-
-            this.Container.RegisterType<PLC1Service>(new ContainerControlledLifetimeManager());
         }
     }
 }

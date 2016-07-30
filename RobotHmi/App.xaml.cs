@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Threading;
 
@@ -12,19 +13,7 @@ namespace RobotHmi
     /// </summary>
     public sealed partial class App
     {
-        private static readonly MetroLog.ILogger Log;
         private AppBootstrapper bootstrapper;
-
-        static App()
-        {
-            MetroLog.LogManagerFactory.DefaultConfiguration = new MetroLog.LoggingConfiguration();
-#if DEBUG
-            MetroLog.LogManagerFactory.DefaultConfiguration.AddTarget(MetroLog.LogLevel.Trace, MetroLog.LogLevel.Fatal, new MetroLog.Targets.DebugTarget());
-#else
-            MetroLog.LogManagerFactory.DefaultConfiguration.AddTarget(MetroLog.LogLevel.Info, MetroLog.LogLevel.Fatal, new MetroLog.Targets.StreamingFileTarget());
-#endif
-            Log = MetroLog.LogManagerFactory.DefaultLogManager.GetLogger<App>();
-        }
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -48,7 +37,7 @@ namespace RobotHmi
             var ex = e.Exception;
             if (ex != null)
             {
-                Log.Error(ex.Message, ex);
+                Trace.TraceError(ex.Message);
             }
         }
 
@@ -57,7 +46,7 @@ namespace RobotHmi
             var ex = e.ExceptionObject as Exception;
             if (ex != null)
             {
-                Log.Error(ex.Message, ex);
+                Trace.TraceError(ex.Message);
             }
 
             if (!e.IsTerminating)

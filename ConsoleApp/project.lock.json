@@ -1,27 +1,10 @@
 {
   "locked": false,
-  "version": 1,
+  "version": 2,
   "targets": {
     ".NETFramework,Version=v4.6.1": {
-      "CommonServiceLocator/1.3.0": {
-        "compile": {
-          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
-        }
-      },
-      "MahApps.Metro/1.3.0-alpha170": {
-        "compile": {
-          "lib/net45/MahApps.Metro.dll": {},
-          "lib/net45/System.Windows.Interactivity.dll": {}
-        },
-        "runtime": {
-          "lib/net45/MahApps.Metro.dll": {},
-          "lib/net45/System.Windows.Interactivity.dll": {}
-        }
-      },
       "Microsoft.Win32.Primitives/4.0.1": {
+        "type": "package",
         "frameworkAssemblies": [
           "System",
           "mscorlib"
@@ -34,6 +17,7 @@
         }
       },
       "Prism.Core/6.1.0": {
+        "type": "package",
         "compile": {
           "lib/net45/Prism.dll": {}
         },
@@ -41,36 +25,11 @@
           "lib/net45/Prism.dll": {}
         }
       },
-      "Prism.Unity/6.2.0-pre3": {
-        "dependencies": {
-          "CommonServiceLocator": "1.3.0",
-          "Prism.Wpf": "6.1.1-pre2",
-          "Unity": "4.0.1"
-        },
-        "compile": {
-          "lib/net45/Prism.Unity.Wpf.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Prism.Unity.Wpf.dll": {}
-        }
+      "StyleCop.Analyzers/1.0.0": {
+        "type": "package"
       },
-      "Prism.Wpf/6.1.1-pre2": {
-        "dependencies": {
-          "CommonServiceLocator": "1.3.0",
-          "Prism.Core": "6.1.0"
-        },
-        "frameworkAssemblies": [
-          "System.Windows.Interactivity"
-        ],
-        "compile": {
-          "lib/net45/Prism.Wpf.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Prism.Wpf.dll": {}
-        }
-      },
-      "StyleCop.Analyzers/1.0.0": {},
       "System.Collections/4.0.11": {
+        "type": "package",
         "frameworkAssemblies": [
           "System",
           "System.Core"
@@ -83,6 +42,7 @@
         }
       },
       "System.Collections.Concurrent/4.0.12": {
+        "type": "package",
         "frameworkAssemblies": [
           "System"
         ],
@@ -94,6 +54,7 @@
         }
       },
       "System.Diagnostics.Debug/4.0.11": {
+        "type": "package",
         "frameworkAssemblies": [
           "System"
         ],
@@ -105,6 +66,7 @@
         }
       },
       "System.Diagnostics.TraceSource/4.0.0": {
+        "type": "package",
         "frameworkAssemblies": [
           "System",
           "mscorlib"
@@ -127,6 +89,7 @@
         }
       },
       "System.Diagnostics.Tracing/4.1.0": {
+        "type": "package",
         "compile": {
           "ref/net45/_._": {}
         },
@@ -135,6 +98,7 @@
         }
       },
       "System.Globalization/4.0.11": {
+        "type": "package",
         "compile": {
           "ref/net45/_._": {}
         },
@@ -143,6 +107,7 @@
         }
       },
       "System.IO/4.1.0": {
+        "type": "package",
         "frameworkAssemblies": [
           "System"
         ],
@@ -154,6 +119,7 @@
         }
       },
       "System.Linq/4.1.0": {
+        "type": "package",
         "frameworkAssemblies": [
           "System.Core"
         ],
@@ -165,6 +131,7 @@
         }
       },
       "System.Net.Primitives/4.0.11": {
+        "type": "package",
         "frameworkAssemblies": [
           "System"
         ],
@@ -176,6 +143,7 @@
         }
       },
       "System.Net.Sockets/4.1.0": {
+        "type": "package",
         "frameworkAssemblies": [
           "System",
           "mscorlib"
@@ -188,6 +156,7 @@
         }
       },
       "System.ObjectModel/4.0.12": {
+        "type": "package",
         "frameworkAssemblies": [
           "System"
         ],
@@ -199,6 +168,7 @@
         }
       },
       "System.Reflection/4.1.0": {
+        "type": "package",
         "compile": {
           "ref/net45/_._": {}
         },
@@ -207,6 +177,7 @@
         }
       },
       "System.Reflection.Extensions/4.0.1": {
+        "type": "package",
         "compile": {
           "ref/net45/_._": {}
         },
@@ -215,6 +186,7 @@
         }
       },
       "System.Resources.ResourceManager/4.0.1": {
+        "type": "package",
         "compile": {
           "ref/net45/_._": {}
         },
@@ -223,6 +195,7 @@
         }
       },
       "System.Runtime/4.1.0": {
+        "type": "package",
         "frameworkAssemblies": [
           "System",
           "System.ComponentModel.Composition",
@@ -236,6 +209,7 @@
         }
       },
       "System.Runtime.Extensions/4.1.0": {
+        "type": "package",
         "frameworkAssemblies": [
           "System"
         ],
@@ -247,6 +221,7 @@
         }
       },
       "System.Runtime.Handles/4.0.1": {
+        "type": "package",
         "frameworkAssemblies": [
           "System.Core"
         ],
@@ -258,6 +233,7 @@
         }
       },
       "System.Runtime.InteropServices/4.1.0": {
+        "type": "package",
         "frameworkAssemblies": [
           "System",
           "System.Core"
@@ -270,6 +246,7 @@
         }
       },
       "System.Security.Cryptography.Algorithms/4.2.0": {
+        "type": "package",
         "dependencies": {
           "System.Security.Cryptography.Primitives": "4.0.0"
         },
@@ -291,6 +268,7 @@
         }
       },
       "System.Security.Cryptography.Encoding/4.0.0": {
+        "type": "package",
         "frameworkAssemblies": [
           "System",
           "mscorlib"
@@ -313,6 +291,7 @@
         }
       },
       "System.Security.Cryptography.Primitives/4.0.0": {
+        "type": "package",
         "frameworkAssemblies": [
           "mscorlib"
         ],
@@ -324,6 +303,7 @@
         }
       },
       "System.Security.Cryptography.X509Certificates/4.1.0": {
+        "type": "package",
         "dependencies": {
           "System.Security.Cryptography.Algorithms": "4.2.0",
           "System.Security.Cryptography.Encoding": "4.0.0"
@@ -347,6 +327,7 @@
         }
       },
       "System.Text.Encoding/4.0.11": {
+        "type": "package",
         "compile": {
           "ref/net45/_._": {}
         },
@@ -355,6 +336,7 @@
         }
       },
       "System.Text.Encoding.Extensions/4.0.11": {
+        "type": "package",
         "compile": {
           "ref/net45/_._": {}
         },
@@ -363,6 +345,7 @@
         }
       },
       "System.Threading/4.0.11": {
+        "type": "package",
         "frameworkAssemblies": [
           "System",
           "System.Core"
@@ -375,6 +358,7 @@
         }
       },
       "System.Threading.Tasks/4.0.11": {
+        "type": "package",
         "frameworkAssemblies": [
           "System.Core"
         ],
@@ -386,6 +370,7 @@
         }
       },
       "System.Threading.Tasks.Dataflow/4.6.0": {
+        "type": "package",
         "compile": {
           "lib/netstandard1.1/System.Threading.Tasks.Dataflow.dll": {}
         },
@@ -394,6 +379,7 @@
         }
       },
       "System.Xml.XDocument/4.0.11": {
+        "type": "package",
         "frameworkAssemblies": [
           "System.Xml.Linq"
         ],
@@ -404,22 +390,8 @@
           "lib/net45/_._": {}
         }
       },
-      "Unity/4.0.1": {
-        "dependencies": {
-          "CommonServiceLocator": "1.3.0"
-        },
-        "compile": {
-          "lib/net45/Microsoft.Practices.Unity.Configuration.dll": {},
-          "lib/net45/Microsoft.Practices.Unity.RegistrationByConvention.dll": {},
-          "lib/net45/Microsoft.Practices.Unity.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.Practices.Unity.Configuration.dll": {},
-          "lib/net45/Microsoft.Practices.Unity.RegistrationByConvention.dll": {},
-          "lib/net45/Microsoft.Practices.Unity.dll": {}
-        }
-      },
       "Workstation.UaClient/1.2.1": {
+        "type": "package",
         "dependencies": {
           "Microsoft.Win32.Primitives": "4.0.1",
           "Prism.Core": "6.1.0",
@@ -461,25 +433,8 @@
       }
     },
     ".NETFramework,Version=v4.6.1/win": {
-      "CommonServiceLocator/1.3.0": {
-        "compile": {
-          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
-        },
-        "runtime": {
-          "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll": {}
-        }
-      },
-      "MahApps.Metro/1.3.0-alpha170": {
-        "compile": {
-          "lib/net45/MahApps.Metro.dll": {},
-          "lib/net45/System.Windows.Interactivity.dll": {}
-        },
-        "runtime": {
-          "lib/net45/MahApps.Metro.dll": {},
-          "lib/net45/System.Windows.Interactivity.dll": {}
-        }
-      },
       "Microsoft.Win32.Primitives/4.0.1": {
+        "type": "package",
         "frameworkAssemblies": [
           "System",
           "mscorlib"
@@ -492,6 +447,7 @@
         }
       },
       "Prism.Core/6.1.0": {
+        "type": "package",
         "compile": {
           "lib/net45/Prism.dll": {}
         },
@@ -499,36 +455,11 @@
           "lib/net45/Prism.dll": {}
         }
       },
-      "Prism.Unity/6.2.0-pre3": {
-        "dependencies": {
-          "CommonServiceLocator": "1.3.0",
-          "Prism.Wpf": "6.1.1-pre2",
-          "Unity": "4.0.1"
-        },
-        "compile": {
-          "lib/net45/Prism.Unity.Wpf.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Prism.Unity.Wpf.dll": {}
-        }
+      "StyleCop.Analyzers/1.0.0": {
+        "type": "package"
       },
-      "Prism.Wpf/6.1.1-pre2": {
-        "dependencies": {
-          "CommonServiceLocator": "1.3.0",
-          "Prism.Core": "6.1.0"
-        },
-        "frameworkAssemblies": [
-          "System.Windows.Interactivity"
-        ],
-        "compile": {
-          "lib/net45/Prism.Wpf.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Prism.Wpf.dll": {}
-        }
-      },
-      "StyleCop.Analyzers/1.0.0": {},
       "System.Collections/4.0.11": {
+        "type": "package",
         "frameworkAssemblies": [
           "System",
           "System.Core"
@@ -541,6 +472,7 @@
         }
       },
       "System.Collections.Concurrent/4.0.12": {
+        "type": "package",
         "frameworkAssemblies": [
           "System"
         ],
@@ -552,6 +484,7 @@
         }
       },
       "System.Diagnostics.Debug/4.0.11": {
+        "type": "package",
         "frameworkAssemblies": [
           "System"
         ],
@@ -563,6 +496,7 @@
         }
       },
       "System.Diagnostics.TraceSource/4.0.0": {
+        "type": "package",
         "frameworkAssemblies": [
           "System",
           "mscorlib"
@@ -575,6 +509,7 @@
         }
       },
       "System.Diagnostics.Tracing/4.1.0": {
+        "type": "package",
         "compile": {
           "ref/net45/_._": {}
         },
@@ -583,6 +518,7 @@
         }
       },
       "System.Globalization/4.0.11": {
+        "type": "package",
         "compile": {
           "ref/net45/_._": {}
         },
@@ -591,6 +527,7 @@
         }
       },
       "System.IO/4.1.0": {
+        "type": "package",
         "frameworkAssemblies": [
           "System"
         ],
@@ -602,6 +539,7 @@
         }
       },
       "System.Linq/4.1.0": {
+        "type": "package",
         "frameworkAssemblies": [
           "System.Core"
         ],
@@ -613,6 +551,7 @@
         }
       },
       "System.Net.Primitives/4.0.11": {
+        "type": "package",
         "frameworkAssemblies": [
           "System"
         ],
@@ -624,6 +563,7 @@
         }
       },
       "System.Net.Sockets/4.1.0": {
+        "type": "package",
         "frameworkAssemblies": [
           "System",
           "mscorlib"
@@ -636,6 +576,7 @@
         }
       },
       "System.ObjectModel/4.0.12": {
+        "type": "package",
         "frameworkAssemblies": [
           "System"
         ],
@@ -647,6 +588,7 @@
         }
       },
       "System.Reflection/4.1.0": {
+        "type": "package",
         "compile": {
           "ref/net45/_._": {}
         },
@@ -655,6 +597,7 @@
         }
       },
       "System.Reflection.Extensions/4.0.1": {
+        "type": "package",
         "compile": {
           "ref/net45/_._": {}
         },
@@ -663,6 +606,7 @@
         }
       },
       "System.Resources.ResourceManager/4.0.1": {
+        "type": "package",
         "compile": {
           "ref/net45/_._": {}
         },
@@ -671,6 +615,7 @@
         }
       },
       "System.Runtime/4.1.0": {
+        "type": "package",
         "frameworkAssemblies": [
           "System",
           "System.ComponentModel.Composition",
@@ -684,6 +629,7 @@
         }
       },
       "System.Runtime.Extensions/4.1.0": {
+        "type": "package",
         "frameworkAssemblies": [
           "System"
         ],
@@ -695,6 +641,7 @@
         }
       },
       "System.Runtime.Handles/4.0.1": {
+        "type": "package",
         "frameworkAssemblies": [
           "System.Core"
         ],
@@ -706,6 +653,7 @@
         }
       },
       "System.Runtime.InteropServices/4.1.0": {
+        "type": "package",
         "frameworkAssemblies": [
           "System",
           "System.Core"
@@ -718,6 +666,7 @@
         }
       },
       "System.Security.Cryptography.Algorithms/4.2.0": {
+        "type": "package",
         "dependencies": {
           "System.Security.Cryptography.Primitives": "4.0.0"
         },
@@ -733,6 +682,7 @@
         }
       },
       "System.Security.Cryptography.Encoding/4.0.0": {
+        "type": "package",
         "frameworkAssemblies": [
           "System",
           "mscorlib"
@@ -745,6 +695,7 @@
         }
       },
       "System.Security.Cryptography.Primitives/4.0.0": {
+        "type": "package",
         "frameworkAssemblies": [
           "mscorlib"
         ],
@@ -756,6 +707,7 @@
         }
       },
       "System.Security.Cryptography.X509Certificates/4.1.0": {
+        "type": "package",
         "dependencies": {
           "System.Security.Cryptography.Algorithms": "4.2.0",
           "System.Security.Cryptography.Encoding": "4.0.0"
@@ -773,6 +725,7 @@
         }
       },
       "System.Text.Encoding/4.0.11": {
+        "type": "package",
         "compile": {
           "ref/net45/_._": {}
         },
@@ -781,6 +734,7 @@
         }
       },
       "System.Text.Encoding.Extensions/4.0.11": {
+        "type": "package",
         "compile": {
           "ref/net45/_._": {}
         },
@@ -789,6 +743,7 @@
         }
       },
       "System.Threading/4.0.11": {
+        "type": "package",
         "frameworkAssemblies": [
           "System",
           "System.Core"
@@ -801,6 +756,7 @@
         }
       },
       "System.Threading.Tasks/4.0.11": {
+        "type": "package",
         "frameworkAssemblies": [
           "System.Core"
         ],
@@ -812,6 +768,7 @@
         }
       },
       "System.Threading.Tasks.Dataflow/4.6.0": {
+        "type": "package",
         "compile": {
           "lib/netstandard1.1/System.Threading.Tasks.Dataflow.dll": {}
         },
@@ -820,6 +777,7 @@
         }
       },
       "System.Xml.XDocument/4.0.11": {
+        "type": "package",
         "frameworkAssemblies": [
           "System.Xml.Linq"
         ],
@@ -830,22 +788,8 @@
           "lib/net45/_._": {}
         }
       },
-      "Unity/4.0.1": {
-        "dependencies": {
-          "CommonServiceLocator": "1.3.0"
-        },
-        "compile": {
-          "lib/net45/Microsoft.Practices.Unity.Configuration.dll": {},
-          "lib/net45/Microsoft.Practices.Unity.RegistrationByConvention.dll": {},
-          "lib/net45/Microsoft.Practices.Unity.dll": {}
-        },
-        "runtime": {
-          "lib/net45/Microsoft.Practices.Unity.Configuration.dll": {},
-          "lib/net45/Microsoft.Practices.Unity.RegistrationByConvention.dll": {},
-          "lib/net45/Microsoft.Practices.Unity.dll": {}
-        }
-      },
       "Workstation.UaClient/1.2.1": {
+        "type": "package",
         "dependencies": {
           "Microsoft.Win32.Primitives": "4.0.1",
           "Prism.Core": "6.1.0",
@@ -888,38 +832,6 @@
     }
   },
   "libraries": {
-    "CommonServiceLocator/1.3.0": {
-      "sha512": "fbjO0SNwbOFPdwVfyqv+B7gIJ2CVBOFPKqn1mDDECK7KER8jFaOdcvroFYoAHa0ktPbxi5s+15qOLnA96f8GSA==",
-      "type": "Package",
-      "files": [
-        "CommonServiceLocator.nuspec",
-        "[Content_Types].xml",
-        "[Content_Types].xml",
-        "_rels/.rels",
-        "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.XML",
-        "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.dll",
-        "lib/portable-net4+sl5+netcore45+wpa81+wp8/Microsoft.Practices.ServiceLocation.pdb",
-        "package/services/metadata/core-properties/8a82b9e5a63a439481bfa8d4ec335002.psmdcp",
-        "package/services/metadata/core-properties/99be0c88b2fd41c8b07c42071005ee47.psmdcp"
-      ]
-    },
-    "MahApps.Metro/1.3.0-alpha170": {
-      "sha512": "BZ5NZUUH36cJGYno+xnnq4pQi1catOolxIfP00zQYBjdxUrPzTWs1A8RPREK8VMaHhQ/Ju7vdo+fWaFGhaYxPg==",
-      "type": "package",
-      "files": [
-        "MahApps.Metro.1.3.0-alpha170.nupkg.sha512",
-        "MahApps.Metro.nuspec",
-        "lib/net40/MahApps.Metro.XML",
-        "lib/net40/MahApps.Metro.dll",
-        "lib/net40/MahApps.Metro.pdb",
-        "lib/net40/System.Windows.Interactivity.dll",
-        "lib/net45/MahApps.Metro.XML",
-        "lib/net45/MahApps.Metro.dll",
-        "lib/net45/MahApps.Metro.pdb",
-        "lib/net45/System.Windows.Interactivity.dll",
-        "tools/install.ps1"
-      ]
-    },
     "Microsoft.Win32.Primitives/4.0.1": {
       "sha512": "fQnBHO9DgcmkC9dYSJoBqo6sH1VJwJprUHh8F3hbcRlxiQiBUuTntdk8tUwV490OqC2kQUrinGwZyQHTieuXRA==",
       "type": "package",
@@ -981,43 +893,16 @@
         "lib/wpa81/Prism.xml"
       ]
     },
-    "Prism.Unity/6.2.0-pre3": {
-      "sha512": "rAfvsoQ2/D/Ho7IohmBe2GEc83uEAgmI8LlrhKpdeowOnl2otTJ+VNv9C+mvDvL6NZI/jzlquV9YWMq7/QTleg==",
-      "type": "package",
-      "files": [
-        "Prism.Unity.6.2.0-pre3.nupkg.sha512",
-        "Prism.Unity.nuspec",
-        "lib/net45/Prism.Unity.Wpf.dll",
-        "lib/net45/Prism.Unity.Wpf.xml",
-        "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Prism.Unity.Forms.dll",
-        "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Prism.Unity.Forms.dll.config",
-        "lib/portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10/Prism.Unity.Forms.xml",
-        "lib/uap10.0/Prism.Unity.Windows.dll",
-        "lib/uap10.0/Prism.Unity.Windows.pri",
-        "lib/uap10.0/Prism.Unity.Windows.xml"
-      ]
-    },
-    "Prism.Wpf/6.1.1-pre2": {
-      "sha512": "s2XPv6L3M8kav6Wqsuic/jmffN7vYKjCmzqIykFEqTjTuavHS/MofC0Pv2UVjnE2EsV8e830igwIcTat8erUbQ==",
-      "type": "package",
-      "files": [
-        "Prism.Wpf.6.1.1-pre2.nupkg.sha512",
-        "Prism.Wpf.nuspec",
-        "lib/net45/Prism.Wpf.dll",
-        "lib/net45/Prism.Wpf.xml"
-      ]
-    },
     "StyleCop.Analyzers/1.0.0": {
       "sha512": "NT0qdVF8gfXn6YcajL/s9orWNbO9NAr9AM8MDHIxXHstMvxi7+viLxAlZIoWRAA25Cs4O91qFcMt06cL/61TjQ==",
-      "type": "Package",
+      "type": "package",
+      "path": "StyleCop.Analyzers/1.0.0",
       "files": [
+        "StyleCop.Analyzers.1.0.0.nupkg.sha512",
         "StyleCop.Analyzers.nuspec",
-        "[Content_Types].xml",
-        "_rels/.rels",
         "analyzers/dotnet/cs/Newtonsoft.Json.dll",
         "analyzers/dotnet/cs/StyleCop.Analyzers.CodeFixes.dll",
         "analyzers/dotnet/cs/StyleCop.Analyzers.dll",
-        "package/services/metadata/core-properties/90fb8849618644cdbc2ddcb7d255e6b7.psmdcp",
         "tools/install.ps1",
         "tools/uninstall.ps1"
       ]
@@ -2228,6 +2113,7 @@
     "System.Security.Cryptography.Algorithms/4.2.0": {
       "sha512": "8JQFxbLVdrtIOKMDN38Fn0GWnqYZw/oMlwOUG/qz1jqChvyZlnUmu+0s7wLx7JYua/nAXoESpHA3iw11QFWhXg==",
       "type": "package",
+      "path": "System.Security.Cryptography.Algorithms/4.2.0",
       "files": [
         "System.Security.Cryptography.Algorithms.4.2.0.nupkg.sha512",
         "System.Security.Cryptography.Algorithms.nuspec",
@@ -2265,6 +2151,7 @@
     "System.Security.Cryptography.Encoding/4.0.0": {
       "sha512": "FbKgE5MbxSQMPcSVRgwM6bXN3GtyAh04NkV8E5zKCBE26X0vYW0UtTa2FIgkH33WVqBVxRgxljlVYumWtU+HcQ==",
       "type": "package",
+      "path": "System.Security.Cryptography.Encoding/4.0.0",
       "files": [
         "System.Security.Cryptography.Encoding.4.0.0.nupkg.sha512",
         "System.Security.Cryptography.Encoding.nuspec",
@@ -2303,6 +2190,7 @@
     "System.Security.Cryptography.Primitives/4.0.0": {
       "sha512": "Wkd7QryWYjkQclX0bngpntW5HSlMzeJU24UaLJQ7YTfI8ydAVAaU2J+HXLLABOVJlKTVvAeL0Aj39VeTe7L+oA==",
       "type": "package",
+      "path": "System.Security.Cryptography.Primitives/4.0.0",
       "files": [
         "System.Security.Cryptography.Primitives.4.0.0.nupkg.sha512",
         "System.Security.Cryptography.Primitives.nuspec",
@@ -2329,6 +2217,7 @@
     "System.Security.Cryptography.X509Certificates/4.1.0": {
       "sha512": "4HEfsQIKAhA1+ApNn729Gi09zh+lYWwyIuViihoMDWp1vQnEkL2ct7mAbhBlLYm+x/L4Rr/pyGge1lIY635e0w==",
       "type": "package",
+      "path": "System.Security.Cryptography.X509Certificates/4.1.0",
       "files": [
         "System.Security.Cryptography.X509Certificates.4.1.0.nupkg.sha512",
         "System.Security.Cryptography.X509Certificates.nuspec",
@@ -2729,34 +2618,6 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Unity/4.0.1": {
-      "sha512": "RHFTCW13E186hCI0Z4R47tl2SyxQOp3TNaBlilxKktO+u+NUWyOK/nPJ25PWwgPh4j4/GM46PQszSsusui+ikw==",
-      "type": "Package",
-      "files": [
-        "Unity.nuspec",
-        "UnityConfiguration30.xsd",
-        "[Content_Types].xml",
-        "_rels/.rels",
-        "lib/net45/Microsoft.Practices.Unity.Configuration.XML",
-        "lib/net45/Microsoft.Practices.Unity.Configuration.dll",
-        "lib/net45/Microsoft.Practices.Unity.RegistrationByConvention.XML",
-        "lib/net45/Microsoft.Practices.Unity.RegistrationByConvention.dll",
-        "lib/net45/Microsoft.Practices.Unity.dll",
-        "lib/net45/Microsoft.Practices.Unity.xml",
-        "lib/portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10/Microsoft.Practices.Unity.dll",
-        "lib/portable-net45+wp80+win8+wpa81+MonoAndroid10+MonoTouch10/Microsoft.Practices.Unity.xml",
-        "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.XML",
-        "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.dll",
-        "lib/win8/Microsoft.Practices.Unity.RegistrationByConvention.pri",
-        "lib/win8/Microsoft.Practices.Unity.dll",
-        "lib/win8/Microsoft.Practices.Unity.xml",
-        "lib/wp80/Microsoft.Practices.Unity.RegistrationByConvention.XML",
-        "lib/wp80/Microsoft.Practices.Unity.RegistrationByConvention.dll",
-        "lib/wp80/Microsoft.Practices.Unity.dll",
-        "lib/wp80/Microsoft.Practices.Unity.xml",
-        "package/services/metadata/core-properties/924820f073a54dfda4a033e3efb68c3c.psmdcp"
-      ]
-    },
     "Workstation.UaClient/1.2.1": {
       "sha512": "ZhT0OWCYMSo78Qdw670Oe7A5FVh+ek8W1qD9Cc8hgx/d3z7fwcwoPZEaJBOQOipKy/OyIYpbjUxWKHrdjA3SOQ==",
       "type": "package",
@@ -2771,12 +2632,12 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "MahApps.Metro >= 1.3.0-ALPHA170",
-      "Prism.Unity >= 6.2.0-pre3",
       "StyleCop.Analyzers >= 1.0.0",
       "System.Security.Cryptography.X509Certificates >= 4.1.0",
       "Workstation.UaClient >= 1.2.1"
     ],
     ".NETFramework,Version=v4.6.1": []
-  }
+  },
+  "tools": {},
+  "projectFileToolGroups": {}
 }

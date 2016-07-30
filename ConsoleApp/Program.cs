@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Copyright (c) Converter Systems LLC. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Workstation.ServiceModel.Ua;
@@ -6,15 +9,27 @@ using Workstation.ServiceModel.Ua.Channels;
 
 namespace ConsoleApp
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            Task.Run(TestAsync).GetAwaiter().GetResult();
+            try
+            {
+                Task.Run(TestAsync).GetAwaiter().GetResult();
+            }
+            catch (ServiceResultException ex)
+            {
+                Console.WriteLine(ex.Message);
+                Console.WriteLine("Press any key to close the program...");
+                Console.ReadKey(true);
+            }
         }
 
         private static async Task TestAsync()
         {
+            // var discoveryUrl = "opc.tcp://localhost:26543"; // Workstation.NodeServer
+            var discoveryUrl = "opc.tcp://localhost:48010"; // UaCppServer - see  http://www.unified-automation.com/
+
             Console.WriteLine("Step 1 - Describe this app.");
             var appDescription = new ApplicationDescription()
             {
@@ -23,7 +38,6 @@ namespace ConsoleApp
                 ApplicationType = ApplicationType.Client,
             };
 
-            var discoveryUrl = "opc.tcp://localhost:26543";
             Console.WriteLine($"Step 2 - Discover endpoints of '{discoveryUrl}'.");
             var getEndpointsRequest = new GetEndpointsRequest
             {
@@ -36,37 +50,58 @@ namespace ConsoleApp
                 throw new InvalidOperationException($"'{discoveryUrl}' returned no endpoints.");
             }
 
-            Console.WriteLine("Step 3 - Choose endpoint with highest security level.");
+            Console.WriteLine("Step 3 - Choose the endpoint with highest security level.");
             var remoteEndpoint = getEndpointsResponse.Endpoints.OrderBy(e => e.SecurityLevel).Last();
             Console.WriteLine(remoteEndpoint.SecurityPolicyUri);
 
             Console.WriteLine("Step 4 - Create a session with your server.");
             using (var session = new UaTcpSessionChannel(appDescription, appDescription.GetCertificate(), null, remoteEndpoint))
             {
-                await session.OpenAsync();
+                try
+                {
+                    await session.OpenAsync();
+                }
+                catch (ServiceResultException ex)
+                {
+                    if ((uint)ex.HResult == StatusCodes.BadSecurityChecksFailed)
+                    {
+                        Console.WriteLine("Error connecting to endpoint. Did the server reject our certificate?");
+                    }
+
+                    throw ex;
+                }
 
                 Console.WriteLine("Step 5 - Browse the server namespace.");
+                Console.WriteLine("+ Root");
                 BrowseRequest browseRequest = new BrowseRequest
                 {
-                    NodesToBrowse = new BrowseDescription[] { new BrowseDescription { NodeId = NodeId.Parse(ObjectIds.ObjectsFolder), BrowseDirection = BrowseDirection.Forward, ReferenceTypeId = NodeId.Parse(ReferenceTypeIds.HierarchicalReferences), NodeClassMask = (uint)NodeClass.Variable | (uint)NodeClass.Object | (uint)NodeClass.Method, IncludeSubtypes = true, ResultMask = (uint)BrowseResultMask.All } },
+                    NodesToBrowse = new BrowseDescription[] { new BrowseDescription { NodeId = NodeId.Parse(ObjectIds.RootFolder), BrowseDirection = BrowseDirection.Forward, ReferenceTypeId = NodeId.Parse(ReferenceTypeIds.HierarchicalReferences), NodeClassMask = (uint)NodeClass.Variable | (uint)NodeClass.Object | (uint)NodeClass.Method, IncludeSubtypes = true, ResultMask = (uint)BrowseResultMask.All } },
                 };
                 BrowseResponse browseResponse = await session.BrowseAsync(browseRequest);
-                Console.WriteLine("DisplayName: BrowseName, NodeClass");
-                foreach (var rd in browseResponse.Results[0].References)
+                foreach (var rd1 in browseResponse.Results[0].References ?? new ReferenceDescription[0])
                 {
-                    Console.WriteLine("{0}: {1}, {2}", rd.DisplayName, rd.BrowseName, rd.NodeClass);
+                    Console.WriteLine("  + {0}: {1}, {2}", rd1.DisplayName, rd1.BrowseName, rd1.NodeClass);
                     browseRequest = new BrowseRequest
                     {
-                        NodesToBrowse = new BrowseDescription[] { new BrowseDescription { NodeId = ExpandedNodeId.ToNodeId(rd.NodeId, session.NamespaceUris), BrowseDirection = BrowseDirection.Forward, ReferenceTypeId = NodeId.Parse(ReferenceTypeIds.HierarchicalReferences), NodeClassMask = (uint)NodeClass.Variable | (uint)NodeClass.Object | (uint)NodeClass.Method, IncludeSubtypes = true, ResultMask = (uint)BrowseResultMask.All } },
+                        NodesToBrowse = new BrowseDescription[] { new BrowseDescription { NodeId = ExpandedNodeId.ToNodeId(rd1.NodeId, session.NamespaceUris), BrowseDirection = BrowseDirection.Forward, ReferenceTypeId = NodeId.Parse(ReferenceTypeIds.HierarchicalReferences), NodeClassMask = (uint)NodeClass.Variable | (uint)NodeClass.Object | (uint)NodeClass.Method, IncludeSubtypes = true, ResultMask = (uint)BrowseResultMask.All } },
                     };
                     browseResponse = await session.BrowseAsync(browseRequest);
-                    foreach (var nextRd in browseResponse.Results[0].References)
+                    foreach (var rd2 in browseResponse.Results[0].References ?? new ReferenceDescription[0])
                     {
-                        Console.WriteLine("+ {0}: {1}, {2}", nextRd.DisplayName, nextRd.BrowseName, nextRd.NodeClass);
+                        Console.WriteLine("    + {0}: {1}, {2}", rd2.DisplayName, rd2.BrowseName, rd2.NodeClass);
+                        browseRequest = new BrowseRequest
+                        {
+                            NodesToBrowse = new BrowseDescription[] { new BrowseDescription { NodeId = ExpandedNodeId.ToNodeId(rd2.NodeId, session.NamespaceUris), BrowseDirection = BrowseDirection.Forward, ReferenceTypeId = NodeId.Parse(ReferenceTypeIds.HierarchicalReferences), NodeClassMask = (uint)NodeClass.Variable | (uint)NodeClass.Object | (uint)NodeClass.Method, IncludeSubtypes = true, ResultMask = (uint)BrowseResultMask.All } },
+                        };
+                        browseResponse = await session.BrowseAsync(browseRequest);
+                        foreach (var rd3 in browseResponse.Results[0].References ?? new ReferenceDescription[0])
+                        {
+                            Console.WriteLine("      + {0}: {1}, {2}", rd3.DisplayName, rd3.BrowseName, rd3.NodeClass);
+                        }
                     }
                 }
 
-                Console.WriteLine("Press any key to create a subscription...");
+                Console.WriteLine("Press any key to continue...");
                 Console.ReadKey(true);
 
                 Console.WriteLine("Step 6 - Create a subscription.");
@@ -80,24 +115,17 @@ namespace ConsoleApp
                 var subscriptionResponse = await session.CreateSubscriptionAsync(subscriptionRequest).ConfigureAwait(false);
                 var id = subscriptionResponse.SubscriptionId;
 
-                Console.WriteLine("Step 7 - Add a list of items you wish to monitor to the subscription.");
-                var items = browseResponse.Results[0].References.Where(r => r.NodeClass == NodeClass.Variable).ToArray();
-                var itemsToCreate = items.Select((r, i) => new MonitoredItemCreateRequest { ItemToMonitor = new ReadValueId { NodeId = ExpandedNodeId.ToNodeId(r.NodeId, session.NamespaceUris), AttributeId = AttributeIds.Value }, MonitoringMode = MonitoringMode.Reporting, RequestedParameters = new MonitoringParameters { ClientHandle = (uint)i, SamplingInterval = -1, QueueSize = 0, DiscardOldest = true } } ).ToArray();
+                Console.WriteLine("Step 7 - Add items to the subscription.");
+                var itemsToCreate = new MonitoredItemCreateRequest[]
+                {
+                    new MonitoredItemCreateRequest { ItemToMonitor = new ReadValueId { NodeId = NodeId.Parse("i=2258"), AttributeId = AttributeIds.Value }, MonitoringMode = MonitoringMode.Reporting, RequestedParameters = new MonitoringParameters { ClientHandle = 12345, SamplingInterval = -1, QueueSize = 0, DiscardOldest = true } }
+                };
                 var itemsRequest = new CreateMonitoredItemsRequest
                 {
                     SubscriptionId = id,
                     ItemsToCreate = itemsToCreate,
                 };
                 var itemsResponse = await session.CreateMonitoredItemsAsync(itemsRequest).ConfigureAwait(false);
-                for (int i = 0; i < itemsResponse.Results.Length; i++)
-                {
-                    var item = itemsToCreate[i];
-                    var result = itemsResponse.Results[i];
-                    if (StatusCode.IsBad(result.StatusCode))
-                    {
-                        Console.WriteLine($"Error response from MonitoredItemCreateRequest for {item.ItemToMonitor.NodeId}. {result.StatusCode}");
-                    }
-                }
 
                 Console.WriteLine("Step 8 - Publish the subscription.");
                 var publishRequest = new PublishRequest
@@ -109,42 +137,36 @@ namespace ConsoleApp
                 {
                     var publishResponse = await session.PublishAsync(publishRequest).ConfigureAwait(false);
 
-                    // loop thru all the notifications
-                    var ndarray = publishResponse.NotificationMessage.NotificationData;
-                    foreach (var nd in ndarray)
+                    // loop thru all the data change notifications
+                    var dcns = publishResponse.NotificationMessage.NotificationData.OfType<DataChangeNotification>();
+                    foreach (var dcn in dcns)
                     {
-                        // if data change.
-                        var dcn = nd as DataChangeNotification;
-                        if (dcn != null)
+                        foreach (var min in dcn.MonitoredItems)
                         {
-                            foreach (var min in dcn.MonitoredItems)
-                            {
-                                Console.WriteLine($"name: {items[min.ClientHandle].DisplayName}; value: {min.Value}");
-                            }
-
-                            continue;
+                            Console.WriteLine($"clientHandle: {min.ClientHandle}; value: {min.Value}");
                         }
                     }
+
                     publishRequest = new PublishRequest
                     {
                         SubscriptionAcknowledgements = new[] { new SubscriptionAcknowledgement { SequenceNumber = publishResponse.NotificationMessage.SequenceNumber, SubscriptionId = publishResponse.SubscriptionId } }
                     };
                 }
+
                 Console.ReadKey(true);
-                Console.WriteLine("Deleting subscription.");
+
+                Console.WriteLine("Step 9 - Delete the subscription.");
                 var request = new DeleteSubscriptionsRequest
                 {
                     SubscriptionIds = new uint[] { id }
                 };
                 await session.DeleteSubscriptionsAsync(request).ConfigureAwait(false);
 
-
                 Console.WriteLine("Press any key to close the session...");
                 Console.ReadKey(true);
-                Console.WriteLine("Closing session.");
+                Console.WriteLine("Step 10 - Close the session.");
                 await session.CloseAsync();
             }
         }
     }
 }
-
