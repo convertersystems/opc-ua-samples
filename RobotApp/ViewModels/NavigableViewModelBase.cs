@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Template10.Common;
+using Template10.Mvvm;
 using Template10.Services.NavigationService;
 using Windows.UI.Xaml.Navigation;
 using Workstation.ServiceModel.Ua;
@@ -12,18 +13,14 @@ using Workstation.ServiceModel.Ua;
 namespace RobotApp.ViewModels
 {
     /// <summary>
-    /// A base class that implements Subscription and Template10's INavigable
+    /// A base class that implements ViewModelBase and Template10's INavigable
     /// </summary>
-    public class NavigableSubscriptionBase : Subscription, INavigable
+    public class NavigableViewModelBase : ViewModelBase, INavigable
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="NavigableSubscriptionBase"/> class.
+        /// Initializes a new instance of the <see cref="NavigableViewModelBase"/> class.
         /// </summary>
-        /// <param name="session">The session service.</param>
-        /// <param name="publishingInterval">The publishing interval in milliseconds.</param>
-        /// <param name="keepAliveCount">The number of PublishingIntervals before the server should return an empty Publish response.</param>
-        public NavigableSubscriptionBase(UaTcpSessionClient session, double publishingInterval = 1000f, uint keepAliveCount = 10)
-            : base(session, publishingInterval: publishingInterval, keepAliveCount: keepAliveCount)
+        public NavigableViewModelBase()
         {
         }
 

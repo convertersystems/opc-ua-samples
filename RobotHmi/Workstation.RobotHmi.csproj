@@ -152,6 +152,7 @@
     <Compile Include="ViewModels\Axis3ViewModel.cs" />
     <Compile Include="ViewModels\Axis4ViewModel.cs" />
     <Compile Include="ViewModels\IAxisViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\RegionNames.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\DetailViewModel.cs" />

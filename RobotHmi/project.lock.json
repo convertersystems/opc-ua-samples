@@ -419,7 +419,7 @@
           "lib/net45/Microsoft.Practices.Unity.dll": {}
         }
       },
-      "Workstation.UaClient/1.2.1": {
+      "Workstation.UaClient/1.3.0": {
         "dependencies": {
           "Microsoft.Win32.Primitives": "4.0.1",
           "Prism.Core": "6.1.0",
@@ -845,7 +845,7 @@
           "lib/net45/Microsoft.Practices.Unity.dll": {}
         }
       },
-      "Workstation.UaClient/1.2.1": {
+      "Workstation.UaClient/1.3.0": {
         "dependencies": {
           "Microsoft.Win32.Primitives": "4.0.1",
           "Prism.Core": "6.1.0",
@@ -2757,12 +2757,12 @@
         "package/services/metadata/core-properties/924820f073a54dfda4a033e3efb68c3c.psmdcp"
       ]
     },
-    "Workstation.UaClient/1.2.1": {
-      "sha512": "ZhT0OWCYMSo78Qdw670Oe7A5FVh+ek8W1qD9Cc8hgx/d3z7fwcwoPZEaJBOQOipKy/OyIYpbjUxWKHrdjA3SOQ==",
+    "Workstation.UaClient/1.3.0": {
+      "sha512": "SbVuHhsi4zgXYGmGYoVIIzQM7r5QvZjSqij7cFuDtvO0Uz2sY1PPxp/mrtE8eout0jtzu5Ymi5JJbKXXdHVIFA==",
       "type": "package",
-      "path": "Workstation.UaClient/1.2.1",
+      "path": "Workstation.UaClient/1.3.0",
       "files": [
-        "Workstation.UaClient.1.2.1.nupkg.sha512",
+        "Workstation.UaClient.1.3.0.nupkg.sha512",
         "Workstation.UaClient.nuspec",
         "lib/net46/Workstation.UaClient.dll",
         "lib/netstandard1.4/Workstation.UaClient.dll"
@@ -2775,7 +2775,7 @@
       "Prism.Unity >= 6.2.0-pre3",
       "StyleCop.Analyzers >= 1.0.0",
       "System.Security.Cryptography.X509Certificates >= 4.1.0",
-      "Workstation.UaClient >= 1.2.1"
+      "Workstation.UaClient >= 1.3.0"
     ],
     ".NETFramework,Version=v4.6.1": []
   }

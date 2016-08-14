@@ -27,8 +27,8 @@ namespace ConsoleApp
 
         private static async Task TestAsync()
         {
-            // var discoveryUrl = "opc.tcp://localhost:26543"; // Workstation.NodeServer
-            var discoveryUrl = "opc.tcp://localhost:48010"; // UaCppServer - see  http://www.unified-automation.com/
+             var discoveryUrl = "opc.tcp://localhost:26543"; // Workstation.NodeServer
+            // var discoveryUrl = "opc.tcp://localhost:48010"; // UaCppServer - see  http://www.unified-automation.com/
 
             Console.WriteLine("Step 1 - Describe this app.");
             var appDescription = new ApplicationDescription()

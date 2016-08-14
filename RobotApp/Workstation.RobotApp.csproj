@@ -115,7 +115,7 @@
     <Compile Include="ViewModels\AxisPageViewModel.cs" />
     <Compile Include="ViewModels\IAxisViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
-    <Compile Include="ViewModels\NavigableSubscriptionBase.cs" />
+    <Compile Include="ViewModels\NavigableViewModelBase.cs" />
     <Compile Include="ViewModels\SettingsPageViewModel.cs" />
     <Compile Include="Views\Busy.xaml.cs">
       <DependentUpon>Busy.xaml</DependentUpon>

@@ -12,7 +12,8 @@
       xmlns:csControls="using:Workstation.UI.Xaml.Controls"
       xmlns:csData="using:Workstation.UI.Xaml.Data"
       x:Class="RobotApp.Views.AxisPage"
-      mc:Ignorable="d">
+      mc:Ignorable="d"
+      d:DataContext="{d:DesignInstance vm:AxisPageViewModel, IsDesignTimeCreatable=true}">
 
     <Page.Resources>
         <conv:StringFormatConverter x:Key="StringFormatConverter" />
@@ -28,13 +29,6 @@
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
                         <!--  TODO: change properties for narrow view  -->
-                        <Setter Target="trendsGrid.Visibility"
-                                Value="Collapsed" />
-                        <Setter Target="controlPanel.(RelativePanel.AlignRightWithPanel)"
-                                Value="False" />
-                        <Setter Target="controlPanel.(RelativePanel.AlignHorizontalCenterWithPanel)"
-                                Value="True" />
-
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="VisualStateNormal">
@@ -70,107 +64,37 @@
                RelativePanel.AlignBottomWithPanel="True"
                RelativePanel.AlignLeftWithPanel="True"
                RelativePanel.AlignRightWithPanel="True"
-               RelativePanel.Below="pageHeader">
-
-            <!--  axis 1  -->
-            <PivotItem DataContext="{Binding Axis1ViewModel}"
-                       Header="Axis 1">
-                <ScrollViewer Margin="0,12,-12,0"
-                              HorizontalContentAlignment="Left"
-                              VerticalScrollBarVisibility="Auto">
-                    <RelativePanel HorizontalAlignment="Left">
+               RelativePanel.Below="pageHeader"
+               ItemsSource="{Binding Axes, Mode=OneTime}">
+            <Pivot.HeaderTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding DisplayName, Mode=OneTime}" />
+                </DataTemplate>
+            </Pivot.HeaderTemplate>
+            <Pivot.ItemTemplate>
+                <DataTemplate>
+                    <ScrollViewer Margin="0,12,-12,0"
+                                  HorizontalContentAlignment="Left"
+                                  VerticalScrollBarVisibility="Auto">
                         <RelativePanel HorizontalAlignment="Left">
-                            <TextBlock x:Name="Axis1DisplayNameTextBlock"
-                                     Width="200"
-                                     Margin="0,12,0,0"
-                                     HorizontalAlignment="Left"
-                                     RelativePanel.AlignLeftWithPanel="True"
-                                     Text="{Binding DisplayName, Mode=OneWay}" />
-                            <TextBlock Width="200"
-                                       Margin="0,12,0,0"
-                                       HorizontalAlignment="Right"
-                                       RelativePanel.AlignBottomWith="Axis1DisplayNameTextBlock"
-                                       RelativePanel.RightOf="Axis1DisplayNameTextBlock"
-                                       Text="{Binding Axis, Mode=OneWay, Converter={StaticResource TypeConverter}}" />
+                            <RelativePanel HorizontalAlignment="Left">
+                                <TextBlock x:Name="Axis1DisplayNameTextBlock"
+                                           Width="200"
+                                           Margin="0,12,0,0"
+                                           HorizontalAlignment="Left"
+                                           RelativePanel.AlignLeftWithPanel="True"
+                                           Text="{Binding DisplayName, Mode=OneTime}" />
+                                <TextBlock Width="200"
+                                           Margin="0,12,0,0"
+                                           HorizontalAlignment="Right"
+                                           RelativePanel.AlignBottomWith="Axis1DisplayNameTextBlock"
+                                           RelativePanel.RightOf="Axis1DisplayNameTextBlock"
+                                           Text="{Binding Axis, Mode=OneWay, Converter={StaticResource TypeConverter}}" />
+                            </RelativePanel>
                         </RelativePanel>
-                    </RelativePanel>
-                </ScrollViewer>
-            </PivotItem>
-
-            <!--  axis 2  -->
-            <PivotItem DataContext="{Binding Axis2ViewModel}"
-                       Header="Axis 2">
-                <ScrollViewer Margin="0,12,-12,0"
-                              HorizontalContentAlignment="Left"
-                              VerticalScrollBarVisibility="Auto">
-                    <RelativePanel HorizontalAlignment="Left">
-                        <RelativePanel HorizontalAlignment="Left">
-                            <TextBlock x:Name="Axis2DisplayNameTextBlock"
-                                       Width="200"
-                                       Margin="0,12,0,0"
-                                       HorizontalAlignment="Left"
-                                       RelativePanel.AlignLeftWithPanel="True"
-                                       Text="{Binding DisplayName, Mode=OneWay}" />
-                            <TextBlock Width="200"
-                                       Margin="0,12,0,0"
-                                       HorizontalAlignment="Right"
-                                       RelativePanel.AlignBottomWith="Axis2DisplayNameTextBlock"
-                                       RelativePanel.RightOf="Axis2DisplayNameTextBlock"
-                                       Text="{Binding Axis, Mode=OneWay, Converter={StaticResource TypeConverter}}" />
-                        </RelativePanel>
-                    </RelativePanel>
-                </ScrollViewer>
-            </PivotItem>
-
-            <!--  axis 3  -->
-            <PivotItem DataContext="{Binding Axis3ViewModel}"
-                       Header="Axis 3">
-                <ScrollViewer Margin="0,12,-12,0"
-                              HorizontalContentAlignment="Left"
-                              VerticalScrollBarVisibility="Auto">
-                    <RelativePanel HorizontalAlignment="Left">
-                        <RelativePanel HorizontalAlignment="Left">
-                            <TextBlock x:Name="Axis3DisplayNameTextBlock"
-                                       Width="200"
-                                       Margin="0,12,0,0"
-                                       HorizontalAlignment="Left"
-                                       RelativePanel.AlignLeftWithPanel="True"
-                                       Text="{Binding DisplayName, Mode=OneWay}" />
-                            <TextBlock Width="200"
-                                       Margin="0,12,0,0"
-                                       HorizontalAlignment="Right"
-                                       RelativePanel.AlignBottomWith="Axis3DisplayNameTextBlock"
-                                       RelativePanel.RightOf="Axis3DisplayNameTextBlock"
-                                       Text="{Binding Axis, Mode=OneWay, Converter={StaticResource TypeConverter}}" />
-                        </RelativePanel>
-                    </RelativePanel>
-                </ScrollViewer>
-            </PivotItem>
-            
-            <!--  axis 4  -->
-            <PivotItem DataContext="{Binding Axis4ViewModel}"
-                       Header="Axis 4">
-                <ScrollViewer Margin="0,12,-12,0"
-                              HorizontalContentAlignment="Left"
-                              VerticalScrollBarVisibility="Auto">
-                    <RelativePanel HorizontalAlignment="Left">
-                        <RelativePanel HorizontalAlignment="Left">
-                            <TextBlock x:Name="Axis4DisplayNameTextBlock"
-                                       Width="200"
-                                       Margin="0,12,0,0"
-                                       HorizontalAlignment="Left"
-                                       RelativePanel.AlignLeftWithPanel="True"
-                                       Text="{Binding DisplayName, Mode=OneWay}" />
-                            <TextBlock Width="200"
-                                       Margin="0,12,0,0"
-                                       HorizontalAlignment="Right"
-                                       RelativePanel.AlignBottomWith="Axis4DisplayNameTextBlock"
-                                       RelativePanel.RightOf="Axis4DisplayNameTextBlock"
-                                       Text="{Binding Axis, Mode=OneWay, Converter={StaticResource TypeConverter}}" />
-                        </RelativePanel>
-                    </RelativePanel>
-                </ScrollViewer>
-            </PivotItem>
+                    </ScrollViewer>
+                </DataTemplate>
+            </Pivot.ItemTemplate>
         </Pivot>
     </RelativePanel>
 </Page>

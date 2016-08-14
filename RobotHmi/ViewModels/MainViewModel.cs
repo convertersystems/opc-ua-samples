@@ -26,17 +26,36 @@ namespace RobotHmi.ViewModels
     /// <summary>
     /// A view model for MainView.
     /// </summary>
-    public class MainViewModel : Subscription // Step 2: Add base class of type Subscription.
+    public class MainViewModel : ViewModelBase, ISubscription // Step 2: Add base class and interface of type ISubscription.
     {
         public MainViewModel(PLC1Service session) // Step 3: Shared PLC1Service instance provided by Unity's dependency injection.
-            : base(session, publishingInterval: 250.0, keepAliveCount: 40) // Step 4: Call base constuctor passing in service and desired intervals.
         {
+            this.Session = session; // Step 5: Set the six properties that implement ISubscription.
+            this.PublishingInterval = 250.0;
+            this.KeepAliveCount = 40;
+            this.LifetimeCount = 0;
+            this.PublishingEnabled = true;
+            this.MonitoredItems = new MonitoredItemCollection(this);
+            this.Session.Subscribe(this); // Step 6: Subscribe for data change and event notifications.
         }
+
+        // Step 4: Add these six properties that implement ISubscription.
+        public UaTcpSessionClient Session { get; }
+
+        public double PublishingInterval { get; }
+
+        public uint KeepAliveCount { get; }
+
+        public uint LifetimeCount { get; }
+
+        public bool PublishingEnabled { get; }
+
+        public MonitoredItemCollection MonitoredItems { get; }
 
         /// <summary>
         /// Gets or sets the value of Robot1Mode.
         /// </summary>
-        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")] // Step 5: Add a [MonitoredItem] attribute.
+        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")] // Step 7: Add a [MonitoredItem] attribute.
         public short Robot1Mode
         {
             get { return this.robot1Mode; }
@@ -296,6 +315,7 @@ namespace RobotHmi.ViewModels
                     this.InputA = 0d;
                     this.InputB = 0d;
                     this.Result = 0d;
+                    //GC.Collect();
                 });
             }
         }

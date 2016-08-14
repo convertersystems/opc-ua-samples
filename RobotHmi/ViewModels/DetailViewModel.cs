@@ -10,14 +10,11 @@ namespace RobotHmi.ViewModels
     /// <summary>
     /// A view model for DetailView.
     /// </summary>
-    public class DetailViewModel : Subscription
+    public class DetailViewModel : ViewModelBase
     {
-        public DetailViewModel(PLC1Service session)
-            : base(session, publishingInterval: 250.0, keepAliveCount: 40)
+        public DetailViewModel()
         {
         }
-
-        // add properties here
 
     }
 }

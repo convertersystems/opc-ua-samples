@@ -96,7 +96,7 @@
           "System.Xml.XDocument": "4.0.11"
         }
       },
-      "Microsoft.NETCore.Jit/1.0.3": {},
+      "Microsoft.NETCore.Jit/1.0.2": {},
       "Microsoft.NETCore.Platforms/1.0.1": {
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -193,9 +193,9 @@
           }
         }
       },
-      "Microsoft.NETCore.Runtime.CoreCLR/1.0.3": {
+      "Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
         "dependencies": {
-          "Microsoft.NETCore.Jit": "1.0.3",
+          "Microsoft.NETCore.Jit": "1.0.2",
           "Microsoft.NETCore.Windows.ApiSets": "1.0.1"
         }
       },
@@ -211,12 +211,12 @@
         "dependencies": {
           "Microsoft.NETCore": "5.0.1",
           "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.3",
+          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2",
           "Microsoft.Win32.Primitives": "4.0.1",
           "System.ComponentModel.EventBasedAsync": "4.0.11",
           "System.Data.Common": "4.1.0",
           "System.Diagnostics.Contracts": "4.0.1",
-          "System.Diagnostics.StackTrace": "4.0.0",
+          "System.Diagnostics.StackTrace": "4.0.1",
           "System.IO.IsolatedStorage": "4.0.1",
           "System.Net.Http.Rtc": "4.0.1",
           "System.Net.NameResolution": "4.0.0",
@@ -523,20 +523,20 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.0.0": {
+      "System.Diagnostics.StackTrace/4.0.1": {
         "dependencies": {
-          "System.Runtime": "4.0.20"
+          "Microsoft.NETCore.Platforms": "1.0.1"
         },
         "compile": {
-          "ref/dotnet/System.Diagnostics.StackTrace.dll": {}
+          "ref/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
         },
         "runtime": {
-          "lib/netcore50/System.Diagnostics.StackTrace.dll": {}
+          "lib/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
         },
         "runtimeTargets": {
-          "runtimes/win8-aot/lib/netcore50/System.Diagnostics.StackTrace.dll": {
+          "runtimes/aot/lib/netcore50/System.Diagnostics.StackTrace.dll": {
             "assetType": "runtime",
-            "rid": "win8-aot"
+            "rid": "aot"
           }
         }
       },
@@ -2131,7 +2131,7 @@
           }
         }
       },
-      "Workstation.UaClient/1.2.1": {
+      "Workstation.UaClient/1.3.0": {
         "dependencies": {
           "Microsoft.Win32.Primitives": "4.0.1",
           "Prism.Core": "6.1.0",
@@ -2266,7 +2266,7 @@
           "System.Xml.XDocument": "4.0.11"
         }
       },
-      "Microsoft.NETCore.Jit/1.0.3": {},
+      "Microsoft.NETCore.Jit/1.0.2": {},
       "Microsoft.NETCore.Platforms/1.0.1": {
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -2309,11 +2309,11 @@
           "lib/netcore50/System.dll": {}
         }
       },
-      "Microsoft.NETCore.Runtime.CoreCLR/1.0.3": {
+      "Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
         "dependencies": {
-          "Microsoft.NETCore.Jit": "1.0.3",
+          "Microsoft.NETCore.Jit": "1.0.2",
           "Microsoft.NETCore.Windows.ApiSets": "1.0.1",
-          "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
+          "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR": "1.0.2-rc3-24212-01"
         }
       },
       "Microsoft.NETCore.Targets/1.0.1": {
@@ -2328,12 +2328,12 @@
         "dependencies": {
           "Microsoft.NETCore": "5.0.1",
           "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.3",
+          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2",
           "Microsoft.Win32.Primitives": "4.0.1",
           "System.ComponentModel.EventBasedAsync": "4.0.11",
           "System.Data.Common": "4.1.0",
           "System.Diagnostics.Contracts": "4.0.1",
-          "System.Diagnostics.StackTrace": "4.0.0",
+          "System.Diagnostics.StackTrace": "4.0.1",
           "System.IO.IsolatedStorage": "4.0.1",
           "System.Net.Http.Rtc": "4.0.1",
           "System.Net.NameResolution": "4.0.0",
@@ -2700,7 +2700,7 @@
           "runtimes/win/lib/netstandard1.0/System.Private.Uri.dll": {}
         }
       },
-      "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
+      "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR/1.0.2-rc4-24123-00": {
         "compile": {
           "ref/netstandard1.0/_._": {}
         },
@@ -2715,7 +2715,7 @@
           "runtimes/win8-arm/native/dbgshim.dll": {},
           "runtimes/win8-arm/native/mscordaccore.dll": {},
           "runtimes/win8-arm/native/mscordbi.dll": {},
-          "runtimes/win8-arm/native/mscorlib.ni.dll": {},
+          "runtimes/win8-arm/native/mscorlib.dll": {},
           "runtimes/win8-arm/native/mscorrc.debug.dll": {},
           "runtimes/win8-arm/native/mscorrc.dll": {},
           "runtimes/win8-arm/native/sos.dll": {}
@@ -2905,15 +2905,15 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.0.0": {
+      "System.Diagnostics.StackTrace/4.0.1": {
         "dependencies": {
-          "System.Runtime": "4.0.20"
+          "Microsoft.NETCore.Platforms": "1.0.1"
         },
         "compile": {
-          "ref/dotnet/System.Diagnostics.StackTrace.dll": {}
+          "ref/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
         },
         "runtime": {
-          "lib/netcore50/System.Diagnostics.StackTrace.dll": {}
+          "lib/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
         }
       },
       "System.Diagnostics.Tools/4.0.1": {
@@ -4357,7 +4357,7 @@
           "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Workstation.UaClient/1.2.1": {
+      "Workstation.UaClient/1.3.0": {
         "dependencies": {
           "Microsoft.Win32.Primitives": "4.0.1",
           "Prism.Core": "6.1.0",
@@ -4492,7 +4492,7 @@
           "System.Xml.XDocument": "4.0.11"
         }
       },
-      "Microsoft.NETCore.Jit/1.0.3": {},
+      "Microsoft.NETCore.Jit/1.0.2": {},
       "Microsoft.NETCore.Platforms/1.0.1": {
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -4536,11 +4536,11 @@
           "runtimes/aot/lib/netcore50/mscorlib.dll": {}
         }
       },
-      "Microsoft.NETCore.Runtime.CoreCLR/1.0.3": {
+      "Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
         "dependencies": {
-          "Microsoft.NETCore.Jit": "1.0.3",
+          "Microsoft.NETCore.Jit": "1.0.2",
           "Microsoft.NETCore.Windows.ApiSets": "1.0.1",
-          "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
+          "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR": "1.0.2-rc3-24212-01"
         }
       },
       "Microsoft.NETCore.Targets/1.0.1": {
@@ -4555,12 +4555,12 @@
         "dependencies": {
           "Microsoft.NETCore": "5.0.1",
           "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.3",
+          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2",
           "Microsoft.Win32.Primitives": "4.0.1",
           "System.ComponentModel.EventBasedAsync": "4.0.11",
           "System.Data.Common": "4.1.0",
           "System.Diagnostics.Contracts": "4.0.1",
-          "System.Diagnostics.StackTrace": "4.0.0",
+          "System.Diagnostics.StackTrace": "4.0.1",
           "System.IO.IsolatedStorage": "4.0.1",
           "System.Net.Http.Rtc": "4.0.1",
           "System.Net.NameResolution": "4.0.0",
@@ -4972,7 +4972,7 @@
           "runtimes/aot/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
-      "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
+      "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR/1.0.2-rc4-24123-00": {
         "compile": {
           "ref/netstandard1.0/_._": {}
         },
@@ -5167,15 +5167,15 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.0.0": {
+      "System.Diagnostics.StackTrace/4.0.1": {
         "dependencies": {
-          "System.Runtime": "4.0.20"
+          "Microsoft.NETCore.Platforms": "1.0.1"
         },
         "compile": {
-          "ref/dotnet/System.Diagnostics.StackTrace.dll": {}
+          "ref/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
         },
         "runtime": {
-          "runtimes/win8-aot/lib/netcore50/System.Diagnostics.StackTrace.dll": {}
+          "runtimes/aot/lib/netcore50/System.Diagnostics.StackTrace.dll": {}
         }
       },
       "System.Diagnostics.Tools/4.0.1": {
@@ -6619,7 +6619,7 @@
           "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Workstation.UaClient/1.2.1": {
+      "Workstation.UaClient/1.3.0": {
         "dependencies": {
           "Microsoft.Win32.Primitives": "4.0.1",
           "Prism.Core": "6.1.0",
@@ -6754,9 +6754,9 @@
           "System.Xml.XDocument": "4.0.11"
         }
       },
-      "Microsoft.NETCore.Jit/1.0.3": {
+      "Microsoft.NETCore.Jit/1.0.2": {
         "dependencies": {
-          "runtime.win7-x64.Microsoft.NETCore.Jit": "1.0.3"
+          "runtime.win7-x64.Microsoft.NETCore.Jit": "1.0.2"
         }
       },
       "Microsoft.NETCore.Platforms/1.0.1": {
@@ -6801,9 +6801,9 @@
           "lib/netcore50/System.dll": {}
         }
       },
-      "Microsoft.NETCore.Runtime.CoreCLR/1.0.3": {
+      "Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
         "dependencies": {
-          "Microsoft.NETCore.Jit": "1.0.3",
+          "Microsoft.NETCore.Jit": "1.0.2",
           "Microsoft.NETCore.Windows.ApiSets": "1.0.1",
           "runtime.win7-x64.Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
         }
@@ -6820,12 +6820,12 @@
         "dependencies": {
           "Microsoft.NETCore": "5.0.1",
           "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.3",
+          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2",
           "Microsoft.Win32.Primitives": "4.0.1",
           "System.ComponentModel.EventBasedAsync": "4.0.11",
           "System.Data.Common": "4.1.0",
           "System.Diagnostics.Contracts": "4.0.1",
-          "System.Diagnostics.StackTrace": "4.0.0",
+          "System.Diagnostics.StackTrace": "4.0.1",
           "System.IO.IsolatedStorage": "4.0.1",
           "System.Net.Http.Rtc": "4.0.1",
           "System.Net.NameResolution": "4.0.0",
@@ -7184,7 +7184,7 @@
           "runtimes/win/lib/netcore50/System.Runtime.Extensions.dll": {}
         }
       },
-      "runtime.win7-x64.Microsoft.NETCore.Jit/1.0.3": {
+      "runtime.win7-x64.Microsoft.NETCore.Jit/1.0.2": {
         "native": {
           "runtimes/win7-x64/native/clrjit.dll": {}
         }
@@ -7402,15 +7402,15 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.0.0": {
+      "System.Diagnostics.StackTrace/4.0.1": {
         "dependencies": {
-          "System.Runtime": "4.0.20"
+          "Microsoft.NETCore.Platforms": "1.0.1"
         },
         "compile": {
-          "ref/dotnet/System.Diagnostics.StackTrace.dll": {}
+          "ref/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
         },
         "runtime": {
-          "lib/netcore50/System.Diagnostics.StackTrace.dll": {}
+          "lib/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
         }
       },
       "System.Diagnostics.Tools/4.0.1": {
@@ -8854,7 +8854,7 @@
           "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Workstation.UaClient/1.2.1": {
+      "Workstation.UaClient/1.3.0": {
         "dependencies": {
           "Microsoft.Win32.Primitives": "4.0.1",
           "Prism.Core": "6.1.0",
@@ -8989,9 +8989,9 @@
           "System.Xml.XDocument": "4.0.11"
         }
       },
-      "Microsoft.NETCore.Jit/1.0.3": {
+      "Microsoft.NETCore.Jit/1.0.2": {
         "dependencies": {
-          "runtime.win7-x64.Microsoft.NETCore.Jit": "1.0.3"
+          "runtime.win7-x64.Microsoft.NETCore.Jit": "1.0.2"
         }
       },
       "Microsoft.NETCore.Platforms/1.0.1": {
@@ -9037,9 +9037,9 @@
           "runtimes/aot/lib/netcore50/mscorlib.dll": {}
         }
       },
-      "Microsoft.NETCore.Runtime.CoreCLR/1.0.3": {
+      "Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
         "dependencies": {
-          "Microsoft.NETCore.Jit": "1.0.3",
+          "Microsoft.NETCore.Jit": "1.0.2",
           "Microsoft.NETCore.Windows.ApiSets": "1.0.1",
           "runtime.win7-x64.Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
         }
@@ -9056,12 +9056,12 @@
         "dependencies": {
           "Microsoft.NETCore": "5.0.1",
           "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.3",
+          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2",
           "Microsoft.Win32.Primitives": "4.0.1",
           "System.ComponentModel.EventBasedAsync": "4.0.11",
           "System.Data.Common": "4.1.0",
           "System.Diagnostics.Contracts": "4.0.1",
-          "System.Diagnostics.StackTrace": "4.0.0",
+          "System.Diagnostics.StackTrace": "4.0.1",
           "System.IO.IsolatedStorage": "4.0.1",
           "System.Net.Http.Rtc": "4.0.1",
           "System.Net.NameResolution": "4.0.0",
@@ -9465,9 +9465,9 @@
           "runtimes/aot/lib/netcore50/System.Runtime.Extensions.dll": {}
         }
       },
-      "runtime.win7-x64.Microsoft.NETCore.Jit/1.0.3": {
+      "runtime.win7-x64.Microsoft.NETCore.Jit/1.0.2": {
         "native": {
-          "runtimes/win7-x64-aot/native/_._": {}
+          "runtimes/win7-x64/native/clrjit.dll": {}
         }
       },
       "runtime.win7-x64.Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
@@ -9673,15 +9673,15 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.0.0": {
+      "System.Diagnostics.StackTrace/4.0.1": {
         "dependencies": {
-          "System.Runtime": "4.0.20"
+          "Microsoft.NETCore.Platforms": "1.0.1"
         },
         "compile": {
-          "ref/dotnet/System.Diagnostics.StackTrace.dll": {}
+          "ref/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
         },
         "runtime": {
-          "runtimes/win8-aot/lib/netcore50/System.Diagnostics.StackTrace.dll": {}
+          "runtimes/aot/lib/netcore50/System.Diagnostics.StackTrace.dll": {}
         }
       },
       "System.Diagnostics.Tools/4.0.1": {
@@ -11125,7 +11125,7 @@
           "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Workstation.UaClient/1.2.1": {
+      "Workstation.UaClient/1.3.0": {
         "dependencies": {
           "Microsoft.Win32.Primitives": "4.0.1",
           "Prism.Core": "6.1.0",
@@ -11260,9 +11260,9 @@
           "System.Xml.XDocument": "4.0.11"
         }
       },
-      "Microsoft.NETCore.Jit/1.0.3": {
+      "Microsoft.NETCore.Jit/1.0.2": {
         "dependencies": {
-          "runtime.win7-x86.Microsoft.NETCore.Jit": "1.0.3"
+          "runtime.win7-x86.Microsoft.NETCore.Jit": "1.0.2"
         }
       },
       "Microsoft.NETCore.Platforms/1.0.1": {
@@ -11307,9 +11307,9 @@
           "lib/netcore50/System.dll": {}
         }
       },
-      "Microsoft.NETCore.Runtime.CoreCLR/1.0.3": {
+      "Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
         "dependencies": {
-          "Microsoft.NETCore.Jit": "1.0.3",
+          "Microsoft.NETCore.Jit": "1.0.2",
           "Microsoft.NETCore.Windows.ApiSets": "1.0.1",
           "runtime.win7-x86.Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
         }
@@ -11326,12 +11326,12 @@
         "dependencies": {
           "Microsoft.NETCore": "5.0.1",
           "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.3",
+          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2",
           "Microsoft.Win32.Primitives": "4.0.1",
           "System.ComponentModel.EventBasedAsync": "4.0.11",
           "System.Data.Common": "4.1.0",
           "System.Diagnostics.Contracts": "4.0.1",
-          "System.Diagnostics.StackTrace": "4.0.0",
+          "System.Diagnostics.StackTrace": "4.0.1",
           "System.IO.IsolatedStorage": "4.0.1",
           "System.Net.Http.Rtc": "4.0.1",
           "System.Net.NameResolution": "4.0.0",
@@ -11690,7 +11690,7 @@
           "runtimes/win/lib/netcore50/System.Runtime.Extensions.dll": {}
         }
       },
-      "runtime.win7-x86.Microsoft.NETCore.Jit/1.0.3": {
+      "runtime.win7-x86.Microsoft.NETCore.Jit/1.0.2": {
         "native": {
           "runtimes/win7-x86/native/clrjit.dll": {}
         }
@@ -11908,15 +11908,15 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.0.0": {
+      "System.Diagnostics.StackTrace/4.0.1": {
         "dependencies": {
-          "System.Runtime": "4.0.20"
+          "Microsoft.NETCore.Platforms": "1.0.1"
         },
         "compile": {
-          "ref/dotnet/System.Diagnostics.StackTrace.dll": {}
+          "ref/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
         },
         "runtime": {
-          "lib/netcore50/System.Diagnostics.StackTrace.dll": {}
+          "lib/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
         }
       },
       "System.Diagnostics.Tools/4.0.1": {
@@ -13360,7 +13360,7 @@
           "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Workstation.UaClient/1.2.1": {
+      "Workstation.UaClient/1.3.0": {
         "dependencies": {
           "Microsoft.Win32.Primitives": "4.0.1",
           "Prism.Core": "6.1.0",
@@ -13495,9 +13495,9 @@
           "System.Xml.XDocument": "4.0.11"
         }
       },
-      "Microsoft.NETCore.Jit/1.0.3": {
+      "Microsoft.NETCore.Jit/1.0.2": {
         "dependencies": {
-          "runtime.win7-x86.Microsoft.NETCore.Jit": "1.0.3"
+          "runtime.win7-x86.Microsoft.NETCore.Jit": "1.0.2"
         }
       },
       "Microsoft.NETCore.Platforms/1.0.1": {
@@ -13543,9 +13543,9 @@
           "runtimes/aot/lib/netcore50/mscorlib.dll": {}
         }
       },
-      "Microsoft.NETCore.Runtime.CoreCLR/1.0.3": {
+      "Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
         "dependencies": {
-          "Microsoft.NETCore.Jit": "1.0.3",
+          "Microsoft.NETCore.Jit": "1.0.2",
           "Microsoft.NETCore.Windows.ApiSets": "1.0.1",
           "runtime.win7-x86.Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
         }
@@ -13562,12 +13562,12 @@
         "dependencies": {
           "Microsoft.NETCore": "5.0.1",
           "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.3",
+          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2",
           "Microsoft.Win32.Primitives": "4.0.1",
           "System.ComponentModel.EventBasedAsync": "4.0.11",
           "System.Data.Common": "4.1.0",
           "System.Diagnostics.Contracts": "4.0.1",
-          "System.Diagnostics.StackTrace": "4.0.0",
+          "System.Diagnostics.StackTrace": "4.0.1",
           "System.IO.IsolatedStorage": "4.0.1",
           "System.Net.Http.Rtc": "4.0.1",
           "System.Net.NameResolution": "4.0.0",
@@ -13971,9 +13971,9 @@
           "runtimes/aot/lib/netcore50/System.Runtime.Extensions.dll": {}
         }
       },
-      "runtime.win7-x86.Microsoft.NETCore.Jit/1.0.3": {
+      "runtime.win7-x86.Microsoft.NETCore.Jit/1.0.2": {
         "native": {
-          "runtimes/win7-x86-aot/native/_._": {}
+          "runtimes/win7-x86/native/clrjit.dll": {}
         }
       },
       "runtime.win7-x86.Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
@@ -14179,15 +14179,15 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.0.0": {
+      "System.Diagnostics.StackTrace/4.0.1": {
         "dependencies": {
-          "System.Runtime": "4.0.20"
+          "Microsoft.NETCore.Platforms": "1.0.1"
         },
         "compile": {
-          "ref/dotnet/System.Diagnostics.StackTrace.dll": {}
+          "ref/netstandard1.3/System.Diagnostics.StackTrace.dll": {}
         },
         "runtime": {
-          "runtimes/win8-aot/lib/netcore50/System.Diagnostics.StackTrace.dll": {}
+          "runtimes/aot/lib/netcore50/System.Diagnostics.StackTrace.dll": {}
         }
       },
       "System.Diagnostics.Tools/4.0.1": {
@@ -15631,7 +15631,7 @@
           "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Workstation.UaClient/1.2.1": {
+      "Workstation.UaClient/1.3.0": {
         "dependencies": {
           "Microsoft.Win32.Primitives": "4.0.1",
           "Prism.Core": "6.1.0",
@@ -15752,12 +15752,12 @@
         "dotnet_library_license.txt"
       ]
     },
-    "Microsoft.NETCore.Jit/1.0.3": {
-      "sha512": "/l8xYwtoJrFSx9zMWRClaKrgR+BTstCD1E5P90ADgiwH0GwlEqVhLoFIrsXpYj0j9vCB/fzOq7D/ZzuCbtmrTQ==",
+    "Microsoft.NETCore.Jit/1.0.2": {
+      "sha512": "Ok2vWofa6X8WD9vc4pfLHwvJz1/B6t3gOAoZcjrjrQf7lQOlNIuZIZtLn3wnWX28DuQGpPJkRlBxFj7Z5txNqw==",
       "type": "package",
-      "path": "Microsoft.NETCore.Jit/1.0.3",
+      "path": "Microsoft.NETCore.Jit/1.0.2",
       "files": [
-        "Microsoft.NETCore.Jit.1.0.3.nupkg.sha512",
+        "Microsoft.NETCore.Jit.1.0.2.nupkg.sha512",
         "Microsoft.NETCore.Jit.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -15857,12 +15857,12 @@
         "runtimes/aot/lib/netcore50/mscorlib.dll"
       ]
     },
-    "Microsoft.NETCore.Runtime.CoreCLR/1.0.3": {
-      "sha512": "tjD5r9Lxy+MD+YRJcuds5+sT+xGHkVt2Hb5LfLZIgkFmwUewBRPm/42UXi4oxhV1OIdRtt4ymwsiuFCwT16T9w==",
+    "Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
+      "sha512": "A0x1xtTjYJWZr2DRzgfCOXgB0JkQg8twnmtTJ79wFje+IihlLbXtx6Z2AxyVokBM5ruwTedR6YdCmHk39QJdtQ==",
       "type": "package",
-      "path": "Microsoft.NETCore.Runtime.CoreCLR/1.0.3",
+      "path": "Microsoft.NETCore.Runtime.CoreCLR/1.0.2",
       "files": [
-        "Microsoft.NETCore.Runtime.CoreCLR.1.0.3.nupkg.sha512",
+        "Microsoft.NETCore.Runtime.CoreCLR.1.0.2.nupkg.sha512",
         "Microsoft.NETCore.Runtime.CoreCLR.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -15882,7 +15882,7 @@
       ]
     },
     "Microsoft.NETCore.UniversalWindowsPlatform/5.2.0": {
-      "sha512": "ZyPzyGAobEOlFOzPxTNLeZ0gJT5fKoTuJYnMMoAWXiaL6Vg4qjPDK7+B/QdYmyPYyjMy3C89PxJBe04OgplDaA==",
+      "sha512": "ysC0eTWxvAr0OpXqhQVYoiYnylsp/lAvL8Qp0lE6NJKaguifbCrP2J49WTWrjvayCl6YviH35hIk0EcjX8yrWg==",
       "type": "package",
       "path": "Microsoft.NETCore.UniversalWindowsPlatform/5.2.0",
       "files": [
@@ -16768,16 +16768,15 @@
         "runtimes/win/lib/netstandard1.5/System.Runtime.Extensions.dll"
       ]
     },
-    "runtime.win7-x64.Microsoft.NETCore.Jit/1.0.3": {
-      "sha512": "pXLZyhN1gFNVjmmZloXzGxbdZyUjkiHKpojzxUxCZ2U+T0jD6ooK3rYhwqFzlSjVKUAdQ9QNDoixxnEr3/5VWw==",
+    "runtime.win7-x64.Microsoft.NETCore.Jit/1.0.2": {
+      "sha512": "Jd3q9BKO+Sun6mPXRvHZMYG0WJmnASjXUxsT5MJwBoz8xbeZRTuFTPD5RtNlKxxioCiWR/hp3mKgYjlJ4dLQsw==",
       "type": "package",
-      "path": "runtime.win7-x64.Microsoft.NETCore.Jit/1.0.3",
+      "path": "runtime.win7-x64.Microsoft.NETCore.Jit/1.0.2",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
-        "runtime.win7-x64.Microsoft.NETCore.Jit.1.0.3.nupkg.sha512",
+        "runtime.win7-x64.Microsoft.NETCore.Jit.1.0.2.nupkg.sha512",
         "runtime.win7-x64.Microsoft.NETCore.Jit.nuspec",
-        "runtimes/win7-x64-aot/native/_._",
         "runtimes/win7-x64/native/clrjit.dll"
       ]
     },
@@ -16807,16 +16806,15 @@
         "tools/crossgen.exe"
       ]
     },
-    "runtime.win7-x86.Microsoft.NETCore.Jit/1.0.3": {
-      "sha512": "bU1EUneMeB6JltMNDCekL7nP1dluxOlnUgmAFx8EGsD6a+lgaYoDLk7V7F3H5Zpw/LeCxl5XmZqgPObGAlW7Dg==",
+    "runtime.win7-x86.Microsoft.NETCore.Jit/1.0.2": {
+      "sha512": "DEDFKUREtfMZue7qIGNelkZqay6bpC1iTWt/ZFQ0yxnqtINXmVYiOW9ML7w/1E4WBUaPCUo4tKWasK53c063qg==",
       "type": "package",
-      "path": "runtime.win7-x86.Microsoft.NETCore.Jit/1.0.3",
+      "path": "runtime.win7-x86.Microsoft.NETCore.Jit/1.0.2",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
-        "runtime.win7-x86.Microsoft.NETCore.Jit.1.0.3.nupkg.sha512",
+        "runtime.win7-x86.Microsoft.NETCore.Jit.1.0.2.nupkg.sha512",
         "runtime.win7-x86.Microsoft.NETCore.Jit.nuspec",
-        "runtimes/win7-x86-aot/native/_._",
         "runtimes/win7-x86/native/clrjit.dll"
       ]
     },
@@ -16859,15 +16857,15 @@
         "runtimes/win/lib/netstandard1.0/System.Private.Uri.dll"
       ]
     },
-    "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
-      "sha512": "0V6sq7Dg0bQPrJtm/Qw5Zu0e7gidnRPLaqUhKIkLYzVn64jkat+JnR6LcezryD3c0Wuva/MdJWYSAaOPq5V/Zw==",
+    "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR/1.0.2-rc4-24123-00": {
+      "sha512": "BJJJc8WZAII4g0CdBrxUilMQXstb+w8hHd1lllHku8h9NhG4u6iOmEhxa6plJ9zEA6XyAg5O1HBRSgJgJ7jAkg==",
       "type": "package",
-      "path": "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR/1.0.2",
+      "path": "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR/1.0.2-rc4-24123-00",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "ref/netstandard1.0/_._",
-        "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR.1.0.2.nupkg.sha512",
+        "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR.1.0.2-rc4-24123-00.nupkg.sha512",
         "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR.nuspec",
         "runtimes/win8-arm-aot/lib/netstandard1.0/_._",
         "runtimes/win8-arm-aot/native/_._",
@@ -16879,7 +16877,7 @@
         "runtimes/win8-arm/native/dbgshim.dll",
         "runtimes/win8-arm/native/mscordaccore.dll",
         "runtimes/win8-arm/native/mscordbi.dll",
-        "runtimes/win8-arm/native/mscorlib.ni.dll",
+        "runtimes/win8-arm/native/mscorlib.dll",
         "runtimes/win8-arm/native/mscorrc.debug.dll",
         "runtimes/win8-arm/native/mscorrc.dll",
         "runtimes/win8-arm/native/sos.dll",
@@ -17567,37 +17565,42 @@
         "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.xml"
       ]
     },
-    "System.Diagnostics.StackTrace/4.0.0": {
-      "sha512": "PItgenqpRiMqErvQONBlfDwctKpWVrcDSW5pppNZPJ6Bpiyz+KjsWoSiaqs5dt03HEbBTMNCrZb8KCkh7YfXmw==",
+    "System.Diagnostics.StackTrace/4.0.1": {
+      "sha512": "6i2EbRq0lgGfiZ+FDf0gVaw9qeEU+7IS2+wbZJmFVpvVzVOgZEt0ScZtyenuBvs6iDYbGiF51bMAa0oDP/tujQ==",
       "type": "package",
-      "path": "System.Diagnostics.StackTrace/4.0.0",
+      "path": "System.Diagnostics.StackTrace/4.0.1",
       "files": [
-        "System.Diagnostics.StackTrace.4.0.0.nupkg.sha512",
+        "System.Diagnostics.StackTrace.4.0.1.nupkg.sha512",
         "System.Diagnostics.StackTrace.nuspec",
-        "lib/DNXCore50/System.Diagnostics.StackTrace.dll",
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
         "lib/MonoTouch10/_._",
         "lib/net46/System.Diagnostics.StackTrace.dll",
-        "lib/netcore50/System.Diagnostics.StackTrace.dll",
+        "lib/netstandard1.3/System.Diagnostics.StackTrace.dll",
         "lib/xamarinios10/_._",
         "lib/xamarinmac20/_._",
+        "lib/xamarintvos10/_._",
+        "lib/xamarinwatchos10/_._",
         "ref/MonoAndroid10/_._",
         "ref/MonoTouch10/_._",
-        "ref/dotnet/System.Diagnostics.StackTrace.dll",
-        "ref/dotnet/System.Diagnostics.StackTrace.xml",
-        "ref/dotnet/de/System.Diagnostics.StackTrace.xml",
-        "ref/dotnet/es/System.Diagnostics.StackTrace.xml",
-        "ref/dotnet/fr/System.Diagnostics.StackTrace.xml",
-        "ref/dotnet/it/System.Diagnostics.StackTrace.xml",
-        "ref/dotnet/ja/System.Diagnostics.StackTrace.xml",
-        "ref/dotnet/ko/System.Diagnostics.StackTrace.xml",
-        "ref/dotnet/ru/System.Diagnostics.StackTrace.xml",
-        "ref/dotnet/zh-hans/System.Diagnostics.StackTrace.xml",
-        "ref/dotnet/zh-hant/System.Diagnostics.StackTrace.xml",
         "ref/net46/System.Diagnostics.StackTrace.dll",
+        "ref/netstandard1.3/System.Diagnostics.StackTrace.dll",
+        "ref/netstandard1.3/System.Diagnostics.StackTrace.xml",
+        "ref/netstandard1.3/de/System.Diagnostics.StackTrace.xml",
+        "ref/netstandard1.3/es/System.Diagnostics.StackTrace.xml",
+        "ref/netstandard1.3/fr/System.Diagnostics.StackTrace.xml",
+        "ref/netstandard1.3/it/System.Diagnostics.StackTrace.xml",
+        "ref/netstandard1.3/ja/System.Diagnostics.StackTrace.xml",
+        "ref/netstandard1.3/ko/System.Diagnostics.StackTrace.xml",
+        "ref/netstandard1.3/ru/System.Diagnostics.StackTrace.xml",
+        "ref/netstandard1.3/zh-hans/System.Diagnostics.StackTrace.xml",
+        "ref/netstandard1.3/zh-hant/System.Diagnostics.StackTrace.xml",
         "ref/xamarinios10/_._",
         "ref/xamarinmac20/_._",
-        "runtimes/win8-aot/lib/netcore50/System.Diagnostics.StackTrace.dll"
+        "ref/xamarintvos10/_._",
+        "ref/xamarinwatchos10/_._",
+        "runtimes/aot/lib/netcore50/System.Diagnostics.StackTrace.dll"
       ]
     },
     "System.Diagnostics.Tools/4.0.1": {
@@ -21741,7 +21744,7 @@
       ]
     },
     "Template10/1.1.11": {
-      "sha512": "xXPtDTGpSX/QV+r37AGR8oCcUaP2f4c2XD4dHE8T9dFVwq/o51ACWJW35zpSadTsDtwtBrNBMbcOZup5rTzcYA==",
+      "sha512": "q8X87z/8puLV4Cazj7aQs2Cv2LqvLYvERVmiQ0iLUd4wgKc0RnD/DFmQxvyw5NKmNvOEZecuM+XbB7KdO/h+DQ==",
       "type": "package",
       "path": "Template10/1.1.11",
       "files": [
@@ -21803,12 +21806,12 @@
         "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll"
       ]
     },
-    "Workstation.UaClient/1.2.1": {
-      "sha512": "ZhT0OWCYMSo78Qdw670Oe7A5FVh+ek8W1qD9Cc8hgx/d3z7fwcwoPZEaJBOQOipKy/OyIYpbjUxWKHrdjA3SOQ==",
+    "Workstation.UaClient/1.3.0": {
+      "sha512": "SbVuHhsi4zgXYGmGYoVIIzQM7r5QvZjSqij7cFuDtvO0Uz2sY1PPxp/mrtE8eout0jtzu5Ymi5JJbKXXdHVIFA==",
       "type": "package",
-      "path": "Workstation.UaClient/1.2.1",
+      "path": "Workstation.UaClient/1.3.0",
       "files": [
-        "Workstation.UaClient.1.2.1.nupkg.sha512",
+        "Workstation.UaClient.1.3.0.nupkg.sha512",
         "Workstation.UaClient.nuspec",
         "lib/net46/Workstation.UaClient.dll",
         "lib/netstandard1.4/Workstation.UaClient.dll"
@@ -21821,7 +21824,7 @@
       "StyleCop.Analyzers >= 1.0.0",
       "Template10 >= 1.1.11",
       "Unity >= 4.0.1",
-      "Workstation.UaClient >= 1.2.1"
+      "Workstation.UaClient >= 1.3.0"
     ],
     "UAP,Version=v10.0": []
   }
