@@ -11,27 +11,41 @@ namespace StatusHmi
     /// </summary>
     public partial class App : Application
     {
-        private UaTcpSessionClient session;
+        /// <summary>
+        /// Gets the current App object.
+        /// </summary>
+        public static new App Current => (App)Application.Current;
+
+        /// <summary>
+        /// Gets or sets the default session for the app.
+        /// </summary>
+        public UaTcpSessionClient Session { get; set; }
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            // Describe this app.
             var appDescription = new ApplicationDescription()
             {
                 ApplicationName = "Workstation.StatusHmi",
                 ApplicationUri = $"urn:{System.Net.Dns.GetHostName()}:Workstation.StatusHmi",
                 ApplicationType = ApplicationType.Client
             };
+
+            // Get (or create) the app's X509Certificate
             var appCertificate = appDescription.GetCertificate();
+
+            // Get the remote endpoint from the app.config
             var endpointUrl = StatusHmi.Properties.Settings.Default.EndpointUrl;
-            this.session = new UaTcpSessionClient(appDescription, appCertificate, null, endpointUrl);
-            this.Resources["Session"] = this.session;
+
+            // Create the default session for the app.
+            this.Session = new UaTcpSessionClient(appDescription, appCertificate, null, endpointUrl);
 
             base.OnStartup(e);
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
-            this.session?.Dispose();
+            this.Session?.Dispose();
             base.OnExit(e);
         }
     }
