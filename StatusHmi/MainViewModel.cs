@@ -9,31 +9,13 @@ namespace StatusHmi
     /// <summary>
     /// A model for MainWindow.
     /// </summary>
-    public class MainViewModel : ViewModelBase, ISubscription // Step 2: Add base class and interface of type ISubscription.
+    public class MainViewModel : SubscriptionBase // Step 2: Add your subscription base class (which implements ISubscription and INotifyPropertyChanged).
     {
         public MainViewModel()
         {
-            this.Session = App.Current.Session; // Step 4: Set the six properties that implement ISubscription.
-            this.PublishingInterval = 1000.0;
-            this.KeepAliveCount = 10;
-            this.LifetimeCount = 0;
-            this.PublishingEnabled = true;
-            this.MonitoredItems = new MonitoredItemCollection(this);
-            this.Session.Subscribe(this); // Step 5: Subscribe for data change and event notifications.
+            this.PublishingInterval = 1000.0; // Step 3: Adjust the publishing interval (in ms.) here.
+            App.Current.Session.Subscribe(this); // Step 4: Subscribe for data change and event notifications.
         }
-
-        // Step 3: Add these six properties that implement ISubscription.
-        public UaTcpSessionClient Session { get; }
-
-        public double PublishingInterval { get; }
-
-        public uint KeepAliveCount { get; }
-
-        public uint LifetimeCount { get; }
-
-        public bool PublishingEnabled { get; }
-
-        public MonitoredItemCollection MonitoredItems { get; }
 
         /// <summary>
         /// Gets the value of ServerServerStatus.

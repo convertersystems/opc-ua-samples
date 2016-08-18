@@ -26,36 +26,20 @@ namespace RobotHmi.ViewModels
     /// <summary>
     /// A view model for MainView.
     /// </summary>
-    public class MainViewModel : ViewModelBase, ISubscription // Step 2: Add base class and interface of type ISubscription.
+    public class MainViewModel : SubscriptionBase // Step 2: Add your subscription base class (which implements ISubscription and INotifyPropertyChanged).
     {
+        public MainViewModel() { } // Design instance
+
         public MainViewModel(PLC1Service session) // Step 3: Shared PLC1Service instance provided by Unity's dependency injection.
         {
-            this.Session = session; // Step 5: Set the six properties that implement ISubscription.
-            this.PublishingInterval = 250.0;
-            this.KeepAliveCount = 40;
-            this.LifetimeCount = 0;
-            this.PublishingEnabled = true;
-            this.MonitoredItems = new MonitoredItemCollection(this);
-            this.Session.Subscribe(this); // Step 6: Subscribe for data change and event notifications.
+            this.PublishingInterval = 250; // Step 4: Adjust the publishing interval (in ms.) here.
+            session?.Subscribe(this); // Step 5: Subscribe for data change and event notifications.
         }
-
-        // Step 4: Add these six properties that implement ISubscription.
-        public UaTcpSessionClient Session { get; }
-
-        public double PublishingInterval { get; }
-
-        public uint KeepAliveCount { get; }
-
-        public uint LifetimeCount { get; }
-
-        public bool PublishingEnabled { get; }
-
-        public MonitoredItemCollection MonitoredItems { get; }
 
         /// <summary>
         /// Gets or sets the value of Robot1Mode.
         /// </summary>
-        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")] // Step 7: Add a [MonitoredItem] attribute.
+        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")] // Step 6: Add a [MonitoredItem] attribute.
         public short Robot1Mode
         {
             get { return this.robot1Mode; }
@@ -143,30 +127,14 @@ namespace RobotHmi.ViewModels
         /// capacity: 240 = 60 seconds storage /  0.250 seconds publishing interval
         /// isFixedSize: true = circular queue, oldest values are overwitten
         /// </remarks>
-        public ObservableQueue<DataValue> Robot1Axis1Queue { get; } = new ObservableQueue<DataValue>(capacity: 240, isFixedSize: true);
-
-        /// <summary>
-        /// Sets the value of Robot1Axis1 into the Robot1Axis1Queue
-        /// </summary>
         [MonitoredItem(nodeId: "ns=2;s=Robot1_Axis1", dataChangeTrigger: DataChangeTrigger.StatusValueTimestamp)]
-        public DataValue Robot1Axis1Stream
-        {
-            set { this.Robot1Axis1Queue.Enqueue(value); }
-        }
+        public ObservableQueue<DataValue> Robot1Axis1Queue { get; } = new ObservableQueue<DataValue>(capacity: 240, isFixedSize: true);
 
         /// <summary>
         /// Gets the events of Robot1.
         /// </summary>
-        public ObservableQueue<AlarmCondition> Robot1Events { get; } = new ObservableQueue<AlarmCondition>(capacity: 16, isFixedSize: true);
-
-        /// <summary>
-        /// Sets the event of Robot1 into the Robot1Events queue.
-        /// </summary>
         [MonitoredItem(nodeId: "ns=2;s=Robot1", attributeId: AttributeIds.EventNotifier)]
-        public AlarmCondition Robot1EventStream
-        {
-            set { this.Robot1Events.Enqueue(value); }
-        }
+        public ObservableQueue<AlarmCondition> Robot1Events { get; } = new ObservableQueue<AlarmCondition>(capacity: 16, isFixedSize: true);
 
         /// <summary>
         /// Gets the command to set the value of Robot1Mode to Off.
@@ -315,7 +283,6 @@ namespace RobotHmi.ViewModels
                     this.InputA = 0d;
                     this.InputB = 0d;
                     this.Result = 0d;
-                    //GC.Collect();
                 });
             }
         }

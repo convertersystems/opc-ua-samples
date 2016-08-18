@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using RobotApp.Services;
-using Template10.Mvvm;
 using Workstation.ServiceModel.Ua;
 
 namespace RobotApp.ViewModels
@@ -10,30 +9,13 @@ namespace RobotApp.ViewModels
     /// <summary>
     /// A view model for Axis3.
     /// </summary>
-    public class Axis3ViewModel : ViewModelBase, ISubscription, IAxisViewModel
+    public class Axis3ViewModel : SubscriptionBase, IAxisViewModel
     {
         public Axis3ViewModel(PLC1Service session)
         {
-            this.Session = session;
             this.PublishingInterval = 500.0;
-            this.KeepAliveCount = 20;
-            this.LifetimeCount = 0;
-            this.PublishingEnabled = true;
-            this.MonitoredItems = new MonitoredItemCollection(this);
-            this.Session.Subscribe(this);
+            session?.Subscribe(this);
         }
-
-        public UaTcpSessionClient Session { get; }
-
-        public double PublishingInterval { get; }
-
-        public uint KeepAliveCount { get; }
-
-        public uint LifetimeCount { get; }
-
-        public bool PublishingEnabled { get; }
-
-        public MonitoredItemCollection MonitoredItems { get; }
 
         /// <summary>
         /// Gets the value of Axis.

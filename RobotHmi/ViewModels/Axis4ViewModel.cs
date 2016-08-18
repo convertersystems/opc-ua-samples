@@ -9,30 +9,13 @@ namespace RobotHmi.ViewModels
     /// <summary>
     /// A view model for Axis4.
     /// </summary>
-    public class Axis4ViewModel : ViewModelBase, ISubscription, IAxisViewModel
+    public class Axis4ViewModel : SubscriptionBase, IAxisViewModel
     {
         public Axis4ViewModel(PLC1Service session)
         {
-            this.Session = session;
             this.PublishingInterval = 500.0;
-            this.KeepAliveCount = 20;
-            this.LifetimeCount = 0;
-            this.PublishingEnabled = true;
-            this.MonitoredItems = new MonitoredItemCollection(this);
-            this.Session.Subscribe(this);
+            session?.Subscribe(this);
         }
-
-        public UaTcpSessionClient Session { get; }
-
-        public double PublishingInterval { get; }
-
-        public uint KeepAliveCount { get; }
-
-        public uint LifetimeCount { get; }
-
-        public bool PublishingEnabled { get; }
-
-        public MonitoredItemCollection MonitoredItems { get; }
 
         /// <summary>
         /// Gets the value of Axis.

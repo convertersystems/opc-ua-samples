@@ -26,36 +26,18 @@ namespace RobotApp.ViewModels
     /// <summary>
     /// A view model for MainPage.
     /// </summary>
-    public class MainPageViewModel : NavigableViewModelBase, ISubscription // Step 2: Add base class of type Subscription (or NavigableSubscriptionBase).
+    public class MainPageViewModel : SubscriptionBase // Step 2: Add your subscription base class (which implements ISubscription and INotifyPropertyChanged).
     {
         public MainPageViewModel(PLC1Service session) // Step 3: Shared PLC1Service instance provided by Unity's dependency injection.
         {
-            this.Session = session; // Step 5: Set the six properties that implement ISubscription.
-            this.PublishingInterval = 500.0;
-            this.KeepAliveCount = 20;
-            this.LifetimeCount = 0;
-            this.PublishingEnabled = true;
-            this.MonitoredItems = new MonitoredItemCollection(this);
-            this.Session.Subscribe(this); // Step 6: Subscribe for data change and event notifications.
+            this.PublishingInterval = 250; // Step 4: Adjust the publishing interval (in ms.) here.
+            session?.Subscribe(this); // Step 5: Subscribe for data change and event notifications.
         }
-
-        // Step 4: Add these six properties that implement ISubscription.
-        public UaTcpSessionClient Session { get; }
-
-        public double PublishingInterval { get; }
-
-        public uint KeepAliveCount { get; }
-
-        public uint LifetimeCount { get; }
-
-        public bool PublishingEnabled { get; }
-
-        public MonitoredItemCollection MonitoredItems { get; }
 
         /// <summary>
         /// Gets or sets the value of Robot1Mode.
         /// </summary>
-        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")] // Step 7: Add a [MonitoredItem] attribute.
+        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")] // Step 6: Add a [MonitoredItem] attribute.
         public short Robot1Mode
         {
             get { return this.robot1Mode; }
