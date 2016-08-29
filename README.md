@@ -1,6 +1,6 @@
 ![Workstation][1] ![NodeServer][2]
 
-# Workstation.Samples
+# opc-ua-samples
 *New!* Supports Universal Windows Platform (UWP) and Windows Presentation Framework (WPF) applications.
 
 Build a free HMI using OPC Unified Architecture and Visual Studio. With this library, your app can browse, read, write and subscribe to the live data published by the OPC UA servers on your network.
