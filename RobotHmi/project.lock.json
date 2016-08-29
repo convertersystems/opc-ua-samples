@@ -33,7 +33,7 @@
           "lib/net46/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "Prism.Core/6.1.0": {
+      "Prism.Core/6.2.0": {
         "compile": {
           "lib/net45/Prism.dll": {}
         },
@@ -419,10 +419,10 @@
           "lib/net45/Microsoft.Practices.Unity.dll": {}
         }
       },
-      "Workstation.UaClient/1.3.1": {
+      "Workstation.UaClient/1.3.3": {
         "dependencies": {
           "Microsoft.Win32.Primitives": "4.0.1",
-          "Prism.Core": "6.1.0",
+          "Prism.Core": "6.2.0",
           "System.Collections": "4.0.11",
           "System.Collections.Concurrent": "4.0.12",
           "System.Diagnostics.Debug": "4.0.11",
@@ -491,7 +491,7 @@
           "lib/net46/Microsoft.Win32.Primitives.dll": {}
         }
       },
-      "Prism.Core/6.1.0": {
+      "Prism.Core/6.2.0": {
         "compile": {
           "lib/net45/Prism.dll": {}
         },
@@ -845,10 +845,10 @@
           "lib/net45/Microsoft.Practices.Unity.dll": {}
         }
       },
-      "Workstation.UaClient/1.3.1": {
+      "Workstation.UaClient/1.3.3": {
         "dependencies": {
           "Microsoft.Win32.Primitives": "4.0.1",
-          "Prism.Core": "6.1.0",
+          "Prism.Core": "6.2.0",
           "System.Collections": "4.0.11",
           "System.Collections.Concurrent": "4.0.12",
           "System.Diagnostics.Debug": "4.0.11",
@@ -956,12 +956,12 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Prism.Core/6.1.0": {
-      "sha512": "JDUhYt+w3cawTVgLR1Hsbf59sytjsyFIdTmrbJKkKtHW7CCWAHFM9DGesWSU7cmUgbHm7MYZx5hQA+xiBTQeVg==",
+    "Prism.Core/6.2.0": {
+      "sha512": "jWJRmjvR/bJqVyLr3T9hKToyV6X0Q2DONtyfa8ZjHJwlkD/SF3YJM+z8xSdqQl8uPfLOmgBG6Xm4lPk69P5o0g==",
       "type": "package",
-      "path": "Prism.Core/6.1.0",
+      "path": "Prism.Core/6.2.0",
       "files": [
-        "Prism.Core.6.1.0.nupkg.sha512",
+        "Prism.Core.6.2.0.nupkg.sha512",
         "Prism.Core.nuspec",
         "lib/MonoAndroid10/Prism.dll",
         "lib/MonoAndroid10/Prism.xml",
@@ -2757,12 +2757,12 @@
         "package/services/metadata/core-properties/924820f073a54dfda4a033e3efb68c3c.psmdcp"
       ]
     },
-    "Workstation.UaClient/1.3.1": {
-      "sha512": "UrY59xkEkExaOLSoaKgNZ/I4jBNj3fgVZNl4zi3M+YdCF4sOSiDF62YB22I9I+qq+51mpQCfEXtyGono0xJgUA==",
+    "Workstation.UaClient/1.3.3": {
+      "sha512": "JWJb/VHDYla/2lpPtM6ssOu8mXwg0de+tzOjojfgNXWOZ0/4TSb97QVHXyhgo8VXrHxHB/lbmXL7+IVfXwShmA==",
       "type": "package",
-      "path": "Workstation.UaClient/1.3.1",
+      "path": "Workstation.UaClient/1.3.3",
       "files": [
-        "Workstation.UaClient.1.3.1.nupkg.sha512",
+        "Workstation.UaClient.1.3.3.nupkg.sha512",
         "Workstation.UaClient.nuspec",
         "lib/net46/Workstation.UaClient.dll",
         "lib/netstandard1.4/Workstation.UaClient.dll"
@@ -2775,7 +2775,7 @@
       "Prism.Unity >= 6.2.0-pre3",
       "StyleCop.Analyzers >= 1.0.0",
       "System.Security.Cryptography.X509Certificates >= 4.1.0",
-      "Workstation.UaClient >= 1.3.1"
+      "Workstation.UaClient >= 1.3.3"
     ],
     ".NETFramework,Version=v4.6.1": []
   }

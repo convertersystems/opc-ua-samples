@@ -121,58 +121,26 @@ namespace RobotApp.ViewModels
         /// <summary>
         /// Gets the recent history of Robot1Axis1.
         /// </summary>
-        public ObservableQueue<DataValue> Robot1Axis1Queue { get; } = new ObservableQueue<DataValue>(capacity: 240, isFixedSize: true);
-
-        /// <summary>
-        /// Sets the value of Robot1Axis1.
-        /// </summary>
         [MonitoredItem(nodeId: "ns=2;s=Robot1_Axis1", dataChangeTrigger: DataChangeTrigger.StatusValueTimestamp)]
-        private DataValue Robot1Axis1Stream
-        {
-            set { this.Robot1Axis1Queue.Enqueue(value); }
-        }
+        public ObservableQueue<DataValue> Robot1Axis1Queue { get; } = new ObservableQueue<DataValue>(capacity: 240, isFixedSize: true);
 
         /// <summary>
         /// Gets the recent history of Robot1Axis2.
         /// </summary>
-        public ObservableQueue<DataValue> Robot1Axis2Queue { get; } = new ObservableQueue<DataValue>(capacity: 240, isFixedSize: true);
-
-        /// <summary>
-        /// Sets the value of Robot1Axis2.
-        /// </summary>
         [MonitoredItem(nodeId: "ns=2;s=Robot1_Axis2", dataChangeTrigger: DataChangeTrigger.StatusValueTimestamp)]
-        private DataValue Robot1Axis2Stream
-        {
-            set { this.Robot1Axis2Queue.Enqueue(value); }
-        }
+        public ObservableQueue<DataValue> Robot1Axis2Queue { get; } = new ObservableQueue<DataValue>(capacity: 240, isFixedSize: true);
 
         /// <summary>
         /// Gets the recent history of Robot1Axis3.
         /// </summary>
-        public ObservableQueue<DataValue> Robot1Axis3Queue { get; } = new ObservableQueue<DataValue>(capacity: 240, isFixedSize: true);
-
-        /// <summary>
-        /// Sets the value of Robot1Axis3.
-        /// </summary>
         [MonitoredItem(nodeId: "ns=2;s=Robot1_Axis3", dataChangeTrigger: DataChangeTrigger.StatusValueTimestamp)]
-        private DataValue Robot1Axis3Stream
-        {
-            set { this.Robot1Axis3Queue.Enqueue(value); }
-        }
+        public ObservableQueue<DataValue> Robot1Axis3Queue { get; } = new ObservableQueue<DataValue>(capacity: 240, isFixedSize: true);
 
         /// <summary>
         /// Gets the recent history of Robot1Axis4.
         /// </summary>
-        public ObservableQueue<DataValue> Robot1Axis4Queue { get; } = new ObservableQueue<DataValue>(capacity: 240, isFixedSize: true);
-
-        /// <summary>
-        /// Sets the value of Robot1Axis4.
-        /// </summary>
         [MonitoredItem(nodeId: "ns=2;s=Robot1_Axis4", dataChangeTrigger: DataChangeTrigger.StatusValueTimestamp)]
-        private DataValue Robot1Axis4Stream
-        {
-            set { this.Robot1Axis4Queue.Enqueue(value); }
-        }
+        public ObservableQueue<DataValue> Robot1Axis4Queue { get; } = new ObservableQueue<DataValue>(capacity: 240, isFixedSize: true);
 
         /// <summary>
         /// Gets the current events of Robot1.
