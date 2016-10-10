@@ -15,7 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workstation.RobotHmi", "Rob
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9B9A40F1-93E4-4592-993E-5B1E3E581B07}"
 	ProjectSection(SolutionItems) = preProject
-		RobotHmi\LICENSE.txt = RobotHmi\LICENSE.txt
+		LICENSE.txt = LICENSE.txt
 		nodeserver.png = nodeserver.png
 		README.md = README.md
 		WorkstationRuntime.png = WorkstationRuntime.png
