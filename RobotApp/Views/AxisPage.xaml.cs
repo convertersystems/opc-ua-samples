@@ -15,14 +15,10 @@ namespace RobotApp.Views
         {
             this.InitializeComponent();
             this.serializationService = Template10.Services.SerializationService.SerializationService.Json;
-            this.NavigationCacheMode = NavigationCacheMode.Enabled;
+            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
         }
 
-        public AxisPageViewModel ViewModel
-        {
-            get { return this.DataContext as AxisPageViewModel; }
-            set { this.DataContext = value; }
-        }
+        public AxisPageViewModel ViewModel => this.DataContext as AxisPageViewModel;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {

@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Converter Systems LLC. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using RobotHmi.Services;
+using System;
 using Workstation.ServiceModel.Ua;
 
 namespace RobotHmi.ViewModels
@@ -9,14 +9,9 @@ namespace RobotHmi.ViewModels
     /// <summary>
     /// A view model for Axis4.
     /// </summary>
-    public class Axis4ViewModel : SubscriptionBase, IAxisViewModel
+    [Subscription(publishingInterval: 500, keepAliveCount: 20)]
+    public class Axis4ViewModel : ViewModelBase, IAxisViewModel
     {
-        public Axis4ViewModel(PLC1Service session)
-        {
-            this.PublishingInterval = 500.0;
-            session?.Subscribe(this);
-        }
-
         /// <summary>
         /// Gets the value of Axis.
         /// </summary>

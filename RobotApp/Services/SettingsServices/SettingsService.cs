@@ -69,9 +69,9 @@ namespace RobotApp.Services.SettingsServices
             }
         }
 
-        public string PLC1EndpointUrl
+        public string EndpointUrl
         {
-            get { return this.helper.Read<string>(nameof(this.PLC1EndpointUrl), "opc.tcp://localhost:26543"); }
+            get { return this.helper.Read<string>(nameof(this.EndpointUrl), "opc.tcp://localhost:26543"); }
         }
     }
 }

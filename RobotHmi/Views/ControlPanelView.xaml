@@ -12,7 +12,7 @@
              Background="{DynamicResource {x:Static SystemColors.WindowBrushKey}}"
              FontSize="14.667"
              d:DesignHeight="600"
-             d:DataContext="{d:DesignInstance {x:Type vm:MainViewModel}}"
+             d:DataContext="{d:DesignInstance vm:MainViewModel}"
              mc:Ignorable="d">
     <UserControl.Resources>
         <w:IsEqualConverter x:Key="IsEqualConverter" />

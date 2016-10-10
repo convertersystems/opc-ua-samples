@@ -3,7 +3,6 @@
 
 using RobotApp.ViewModels;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
 
 namespace RobotApp.Views
 {
@@ -12,13 +11,9 @@ namespace RobotApp.Views
         public MainPage()
         {
             this.InitializeComponent();
-            this.NavigationCacheMode = NavigationCacheMode.Enabled;
+            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
         }
 
-        public MainPageViewModel ViewModel
-        {
-            get { return this.DataContext as MainPageViewModel; }
-            set { this.DataContext = value; }
-        }
+        public MainPageViewModel ViewModel => this.DataContext as MainPageViewModel;
     }
 }

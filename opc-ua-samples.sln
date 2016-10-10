@@ -15,6 +15,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workstation.RobotHmi", "Rob
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9B9A40F1-93E4-4592-993E-5B1E3E581B07}"
 	ProjectSection(SolutionItems) = preProject
+		RobotHmi\LICENSE.txt = RobotHmi\LICENSE.txt
 		nodeserver.png = nodeserver.png
 		README.md = README.md
 		WorkstationRuntime.png = WorkstationRuntime.png
@@ -97,6 +98,8 @@ Global
 		{CB701D17-DCBA-41EB-8477-C0E7B1DC5FD4}.Debug|x86.Build.0 = Debug|x86
 		{CB701D17-DCBA-41EB-8477-C0E7B1DC5FD4}.Debug|x86.Deploy.0 = Debug|x86
 		{CB701D17-DCBA-41EB-8477-C0E7B1DC5FD4}.Release|Any CPU.ActiveCfg = Release|x86
+		{CB701D17-DCBA-41EB-8477-C0E7B1DC5FD4}.Release|Any CPU.Build.0 = Release|x86
+		{CB701D17-DCBA-41EB-8477-C0E7B1DC5FD4}.Release|Any CPU.Deploy.0 = Release|x86
 		{CB701D17-DCBA-41EB-8477-C0E7B1DC5FD4}.Release|ARM.ActiveCfg = Release|ARM
 		{CB701D17-DCBA-41EB-8477-C0E7B1DC5FD4}.Release|ARM.Build.0 = Release|ARM
 		{CB701D17-DCBA-41EB-8477-C0E7B1DC5FD4}.Release|ARM.Deploy.0 = Release|ARM

@@ -22,12 +22,16 @@ namespace RobotHmi.Views
         /// </summary>
         public bool KeepAlive => false;
 
+        /// <inheritdoc/>
         public bool IsNavigationTarget(NavigationContext navigationContext) => true;
 
+        /// <inheritdoc/>
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            // Read the NavigationParameters passed by the caller.
+            // Read the axis name from the NavigationParameters passed by the caller.
             var name = navigationContext.Parameters["displayName"] as string;
+
+            // Create the correct view model, based on the axis name.
             switch (name)
             {
                 case "Axis 1":
@@ -48,9 +52,10 @@ namespace RobotHmi.Views
             }
         }
 
+        /// <inheritdoc/>
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
-            this.DataContext = null; // allows viewmodel to be collected.
+            this.DataContext = null; // allows viewmodel to be garbage collected.
         }
     }
 }

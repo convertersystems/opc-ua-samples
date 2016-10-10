@@ -1,11 +1,11 @@
 // Copyright (c) Converter Systems LLC. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using RobotApp.Services;
 using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using Template10.Mvvm;
 
 // Step 1: Add the following namespaces.
 using Workstation.Collections;
@@ -26,18 +26,13 @@ namespace RobotApp.ViewModels
     /// <summary>
     /// A view model for MainPage.
     /// </summary>
-    public class MainPageViewModel : SubscriptionBase // Step 2: Add your subscription base class (which implements ISubscription and INotifyPropertyChanged).
+    [Subscription(publishingInterval: 500, keepAliveCount: 20)] // Step 2: Add a [Subscription] attribute.
+    public class MainPageViewModel : ViewModelBase // Step 3: Add your view model base class (which implements INotifyPropertyChanged).
     {
-        public MainPageViewModel(PLC1Service session) // Step 3: Shared PLC1Service instance provided by Unity's dependency injection.
-        {
-            this.PublishingInterval = 250; // Step 4: Adjust the publishing interval (in ms.) here.
-            session?.Subscribe(this); // Step 5: Subscribe for data change and event notifications.
-        }
-
         /// <summary>
         /// Gets or sets the value of Robot1Mode.
         /// </summary>
-        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")] // Step 6: Add a [MonitoredItem] attribute.
+        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")] // Step 4: Add a [MonitoredItem] attribute.
         public short Robot1Mode
         {
             get { return this.robot1Mode; }
@@ -154,7 +149,7 @@ namespace RobotApp.ViewModels
         /// In this sample, we wish to display only current events. So after 5 seconds the event is removed.
         /// This works nicely with the ItemsControl's AddDeleteThemeTransition.
         /// </remarks>
-        [MonitoredItem(nodeId: "ns=2;s=Robot1", attributeId: AttributeIds.EventNotifier)]
+        [MonitoredItem(nodeId: "ns=2;s=Robot1", attributeId: AttributeIds.EventNotifier, queueSize: 8)]
         private AlarmCondition Robot1EventStream
         {
             set
@@ -175,7 +170,7 @@ namespace RobotApp.ViewModels
         {
             try
             {
-                await this.Session.WriteAsync(new WriteRequest
+                await UaTcpSessionClient.FromModel(this).WriteAsync(new WriteRequest
                 {
                     NodesToWrite = new[]
                     {
@@ -202,7 +197,7 @@ namespace RobotApp.ViewModels
         {
             try
             {
-                await this.Session.WriteAsync(new WriteRequest
+                await UaTcpSessionClient.FromModel(this).WriteAsync(new WriteRequest
                 {
                     NodesToWrite = new[]
                     {
@@ -263,7 +258,7 @@ namespace RobotApp.ViewModels
             try
             {
                 // Call the method, passing the input arguments in a Variant[].
-                var response = await this.Session.CallAsync(new CallRequest
+                var response = await UaTcpSessionClient.FromModel(this).CallAsync(new CallRequest
                 {
                     MethodsToCall = new[]
                     {

@@ -12,7 +12,8 @@
       xmlns:csControls="using:Workstation.UI.Xaml.Controls"
       xmlns:csData="using:Workstation.UI.Xaml.Data"
       x:Class="RobotApp.Views.MainPage"
-      mc:Ignorable="d">
+      mc:Ignorable="d"
+      d:DataContext="{d:DesignInstance vm:MainPageViewModel}">
 
     <Page.Resources>
         <local:IsModeHandConverter x:Key="IsModeHandConverter" />
@@ -157,7 +158,7 @@
                                 TickFrequency="15"
                                 TickPlacement="TopLeft"
                                 IsEnabled="{x:Bind ViewModel.Robot1Mode, Converter={StaticResource IsModeHandConverter}, Mode=OneWay}"
-                                Value="{x:Bind ViewModel.Robot1Axis2, Mode=TwoWay, Converter={StaticResource TypeConverter}}" />
+                                Value="{x:Bind ViewModel.Robot1Axis2, Converter={StaticResource TypeConverter}, Mode=TwoWay}" />
                         <TextBlock Grid.Row="2"
                                    Grid.Column="0"
                                    Text="Axis 3, &#0176;" />

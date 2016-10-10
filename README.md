@@ -22,6 +22,9 @@ Get the companion Visual Studio extension 'Workstation.UaBrowser' and you can:
 2. Node.js Tools for Visual Studio version 1.1 or higher - http://aka.ms/explorentvs 
 
 ### Releases
+
+v1.4.0 Added "Sign In" dialog to support servers that require a UserNameIdentity. NodeServer has new command line argument "--allowAnonymous" | "-a" 
+
 v1.3.0 Added StatusHmi to demonstrate the basic subscription feature.
 
 v1.2.0 Added ConsoleApp to demonstrate that SessionChannel is all you need for logging of data or events.

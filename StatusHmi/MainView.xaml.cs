@@ -1,18 +1,17 @@
 ﻿// Copyright (c) Converter Systems LLC. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using System.Windows;
+using MahApps.Metro.Controls;
 
 namespace StatusHmi
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for MainView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MainView : MetroWindow
     {
-        public MainWindow()
+        public MainView()
         {
-            this.DataContext = new MainViewModel();
             this.InitializeComponent();
         }
     }

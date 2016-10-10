@@ -1,8 +1,6 @@
 ﻿// Copyright (c) Converter Systems LLC. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using Prism.Regions;
-using RobotHmi.Services;
 using Workstation.ServiceModel.Ua;
 
 namespace RobotHmi.ViewModels
@@ -12,9 +10,5 @@ namespace RobotHmi.ViewModels
     /// </summary>
     public class DetailViewModel : ViewModelBase
     {
-        public DetailViewModel()
-        {
-        }
-
     }
 }

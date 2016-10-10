@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
+using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Threading.Tasks;
 using Workstation.ServiceModel.Ua;
@@ -17,7 +18,7 @@ namespace ConsoleApp
             {
                 Task.Run(TestAsync).GetAwaiter().GetResult();
             }
-            catch (ServiceResultException ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
                 Console.WriteLine("Press any key to close the program...");
@@ -27,8 +28,11 @@ namespace ConsoleApp
 
         private static async Task TestAsync()
         {
-             var discoveryUrl = "opc.tcp://localhost:26543"; // Workstation.NodeServer
+            var discoveryUrl = "opc.tcp://localhost:26543"; // Workstation.NodeServer
             // var discoveryUrl = "opc.tcp://localhost:48010"; // UaCppServer - see  http://www.unified-automation.com/
+
+            var eventListener = new DebugEventListener();
+            eventListener.EnableEvents(Workstation.ServiceModel.Ua.EventSource.Log, EventLevel.Verbose);
 
             Console.WriteLine("Step 1 - Describe this app.");
             var appDescription = new ApplicationDescription()
@@ -54,8 +58,27 @@ namespace ConsoleApp
             var remoteEndpoint = getEndpointsResponse.Endpoints.OrderBy(e => e.SecurityLevel).Last();
             Console.WriteLine(remoteEndpoint.SecurityPolicyUri);
 
+            IUserIdentity userIdentity = null;
+            if (remoteEndpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.Anonymous))
+            {
+                userIdentity = new AnonymousIdentity();
+            }
+            else if (remoteEndpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.UserName))
+            {
+                Console.WriteLine("Server is requesting UserName identity...");
+                Console.Write("Enter user name: ");
+                var userName = Console.ReadLine();
+                Console.Write("Enter password: ");
+                var password = Console.ReadLine();
+                userIdentity = new UserNameIdentity(userName, password);
+            }
+            else
+            {
+                Console.WriteLine("Program supports servers requesting Anonymous and UserName identity.");
+            }
+
             Console.WriteLine("Step 4 - Create a session with your server.");
-            using (var session = new UaTcpSessionChannel(appDescription, appDescription.GetCertificate(), null, remoteEndpoint))
+            using (var session = new UaTcpSessionChannel(appDescription, appDescription.GetCertificate(), userIdentity, remoteEndpoint))
             {
                 try
                 {

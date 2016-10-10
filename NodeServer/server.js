@@ -8,6 +8,7 @@ var _ = require("underscore");
 var path = require("path");
 var fs = require("fs");
 var assert = require("assert");
+var argv = require('yargs').alias('a', 'allowAnonymous').argv;
 
 var OPCUAServer = opcua.OPCUAServer;
 var Variant = opcua.Variant;
@@ -31,7 +32,10 @@ var port = parseInt(pjson.config.port) || 26543;
 
 var userManager = {
     isValidUser: function (userName, password) {
-        return true;
+       console.log("  Validating user".yellow);
+       console.log("    userName: ".yellow, userName);
+       console.log("    password: ".yellow, password);
+       return true;
     }
 };
 
@@ -66,6 +70,7 @@ var server_options = {
         }
     },
     userManager: userManager,
+    allowAnonymous: argv.allowAnonymous ? true : false,
     isAuditing: true
 };
 
@@ -316,8 +321,6 @@ server.start(function (err) {
 
     console.log("\n  server now waiting for connections. CTRL+C to stop".yellow);
 
-    //  console.log = function(){};
-
 });
 
 server.on("create_session", function (session) {
@@ -348,28 +351,6 @@ server.on("response", function (response) {
 
     console.log(t(response.responseHeader.timeStamp), response.responseHeader.requestHandle,
         response._schema.name.cyan, " status = ", response.responseHeader.serviceResult.toString().cyan);
-    switch (response._schema.name) {
-        case "ModifySubscriptionResponse":
-        case "CreateMonitoredItemsResponse":
-        case "ModifyMonitoredItemsResponse":
-        case "RepublishResponse":
-            //xx console.log(response.toString());
-            break;
-        case "BrowseResponse":
-        case "TranslateBrowsePathsToNodeIdsResponse":
-            //xx console.log(response.toString());
-            break;
-        case "WriteResponse":
-            break;
-        case "XXXX":
-            var str = "   ";
-            response.results.map(function (result) {
-                str += result.toString();
-            });
-            console.log(str);
-            break;
-    }
-
 });
 
 function indent(str, nb) {
@@ -381,38 +362,6 @@ function indent(str, nb) {
 server.on("request", function (request, channel) {
     console.log(t(request.requestHeader.timeStamp), request.requestHeader.requestHandle,
         request._schema.name.yellow, " ID =", channel.secureChannelId.toString().cyan);
-    switch (request._schema.name) {
-        case "ModifySubscriptionRequest":
-        case "CreateMonitoredItemsRequest":
-        case "ModifyMonitoredItemsRequest":
-        case "RepublishRequest":
-            //xx console.log(request.toString());
-            break;
-        case "xxReadRequest":
-            var str = "    ";
-            if (request.nodesToRead) {
-                request.nodesToRead.map(function (node) {
-                    str += node.nodeId.toString() + " " + node.attributeId + " " + node.indexRange;
-                });
-            }
-            console.log(str);
-            break;
-        case "xxWriteRequest":
-            if (request.nodesToWrite) {
-                var lines = request.nodesToWrite.map(function (node) {
-                    return "     " + node.nodeId.toString().green + " " + node.attributeId + " " + node.indexRange + "\n" + indent("" + node.value.toString(), 10) + "\n";
-                });
-                console.log(lines.join("\n"));
-            }
-            break;
-
-        case "xxTranslateBrowsePathsToNodeIdsRequest":
-        case "xxBrowseRequest":
-            // do special console output
-            //console.log(util.inspect(request, {colors: true, depth: 10}));
-            console.log(request.toString());
-            break;
-    }
 });
 
 process.on('SIGINT', function () {

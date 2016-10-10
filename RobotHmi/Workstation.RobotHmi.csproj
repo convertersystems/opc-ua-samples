@@ -75,6 +75,7 @@
     <RunCodeAnalysis>false</RunCodeAnalysis>
     <DocumentationFile>bin\Debug\Workstation.RobotHmi.xml</DocumentationFile>
     <NoWarn>1573,1591, 1201</NoWarn>
+    <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -146,13 +147,11 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Services\PLC1Service.cs" />
     <Compile Include="ViewModels\Axis1ViewModel.cs" />
     <Compile Include="ViewModels\Axis2ViewModel.cs" />
     <Compile Include="ViewModels\Axis3ViewModel.cs" />
     <Compile Include="ViewModels\Axis4ViewModel.cs" />
     <Compile Include="ViewModels\IAxisViewModel.cs" />
-    <Compile Include="ViewModels\SubscriptionBase.cs" />
     <Compile Include="ViewModels\ViewModelBase.cs" />
     <Compile Include="Views\RegionNames.cs" />
     <Compile Include="ViewModels\MainViewModel.cs" />

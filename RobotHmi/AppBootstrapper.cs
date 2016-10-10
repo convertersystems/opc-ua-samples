@@ -1,12 +1,12 @@
 ﻿// Copyright (c) Converter Systems LLC. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using System;
+using System.Windows;
 using Microsoft.Practices.ServiceLocation;
 using Prism.Modularity;
 using Prism.Unity;
 using RobotHmi.Views;
-using System;
-using System.Windows;
 
 namespace RobotHmi
 {
@@ -15,6 +15,7 @@ namespace RobotHmi
     /// </summary>
     public class AppBootstrapper : UnityBootstrapper, IDisposable
     {
+        /// <inheritdoc/>
         public void Dispose()
         {
             // Disposing the container will dispose all the shared component parts.
@@ -25,18 +26,21 @@ namespace RobotHmi
             }
         }
 
+        /// <inheritdoc/>
         protected override void ConfigureModuleCatalog()
         {
             ModuleCatalog catalog = (ModuleCatalog)this.ModuleCatalog;
             catalog.AddModule(typeof(MainModule));
         }
 
+        /// <inheritdoc/>
         protected override DependencyObject CreateShell()
         {
             // Creates the Shell window.
             return ServiceLocator.Current.GetInstance<Shell>();
         }
 
+        /// <inheritdoc/>
         protected override void InitializeShell()
         {
             // Shows the Shell window.

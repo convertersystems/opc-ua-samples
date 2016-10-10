@@ -7,20 +7,15 @@ using Workstation.ServiceModel.Ua;
 namespace StatusHmi
 {
     /// <summary>
-    /// A model for MainWindow.
+    /// A model for MainView.
     /// </summary>
-    public class MainViewModel : SubscriptionBase // Step 2: Add your subscription base class (which implements ISubscription and INotifyPropertyChanged).
+    [Subscription(publishingInterval: 500, keepAliveCount: 20)] // Step 2: Add a [Subscription] attribute.
+    public class MainViewModel : ViewModelBase // Step 3: Add your base class (which implements INotifyPropertyChanged).
     {
-        public MainViewModel()
-        {
-            this.PublishingInterval = 1000.0; // Step 3: Adjust the publishing interval (in ms.) here.
-            App.Current.Session.Subscribe(this); // Step 4: Subscribe for data change and event notifications.
-        }
-
         /// <summary>
         /// Gets the value of ServerServerStatus.
         /// </summary>
-        [MonitoredItem(nodeId: "i=2256")] // Step 6: Add a [MonitoredItem] attribute.
+        [MonitoredItem(nodeId: "i=2256")] // Step 4: Add a [MonitoredItem] attribute.
         public ServerStatusDataType ServerServerStatus
         {
             get { return this.serverServerStatus; }

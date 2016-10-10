@@ -23,13 +23,24 @@ namespace RobotHmi.Properties {
             }
         }
         
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string UserNames {
+            get {
+                return ((string)(this["UserNames"]));
+            }
+            set {
+                this["UserNames"] = value;
+            }
+        }
+        
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("opc.tcp://localhost:26543")]
-        public string PLC1ServiceUrl {
+        public string PLC1DiscoveryUrl {
             get {
-                return ((string)(this["PLC1ServiceUrl"]));
+                return ((string)(this["PLC1DiscoveryUrl"]));
             }
         }
     }

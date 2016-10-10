@@ -1,12 +1,15 @@
 // Copyright (c) Converter Systems LLC. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using System;
+using System.Diagnostics.Tracing;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
-using RobotApp.Services;
+using RobotApp.Services.SettingsServices;
 using RobotApp.ViewModels;
 using RobotApp.Views;
-using System;
-using System.Threading.Tasks;
 using Template10.Controls;
 using Template10.Services.NavigationService;
 using Windows.ApplicationModel;
@@ -22,16 +25,21 @@ namespace RobotApp
     /// </summary>
     public sealed partial class App : Template10.Common.BootStrapper
     {
+        private EventListener eventListener;
         private UnityContainer container = new UnityContainer();
 
         public App()
         {
             this.InitializeComponent();
-            this.SplashFactory = (e) => new Views.Splash(e);
-            var settings = Services.SettingsServices.SettingsService.Instance;
+            this.SplashFactory = (e) => new Splash(e);
+            this.eventListener = new DebugEventListener();
+            this.eventListener.EnableEvents(Workstation.ServiceModel.Ua.EventSource.Log, EventLevel.Verbose);
+            var settings = SettingsService.Instance;
             this.RequestedTheme = settings.AppTheme;
             this.CacheMaxDuration = settings.CacheMaxDuration;
             this.ShowShellBackButton = settings.UseShellBackButton;
+            IServiceLocator locator = new UnityServiceLocator(this.container);
+            ServiceLocator.SetLocatorProvider(() => locator);
         }
 
         public override async Task OnInitializeAsync(IActivatedEventArgs args)
@@ -45,17 +53,17 @@ namespace RobotApp
                 Window.Current.Content = new ModalDialog
                 {
                     DisableBackButtonWhenModal = true,
-                    Content = new Views.Shell(nav),
-                    ModalContent = new Views.Busy(),
+                    Content = new Shell(nav),
+                    ModalContent = new Busy(),
                 };
             }
 
             await Task.CompletedTask;
         }
 
-        public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
+        public override Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
-            // Register shared services with the application's dependency injection container.
+            // Prepare for constructing the shared UaTcpSessionClient.
             var appDescription = new ApplicationDescription()
             {
                 ApplicationName = "Workstation.RobotApp",
@@ -63,35 +71,76 @@ namespace RobotApp
                 ApplicationType = ApplicationType.Client
             };
             var appCertificate = appDescription.GetCertificate();
-            var userIdentity = new AnonymousIdentity();
-            var endpointUrl = Services.SettingsServices.SettingsService.Instance.PLC1EndpointUrl;
-            this.container.RegisterType<PLC1Service>(new ContainerControlledLifetimeManager(), new InjectionConstructor(appDescription, appCertificate, userIdentity, endpointUrl));
+            var userIdentityProvider = new Func<UaTcpSessionClient, Task<IUserIdentity>>(s => this.ProvideUserIdentity(s));
+            var discoveryUrl = SettingsService.Instance.EndpointUrl;
 
-            // Register view models using the name of the view.
-            this.container.RegisterType<INavigable, MainPageViewModel>(nameof(MainPage)/*, new ContainerControlledLifetimeManager()*/);
-            this.container.RegisterType<INavigable, SettingsPageViewModel>(nameof(SettingsPage)/*, new ContainerControlledLifetimeManager()*/);
-            this.container.RegisterType<INavigable, AxisPageViewModel>(nameof(AxisPage)/*, new ContainerControlledLifetimeManager()*/);
+            // Register shared services with the application's dependency injection container.
+            this.container.RegisterInstance("PLC1", new UaTcpSessionClient(appDescription, appCertificate, userIdentityProvider, discoveryUrl));
 
-            this.NavigationService.Navigate(typeof(Views.MainPage));
-            await Task.CompletedTask;
+            // Register subscriptions with the container using a factory mathod.
+            this.container.RegisterType<MainPageViewModel>(new InjectionFactory(c => c.Resolve<UaTcpSessionClient>("PLC1").CreateSubscription<MainPageViewModel>()));
+            this.container.RegisterType<IAxisViewModel, Axis1ViewModel>(nameof(Axis1ViewModel), new InjectionFactory(c => c.Resolve<UaTcpSessionClient>("PLC1").CreateSubscription<Axis1ViewModel>()));
+            this.container.RegisterType<IAxisViewModel, Axis2ViewModel>(nameof(Axis2ViewModel), new InjectionFactory(c => c.Resolve<UaTcpSessionClient>("PLC1").CreateSubscription<Axis2ViewModel>()));
+            this.container.RegisterType<IAxisViewModel, Axis3ViewModel>(nameof(Axis3ViewModel), new InjectionFactory(c => c.Resolve<UaTcpSessionClient>("PLC1").CreateSubscription<Axis3ViewModel>()));
+            this.container.RegisterType<IAxisViewModel, Axis4ViewModel>(nameof(Axis4ViewModel), new InjectionFactory(c => c.Resolve<UaTcpSessionClient>("PLC1").CreateSubscription<Axis4ViewModel>()));
+
+            // Register view models with the container using the name of the view.
+            this.container.RegisterType<INavigable, MainPageViewModel>(nameof(MainPage), new ContainerControlledLifetimeManager(), new InjectionFactory(c => c.Resolve<MainPageViewModel>()));
+            this.container.RegisterType<INavigable, AxisPageViewModel>(nameof(AxisPage), new ContainerControlledLifetimeManager());
+            this.container.RegisterType<INavigable, SettingsPageViewModel>(nameof(SettingsPage));
+
+            // Show the MainPage.
+            this.NavigationService.Navigate(typeof(MainPage));
+            return Task.CompletedTask;
         }
 
         public async override Task OnSuspendingAsync(object s, SuspendingEventArgs e, bool prelaunchActivated)
         {
-            var session = this.container.Resolve<PLC1Service>();
-            await session.SuspendAsync();
+            foreach (var session in this.container.ResolveAll<UaTcpSessionClient>())
+            {
+                await session.SuspendAsync();
+            }
         }
 
         public override void OnResuming(object s, object e, AppExecutionState previousExecutionState)
         {
-            var session = this.container.Resolve<PLC1Service>();
-            session.Resume();
+            foreach (var session in this.container.ResolveAll<UaTcpSessionClient>())
+            {
+                session.Resume();
+            }
         }
 
         public override INavigable ResolveForPage(Page page, NavigationService navigationService)
         {
             // Search container for the view model registered with the name of the given view.
             return this.container.Resolve<INavigable>(page.GetType().Name);
+        }
+
+        private Task<IUserIdentity> ProvideUserIdentity(UaTcpSessionClient session)
+        {
+            if (session.RemoteEndpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.Anonymous))
+            {
+                return Task.FromResult<IUserIdentity>(new AnonymousIdentity());
+            }
+
+            if (session.RemoteEndpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.UserName))
+            {
+                var tcs = new TaskCompletionSource<IUserIdentity>();
+
+                this.NavigationService.Dispatcher.DispatchIdleAsync(async () =>
+                {
+                    var d = new UserIdentityDialog(session);
+                    var result = await d.ShowAsync();
+                    if (result == ContentDialogResult.Primary)
+                    {
+                        tcs.TrySetResult(d.UserIdentity);
+                    }
+                    tcs.TrySetResult(new AnonymousIdentity());
+                });
+                return tcs.Task;
+            }
+
+            throw new NotImplementedException("ProvideUserIdentity supports only UserName and Anonymous identity, for now.");
         }
     }
 }

@@ -11,11 +11,4 @@ namespace RobotApp.ViewModels
 
         string DisplayName { get; }
     }
-
-    public class AxisViewModelDesignInstance : IAxisViewModel
-    {
-        public float Axis => 42.0f;
-
-        public string DisplayName => "Axis 1";
-    }
 }

@@ -2,11 +2,10 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="RobotHmi.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="PLC1ServiceUrl" Type="(Connection string)" Scope="Application">
-      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
-&lt;SerializableConnectionString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;ConnectionString&gt;opc.tcp://localhost:26543&lt;/ConnectionString&gt;
-&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+    <Setting Name="UserNames" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="PLC1DiscoveryUrl" Type="System.String" Scope="Application">
       <Value Profile="(Default)">opc.tcp://localhost:26543</Value>
     </Setting>
   </Settings>

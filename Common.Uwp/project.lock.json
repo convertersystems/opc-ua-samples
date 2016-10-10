@@ -30,7 +30,7 @@
           "lib/netcore50/Microsoft.CSharp.dll": {}
         }
       },
-      "Microsoft.NETCore/5.0.1": {
+      "Microsoft.NETCore/5.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1",
@@ -50,7 +50,7 @@
           "System.Globalization.Calendars": "4.0.1",
           "System.Globalization.Extensions": "4.0.1",
           "System.IO": "4.1.0",
-          "System.IO.Compression": "4.1.0",
+          "System.IO.Compression": "4.1.1",
           "System.IO.Compression.ZipFile": "4.0.1",
           "System.IO.FileSystem": "4.0.1",
           "System.IO.FileSystem.Primitives": "4.0.1",
@@ -90,7 +90,7 @@
           "System.Xml.XDocument": "4.0.11"
         }
       },
-      "Microsoft.NETCore.Jit/1.0.2": {
+      "Microsoft.NETCore.Jit/1.0.3": {
         "type": "package"
       },
       "Microsoft.NETCore.Platforms/1.0.1": {
@@ -102,7 +102,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.1": {
+      "Microsoft.NETCore.Portable.Compatibility/1.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
@@ -191,14 +191,14 @@
           }
         }
       },
-      "Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
+      "Microsoft.NETCore.Runtime.CoreCLR/1.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Jit": "1.0.2",
+          "Microsoft.NETCore.Jit": "1.0.3",
           "Microsoft.NETCore.Windows.ApiSets": "1.0.1"
         }
       },
-      "Microsoft.NETCore.Targets/1.0.1": {
+      "Microsoft.NETCore.Targets/1.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -207,17 +207,18 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.UniversalWindowsPlatform/5.2.0": {
+      "Microsoft.NETCore.UniversalWindowsPlatform/5.2.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore": "5.0.1",
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2",
+          "Microsoft.NETCore": "5.0.2",
+          "Microsoft.NETCore.Portable.Compatibility": "1.0.2",
+          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.3",
+          "Microsoft.NETCore.Targets": "1.0.2",
           "Microsoft.Win32.Primitives": "4.0.1",
           "System.ComponentModel.EventBasedAsync": "4.0.11",
           "System.Data.Common": "4.1.0",
           "System.Diagnostics.Contracts": "4.0.1",
-          "System.Diagnostics.StackTrace": "4.0.1",
+          "System.Diagnostics.StackTrace": "4.0.2",
           "System.IO.IsolatedStorage": "4.0.1",
           "System.Net.Http.Rtc": "4.0.1",
           "System.Net.NameResolution": "4.0.0",
@@ -282,6 +283,19 @@
         },
         "compile": {
           "ref/netstandard1.3/Microsoft.Win32.Primitives.dll": {}
+        }
+      },
+      "runtime.native.System.IO.Compression/4.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
         }
       },
       "runtime.native.System.Security.Cryptography/4.0.0": {
@@ -504,7 +518,7 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.0.1": {
+      "System.Diagnostics.StackTrace/4.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1"
@@ -645,13 +659,21 @@
           "lib/win8/_._": {}
         }
       },
-      "System.IO.Compression/4.1.0": {
+      "System.IO.Compression/4.1.1": {
         "type": "package",
         "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
           "System.IO": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
           "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
           "System.Text.Encoding": "4.0.11",
-          "System.Threading.Tasks": "4.0.11"
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11",
+          "runtime.native.System.IO.Compression": "4.1.0"
         },
         "compile": {
           "ref/netcore50/System.IO.Compression.dll": {}
@@ -2171,7 +2193,7 @@
           "lib/netcore50/Microsoft.CSharp.dll": {}
         }
       },
-      "Microsoft.NETCore/5.0.1": {
+      "Microsoft.NETCore/5.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1",
@@ -2191,7 +2213,7 @@
           "System.Globalization.Calendars": "4.0.1",
           "System.Globalization.Extensions": "4.0.1",
           "System.IO": "4.1.0",
-          "System.IO.Compression": "4.1.0",
+          "System.IO.Compression": "4.1.1",
           "System.IO.Compression.ZipFile": "4.0.1",
           "System.IO.FileSystem": "4.0.1",
           "System.IO.FileSystem.Primitives": "4.0.1",
@@ -2231,7 +2253,7 @@
           "System.Xml.XDocument": "4.0.11"
         }
       },
-      "Microsoft.NETCore.Jit/1.0.2": {
+      "Microsoft.NETCore.Jit/1.0.3": {
         "type": "package"
       },
       "Microsoft.NETCore.Platforms/1.0.1": {
@@ -2243,7 +2265,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.1": {
+      "Microsoft.NETCore.Portable.Compatibility/1.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
@@ -2278,15 +2300,15 @@
           "lib/netcore50/System.dll": {}
         }
       },
-      "Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
+      "Microsoft.NETCore.Runtime.CoreCLR/1.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Jit": "1.0.2",
+          "Microsoft.NETCore.Jit": "1.0.3",
           "Microsoft.NETCore.Windows.ApiSets": "1.0.1",
-          "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR": "1.0.2-rc3-24212-01"
+          "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
         }
       },
-      "Microsoft.NETCore.Targets/1.0.1": {
+      "Microsoft.NETCore.Targets/1.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -2295,17 +2317,18 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.UniversalWindowsPlatform/5.2.0": {
+      "Microsoft.NETCore.UniversalWindowsPlatform/5.2.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore": "5.0.1",
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2",
+          "Microsoft.NETCore": "5.0.2",
+          "Microsoft.NETCore.Portable.Compatibility": "1.0.2",
+          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.3",
+          "Microsoft.NETCore.Targets": "1.0.2",
           "Microsoft.Win32.Primitives": "4.0.1",
           "System.ComponentModel.EventBasedAsync": "4.0.11",
           "System.Data.Common": "4.1.0",
           "System.Diagnostics.Contracts": "4.0.1",
-          "System.Diagnostics.StackTrace": "4.0.1",
+          "System.Diagnostics.StackTrace": "4.0.2",
           "System.IO.IsolatedStorage": "4.0.1",
           "System.Net.Http.Rtc": "4.0.1",
           "System.Net.NameResolution": "4.0.0",
@@ -2532,6 +2555,20 @@
           "lib/netcore50/System.Threading.Timer.dll": {}
         }
       },
+      "runtime.native.System.IO.Compression/4.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "runtime.win8-arm.runtime.native.System.IO.Compression": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
       "runtime.native.System.Security.Cryptography/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -2654,16 +2691,16 @@
           "runtimes/win/lib/netcore50/System.Runtime.Extensions.dll": {}
         }
       },
-      "runtime.win7.System.Private.Uri/4.0.1": {
+      "runtime.win7.System.Private.Uri/4.0.2": {
         "type": "package",
         "compile": {
           "ref/netstandard/_._": {}
         },
         "runtime": {
-          "runtimes/win/lib/netstandard1.0/System.Private.Uri.dll": {}
+          "runtimes/win/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
-      "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR/1.0.2-rc4-24123-00": {
+      "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
         "type": "package",
         "compile": {
           "ref/netstandard1.0/_._": {}
@@ -2679,10 +2716,16 @@
           "runtimes/win8-arm/native/dbgshim.dll": {},
           "runtimes/win8-arm/native/mscordaccore.dll": {},
           "runtimes/win8-arm/native/mscordbi.dll": {},
-          "runtimes/win8-arm/native/mscorlib.dll": {},
+          "runtimes/win8-arm/native/mscorlib.ni.dll": {},
           "runtimes/win8-arm/native/mscorrc.debug.dll": {},
           "runtimes/win8-arm/native/mscorrc.dll": {},
           "runtimes/win8-arm/native/sos.dll": {}
+        }
+      },
+      "runtime.win8-arm.runtime.native.System.IO.Compression/4.0.1": {
+        "type": "package",
+        "native": {
+          "runtimes/win8-arm/native/clrcompression.dll": {}
         }
       },
       "System.AppContext/4.1.0": {
@@ -2882,7 +2925,7 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.0.1": {
+      "System.Diagnostics.StackTrace/4.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1"
@@ -3009,13 +3052,21 @@
           "lib/win8/_._": {}
         }
       },
-      "System.IO.Compression/4.1.0": {
+      "System.IO.Compression/4.1.1": {
         "type": "package",
         "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
           "System.IO": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
           "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
           "System.Text.Encoding": "4.0.11",
-          "System.Threading.Tasks": "4.0.11"
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11",
+          "runtime.native.System.IO.Compression": "4.1.0"
         },
         "compile": {
           "ref/netcore50/System.IO.Compression.dll": {}
@@ -3523,7 +3574,7 @@
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1",
           "Microsoft.NETCore.Targets": "1.0.1",
-          "runtime.win7.System.Private.Uri": "4.0.1"
+          "runtime.win7.System.Private.Uri": "4.0.2"
         },
         "compile": {
           "ref/netstandard/_._": {}
@@ -4402,7 +4453,7 @@
           "lib/netcore50/Microsoft.CSharp.dll": {}
         }
       },
-      "Microsoft.NETCore/5.0.1": {
+      "Microsoft.NETCore/5.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1",
@@ -4422,7 +4473,7 @@
           "System.Globalization.Calendars": "4.0.1",
           "System.Globalization.Extensions": "4.0.1",
           "System.IO": "4.1.0",
-          "System.IO.Compression": "4.1.0",
+          "System.IO.Compression": "4.1.1",
           "System.IO.Compression.ZipFile": "4.0.1",
           "System.IO.FileSystem": "4.0.1",
           "System.IO.FileSystem.Primitives": "4.0.1",
@@ -4462,7 +4513,7 @@
           "System.Xml.XDocument": "4.0.11"
         }
       },
-      "Microsoft.NETCore.Jit/1.0.2": {
+      "Microsoft.NETCore.Jit/1.0.3": {
         "type": "package"
       },
       "Microsoft.NETCore.Platforms/1.0.1": {
@@ -4474,7 +4525,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.1": {
+      "Microsoft.NETCore.Portable.Compatibility/1.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
@@ -4510,15 +4561,15 @@
           "runtimes/aot/lib/netcore50/mscorlib.dll": {}
         }
       },
-      "Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
+      "Microsoft.NETCore.Runtime.CoreCLR/1.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Jit": "1.0.2",
+          "Microsoft.NETCore.Jit": "1.0.3",
           "Microsoft.NETCore.Windows.ApiSets": "1.0.1",
-          "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR": "1.0.2-rc3-24212-01"
+          "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
         }
       },
-      "Microsoft.NETCore.Targets/1.0.1": {
+      "Microsoft.NETCore.Targets/1.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -4527,17 +4578,18 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.UniversalWindowsPlatform/5.2.0": {
+      "Microsoft.NETCore.UniversalWindowsPlatform/5.2.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore": "5.0.1",
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2",
+          "Microsoft.NETCore": "5.0.2",
+          "Microsoft.NETCore.Portable.Compatibility": "1.0.2",
+          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.3",
+          "Microsoft.NETCore.Targets": "1.0.2",
           "Microsoft.Win32.Primitives": "4.0.1",
           "System.ComponentModel.EventBasedAsync": "4.0.11",
           "System.Data.Common": "4.1.0",
           "System.Diagnostics.Contracts": "4.0.1",
-          "System.Diagnostics.StackTrace": "4.0.1",
+          "System.Diagnostics.StackTrace": "4.0.2",
           "System.IO.IsolatedStorage": "4.0.1",
           "System.Net.Http.Rtc": "4.0.1",
           "System.Net.NameResolution": "4.0.0",
@@ -4809,6 +4861,20 @@
           "runtimes/aot/lib/netcore50/System.Threading.Timer.dll": {}
         }
       },
+      "runtime.native.System.IO.Compression/4.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "runtime.win10-arm-aot.runtime.native.System.IO.Compression": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
       "runtime.native.System.Security.Cryptography/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -4931,7 +4997,16 @@
           "runtimes/aot/lib/netcore50/System.Runtime.Extensions.dll": {}
         }
       },
-      "runtime.win7.System.Private.Uri/4.0.1": {
+      "runtime.win10-arm-aot.runtime.native.System.IO.Compression/4.0.1": {
+        "type": "package",
+        "compile": {
+          "runtimes/win10-arm-aot/lib/netcore50/_._": {}
+        },
+        "runtime": {
+          "runtimes/win10-arm-aot/lib/netcore50/clrcompression.dll": {}
+        }
+      },
+      "runtime.win7.System.Private.Uri/4.0.2": {
         "type": "package",
         "compile": {
           "ref/netstandard/_._": {}
@@ -4940,7 +5015,7 @@
           "runtimes/aot/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
-      "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR/1.0.2-rc4-24123-00": {
+      "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
         "type": "package",
         "compile": {
           "ref/netstandard1.0/_._": {}
@@ -5149,7 +5224,7 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.0.1": {
+      "System.Diagnostics.StackTrace/4.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1"
@@ -5276,13 +5351,21 @@
           "lib/win8/_._": {}
         }
       },
-      "System.IO.Compression/4.1.0": {
+      "System.IO.Compression/4.1.1": {
         "type": "package",
         "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
           "System.IO": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
           "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
           "System.Text.Encoding": "4.0.11",
-          "System.Threading.Tasks": "4.0.11"
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11",
+          "runtime.native.System.IO.Compression": "4.1.0"
         },
         "compile": {
           "ref/netcore50/System.IO.Compression.dll": {}
@@ -5790,7 +5873,7 @@
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1",
           "Microsoft.NETCore.Targets": "1.0.1",
-          "runtime.win7.System.Private.Uri": "4.0.1"
+          "runtime.win7.System.Private.Uri": "4.0.2"
         },
         "compile": {
           "ref/netstandard/_._": {}
@@ -6669,7 +6752,7 @@
           "lib/netcore50/Microsoft.CSharp.dll": {}
         }
       },
-      "Microsoft.NETCore/5.0.1": {
+      "Microsoft.NETCore/5.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1",
@@ -6689,7 +6772,7 @@
           "System.Globalization.Calendars": "4.0.1",
           "System.Globalization.Extensions": "4.0.1",
           "System.IO": "4.1.0",
-          "System.IO.Compression": "4.1.0",
+          "System.IO.Compression": "4.1.1",
           "System.IO.Compression.ZipFile": "4.0.1",
           "System.IO.FileSystem": "4.0.1",
           "System.IO.FileSystem.Primitives": "4.0.1",
@@ -6729,10 +6812,10 @@
           "System.Xml.XDocument": "4.0.11"
         }
       },
-      "Microsoft.NETCore.Jit/1.0.2": {
+      "Microsoft.NETCore.Jit/1.0.3": {
         "type": "package",
         "dependencies": {
-          "runtime.win7-x64.Microsoft.NETCore.Jit": "1.0.2"
+          "runtime.win7-x64.Microsoft.NETCore.Jit": "1.0.3"
         }
       },
       "Microsoft.NETCore.Platforms/1.0.1": {
@@ -6744,7 +6827,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.1": {
+      "Microsoft.NETCore.Portable.Compatibility/1.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
@@ -6779,15 +6862,15 @@
           "lib/netcore50/System.dll": {}
         }
       },
-      "Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
+      "Microsoft.NETCore.Runtime.CoreCLR/1.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Jit": "1.0.2",
+          "Microsoft.NETCore.Jit": "1.0.3",
           "Microsoft.NETCore.Windows.ApiSets": "1.0.1",
           "runtime.win7-x64.Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
         }
       },
-      "Microsoft.NETCore.Targets/1.0.1": {
+      "Microsoft.NETCore.Targets/1.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -6796,17 +6879,18 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.UniversalWindowsPlatform/5.2.0": {
+      "Microsoft.NETCore.UniversalWindowsPlatform/5.2.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore": "5.0.1",
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2",
+          "Microsoft.NETCore": "5.0.2",
+          "Microsoft.NETCore.Portable.Compatibility": "1.0.2",
+          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.3",
+          "Microsoft.NETCore.Targets": "1.0.2",
           "Microsoft.Win32.Primitives": "4.0.1",
           "System.ComponentModel.EventBasedAsync": "4.0.11",
           "System.Data.Common": "4.1.0",
           "System.Diagnostics.Contracts": "4.0.1",
-          "System.Diagnostics.StackTrace": "4.0.1",
+          "System.Diagnostics.StackTrace": "4.0.2",
           "System.IO.IsolatedStorage": "4.0.1",
           "System.Net.Http.Rtc": "4.0.1",
           "System.Net.NameResolution": "4.0.0",
@@ -7033,6 +7117,20 @@
           "lib/netcore50/System.Threading.Timer.dll": {}
         }
       },
+      "runtime.native.System.IO.Compression/4.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "runtime.win7-x64.runtime.native.System.IO.Compression": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
       "runtime.native.System.Security.Cryptography/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -7155,7 +7253,7 @@
           "runtimes/win/lib/netcore50/System.Runtime.Extensions.dll": {}
         }
       },
-      "runtime.win7-x64.Microsoft.NETCore.Jit/1.0.2": {
+      "runtime.win7-x64.Microsoft.NETCore.Jit/1.0.3": {
         "type": "package",
         "native": {
           "runtimes/win7-x64/native/clrjit.dll": {}
@@ -7183,13 +7281,19 @@
           "runtimes/win7-x64/native/sos.dll": {}
         }
       },
-      "runtime.win7.System.Private.Uri/4.0.1": {
+      "runtime.win7-x64.runtime.native.System.IO.Compression/4.0.1": {
+        "type": "package",
+        "native": {
+          "runtimes/win7-x64/native/clrcompression.dll": {}
+        }
+      },
+      "runtime.win7.System.Private.Uri/4.0.2": {
         "type": "package",
         "compile": {
           "ref/netstandard/_._": {}
         },
         "runtime": {
-          "runtimes/win/lib/netstandard1.0/System.Private.Uri.dll": {}
+          "runtimes/win/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
       "System.AppContext/4.1.0": {
@@ -7389,7 +7493,7 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.0.1": {
+      "System.Diagnostics.StackTrace/4.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1"
@@ -7516,13 +7620,21 @@
           "lib/win8/_._": {}
         }
       },
-      "System.IO.Compression/4.1.0": {
+      "System.IO.Compression/4.1.1": {
         "type": "package",
         "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
           "System.IO": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
           "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
           "System.Text.Encoding": "4.0.11",
-          "System.Threading.Tasks": "4.0.11"
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11",
+          "runtime.native.System.IO.Compression": "4.1.0"
         },
         "compile": {
           "ref/netcore50/System.IO.Compression.dll": {}
@@ -8030,7 +8142,7 @@
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1",
           "Microsoft.NETCore.Targets": "1.0.1",
-          "runtime.win7.System.Private.Uri": "4.0.1"
+          "runtime.win7.System.Private.Uri": "4.0.2"
         },
         "compile": {
           "ref/netstandard/_._": {}
@@ -8909,7 +9021,7 @@
           "lib/netcore50/Microsoft.CSharp.dll": {}
         }
       },
-      "Microsoft.NETCore/5.0.1": {
+      "Microsoft.NETCore/5.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1",
@@ -8929,7 +9041,7 @@
           "System.Globalization.Calendars": "4.0.1",
           "System.Globalization.Extensions": "4.0.1",
           "System.IO": "4.1.0",
-          "System.IO.Compression": "4.1.0",
+          "System.IO.Compression": "4.1.1",
           "System.IO.Compression.ZipFile": "4.0.1",
           "System.IO.FileSystem": "4.0.1",
           "System.IO.FileSystem.Primitives": "4.0.1",
@@ -8969,10 +9081,10 @@
           "System.Xml.XDocument": "4.0.11"
         }
       },
-      "Microsoft.NETCore.Jit/1.0.2": {
+      "Microsoft.NETCore.Jit/1.0.3": {
         "type": "package",
         "dependencies": {
-          "runtime.win7-x64.Microsoft.NETCore.Jit": "1.0.2"
+          "runtime.win7-x64.Microsoft.NETCore.Jit": "1.0.3"
         }
       },
       "Microsoft.NETCore.Platforms/1.0.1": {
@@ -8984,7 +9096,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.1": {
+      "Microsoft.NETCore.Portable.Compatibility/1.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
@@ -9020,15 +9132,15 @@
           "runtimes/aot/lib/netcore50/mscorlib.dll": {}
         }
       },
-      "Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
+      "Microsoft.NETCore.Runtime.CoreCLR/1.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Jit": "1.0.2",
+          "Microsoft.NETCore.Jit": "1.0.3",
           "Microsoft.NETCore.Windows.ApiSets": "1.0.1",
           "runtime.win7-x64.Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
         }
       },
-      "Microsoft.NETCore.Targets/1.0.1": {
+      "Microsoft.NETCore.Targets/1.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -9037,17 +9149,18 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.UniversalWindowsPlatform/5.2.0": {
+      "Microsoft.NETCore.UniversalWindowsPlatform/5.2.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore": "5.0.1",
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2",
+          "Microsoft.NETCore": "5.0.2",
+          "Microsoft.NETCore.Portable.Compatibility": "1.0.2",
+          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.3",
+          "Microsoft.NETCore.Targets": "1.0.2",
           "Microsoft.Win32.Primitives": "4.0.1",
           "System.ComponentModel.EventBasedAsync": "4.0.11",
           "System.Data.Common": "4.1.0",
           "System.Diagnostics.Contracts": "4.0.1",
-          "System.Diagnostics.StackTrace": "4.0.1",
+          "System.Diagnostics.StackTrace": "4.0.2",
           "System.IO.IsolatedStorage": "4.0.1",
           "System.Net.Http.Rtc": "4.0.1",
           "System.Net.NameResolution": "4.0.0",
@@ -9319,6 +9432,20 @@
           "runtimes/aot/lib/netcore50/System.Threading.Timer.dll": {}
         }
       },
+      "runtime.native.System.IO.Compression/4.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "runtime.win10-x64-aot.runtime.native.System.IO.Compression": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
       "runtime.native.System.Security.Cryptography/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -9441,10 +9568,19 @@
           "runtimes/aot/lib/netcore50/System.Runtime.Extensions.dll": {}
         }
       },
-      "runtime.win7-x64.Microsoft.NETCore.Jit/1.0.2": {
+      "runtime.win10-x64-aot.runtime.native.System.IO.Compression/4.0.1": {
+        "type": "package",
+        "compile": {
+          "runtimes/win10-x64-aot/lib/netcore50/_._": {}
+        },
+        "runtime": {
+          "runtimes/win10-x64-aot/lib/netcore50/clrcompression.dll": {}
+        }
+      },
+      "runtime.win7-x64.Microsoft.NETCore.Jit/1.0.3": {
         "type": "package",
         "native": {
-          "runtimes/win7-x64/native/clrjit.dll": {}
+          "runtimes/win7-x64-aot/native/_._": {}
         }
       },
       "runtime.win7-x64.Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
@@ -9459,7 +9595,7 @@
           "runtimes/win7-x64-aot/native/_._": {}
         }
       },
-      "runtime.win7.System.Private.Uri/4.0.1": {
+      "runtime.win7.System.Private.Uri/4.0.2": {
         "type": "package",
         "compile": {
           "ref/netstandard/_._": {}
@@ -9665,7 +9801,7 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.0.1": {
+      "System.Diagnostics.StackTrace/4.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1"
@@ -9792,13 +9928,21 @@
           "lib/win8/_._": {}
         }
       },
-      "System.IO.Compression/4.1.0": {
+      "System.IO.Compression/4.1.1": {
         "type": "package",
         "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
           "System.IO": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
           "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
           "System.Text.Encoding": "4.0.11",
-          "System.Threading.Tasks": "4.0.11"
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11",
+          "runtime.native.System.IO.Compression": "4.1.0"
         },
         "compile": {
           "ref/netcore50/System.IO.Compression.dll": {}
@@ -10306,7 +10450,7 @@
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1",
           "Microsoft.NETCore.Targets": "1.0.1",
-          "runtime.win7.System.Private.Uri": "4.0.1"
+          "runtime.win7.System.Private.Uri": "4.0.2"
         },
         "compile": {
           "ref/netstandard/_._": {}
@@ -11185,7 +11329,7 @@
           "lib/netcore50/Microsoft.CSharp.dll": {}
         }
       },
-      "Microsoft.NETCore/5.0.1": {
+      "Microsoft.NETCore/5.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1",
@@ -11205,7 +11349,7 @@
           "System.Globalization.Calendars": "4.0.1",
           "System.Globalization.Extensions": "4.0.1",
           "System.IO": "4.1.0",
-          "System.IO.Compression": "4.1.0",
+          "System.IO.Compression": "4.1.1",
           "System.IO.Compression.ZipFile": "4.0.1",
           "System.IO.FileSystem": "4.0.1",
           "System.IO.FileSystem.Primitives": "4.0.1",
@@ -11245,10 +11389,10 @@
           "System.Xml.XDocument": "4.0.11"
         }
       },
-      "Microsoft.NETCore.Jit/1.0.2": {
+      "Microsoft.NETCore.Jit/1.0.3": {
         "type": "package",
         "dependencies": {
-          "runtime.win7-x86.Microsoft.NETCore.Jit": "1.0.2"
+          "runtime.win7-x86.Microsoft.NETCore.Jit": "1.0.3"
         }
       },
       "Microsoft.NETCore.Platforms/1.0.1": {
@@ -11260,7 +11404,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.1": {
+      "Microsoft.NETCore.Portable.Compatibility/1.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
@@ -11295,15 +11439,15 @@
           "lib/netcore50/System.dll": {}
         }
       },
-      "Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
+      "Microsoft.NETCore.Runtime.CoreCLR/1.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Jit": "1.0.2",
+          "Microsoft.NETCore.Jit": "1.0.3",
           "Microsoft.NETCore.Windows.ApiSets": "1.0.1",
           "runtime.win7-x86.Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
         }
       },
-      "Microsoft.NETCore.Targets/1.0.1": {
+      "Microsoft.NETCore.Targets/1.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -11312,17 +11456,18 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.UniversalWindowsPlatform/5.2.0": {
+      "Microsoft.NETCore.UniversalWindowsPlatform/5.2.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore": "5.0.1",
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2",
+          "Microsoft.NETCore": "5.0.2",
+          "Microsoft.NETCore.Portable.Compatibility": "1.0.2",
+          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.3",
+          "Microsoft.NETCore.Targets": "1.0.2",
           "Microsoft.Win32.Primitives": "4.0.1",
           "System.ComponentModel.EventBasedAsync": "4.0.11",
           "System.Data.Common": "4.1.0",
           "System.Diagnostics.Contracts": "4.0.1",
-          "System.Diagnostics.StackTrace": "4.0.1",
+          "System.Diagnostics.StackTrace": "4.0.2",
           "System.IO.IsolatedStorage": "4.0.1",
           "System.Net.Http.Rtc": "4.0.1",
           "System.Net.NameResolution": "4.0.0",
@@ -11549,6 +11694,20 @@
           "lib/netcore50/System.Threading.Timer.dll": {}
         }
       },
+      "runtime.native.System.IO.Compression/4.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "runtime.win7-x86.runtime.native.System.IO.Compression": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
       "runtime.native.System.Security.Cryptography/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -11671,7 +11830,7 @@
           "runtimes/win/lib/netcore50/System.Runtime.Extensions.dll": {}
         }
       },
-      "runtime.win7-x86.Microsoft.NETCore.Jit/1.0.2": {
+      "runtime.win7-x86.Microsoft.NETCore.Jit/1.0.3": {
         "type": "package",
         "native": {
           "runtimes/win7-x86/native/clrjit.dll": {}
@@ -11699,13 +11858,19 @@
           "runtimes/win7-x86/native/sos.dll": {}
         }
       },
-      "runtime.win7.System.Private.Uri/4.0.1": {
+      "runtime.win7-x86.runtime.native.System.IO.Compression/4.0.1": {
+        "type": "package",
+        "native": {
+          "runtimes/win7-x86/native/clrcompression.dll": {}
+        }
+      },
+      "runtime.win7.System.Private.Uri/4.0.2": {
         "type": "package",
         "compile": {
           "ref/netstandard/_._": {}
         },
         "runtime": {
-          "runtimes/win/lib/netstandard1.0/System.Private.Uri.dll": {}
+          "runtimes/win/lib/netcore50/System.Private.Uri.dll": {}
         }
       },
       "System.AppContext/4.1.0": {
@@ -11905,7 +12070,7 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.0.1": {
+      "System.Diagnostics.StackTrace/4.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1"
@@ -12032,13 +12197,21 @@
           "lib/win8/_._": {}
         }
       },
-      "System.IO.Compression/4.1.0": {
+      "System.IO.Compression/4.1.1": {
         "type": "package",
         "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
           "System.IO": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
           "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
           "System.Text.Encoding": "4.0.11",
-          "System.Threading.Tasks": "4.0.11"
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11",
+          "runtime.native.System.IO.Compression": "4.1.0"
         },
         "compile": {
           "ref/netcore50/System.IO.Compression.dll": {}
@@ -12546,7 +12719,7 @@
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1",
           "Microsoft.NETCore.Targets": "1.0.1",
-          "runtime.win7.System.Private.Uri": "4.0.1"
+          "runtime.win7.System.Private.Uri": "4.0.2"
         },
         "compile": {
           "ref/netstandard/_._": {}
@@ -13425,7 +13598,7 @@
           "lib/netcore50/Microsoft.CSharp.dll": {}
         }
       },
-      "Microsoft.NETCore/5.0.1": {
+      "Microsoft.NETCore/5.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.0.1",
@@ -13445,7 +13618,7 @@
           "System.Globalization.Calendars": "4.0.1",
           "System.Globalization.Extensions": "4.0.1",
           "System.IO": "4.1.0",
-          "System.IO.Compression": "4.1.0",
+          "System.IO.Compression": "4.1.1",
           "System.IO.Compression.ZipFile": "4.0.1",
           "System.IO.FileSystem": "4.0.1",
           "System.IO.FileSystem.Primitives": "4.0.1",
@@ -13485,10 +13658,10 @@
           "System.Xml.XDocument": "4.0.11"
         }
       },
-      "Microsoft.NETCore.Jit/1.0.2": {
+      "Microsoft.NETCore.Jit/1.0.3": {
         "type": "package",
         "dependencies": {
-          "runtime.win7-x86.Microsoft.NETCore.Jit": "1.0.2"
+          "runtime.win7-x86.Microsoft.NETCore.Jit": "1.0.3"
         }
       },
       "Microsoft.NETCore.Platforms/1.0.1": {
@@ -13500,7 +13673,7 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.Portable.Compatibility/1.0.1": {
+      "Microsoft.NETCore.Portable.Compatibility/1.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
@@ -13536,15 +13709,15 @@
           "runtimes/aot/lib/netcore50/mscorlib.dll": {}
         }
       },
-      "Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
+      "Microsoft.NETCore.Runtime.CoreCLR/1.0.3": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore.Jit": "1.0.2",
+          "Microsoft.NETCore.Jit": "1.0.3",
           "Microsoft.NETCore.Windows.ApiSets": "1.0.1",
           "runtime.win7-x86.Microsoft.NETCore.Runtime.CoreCLR": "1.0.2"
         }
       },
-      "Microsoft.NETCore.Targets/1.0.1": {
+      "Microsoft.NETCore.Targets/1.0.2": {
         "type": "package",
         "compile": {
           "lib/netstandard1.0/_._": {}
@@ -13553,17 +13726,18 @@
           "lib/netstandard1.0/_._": {}
         }
       },
-      "Microsoft.NETCore.UniversalWindowsPlatform/5.2.0": {
+      "Microsoft.NETCore.UniversalWindowsPlatform/5.2.2": {
         "type": "package",
         "dependencies": {
-          "Microsoft.NETCore": "5.0.1",
-          "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.2",
+          "Microsoft.NETCore": "5.0.2",
+          "Microsoft.NETCore.Portable.Compatibility": "1.0.2",
+          "Microsoft.NETCore.Runtime.CoreCLR": "1.0.3",
+          "Microsoft.NETCore.Targets": "1.0.2",
           "Microsoft.Win32.Primitives": "4.0.1",
           "System.ComponentModel.EventBasedAsync": "4.0.11",
           "System.Data.Common": "4.1.0",
           "System.Diagnostics.Contracts": "4.0.1",
-          "System.Diagnostics.StackTrace": "4.0.1",
+          "System.Diagnostics.StackTrace": "4.0.2",
           "System.IO.IsolatedStorage": "4.0.1",
           "System.Net.Http.Rtc": "4.0.1",
           "System.Net.NameResolution": "4.0.0",
@@ -13835,6 +14009,20 @@
           "runtimes/aot/lib/netcore50/System.Threading.Timer.dll": {}
         }
       },
+      "runtime.native.System.IO.Compression/4.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.0.1",
+          "Microsoft.NETCore.Targets": "1.0.1",
+          "runtime.win10-x86-aot.runtime.native.System.IO.Compression": "4.0.1"
+        },
+        "compile": {
+          "lib/netstandard1.0/_._": {}
+        },
+        "runtime": {
+          "lib/netstandard1.0/_._": {}
+        }
+      },
       "runtime.native.System.Security.Cryptography/4.0.0": {
         "type": "package",
         "dependencies": {
@@ -13957,10 +14145,19 @@
           "runtimes/aot/lib/netcore50/System.Runtime.Extensions.dll": {}
         }
       },
-      "runtime.win7-x86.Microsoft.NETCore.Jit/1.0.2": {
+      "runtime.win10-x86-aot.runtime.native.System.IO.Compression/4.0.1": {
+        "type": "package",
+        "compile": {
+          "runtimes/win10-x86-aot/lib/netcore50/_._": {}
+        },
+        "runtime": {
+          "runtimes/win10-x86-aot/lib/netcore50/clrcompression.dll": {}
+        }
+      },
+      "runtime.win7-x86.Microsoft.NETCore.Jit/1.0.3": {
         "type": "package",
         "native": {
-          "runtimes/win7-x86/native/clrjit.dll": {}
+          "runtimes/win7-x86-aot/native/_._": {}
         }
       },
       "runtime.win7-x86.Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
@@ -13975,7 +14172,7 @@
           "runtimes/win7-x86-aot/native/_._": {}
         }
       },
-      "runtime.win7.System.Private.Uri/4.0.1": {
+      "runtime.win7.System.Private.Uri/4.0.2": {
         "type": "package",
         "compile": {
           "ref/netstandard/_._": {}
@@ -14181,7 +14378,7 @@
           "lib/netstandard1.3/System.Diagnostics.DiagnosticSource.dll": {}
         }
       },
-      "System.Diagnostics.StackTrace/4.0.1": {
+      "System.Diagnostics.StackTrace/4.0.2": {
         "type": "package",
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1"
@@ -14308,13 +14505,21 @@
           "lib/win8/_._": {}
         }
       },
-      "System.IO.Compression/4.1.0": {
+      "System.IO.Compression/4.1.1": {
         "type": "package",
         "dependencies": {
+          "System.Collections": "4.0.11",
+          "System.Diagnostics.Debug": "4.0.11",
           "System.IO": "4.1.0",
+          "System.Resources.ResourceManager": "4.0.1",
           "System.Runtime": "4.1.0",
+          "System.Runtime.Extensions": "4.1.0",
+          "System.Runtime.Handles": "4.0.1",
+          "System.Runtime.InteropServices": "4.1.0",
           "System.Text.Encoding": "4.0.11",
-          "System.Threading.Tasks": "4.0.11"
+          "System.Threading": "4.0.11",
+          "System.Threading.Tasks": "4.0.11",
+          "runtime.native.System.IO.Compression": "4.1.0"
         },
         "compile": {
           "ref/netcore50/System.IO.Compression.dll": {}
@@ -14822,7 +15027,7 @@
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.0.1",
           "Microsoft.NETCore.Targets": "1.0.1",
-          "runtime.win7.System.Private.Uri": "4.0.1"
+          "runtime.win7.System.Private.Uri": "4.0.2"
         },
         "compile": {
           "ref/netstandard/_._": {}
@@ -15732,23 +15937,23 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Microsoft.NETCore/5.0.1": {
-      "sha512": "1uKXBZf8zti7KJdewdIiQKeYWFuE2uH/tbGUveUIJ4f5xNMj7Qw22iF5lEyJyk9EplBJR45El2JlFznGFXkwyQ==",
+    "Microsoft.NETCore/5.0.2": {
+      "sha512": "wHb/fpL+6IxrZBAL2BwRJmj51RwYr3TVcnw5KIsxUtqLxjsqgasTbBmE9kZPAlhhljnt+m2EYMc7vcFuAhGNqA==",
       "type": "package",
-      "path": "Microsoft.NETCore/5.0.1",
+      "path": "Microsoft.NETCore/5.0.2",
       "files": [
-        "Microsoft.NETCore.5.0.1.nupkg.sha512",
+        "Microsoft.NETCore.5.0.2.nupkg.sha512",
         "Microsoft.NETCore.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt"
       ]
     },
-    "Microsoft.NETCore.Jit/1.0.2": {
-      "sha512": "Ok2vWofa6X8WD9vc4pfLHwvJz1/B6t3gOAoZcjrjrQf7lQOlNIuZIZtLn3wnWX28DuQGpPJkRlBxFj7Z5txNqw==",
+    "Microsoft.NETCore.Jit/1.0.3": {
+      "sha512": "/l8xYwtoJrFSx9zMWRClaKrgR+BTstCD1E5P90ADgiwH0GwlEqVhLoFIrsXpYj0j9vCB/fzOq7D/ZzuCbtmrTQ==",
       "type": "package",
-      "path": "Microsoft.NETCore.Jit/1.0.2",
+      "path": "Microsoft.NETCore.Jit/1.0.3",
       "files": [
-        "Microsoft.NETCore.Jit.1.0.2.nupkg.sha512",
+        "Microsoft.NETCore.Jit.1.0.3.nupkg.sha512",
         "Microsoft.NETCore.Jit.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -15768,12 +15973,12 @@
         "runtime.json"
       ]
     },
-    "Microsoft.NETCore.Portable.Compatibility/1.0.1": {
-      "sha512": "Vd+lvLcGwvkedxtKn0U8s9uR4p0Lm+0U2QvDsLaw7g4S1W4KfPDbaW+ROhhLCSOx/gMYC72/b+z+o4fqS/oxVg==",
+    "Microsoft.NETCore.Portable.Compatibility/1.0.2": {
+      "sha512": "sR4m1GQ8Tbg+Xdbf8Y8yC+LXKSUJUVe/B5vckCAU9Jd5MYf84gC1D0u2YeA72B4WjeWewCyHRB20ddA8hyLmqQ==",
       "type": "package",
-      "path": "Microsoft.NETCore.Portable.Compatibility/1.0.1",
+      "path": "Microsoft.NETCore.Portable.Compatibility/1.0.2",
       "files": [
-        "Microsoft.NETCore.Portable.Compatibility.1.0.1.nupkg.sha512",
+        "Microsoft.NETCore.Portable.Compatibility.1.0.2.nupkg.sha512",
         "Microsoft.NETCore.Portable.Compatibility.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -15850,24 +16055,24 @@
         "runtimes/aot/lib/netcore50/mscorlib.dll"
       ]
     },
-    "Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
-      "sha512": "A0x1xtTjYJWZr2DRzgfCOXgB0JkQg8twnmtTJ79wFje+IihlLbXtx6Z2AxyVokBM5ruwTedR6YdCmHk39QJdtQ==",
+    "Microsoft.NETCore.Runtime.CoreCLR/1.0.3": {
+      "sha512": "tjD5r9Lxy+MD+YRJcuds5+sT+xGHkVt2Hb5LfLZIgkFmwUewBRPm/42UXi4oxhV1OIdRtt4ymwsiuFCwT16T9w==",
       "type": "package",
-      "path": "Microsoft.NETCore.Runtime.CoreCLR/1.0.2",
+      "path": "Microsoft.NETCore.Runtime.CoreCLR/1.0.3",
       "files": [
-        "Microsoft.NETCore.Runtime.CoreCLR.1.0.2.nupkg.sha512",
+        "Microsoft.NETCore.Runtime.CoreCLR.1.0.3.nupkg.sha512",
         "Microsoft.NETCore.Runtime.CoreCLR.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "runtime.json"
       ]
     },
-    "Microsoft.NETCore.Targets/1.0.1": {
-      "sha512": "rkn+fKobF/cbWfnnfBOQHKVKIOpxMZBvlSHkqDWgBpwGDcLRduvs3D9OLGeV6GWGvVwNlVi2CBbTjuPmtHvyNw==",
+    "Microsoft.NETCore.Targets/1.0.2": {
+      "sha512": "yk4GtuNbFz2sxA5NNIp2bnOwGZVlB4U+F4gWy5YnMEKmGzzJfQ4wg7zQUx334+WMQ5PiQEuS4UuOpsW+V0PzVg==",
       "type": "package",
-      "path": "Microsoft.NETCore.Targets/1.0.1",
+      "path": "Microsoft.NETCore.Targets/1.0.2",
       "files": [
-        "Microsoft.NETCore.Targets.1.0.1.nupkg.sha512",
+        "Microsoft.NETCore.Targets.1.0.2.nupkg.sha512",
         "Microsoft.NETCore.Targets.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -15875,12 +16080,12 @@
         "runtime.json"
       ]
     },
-    "Microsoft.NETCore.UniversalWindowsPlatform/5.2.0": {
-      "sha512": "ysC0eTWxvAr0OpXqhQVYoiYnylsp/lAvL8Qp0lE6NJKaguifbCrP2J49WTWrjvayCl6YviH35hIk0EcjX8yrWg==",
+    "Microsoft.NETCore.UniversalWindowsPlatform/5.2.2": {
+      "sha512": "9UHv2YObWmcF8gqtBoDC4UW5gdHzFRtaZ5KtB9QKvCy+NC9LH1DMYyOI/ltupjVZlwYEulj3msjBXys9/QI6nw==",
       "type": "package",
-      "path": "Microsoft.NETCore.UniversalWindowsPlatform/5.2.0",
+      "path": "Microsoft.NETCore.UniversalWindowsPlatform/5.2.2",
       "files": [
-        "Microsoft.NETCore.UniversalWindowsPlatform.5.2.0.nupkg.sha512",
+        "Microsoft.NETCore.UniversalWindowsPlatform.5.2.2.nupkg.sha512",
         "Microsoft.NETCore.UniversalWindowsPlatform.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt"
@@ -16623,6 +16828,18 @@
         "runtimes/aot/lib/netcore50/System.Threading.Timer.dll"
       ]
     },
+    "runtime.native.System.IO.Compression/4.1.0": {
+      "sha512": "Ob7nvnJBox1aaB222zSVZSkf4WrebPG4qFscfK7vmD7P7NxoSxACQLtO7ytWpqXDn2wcd/+45+EAZ7xjaPip8A==",
+      "type": "package",
+      "path": "runtime.native.System.IO.Compression/4.1.0",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "lib/netstandard1.0/_._",
+        "runtime.native.System.IO.Compression.4.1.0.nupkg.sha512",
+        "runtime.native.System.IO.Compression.nuspec"
+      ]
+    },
     "runtime.native.System.Security.Cryptography/4.0.0": {
       "sha512": "2CQK0jmO6Eu7ZeMgD+LOFbNJSXHFVQbCJJkEyEwowh1SCgYnrn9W9RykMfpeeVGw7h4IBvYikzpGUlmZTUafJw==",
       "type": "package",
@@ -16732,15 +16949,52 @@
         "runtimes/win/lib/netstandard1.5/System.Runtime.Extensions.dll"
       ]
     },
-    "runtime.win7-x64.Microsoft.NETCore.Jit/1.0.2": {
-      "sha512": "Jd3q9BKO+Sun6mPXRvHZMYG0WJmnASjXUxsT5MJwBoz8xbeZRTuFTPD5RtNlKxxioCiWR/hp3mKgYjlJ4dLQsw==",
+    "runtime.win10-arm-aot.runtime.native.System.IO.Compression/4.0.1": {
+      "sha512": "fzsKrHHfrv6wpLE1sxAHcWoB9vpAyoNjxVTnBJkzeXow2ZivR1H7wdpnsoKXIIb0d2EzYrrezHeHy4gI6tqqTA==",
       "type": "package",
-      "path": "runtime.win7-x64.Microsoft.NETCore.Jit/1.0.2",
+      "path": "runtime.win10-arm-aot.runtime.native.System.IO.Compression/4.0.1",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
-        "runtime.win7-x64.Microsoft.NETCore.Jit.1.0.2.nupkg.sha512",
+        "runtime.win10-arm-aot.runtime.native.System.IO.Compression.4.0.1.nupkg.sha512",
+        "runtime.win10-arm-aot.runtime.native.System.IO.Compression.nuspec",
+        "runtimes/win10-arm-aot/lib/netcore50/clrcompression.dll"
+      ]
+    },
+    "runtime.win10-x64-aot.runtime.native.System.IO.Compression/4.0.1": {
+      "sha512": "qr2+iGSxqUjVW3eATYzV4GHN6qQOu5cDTzCGf7VZ4aaxXGv2P/XVk9BkQ6WdPCDitEdIuWmtFYIFvGdvY/qN6Q==",
+      "type": "package",
+      "path": "runtime.win10-x64-aot.runtime.native.System.IO.Compression/4.0.1",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "runtime.win10-x64-aot.runtime.native.System.IO.Compression.4.0.1.nupkg.sha512",
+        "runtime.win10-x64-aot.runtime.native.System.IO.Compression.nuspec",
+        "runtimes/win10-x64-aot/lib/netcore50/clrcompression.dll"
+      ]
+    },
+    "runtime.win10-x86-aot.runtime.native.System.IO.Compression/4.0.1": {
+      "sha512": "c3yeCSi1emskJMjeqbX6B+neZRozhYk4et/Lv/6s05Yz30jcwY2Mj5PAr7mvmlAZtP5+HLbxz+Ux+RNNM/1GUA==",
+      "type": "package",
+      "path": "runtime.win10-x86-aot.runtime.native.System.IO.Compression/4.0.1",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "runtime.win10-x86-aot.runtime.native.System.IO.Compression.4.0.1.nupkg.sha512",
+        "runtime.win10-x86-aot.runtime.native.System.IO.Compression.nuspec",
+        "runtimes/win10-x86-aot/lib/netcore50/clrcompression.dll"
+      ]
+    },
+    "runtime.win7-x64.Microsoft.NETCore.Jit/1.0.3": {
+      "sha512": "pXLZyhN1gFNVjmmZloXzGxbdZyUjkiHKpojzxUxCZ2U+T0jD6ooK3rYhwqFzlSjVKUAdQ9QNDoixxnEr3/5VWw==",
+      "type": "package",
+      "path": "runtime.win7-x64.Microsoft.NETCore.Jit/1.0.3",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "runtime.win7-x64.Microsoft.NETCore.Jit.1.0.3.nupkg.sha512",
         "runtime.win7-x64.Microsoft.NETCore.Jit.nuspec",
+        "runtimes/win7-x64-aot/native/_._",
         "runtimes/win7-x64/native/clrjit.dll"
       ]
     },
@@ -16771,15 +17025,28 @@
         "tools/crossgen.exe"
       ]
     },
-    "runtime.win7-x86.Microsoft.NETCore.Jit/1.0.2": {
-      "sha512": "DEDFKUREtfMZue7qIGNelkZqay6bpC1iTWt/ZFQ0yxnqtINXmVYiOW9ML7w/1E4WBUaPCUo4tKWasK53c063qg==",
+    "runtime.win7-x64.runtime.native.System.IO.Compression/4.0.1": {
+      "sha512": "4LLiT65shsAsGc+mUKV3vUw1SXfOaQWGWoblOYpYuZJSVkA3/LPx92M2GSYyn2sHR/XOFtY5TZmxJKgGlZOLFw==",
       "type": "package",
-      "path": "runtime.win7-x86.Microsoft.NETCore.Jit/1.0.2",
+      "path": "runtime.win7-x64.runtime.native.System.IO.Compression/4.0.1",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
-        "runtime.win7-x86.Microsoft.NETCore.Jit.1.0.2.nupkg.sha512",
+        "runtime.win7-x64.runtime.native.System.IO.Compression.4.0.1.nupkg.sha512",
+        "runtime.win7-x64.runtime.native.System.IO.Compression.nuspec",
+        "runtimes/win7-x64/native/clrcompression.dll"
+      ]
+    },
+    "runtime.win7-x86.Microsoft.NETCore.Jit/1.0.3": {
+      "sha512": "bU1EUneMeB6JltMNDCekL7nP1dluxOlnUgmAFx8EGsD6a+lgaYoDLk7V7F3H5Zpw/LeCxl5XmZqgPObGAlW7Dg==",
+      "type": "package",
+      "path": "runtime.win7-x86.Microsoft.NETCore.Jit/1.0.3",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "runtime.win7-x86.Microsoft.NETCore.Jit.1.0.3.nupkg.sha512",
         "runtime.win7-x86.Microsoft.NETCore.Jit.nuspec",
+        "runtimes/win7-x86-aot/native/_._",
         "runtimes/win7-x86/native/clrjit.dll"
       ]
     },
@@ -16810,29 +17077,42 @@
         "tools/crossgen.exe"
       ]
     },
-    "runtime.win7.System.Private.Uri/4.0.1": {
-      "sha512": "LPOuwNel9nJ+G751J/yb64zkodFzVUwYYukQ8vysjiHRBrnvsZOhIxvqKhG6od1szrBNkl8pw8VGvvcfQ/2VOA==",
+    "runtime.win7-x86.runtime.native.System.IO.Compression/4.0.1": {
+      "sha512": "3jgpS2GhE76QqeoTxCakx6jlX7EIeXvxHnFFDa03Jf++s9+EGnRD38R6GDb1ism73xo6IHe0iev7zd5y+oD3BA==",
       "type": "package",
-      "path": "runtime.win7.System.Private.Uri/4.0.1",
+      "path": "runtime.win7-x86.runtime.native.System.IO.Compression/4.0.1",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "runtime.win7-x86.runtime.native.System.IO.Compression.4.0.1.nupkg.sha512",
+        "runtime.win7-x86.runtime.native.System.IO.Compression.nuspec",
+        "runtimes/win7-x86/native/clrcompression.dll"
+      ]
+    },
+    "runtime.win7.System.Private.Uri/4.0.2": {
+      "sha512": "N0nsmkEe+e3fl28KZ9LrHQ06XvhTC4FGyWacInV90h3pmty2s0fnG0GZ41rQw8d51s+pLcTQ0dKS0eN0xESY7g==",
+      "type": "package",
+      "path": "runtime.win7.System.Private.Uri/4.0.2",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "ref/netstandard/_._",
-        "runtime.win7.System.Private.Uri.4.0.1.nupkg.sha512",
+        "runtime.win7.System.Private.Uri.4.0.2.nupkg.sha512",
         "runtime.win7.System.Private.Uri.nuspec",
         "runtimes/aot/lib/netcore50/System.Private.Uri.dll",
+        "runtimes/win/lib/netcore50/System.Private.Uri.dll",
         "runtimes/win/lib/netstandard1.0/System.Private.Uri.dll"
       ]
     },
-    "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR/1.0.2-rc4-24123-00": {
-      "sha512": "BJJJc8WZAII4g0CdBrxUilMQXstb+w8hHd1lllHku8h9NhG4u6iOmEhxa6plJ9zEA6XyAg5O1HBRSgJgJ7jAkg==",
+    "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR/1.0.2": {
+      "sha512": "0V6sq7Dg0bQPrJtm/Qw5Zu0e7gidnRPLaqUhKIkLYzVn64jkat+JnR6LcezryD3c0Wuva/MdJWYSAaOPq5V/Zw==",
       "type": "package",
-      "path": "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR/1.0.2-rc4-24123-00",
+      "path": "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR/1.0.2",
       "files": [
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "ref/netstandard1.0/_._",
-        "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR.1.0.2-rc4-24123-00.nupkg.sha512",
+        "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR.1.0.2.nupkg.sha512",
         "runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR.nuspec",
         "runtimes/win8-arm-aot/lib/netstandard1.0/_._",
         "runtimes/win8-arm-aot/native/_._",
@@ -16844,12 +17124,24 @@
         "runtimes/win8-arm/native/dbgshim.dll",
         "runtimes/win8-arm/native/mscordaccore.dll",
         "runtimes/win8-arm/native/mscordbi.dll",
-        "runtimes/win8-arm/native/mscorlib.dll",
+        "runtimes/win8-arm/native/mscorlib.ni.dll",
         "runtimes/win8-arm/native/mscorrc.debug.dll",
         "runtimes/win8-arm/native/mscorrc.dll",
         "runtimes/win8-arm/native/sos.dll",
         "tools/crossgen.exe",
         "tools/sos.dll"
+      ]
+    },
+    "runtime.win8-arm.runtime.native.System.IO.Compression/4.0.1": {
+      "sha512": "EwyUwoJJLeSqfmeZoX9nxKx8Q9pEwX5zLLgSwtdH04+TzUYxaDIaoNqH5hfhoaSl2VoDsHGbEnQ6Y5bXLcWSkA==",
+      "type": "package",
+      "path": "runtime.win8-arm.runtime.native.System.IO.Compression/4.0.1",
+      "files": [
+        "ThirdPartyNotices.txt",
+        "dotnet_library_license.txt",
+        "runtime.win8-arm.runtime.native.System.IO.Compression.4.0.1.nupkg.sha512",
+        "runtime.win8-arm.runtime.native.System.IO.Compression.nuspec",
+        "runtimes/win8-arm/native/clrcompression.dll"
       ]
     },
     "System.AppContext/4.1.0": {
@@ -17533,12 +17825,12 @@
         "lib/portable-net45+win8+wpa81/System.Diagnostics.DiagnosticSource.xml"
       ]
     },
-    "System.Diagnostics.StackTrace/4.0.1": {
-      "sha512": "6i2EbRq0lgGfiZ+FDf0gVaw9qeEU+7IS2+wbZJmFVpvVzVOgZEt0ScZtyenuBvs6iDYbGiF51bMAa0oDP/tujQ==",
+    "System.Diagnostics.StackTrace/4.0.2": {
+      "sha512": "MmP424iVWLyeW7XGtwC5NyfzsIwodFKwhW6yns3d+Sh8WFsFoPWq2cUlJJDAteapIm2qoJ8fc3VwIUroolbsEA==",
       "type": "package",
-      "path": "System.Diagnostics.StackTrace/4.0.1",
+      "path": "System.Diagnostics.StackTrace/4.0.2",
       "files": [
-        "System.Diagnostics.StackTrace.4.0.1.nupkg.sha512",
+        "System.Diagnostics.StackTrace.4.0.2.nupkg.sha512",
         "System.Diagnostics.StackTrace.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -18003,12 +18295,12 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "System.IO.Compression/4.1.0": {
-      "sha512": "TjnBS6eztThSzeSib+WyVbLzEdLKUcEHN69VtS3u8aAsSc18FU6xCZlNWWsEd8SKcXAE+y1sOu7VbU8sUeM0sg==",
+    "System.IO.Compression/4.1.1": {
+      "sha512": "ac/GG9DNsUr/grHGstCtWDoglgWr1OhL/yAZjXfpXtx52RmVVCpO52pShIDilQrD9dDZxw8zluiXEfezhPaYzg==",
       "type": "package",
-      "path": "System.IO.Compression/4.1.0",
+      "path": "System.IO.Compression/4.1.1",
       "files": [
-        "System.IO.Compression.4.1.0.nupkg.sha512",
+        "System.IO.Compression.4.1.1.nupkg.sha512",
         "System.IO.Compression.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -21774,7 +22066,7 @@
   },
   "projectFileDependencyGroups": {
     "": [
-      "Microsoft.NETCore.UniversalWindowsPlatform >= 5.2.0",
+      "Microsoft.NETCore.UniversalWindowsPlatform >= 5.2.2",
       "Win2D.uwp >= 1.18.0"
     ],
     "UAP,Version=v10.0": []

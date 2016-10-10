@@ -13,7 +13,7 @@
       xmlns:csData="using:Workstation.UI.Xaml.Data"
       x:Class="RobotApp.Views.AxisPage"
       mc:Ignorable="d"
-      d:DataContext="{d:DesignInstance vm:AxisPageViewModel, IsDesignTimeCreatable=true}">
+      d:DataContext="{d:DesignInstance vm:AxisPageViewModelDesignInstance, IsDesignTimeCreatable=True}">
 
     <Page.Resources>
         <conv:StringFormatConverter x:Key="StringFormatConverter" />
@@ -65,7 +65,7 @@
                RelativePanel.AlignLeftWithPanel="True"
                RelativePanel.AlignRightWithPanel="True"
                RelativePanel.Below="pageHeader"
-               ItemsSource="{Binding Axes, Mode=OneTime}">
+               ItemsSource="{x:Bind ViewModel.Axes, Mode=OneTime}">
             <Pivot.HeaderTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding DisplayName, Mode=OneTime}" />

@@ -32,5 +32,17 @@ namespace StatusHmi.Properties {
                 return ((string)(this["EndpointUrl"]));
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string UserNames {
+            get {
+                return ((string)(this["UserNames"]));
+            }
+            set {
+                this["UserNames"] = value;
+            }
+        }
     }
 }

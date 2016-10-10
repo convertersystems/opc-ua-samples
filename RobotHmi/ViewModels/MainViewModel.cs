@@ -1,11 +1,10 @@
 ﻿// Copyright (c) Converter Systems LLC. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using Prism.Commands;
-using RobotHmi.Services;
 using System;
 using System.Diagnostics;
 using System.Windows.Input;
+using Prism.Commands;
 
 // Step 1: Add the following namespaces.
 using Workstation.Collections;
@@ -26,20 +25,13 @@ namespace RobotHmi.ViewModels
     /// <summary>
     /// A view model for MainView.
     /// </summary>
-    public class MainViewModel : SubscriptionBase // Step 2: Add your subscription base class (which implements ISubscription and INotifyPropertyChanged).
+    [Subscription(publishingInterval: 250, keepAliveCount: 40)] // Step 2: Add a [Subscription] attribute.
+    public class MainViewModel : ViewModelBase // Step 3: Add your base class (which implements INotifyPropertyChanged).
     {
-        public MainViewModel() { } // Design instance
-
-        public MainViewModel(PLC1Service session) // Step 3: Shared PLC1Service instance provided by Unity's dependency injection.
-        {
-            this.PublishingInterval = 250; // Step 4: Adjust the publishing interval (in ms.) here.
-            session?.Subscribe(this); // Step 5: Subscribe for data change and event notifications.
-        }
-
         /// <summary>
         /// Gets or sets the value of Robot1Mode.
         /// </summary>
-        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")] // Step 6: Add a [MonitoredItem] attribute.
+        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")] // Step 4: Add a [MonitoredItem] attribute.
         public short Robot1Mode
         {
             get { return this.robot1Mode; }
@@ -147,7 +139,7 @@ namespace RobotHmi.ViewModels
                 {
                     try
                     {
-                        await this.Session.WriteAsync(new WriteRequest
+                        await UaTcpSessionClient.FromModel(this).WriteAsync(new WriteRequest
                         {
                             NodesToWrite = new[]
                             {
@@ -180,7 +172,7 @@ namespace RobotHmi.ViewModels
                 {
                     try
                     {
-                        await this.Session.WriteAsync(new WriteRequest
+                        await UaTcpSessionClient.FromModel(this).WriteAsync(new WriteRequest
                         {
                             NodesToWrite = new[]
                             {
@@ -247,7 +239,7 @@ namespace RobotHmi.ViewModels
                     try
                     {
                         // Call the method, passing the input arguments in a Variant[].
-                        var response = await this.Session.CallAsync(new CallRequest
+                        var response = await UaTcpSessionClient.FromModel(this).CallAsync(new CallRequest
                         {
                             MethodsToCall = new[]
                             {
@@ -283,6 +275,7 @@ namespace RobotHmi.ViewModels
                     this.InputA = 0d;
                     this.InputB = 0d;
                     this.Result = 0d;
+                    GC.Collect();
                 });
             }
         }

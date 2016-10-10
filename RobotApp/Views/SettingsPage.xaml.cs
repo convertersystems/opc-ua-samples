@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using RobotApp.ViewModels;
-using System.Threading.Tasks;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
@@ -19,11 +18,7 @@ namespace RobotApp.Views
             this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
         }
 
-        public SettingsPageViewModel ViewModel
-        {
-            get { return this.DataContext as SettingsPageViewModel; }
-            set { this.DataContext = value; }
-        }
+        public SettingsPageViewModel ViewModel => this.DataContext as SettingsPageViewModel;
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
