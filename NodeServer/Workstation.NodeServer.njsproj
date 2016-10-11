@@ -31,6 +31,7 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="LICENSE" />
     <Content Include="package.json" />
     <Content Include="PredefinedNodes.xml">
       <Publish>False</Publish>

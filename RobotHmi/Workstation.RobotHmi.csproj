@@ -216,6 +216,7 @@
       <SubType>Designer</SubType>
     </None>
     <AdditionalFiles Include="stylecop.json" />
+    <None Include="LICENSE" />
     <None Include="project.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -327,9 +328,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Properties\application.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="LICENSE.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common.Wpf\Workstation.Common.Wpf.csproj">

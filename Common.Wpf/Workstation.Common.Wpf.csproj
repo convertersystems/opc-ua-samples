@@ -150,9 +150,7 @@
     <AdditionalFiles Include="stylecop.json" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="LICENSE.txt" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="LICENSE" />
     <None Include="project.json" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
