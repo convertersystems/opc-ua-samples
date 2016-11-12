@@ -12,6 +12,14 @@ namespace StatusHmi
     [Subscription(publishingInterval: 500, keepAliveCount: 20)] // Step 2: Add a [Subscription] attribute.
     public class MainViewModel : ViewModelBase // Step 3: Add your base class (which implements INotifyPropertyChanged).
     {
+        private readonly UaTcpSessionClient session;
+
+        public MainViewModel(UaTcpSessionClient session)
+        {
+            this.session = session;
+            session.Subscribe(this);
+        }
+
         /// <summary>
         /// Gets the value of ServerServerStatus.
         /// </summary>
@@ -23,5 +31,13 @@ namespace StatusHmi
         }
 
         private ServerStatusDataType serverServerStatus;
+    }
+
+    internal class MainViewModelDesignInstance : MainViewModel
+    {
+        public MainViewModelDesignInstance()
+            : base(null)
+        {
+        }
     }
 }

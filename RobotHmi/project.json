@@ -6,7 +6,7 @@
     "Prism.Unity": "6.2.0",
     "Prism.Wpf": "6.2.0",
     "StyleCop.Analyzers": "1.0.0",
-    "Workstation.UaClient": "1.4.0"
+    "Workstation.UaClient": "1.4.1"
   },
   "frameworks": {
     ".NETFramework,Version=v4.6.1": {}

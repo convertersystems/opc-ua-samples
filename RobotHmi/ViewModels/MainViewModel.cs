@@ -9,6 +9,8 @@ using Prism.Commands;
 // Step 1: Add the following namespaces.
 using Workstation.Collections;
 using Workstation.ServiceModel.Ua;
+using System.Threading.Tasks;
+using RobotHmi.Services;
 
 namespace RobotHmi.ViewModels
 {
@@ -28,6 +30,15 @@ namespace RobotHmi.ViewModels
     [Subscription(publishingInterval: 250, keepAliveCount: 40)] // Step 2: Add a [Subscription] attribute.
     public class MainViewModel : ViewModelBase // Step 3: Add your base class (which implements INotifyPropertyChanged).
     {
+        private PLC1Session session;
+        private IDisposable subscriptionToken;
+
+        public MainViewModel(PLC1Session session)
+        {
+            this.session = session;
+            this.subscriptionToken = this.session?.Subscribe(this);
+        }
+
         /// <summary>
         /// Gets or sets the value of Robot1Mode.
         /// </summary>
@@ -135,11 +146,11 @@ namespace RobotHmi.ViewModels
         {
             get
             {
-                return DelegateCommand.FromAsyncHandler(async () =>
+                return new DelegateCommand(async () =>
                 {
                     try
                     {
-                        await UaTcpSessionClient.FromModel(this).WriteAsync(new WriteRequest
+                        await this.session.WriteAsync(new WriteRequest
                         {
                             NodesToWrite = new[]
                             {
@@ -150,12 +161,12 @@ namespace RobotHmi.ViewModels
                                     IndexRange = null,
                                     Value = new DataValue((short)HandOffAuto.Off)
                                 }
-                            }
+                        }
                         });
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine("Error writing to NodeId {0} : {1}", "ns=2;s=Robot1_Mode", ex);
+                        Debug.WriteLine("Error writing to NodeId {0} : {1}", "ns=2;s=Robot1_Mode", ex.Message);
                     }
                 });
             }
@@ -168,11 +179,11 @@ namespace RobotHmi.ViewModels
         {
             get
             {
-                return DelegateCommand.FromAsyncHandler(async () =>
+                return new DelegateCommand(async () =>
                 {
                     try
                     {
-                        await UaTcpSessionClient.FromModel(this).WriteAsync(new WriteRequest
+                        await this.session.WriteAsync(new WriteRequest
                         {
                             NodesToWrite = new[]
                             {
@@ -188,7 +199,7 @@ namespace RobotHmi.ViewModels
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine("Error writing to NodeId {0} : {1}", "ns=2;s=Robot1_Mode", ex);
+                        Debug.WriteLine("Error writing to NodeId {0} : {1}", "ns=2;s=Robot1_Mode", ex.Message);
                     }
                 });
             }
@@ -234,15 +245,15 @@ namespace RobotHmi.ViewModels
         {
             get
             {
-                return DelegateCommand.FromAsyncHandler(async () =>
+                return new DelegateCommand(async () =>
                 {
                     try
                     {
                         // Call the method, passing the input arguments in a Variant[].
-                        var response = await UaTcpSessionClient.FromModel(this).CallAsync(new CallRequest
+                        var response = await this.session.CallAsync(new CallRequest
                         {
                             MethodsToCall = new[]
-                            {
+                        {
                                 new CallMethodRequest
                                 {
                                     ObjectId = NodeId.Parse("ns=2;s=Robot1"),
@@ -257,7 +268,7 @@ namespace RobotHmi.ViewModels
                     }
                     catch (Exception ex)
                     {
-                        Debug.WriteLine("Error calling Robot1Multiply method: {0}", ex);
+                        Debug.WriteLine("Error calling Robot1Multiply method: {0}", ex.Message);
                     }
                 });
             }
@@ -278,6 +289,17 @@ namespace RobotHmi.ViewModels
                     GC.Collect();
                 });
             }
+        }
+    }
+
+    /// <summary>
+    /// A design instance for MainView.
+    /// </summary>
+    internal class MainViewModelDesignInstance : MainViewModel
+    {
+        public MainViewModelDesignInstance()
+            : base(null)
+        {
         }
     }
 }

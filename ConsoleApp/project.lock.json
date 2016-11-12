@@ -644,7 +644,7 @@
           "lib/net45/_._": {}
         }
       },
-      "Workstation.UaClient/1.4.0": {
+      "Workstation.UaClient/1.4.1": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.0",
@@ -1252,7 +1252,7 @@
           "lib/net45/_._": {}
         }
       },
-      "Workstation.UaClient/1.4.0": {
+      "Workstation.UaClient/1.4.1": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.0",
@@ -3898,12 +3898,12 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Workstation.UaClient/1.4.0": {
-      "sha512": "XDPGd/xP/SR0ysfTVX1fYcCHiy08qQFs4F65v8BhsDr+yvOf38dBYTTw/gY3Ue5dJ3Zz0c6Id/uhDGpOepBzrA==",
+    "Workstation.UaClient/1.4.1": {
+      "sha512": "aIGzygYqSSsueh6RNHw4EQs73/lfLm0EJhxr6I1XU1yNSpdawduKA5G1JmAijSDUGh/D8+Yaqs88ILj+UZjYCg==",
       "type": "package",
-      "path": "Workstation.UaClient/1.4.0",
+      "path": "Workstation.UaClient/1.4.1",
       "files": [
-        "Workstation.UaClient.1.4.0.nupkg.sha512",
+        "Workstation.UaClient.1.4.1.nupkg.sha512",
         "Workstation.UaClient.nuspec",
         "lib/net46/Workstation.UaClient.XML",
         "lib/net46/Workstation.UaClient.dll",
@@ -3915,7 +3915,7 @@
   "projectFileDependencyGroups": {
     "": [
       "StyleCop.Analyzers >= 1.0.0",
-      "Workstation.UaClient >= 1.4.0"
+      "Workstation.UaClient >= 1.4.1"
     ],
     ".NETFramework,Version=v4.6.1": []
   },

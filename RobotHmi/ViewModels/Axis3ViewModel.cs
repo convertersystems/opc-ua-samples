@@ -2,6 +2,8 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
+using Prism.Regions;
+using RobotHmi.Services;
 using Workstation.ServiceModel.Ua;
 
 namespace RobotHmi.ViewModels
@@ -10,8 +12,16 @@ namespace RobotHmi.ViewModels
     /// A view model for Axis3.
     /// </summary>
     [Subscription(publishingInterval: 500, keepAliveCount: 20)]
-    public class Axis3ViewModel : ViewModelBase, IAxisViewModel
+    public class Axis3ViewModel : ViewModelBase, IAxisViewModel, INavigationAware
     {
+        private PLC1Session session;
+        private IDisposable subscriptionToken;
+
+        public Axis3ViewModel(PLC1Session session)
+        {
+            this.session = session;
+        }
+
         /// <summary>
         /// Gets the value of Axis.
         /// </summary>
@@ -28,5 +38,20 @@ namespace RobotHmi.ViewModels
         /// Gets the DisplayName.
         /// </summary>
         public string DisplayName => "Axis 3";
+
+        /// <inheritdoc/>
+        public bool IsNavigationTarget(NavigationContext navigationContext) => true;
+
+        /// <inheritdoc/>
+        public void OnNavigatedTo(NavigationContext navigationContext)
+        {
+            this.subscriptionToken = this.session?.Subscribe(this);
+        }
+
+        /// <inheritdoc/>
+        public void OnNavigatedFrom(NavigationContext navigationContext)
+        {
+            this.subscriptionToken.Dispose();
+        }
     }
 }

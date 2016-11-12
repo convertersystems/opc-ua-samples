@@ -3,9 +3,9 @@
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
     "Newtonsoft.Json": "9.0.1",
     "StyleCop.Analyzers": "1.0.0",
-    "Template10": "1.1.11",
+    "Template10": "1.1.12",
     "Unity": "4.0.1",
-    "Workstation.UaClient": "1.4.0"
+    "Workstation.UaClient": "1.4.1"
   },
   "frameworks": {
     "uap10.0": {}

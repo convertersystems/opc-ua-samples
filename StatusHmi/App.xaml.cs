@@ -40,7 +40,7 @@ namespace StatusHmi
             var appCertificate = appDescription.GetCertificate();
 
             // An asynchronous function that provides the UserIdentity.
-            var userIdentityProvider = new Func<UaTcpSessionClient, Task<IUserIdentity>>(s => this.ProvideUserIdentity(s));
+            var userIdentityProvider = new Func<EndpointDescription, Task<IUserIdentity>>(ep => this.ProvideUserIdentity(ep));
 
             // Get the remote endpoint from the app.config.
             var endpointUrl = StatusHmi.Properties.Settings.Default.EndpointUrl;
@@ -48,10 +48,10 @@ namespace StatusHmi
             // Create the session client for the app.
             this.session = new UaTcpSessionClient(appDescription, appCertificate, userIdentityProvider, endpointUrl);
 
-            // Create the subscription.
-            var subscription = this.session.CreateSubscription<MainViewModel>();
+            // Create the main view model.
+            var subscription = new MainViewModel(this.session);
 
-            // Create and show the MainView.
+            // Create and show the main view.
             var view = new MainView { DataContext = subscription };
 
             view.Show();
@@ -70,16 +70,16 @@ namespace StatusHmi
         /// Shows a Sign In dialog if the Session demands a UserNameIdentity token.
         /// Requires MainWindow to derive from MahApps.Metro.Controls.MetroWindow.
         /// </summary>
-        /// <param name="session">The session client.</param>
+        /// <param name="endpoint">The remote endpoint.</param>
         /// <returns>A UserIdentity</returns>
-        private Task<IUserIdentity> ProvideUserIdentity(UaTcpSessionClient session)
+        private Task<IUserIdentity> ProvideUserIdentity(EndpointDescription endpoint)
         {
-            if (session.RemoteEndpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.Anonymous))
+            if (endpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.Anonymous))
             {
                 return Task.FromResult<IUserIdentity>(new AnonymousIdentity());
             }
 
-            if (session.RemoteEndpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.UserName))
+            if (endpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.UserName))
             {
                 var tcs = new TaskCompletionSource<IUserIdentity>();
 
@@ -88,7 +88,7 @@ namespace StatusHmi
                     {
                         var shell = (MetroWindow)this.MainWindow;
                         var userNamesDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(StatusHmi.Properties.Settings.Default.UserNames) ?? new Dictionary<string, string>();
-                        var userNameKey = $"userName_{session.RemoteEndpoint.EndpointUrl}";
+                        var userNameKey = $"userName_{endpoint.EndpointUrl}";
 
                         var initialUserName = string.Empty;
                         if (userNamesDictionary.ContainsKey(userNameKey))
@@ -97,7 +97,7 @@ namespace StatusHmi
                         }
 
                         LoginDialogSettings loginSettings = new LoginDialogSettings { InitialUsername = initialUserName };
-                        var result = await shell.ShowLoginAsync("SIGN IN", $"Connecting to server '{session.RemoteEndpoint.Server.ApplicationName}' at '{session.RemoteEndpoint.EndpointUrl}'.", loginSettings);
+                        var result = await shell.ShowLoginAsync("SIGN IN", $"Connecting to server '{endpoint.Server.ApplicationName}' at '{endpoint.EndpointUrl}'.", loginSettings);
                         if (result != null && !string.IsNullOrEmpty(result.Username))
                         {
                             userNamesDictionary[userNameKey] = result.Username;

@@ -6,7 +6,7 @@
                    xmlns:local="clr-namespace:StatusHmi"
                    xmlns:metro="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
                    mc:Ignorable="d"
-                   d:DataContext="{d:DesignInstance local:MainViewModel}"
+                   d:DataContext="{d:DesignInstance Type=local:MainViewModelDesignInstance}"
                    d:DesignHeight="600"
                    d:DesignWidth="800"
                    Title="Status"

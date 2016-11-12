@@ -12,7 +12,7 @@ namespace RobotHmi.ViewModels
         string DisplayName { get; }
     }
 
-    public class AxisViewModelDesignInstance : IAxisViewModel
+    internal class AxisViewModelDesignInstance : IAxisViewModel
     {
         public float Axis => 42.0f;
 

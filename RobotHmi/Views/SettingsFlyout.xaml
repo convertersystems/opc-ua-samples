@@ -37,7 +37,7 @@
             <TextBlock Margin="25,10"
                        Style="{DynamicResource SubheaderTextStyle}"
                        Text="Theme" />
-            <ListView Height="120"
+            <ListView Height="75"
                       Margin="25,5"
                       Background="Transparent"
                       BorderThickness="0"
@@ -48,7 +48,7 @@
                     <DataTemplate DataType="{x:Type metro2:AppTheme}">
                         <Rectangle Width="28"
                                    Height="28"
-                                   Margin="3"
+                                   Margin="2"
                                    Fill="{Binding Converter={StaticResource ThemeToBrushConverter},
                                                   Mode=OneWay}"
                                    Stroke="Black"
@@ -65,7 +65,7 @@
             <TextBlock Margin="25,10"
                        Style="{DynamicResource SubheaderTextStyle}"
                        Text="Accent" />
-            <ListView Height="120"
+            <ListView Height="145"
                       Margin="25,5"
                       Background="Transparent"
                       BorderThickness="0"
@@ -76,7 +76,7 @@
                     <DataTemplate DataType="{x:Type metro2:Accent}">
                         <Rectangle Width="28"
                                    Height="28"
-                                   Margin="3"
+                                   Margin="2"
                                    Fill="{Binding Converter={StaticResource AccentToBrushConverter},
                                                   Mode=OneWay}"
                                    Stroke="Black"

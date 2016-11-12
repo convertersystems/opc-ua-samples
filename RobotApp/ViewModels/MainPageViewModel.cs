@@ -5,6 +5,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using RobotApp.Services;
 using Template10.Mvvm;
 
 // Step 1: Add the following namespaces.
@@ -29,6 +30,15 @@ namespace RobotApp.ViewModels
     [Subscription(publishingInterval: 500, keepAliveCount: 20)] // Step 2: Add a [Subscription] attribute.
     public class MainPageViewModel : ViewModelBase // Step 3: Add your view model base class (which implements INotifyPropertyChanged).
     {
+        private PLC1Session session;
+        private IDisposable subscriptionToken;
+
+        public MainPageViewModel(PLC1Session session)
+        {
+            this.session = session;
+            this.subscriptionToken = this.session?.Subscribe(this);
+        }
+
         /// <summary>
         /// Gets or sets the value of Robot1Mode.
         /// </summary>

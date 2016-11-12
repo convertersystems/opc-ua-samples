@@ -23,6 +23,8 @@ Get the companion Visual Studio extension 'Workstation.UaBrowser' and you can:
 
 ### Releases
 
+v1.4.1 Revamped the view models to depend on a shared session client passed in the constructor. Changed some view models to subscribe when navigated to and unsubscribe when navigated away.
+
 v1.4.0 Added "Sign In" dialog to support servers that require a UserNameIdentity. NodeServer has new command line argument "--allowAnonymous" | "-a" 
 
 v1.3.0 Added StatusHmi to demonstrate the basic subscription feature.

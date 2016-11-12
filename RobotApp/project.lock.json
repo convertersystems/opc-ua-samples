@@ -2147,9 +2147,9 @@
           }
         }
       },
-      "Template10/1.1.11": {
+      "Template10/1.1.12": {
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
           "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
           "Newtonsoft.Json": "8.0.3"
         },
@@ -2195,7 +2195,7 @@
           }
         }
       },
-      "Workstation.UaClient/1.4.0": {
+      "Workstation.UaClient/1.4.1": {
         "dependencies": {
           "NETStandard.Library": "1.6.0",
           "System.Threading.Tasks.Dataflow": "4.6.0"
@@ -4438,9 +4438,9 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Template10/1.1.11": {
+      "Template10/1.1.12": {
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
           "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
           "Newtonsoft.Json": "8.0.3"
         },
@@ -4475,7 +4475,7 @@
           "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Workstation.UaClient/1.4.0": {
+      "Workstation.UaClient/1.4.1": {
         "dependencies": {
           "NETStandard.Library": "1.6.0",
           "System.Threading.Tasks.Dataflow": "4.6.0"
@@ -6757,9 +6757,9 @@
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Template10/1.1.11": {
+      "Template10/1.1.12": {
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
           "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
           "Newtonsoft.Json": "8.0.3"
         },
@@ -6794,7 +6794,7 @@
           "runtimes/win10-arm/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Workstation.UaClient/1.4.0": {
+      "Workstation.UaClient/1.4.1": {
         "dependencies": {
           "NETStandard.Library": "1.6.0",
           "System.Threading.Tasks.Dataflow": "4.6.0"
@@ -9046,9 +9046,9 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Template10/1.1.11": {
+      "Template10/1.1.12": {
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
           "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
           "Newtonsoft.Json": "8.0.3"
         },
@@ -9083,7 +9083,7 @@
           "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Workstation.UaClient/1.4.0": {
+      "Workstation.UaClient/1.4.1": {
         "dependencies": {
           "NETStandard.Library": "1.6.0",
           "System.Threading.Tasks.Dataflow": "4.6.0"
@@ -11374,9 +11374,9 @@
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Template10/1.1.11": {
+      "Template10/1.1.12": {
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
           "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
           "Newtonsoft.Json": "8.0.3"
         },
@@ -11411,7 +11411,7 @@
           "runtimes/win10-x64/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Workstation.UaClient/1.4.0": {
+      "Workstation.UaClient/1.4.1": {
         "dependencies": {
           "NETStandard.Library": "1.6.0",
           "System.Threading.Tasks.Dataflow": "4.6.0"
@@ -13663,9 +13663,9 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Template10/1.1.11": {
+      "Template10/1.1.12": {
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
           "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
           "Newtonsoft.Json": "8.0.3"
         },
@@ -13700,7 +13700,7 @@
           "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Workstation.UaClient/1.4.0": {
+      "Workstation.UaClient/1.4.1": {
         "dependencies": {
           "NETStandard.Library": "1.6.0",
           "System.Threading.Tasks.Dataflow": "4.6.0"
@@ -15991,9 +15991,9 @@
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Template10/1.1.11": {
+      "Template10/1.1.12": {
         "dependencies": {
-          "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
+          "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
           "Microsoft.Xaml.Behaviors.Uwp.Managed": "1.1.0",
           "Newtonsoft.Json": "8.0.3"
         },
@@ -16028,7 +16028,7 @@
           "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll": {}
         }
       },
-      "Workstation.UaClient/1.4.0": {
+      "Workstation.UaClient/1.4.1": {
         "dependencies": {
           "NETStandard.Library": "1.6.0",
           "System.Threading.Tasks.Dataflow": "4.6.0"
@@ -22224,12 +22224,12 @@
         "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll"
       ]
     },
-    "Template10/1.1.11": {
-      "sha512": "q8X87z/8puLV4Cazj7aQs2Cv2LqvLYvERVmiQ0iLUd4wgKc0RnD/DFmQxvyw5NKmNvOEZecuM+XbB7KdO/h+DQ==",
+    "Template10/1.1.12": {
+      "sha512": "FTvwISozoKs5syQkwaHl/s8iPts23Q+VFjTbnNnA+ad6MHqP5bOiq3ibjEXHGJkN5nSKY7FoMH4W1/aCS1n/ew==",
       "type": "package",
-      "path": "Template10/1.1.11",
+      "path": "Template10/1.1.12",
       "files": [
-        "Template10.1.1.11.nupkg.sha512",
+        "Template10.1.1.12.nupkg.sha512",
         "Template10.nuspec",
         "build/uap10.0/Template10.targets",
         "lib/uap10.0/Template10Library.dll",
@@ -22287,12 +22287,12 @@
         "runtimes/win10-x86/native/Microsoft.Graphics.Canvas.dll"
       ]
     },
-    "Workstation.UaClient/1.4.0": {
-      "sha512": "XDPGd/xP/SR0ysfTVX1fYcCHiy08qQFs4F65v8BhsDr+yvOf38dBYTTw/gY3Ue5dJ3Zz0c6Id/uhDGpOepBzrA==",
+    "Workstation.UaClient/1.4.1": {
+      "sha512": "aIGzygYqSSsueh6RNHw4EQs73/lfLm0EJhxr6I1XU1yNSpdawduKA5G1JmAijSDUGh/D8+Yaqs88ILj+UZjYCg==",
       "type": "package",
-      "path": "Workstation.UaClient/1.4.0",
+      "path": "Workstation.UaClient/1.4.1",
       "files": [
-        "Workstation.UaClient.1.4.0.nupkg.sha512",
+        "Workstation.UaClient.1.4.1.nupkg.sha512",
         "Workstation.UaClient.nuspec",
         "lib/net46/Workstation.UaClient.XML",
         "lib/net46/Workstation.UaClient.dll",
@@ -22306,9 +22306,9 @@
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.2.2",
       "Newtonsoft.Json >= 9.0.1",
       "StyleCop.Analyzers >= 1.0.0",
-      "Template10 >= 1.1.11",
+      "Template10 >= 1.1.12",
       "Unity >= 4.0.1",
-      "Workstation.UaClient >= 1.4.0"
+      "Workstation.UaClient >= 1.4.1"
     ],
     "UAP,Version=v10.0": []
   }

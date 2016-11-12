@@ -11,6 +11,7 @@ using Prism.Unity;
 using RobotHmi.Views;
 using Workstation.ServiceModel.Ua;
 using RobotHmi.ViewModels;
+using RobotHmi.Services;
 
 namespace RobotHmi
 {
@@ -31,7 +32,7 @@ namespace RobotHmi
         /// <inheritdoc/>
         public void Initialize()
         {
-            // Prepare for constructing the shared UaTcpSessionClient.
+            // Prepare for constructing the shared PLC1Session.
             var appDescription = new ApplicationDescription()
             {
                 ApplicationName = "Workstation.RobotHmi",
@@ -39,18 +40,11 @@ namespace RobotHmi
                 ApplicationType = ApplicationType.Client
             };
             var appCertificate = appDescription.GetCertificate();
-            var userIdentityProvider = new Func<UaTcpSessionClient, Task<IUserIdentity>>(((Shell)Application.Current.MainWindow).ProvideUserIdentity);
-            var discoveryUrl = Properties.Settings.Default.PLC1DiscoveryUrl;
+            var userIdentityProvider = new Func<EndpointDescription, Task<IUserIdentity>>(((Shell)Application.Current.MainWindow).ProvideUserIdentity);
+            var session = new PLC1Session(appDescription, appCertificate, userIdentityProvider);
 
             // Register the shared services with the application's dependency injection container.
-            this.container.RegisterInstance("PLC1", new UaTcpSessionClient(appDescription, appCertificate, userIdentityProvider, discoveryUrl));
-
-            // Register the subscriptions with the container using a factory method.
-            this.container.RegisterType<MainViewModel>(new InjectionFactory(c => c.Resolve<UaTcpSessionClient>("PLC1").CreateSubscription<MainViewModel>()));
-            this.container.RegisterType<Axis1ViewModel>(new InjectionFactory(c => c.Resolve<UaTcpSessionClient>("PLC1").CreateSubscription<Axis1ViewModel>()));
-            this.container.RegisterType<Axis2ViewModel>(new InjectionFactory(c => c.Resolve<UaTcpSessionClient>("PLC1").CreateSubscription<Axis2ViewModel>()));
-            this.container.RegisterType<Axis3ViewModel>(new InjectionFactory(c => c.Resolve<UaTcpSessionClient>("PLC1").CreateSubscription<Axis3ViewModel>()));
-            this.container.RegisterType<Axis4ViewModel>(new InjectionFactory(c => c.Resolve<UaTcpSessionClient>("PLC1").CreateSubscription<Axis4ViewModel>()));
+            this.container.RegisterInstance(session);
 
             // Register the views with the container using the navigation string.
             this.container.RegisterTypeForNavigation<MainView>("RobotHmi.Views.MainView");

@@ -84,16 +84,16 @@ namespace RobotHmi.Views
         /// <summary>
         /// Show a Sign In dialog if the Session demands a UserNameIdentity token.
         /// </summary>
-        /// <param name="session">The session client.</param>
+        /// <param name="endpoint">The remote endpoint.</param>
         /// <returns>A UserIdentity</returns>
-        public Task<IUserIdentity> ProvideUserIdentity(UaTcpSessionClient session)
+        public Task<IUserIdentity> ProvideUserIdentity(EndpointDescription endpoint)
         {
-            if (session.RemoteEndpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.Anonymous))
+            if (endpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.Anonymous))
             {
                 return Task.FromResult<IUserIdentity>(new AnonymousIdentity());
             }
 
-            if (session.RemoteEndpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.UserName))
+            if (endpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.UserName))
             {
                 var tcs = new TaskCompletionSource<IUserIdentity>();
 
@@ -101,7 +101,7 @@ namespace RobotHmi.Views
                     async () =>
                     {
                         var userNamesDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(RobotHmi.Properties.Settings.Default.UserNames) ?? new Dictionary<string, string>();
-                        var userNameKey = $"userName_{session.RemoteEndpoint.EndpointUrl}";
+                        var userNameKey = $"userName_{endpoint.EndpointUrl}";
 
                         var initialUserName = string.Empty;
                         if (userNamesDictionary.ContainsKey(userNameKey))
@@ -110,7 +110,7 @@ namespace RobotHmi.Views
                         }
 
                         LoginDialogSettings loginSettings = new LoginDialogSettings { InitialUsername = initialUserName };
-                        var result = await this.ShowLoginAsync("SIGN IN", $"Connecting to server '{session.RemoteEndpoint.Server.ApplicationName}' at '{session.RemoteEndpoint.EndpointUrl}'.", loginSettings);
+                        var result = await this.ShowLoginAsync("SIGN IN", $"Connecting to server '{endpoint.Server.ApplicationName}' at '{endpoint.EndpointUrl}'.", loginSettings);
                         if (result != null && !string.IsNullOrEmpty(result.Username))
                         {
                             userNamesDictionary[userNameKey] = result.Username;

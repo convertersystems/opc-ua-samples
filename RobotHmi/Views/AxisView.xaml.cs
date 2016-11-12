@@ -55,7 +55,6 @@ namespace RobotHmi.Views
         /// <inheritdoc/>
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
-            this.DataContext = null; // allows viewmodel to be garbage collected.
         }
     }
 }

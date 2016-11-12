@@ -15,11 +15,11 @@ namespace RobotApp.Views
             this.InitializeComponent();
         }
 
-        public UserIdentityDialog(UaTcpSessionClient session)
+        public UserIdentityDialog(EndpointDescription endpoint)
             : this()
         {
-            this.userNameKey = $"userName_{session.RemoteEndpoint.EndpointUrl}";
-            this.body.Text = $"Connecting to server '{session.RemoteEndpoint.Server.ApplicationName}' at '{session.RemoteEndpoint.EndpointUrl}' ";
+            this.userNameKey = $"userName_{endpoint.EndpointUrl}";
+            this.body.Text = $"Connecting to server '{endpoint.Server.ApplicationName}' at '{endpoint.EndpointUrl}' ";
         }
 
         public IUserIdentity UserIdentity { get; private set; }
