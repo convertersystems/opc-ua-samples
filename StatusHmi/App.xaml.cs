@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using System.Windows;
 using MahApps.Metro.Controls;
@@ -28,25 +29,17 @@ namespace StatusHmi
             this.eventlistener = new DebugEventListener();
             this.eventlistener.EnableEvents(Workstation.ServiceModel.Ua.EventSource.Log, EventLevel.Informational);
 
-            // Describe this app.
-            var appDescription = new ApplicationDescription()
-            {
-                ApplicationName = "Workstation.StatusHmi",
-                ApplicationUri = $"urn:{System.Net.Dns.GetHostName()}:Workstation.StatusHmi",
-                ApplicationType = ApplicationType.Client
-            };
-
-            // Get (or create) the app's X509Certificate.
-            var appCertificate = appDescription.GetCertificate();
-
-            // An asynchronous function that provides the UserIdentity.
-            var userIdentityProvider = new Func<EndpointDescription, Task<IUserIdentity>>(ep => this.ProvideUserIdentity(ep));
-
-            // Get the remote endpoint from the app.config.
-            var endpointUrl = StatusHmi.Properties.Settings.Default.EndpointUrl;
-
             // Create the session client for the app.
-            this.session = new UaTcpSessionClient(appDescription, appCertificate, userIdentityProvider, endpointUrl);
+            this.session = new UaTcpSessionClient(
+                new ApplicationDescription()
+                {
+                    ApplicationName = "Workstation.StatusHmi",
+                    ApplicationUri = $"urn:{System.Net.Dns.GetHostName()}:Workstation.StatusHmi",
+                    ApplicationType = ApplicationType.Client
+                },
+                this.ProvideApplicationCertificate,
+                this.ProvideUserIdentity,
+                StatusHmi.Properties.Settings.Default.EndpointUrl);
 
             // Create the main view model.
             var subscription = new MainViewModel(this.session);
@@ -67,7 +60,17 @@ namespace StatusHmi
         }
 
         /// <summary>
-        /// Shows a Sign In dialog if the Session demands a UserNameIdentity token.
+        /// Provides the application's certificate.
+        /// </summary>
+        /// <param name="applicationDescription">The application's description.</param>
+        /// <returns>A UserIdentity</returns>
+        private Task<X509Certificate2> ProvideApplicationCertificate(ApplicationDescription applicationDescription)
+        {
+            return Task.FromResult(applicationDescription.GetCertificate(createIfNotFound: true));
+        }
+
+        /// <summary>
+        /// Shows a Sign In dialog if the remote endpoint demands a UserNameIdentity token.
         /// Requires MainWindow to derive from MahApps.Metro.Controls.MetroWindow.
         /// </summary>
         /// <param name="endpoint">The remote endpoint.</param>

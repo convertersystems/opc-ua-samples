@@ -618,12 +618,12 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Threading.Tasks.Dataflow/4.6.0": {
+      "System.Threading.Tasks.Dataflow/4.7.0": {
         "compile": {
-          "lib/netstandard1.1/System.Threading.Tasks.Dataflow.dll": {}
+          "lib/portable-net45+win8+wpa81/System.Threading.Tasks.Dataflow.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.1/System.Threading.Tasks.Dataflow.dll": {}
+          "lib/portable-net45+win8+wpa81/System.Threading.Tasks.Dataflow.dll": {}
         }
       },
       "System.Threading.Timer/4.0.1": {
@@ -671,10 +671,10 @@
           "lib/net45/Microsoft.Practices.Unity.dll": {}
         }
       },
-      "Workstation.UaClient/1.4.1": {
+      "Workstation.UaClient/1.4.2": {
         "dependencies": {
           "NETStandard.Library": "1.6.0",
-          "System.Threading.Tasks.Dataflow": "4.6.0"
+          "System.Threading.Tasks.Dataflow": "4.7.0"
         },
         "compile": {
           "lib/net46/Workstation.UaClient.dll": {}
@@ -1252,12 +1252,12 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Threading.Tasks.Dataflow/4.6.0": {
+      "System.Threading.Tasks.Dataflow/4.7.0": {
         "compile": {
-          "lib/netstandard1.1/System.Threading.Tasks.Dataflow.dll": {}
+          "lib/portable-net45+win8+wpa81/System.Threading.Tasks.Dataflow.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.1/System.Threading.Tasks.Dataflow.dll": {}
+          "lib/portable-net45+win8+wpa81/System.Threading.Tasks.Dataflow.dll": {}
         }
       },
       "System.Threading.Timer/4.0.1": {
@@ -1305,10 +1305,10 @@
           "lib/net45/Microsoft.Practices.Unity.dll": {}
         }
       },
-      "Workstation.UaClient/1.4.1": {
+      "Workstation.UaClient/1.4.2": {
         "dependencies": {
           "NETStandard.Library": "1.6.0",
-          "System.Threading.Tasks.Dataflow": "4.6.0"
+          "System.Threading.Tasks.Dataflow": "4.7.0"
         },
         "compile": {
           "lib/net46/Workstation.UaClient.dll": {}
@@ -3352,6 +3352,7 @@
     "System.Security.Cryptography.Algorithms/4.2.0": {
       "sha512": "8JQFxbLVdrtIOKMDN38Fn0GWnqYZw/oMlwOUG/qz1jqChvyZlnUmu+0s7wLx7JYua/nAXoESpHA3iw11QFWhXg==",
       "type": "package",
+      "path": "System.Security.Cryptography.Algorithms/4.2.0",
       "files": [
         "System.Security.Cryptography.Algorithms.4.2.0.nupkg.sha512",
         "System.Security.Cryptography.Algorithms.nuspec",
@@ -3389,6 +3390,7 @@
     "System.Security.Cryptography.Encoding/4.0.0": {
       "sha512": "FbKgE5MbxSQMPcSVRgwM6bXN3GtyAh04NkV8E5zKCBE26X0vYW0UtTa2FIgkH33WVqBVxRgxljlVYumWtU+HcQ==",
       "type": "package",
+      "path": "System.Security.Cryptography.Encoding/4.0.0",
       "files": [
         "System.Security.Cryptography.Encoding.4.0.0.nupkg.sha512",
         "System.Security.Cryptography.Encoding.nuspec",
@@ -3427,6 +3429,7 @@
     "System.Security.Cryptography.Primitives/4.0.0": {
       "sha512": "Wkd7QryWYjkQclX0bngpntW5HSlMzeJU24UaLJQ7YTfI8ydAVAaU2J+HXLLABOVJlKTVvAeL0Aj39VeTe7L+oA==",
       "type": "package",
+      "path": "System.Security.Cryptography.Primitives/4.0.0",
       "files": [
         "System.Security.Cryptography.Primitives.4.0.0.nupkg.sha512",
         "System.Security.Cryptography.Primitives.nuspec",
@@ -3453,6 +3456,7 @@
     "System.Security.Cryptography.X509Certificates/4.1.0": {
       "sha512": "4HEfsQIKAhA1+ApNn729Gi09zh+lYWwyIuViihoMDWp1vQnEkL2ct7mAbhBlLYm+x/L4Rr/pyGge1lIY635e0w==",
       "type": "package",
+      "path": "System.Security.Cryptography.X509Certificates/4.1.0",
       "files": [
         "System.Security.Cryptography.X509Certificates.4.1.0.nupkg.sha512",
         "System.Security.Cryptography.X509Certificates.nuspec",
@@ -3851,19 +3855,21 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "System.Threading.Tasks.Dataflow/4.6.0": {
-      "sha512": "2hRjGu2r2jxRZ55wmcHO/WbdX+YAOz9x6FE8xqkHZgPaoFMKQZRe9dk8xTZIas8fRjxRmzawnTEWIrhlM+Un7w==",
+    "System.Threading.Tasks.Dataflow/4.7.0": {
+      "sha512": "wcKLDI8tN5KpcMcTQwXfcLHrFdfINIxDBOZS3rE8QqOds/0fRhCkR+IEfQokxT7s/Yluqk+LG/ZqZdQmA/xgCw==",
       "type": "package",
-      "path": "System.Threading.Tasks.Dataflow/4.6.0",
+      "path": "System.Threading.Tasks.Dataflow/4.7.0",
       "files": [
-        "System.Threading.Tasks.Dataflow.4.6.0.nupkg.sha512",
+        "System.Threading.Tasks.Dataflow.4.7.0.nupkg.sha512",
         "System.Threading.Tasks.Dataflow.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/System.Threading.Tasks.Dataflow.XML",
         "lib/netstandard1.0/System.Threading.Tasks.Dataflow.dll",
         "lib/netstandard1.1/System.Threading.Tasks.Dataflow.XML",
-        "lib/netstandard1.1/System.Threading.Tasks.Dataflow.dll"
+        "lib/netstandard1.1/System.Threading.Tasks.Dataflow.dll",
+        "lib/portable-net45+win8+wpa81/System.Threading.Tasks.Dataflow.XML",
+        "lib/portable-net45+win8+wpa81/System.Threading.Tasks.Dataflow.dll"
       ]
     },
     "System.Threading.Timer/4.0.1": {
@@ -4083,12 +4089,12 @@
         "package/services/metadata/core-properties/924820f073a54dfda4a033e3efb68c3c.psmdcp"
       ]
     },
-    "Workstation.UaClient/1.4.1": {
-      "sha512": "aIGzygYqSSsueh6RNHw4EQs73/lfLm0EJhxr6I1XU1yNSpdawduKA5G1JmAijSDUGh/D8+Yaqs88ILj+UZjYCg==",
+    "Workstation.UaClient/1.4.2": {
+      "sha512": "iGJm5BXnND8YmG93W64TGJgL81tiWxlwF4AiBz4OqZ1Jb++dby3qCYqj9iTT0T94i4Cn0XulWkwPDQBaOH3D6w==",
       "type": "package",
-      "path": "Workstation.UaClient/1.4.1",
+      "path": "Workstation.UaClient/1.4.2",
       "files": [
-        "Workstation.UaClient.1.4.1.nupkg.sha512",
+        "Workstation.UaClient.1.4.2.nupkg.sha512",
         "Workstation.UaClient.nuspec",
         "lib/net46/Workstation.UaClient.XML",
         "lib/net46/Workstation.UaClient.dll",
@@ -4105,7 +4111,7 @@
       "Prism.Unity >= 6.2.0",
       "Prism.Wpf >= 6.2.0",
       "StyleCop.Analyzers >= 1.0.0",
-      "Workstation.UaClient >= 1.4.1"
+      "Workstation.UaClient >= 1.4.2"
     ],
     ".NETFramework,Version=v4.6.1": []
   }

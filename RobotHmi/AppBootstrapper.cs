@@ -34,6 +34,12 @@ namespace RobotHmi
         }
 
         /// <inheritdoc/>
+        protected override void ConfigureContainer()
+        {
+            base.ConfigureContainer();
+        }
+
+        /// <inheritdoc/>
         protected override DependencyObject CreateShell()
         {
             // Creates the Shell window.

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Graphics.Canvas;
+using Microsoft.Graphics.Canvas.Geometry;
 using Microsoft.Graphics.Canvas.UI.Xaml;
 using System;
 using System.Collections;
@@ -254,56 +255,58 @@ namespace Workstation.UI.Xaml.Controls
                     return;
                 }
 
-                var p0 = default(Vector2);
-                var p1 = default(Vector2);
-
-                foreach (var item in this.ItemsSource)
+                using (var builder = new CanvasPathBuilder(ds.Device))
                 {
-                    if (item == null)
+                    foreach (var item in this.ItemsSource)
                     {
-                        continue;
+                        if (item == null)
+                        {
+                            continue;
+                        }
+
+                        var time = this.timeGetter(item);
+                        var tick = time.Ticks;
+                        if (tick >= startDrawingTicks)
+                        {
+                            if (tick > endDrawingTicks)
+                            {
+                                break;
+                            }
+
+                            var value = this.valueGetter(item).ToDouble(null);
+                            if (isEmpty)
+                            {
+                                builder.BeginFigure((float)(tick - startTicks) / rangeTicks, (float)value);
+                                isEmpty = false;
+                            }
+                            else
+                            {
+                                builder.AddLine((float)(tick - startTicks) / rangeTicks, (float)value);
+                            }
+
+                            if (maxValue < value)
+                            {
+                                maxValue = value;
+                            }
+
+                            if (minValue > value)
+                            {
+                                minValue = value;
+                            }
+                        }
                     }
 
-                    var time = this.timeGetter(item);
-                    var tick = time.Ticks;
-                    if (tick >= startDrawingTicks)
+                    builder.EndFigure(CanvasFigureLoop.Open);
+
+                    if (this.AutoRange && !isEmpty)
                     {
-                        if (tick > endDrawingTicks)
-                        {
-                            break;
-                        }
-
-                        var value = this.valueGetter(item).ToDouble(null);
-                        if (isEmpty)
-                        {
-                            //context.BeginFigure(, false, false);
-                            p1 = matrix.Transform(new Point((double)(tick - startTicks) / rangeTicks, value)).ToVector2();
-                            isEmpty = false;
-                        }
-                        else
-                        {
-                            //context.LineTo(new Point((double)(tick - startTicks) / rangeTicks, value), true, true);
-                            p0 = p1;
-                            p1 = matrix.Transform(new Point((double)(tick - startTicks) / rangeTicks, value)).ToVector2();
-                            ds.DrawLine(p0, p1, penColor, penThickness);
-                        }
-
-                        if (maxValue < value)
-                        {
-                            maxValue = value;
-                        }
-
-                        if (minValue > value)
-                        {
-                            minValue = value;
-                        }
+                        this.MaxValue = maxValue;
+                        this.MinValue = minValue;
                     }
-                }
 
-                if (this.AutoRange && !isEmpty)
-                {
-                    this.MaxValue = maxValue;
-                    this.MinValue = minValue;
+                    var geo = CanvasGeometry.CreatePath(builder);
+                    var m = new Matrix3x2((float)matrix.M11, (float)matrix.M12, (float)matrix.M21, (float)matrix.M22, (float)matrix.OffsetX, (float)matrix.OffsetY);
+                    ds.DrawGeometry(geo.Transform(m), penColor, penThickness);
                 }
             }
             catch

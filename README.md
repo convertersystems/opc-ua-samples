@@ -1,7 +1,7 @@
 ![Workstation][1] ![NodeServer][2]
 
 # opc-ua-samples
-*New!* Supports Universal Windows Platform (UWP) and Windows Presentation Framework (WPF) applications.
+Supports Universal Windows Platform (UWP) and Windows Presentation Framework (WPF) applications.
 
 Build a free HMI using OPC Unified Architecture and Visual Studio. With this library, your app can browse, read, write and subscribe to the live data published by the OPC UA servers on your network.
 
@@ -22,6 +22,8 @@ Get the companion Visual Studio extension 'Workstation.UaBrowser' and you can:
 2. Node.js Tools for Visual Studio version 1.1 or higher - http://aka.ms/explorentvs 
 
 ### Releases
+
+v1.4.2 Upgraded Trendline control for UWP. Adjusted UaTcpSessionClient constructors to use an async certificate provider. 
 
 v1.4.1 Revamped the view models to depend on a shared session client passed in the constructor. Changed some view models to subscribe when navigated to and unsubscribe when navigated away.
 

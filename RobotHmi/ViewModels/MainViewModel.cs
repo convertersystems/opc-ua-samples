@@ -5,12 +5,9 @@ using System;
 using System.Diagnostics;
 using System.Windows.Input;
 using Prism.Commands;
-
-// Step 1: Add the following namespaces.
-using Workstation.Collections;
-using Workstation.ServiceModel.Ua;
-using System.Threading.Tasks;
 using RobotHmi.Services;
+using Workstation.Collections; // Step 1: Add these namespaces
+using Workstation.ServiceModel.Ua;
 
 namespace RobotHmi.ViewModels
 {
@@ -30,7 +27,7 @@ namespace RobotHmi.ViewModels
     [Subscription(publishingInterval: 250, keepAliveCount: 40)] // Step 2: Add a [Subscription] attribute.
     public class MainViewModel : ViewModelBase // Step 3: Add your base class (which implements INotifyPropertyChanged).
     {
-        private PLC1Session session;
+        private UaTcpSessionClient session;
         private IDisposable subscriptionToken;
 
         public MainViewModel(PLC1Session session)

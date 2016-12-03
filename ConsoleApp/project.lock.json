@@ -602,13 +602,13 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Threading.Tasks.Dataflow/4.6.0": {
+      "System.Threading.Tasks.Dataflow/4.7.0": {
         "type": "package",
         "compile": {
-          "lib/netstandard1.1/System.Threading.Tasks.Dataflow.dll": {}
+          "lib/portable-net45+win8+wpa81/System.Threading.Tasks.Dataflow.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.1/System.Threading.Tasks.Dataflow.dll": {}
+          "lib/portable-net45+win8+wpa81/System.Threading.Tasks.Dataflow.dll": {}
         }
       },
       "System.Threading.Timer/4.0.1": {
@@ -644,11 +644,11 @@
           "lib/net45/_._": {}
         }
       },
-      "Workstation.UaClient/1.4.1": {
+      "Workstation.UaClient/1.4.2": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.0",
-          "System.Threading.Tasks.Dataflow": "4.6.0"
+          "System.Threading.Tasks.Dataflow": "4.7.0"
         },
         "compile": {
           "lib/net46/Workstation.UaClient.dll": {}
@@ -1210,13 +1210,13 @@
           "lib/net45/_._": {}
         }
       },
-      "System.Threading.Tasks.Dataflow/4.6.0": {
+      "System.Threading.Tasks.Dataflow/4.7.0": {
         "type": "package",
         "compile": {
-          "lib/netstandard1.1/System.Threading.Tasks.Dataflow.dll": {}
+          "lib/portable-net45+win8+wpa81/System.Threading.Tasks.Dataflow.dll": {}
         },
         "runtime": {
-          "lib/netstandard1.1/System.Threading.Tasks.Dataflow.dll": {}
+          "lib/portable-net45+win8+wpa81/System.Threading.Tasks.Dataflow.dll": {}
         }
       },
       "System.Threading.Timer/4.0.1": {
@@ -1252,11 +1252,11 @@
           "lib/net45/_._": {}
         }
       },
-      "Workstation.UaClient/1.4.1": {
+      "Workstation.UaClient/1.4.2": {
         "type": "package",
         "dependencies": {
           "NETStandard.Library": "1.6.0",
-          "System.Threading.Tasks.Dataflow": "4.6.0"
+          "System.Threading.Tasks.Dataflow": "4.7.0"
         },
         "compile": {
           "lib/net46/Workstation.UaClient.dll": {}
@@ -3694,19 +3694,21 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "System.Threading.Tasks.Dataflow/4.6.0": {
-      "sha512": "2hRjGu2r2jxRZ55wmcHO/WbdX+YAOz9x6FE8xqkHZgPaoFMKQZRe9dk8xTZIas8fRjxRmzawnTEWIrhlM+Un7w==",
+    "System.Threading.Tasks.Dataflow/4.7.0": {
+      "sha512": "wcKLDI8tN5KpcMcTQwXfcLHrFdfINIxDBOZS3rE8QqOds/0fRhCkR+IEfQokxT7s/Yluqk+LG/ZqZdQmA/xgCw==",
       "type": "package",
-      "path": "System.Threading.Tasks.Dataflow/4.6.0",
+      "path": "System.Threading.Tasks.Dataflow/4.7.0",
       "files": [
-        "System.Threading.Tasks.Dataflow.4.6.0.nupkg.sha512",
+        "System.Threading.Tasks.Dataflow.4.7.0.nupkg.sha512",
         "System.Threading.Tasks.Dataflow.nuspec",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/netstandard1.0/System.Threading.Tasks.Dataflow.XML",
         "lib/netstandard1.0/System.Threading.Tasks.Dataflow.dll",
         "lib/netstandard1.1/System.Threading.Tasks.Dataflow.XML",
-        "lib/netstandard1.1/System.Threading.Tasks.Dataflow.dll"
+        "lib/netstandard1.1/System.Threading.Tasks.Dataflow.dll",
+        "lib/portable-net45+win8+wpa81/System.Threading.Tasks.Dataflow.XML",
+        "lib/portable-net45+win8+wpa81/System.Threading.Tasks.Dataflow.dll"
       ]
     },
     "System.Threading.Timer/4.0.1": {
@@ -3898,12 +3900,12 @@
         "ref/xamarinwatchos10/_._"
       ]
     },
-    "Workstation.UaClient/1.4.1": {
-      "sha512": "aIGzygYqSSsueh6RNHw4EQs73/lfLm0EJhxr6I1XU1yNSpdawduKA5G1JmAijSDUGh/D8+Yaqs88ILj+UZjYCg==",
+    "Workstation.UaClient/1.4.2": {
+      "sha512": "iGJm5BXnND8YmG93W64TGJgL81tiWxlwF4AiBz4OqZ1Jb++dby3qCYqj9iTT0T94i4Cn0XulWkwPDQBaOH3D6w==",
       "type": "package",
-      "path": "Workstation.UaClient/1.4.1",
+      "path": "Workstation.UaClient/1.4.2",
       "files": [
-        "Workstation.UaClient.1.4.1.nupkg.sha512",
+        "Workstation.UaClient.1.4.2.nupkg.sha512",
         "Workstation.UaClient.nuspec",
         "lib/net46/Workstation.UaClient.XML",
         "lib/net46/Workstation.UaClient.dll",
@@ -3915,7 +3917,7 @@
   "projectFileDependencyGroups": {
     "": [
       "StyleCop.Analyzers >= 1.0.0",
-      "Workstation.UaClient >= 1.4.1"
+      "Workstation.UaClient >= 1.4.2"
     ],
     ".NETFramework,Version=v4.6.1": []
   },

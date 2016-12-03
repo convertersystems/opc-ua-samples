@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
@@ -23,6 +24,81 @@ namespace RobotHmi
         private AppBootstrapper bootstrapper;
         private EventListener eventlistener;
 
+        /// <summary>
+        /// Gets the current instance of the local application.
+        /// </summary>
+        public static new App Current => (App)Application.Current;
+
+        /// <summary>
+        /// Gets the <see cref="ApplicationDescription"/> of the local application.
+        /// </summary>
+        public ApplicationDescription ApplicationDescription { get; } = new ApplicationDescription
+        {
+            ApplicationName = "Workstation.RobotHmi",
+            ApplicationUri = $"urn:{System.Net.Dns.GetHostName()}:Workstation.RobotHmi",
+            ApplicationType = ApplicationType.Client
+        };
+
+        /// <summary>
+        /// Provides the application's certificate.
+        /// </summary>
+        /// <param name="applicationDescription">The application's description.</param>
+        /// <returns>the X509Certificate2</returns>
+        public Task<X509Certificate2> ProvideApplicationCertificate(ApplicationDescription applicationDescription)
+        {
+            return Task.FromResult(applicationDescription.GetCertificate(createIfNotFound: true));
+        }
+
+        /// <summary>
+        /// Show a Sign In dialog if the remote endpoint demands a UserNameIdentity token.
+        /// Requires MainWindow to derive from MahApps.Metro.Controls.MetroWindow.
+        /// </summary>
+        /// <param name="endpoint">The remote endpoint.</param>
+        /// <returns>A UserIdentity</returns>
+        public Task<IUserIdentity> ProvideUserIdentity(EndpointDescription endpoint)
+        {
+            if (endpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.Anonymous))
+            {
+                return Task.FromResult<IUserIdentity>(new AnonymousIdentity());
+            }
+
+            if (endpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.UserName))
+            {
+                var tcs = new TaskCompletionSource<IUserIdentity>();
+
+                this.Dispatcher.InvokeAsync(
+                    async () =>
+                    {
+                        var shell = (MetroWindow)this.MainWindow;
+                        var userNamesDictionary = JsonConvert.DeserializeObject<Dictionary<string, string>>(RobotHmi.Properties.Settings.Default.UserNames) ?? new Dictionary<string, string>();
+                        var userNameKey = $"userName_{endpoint.EndpointUrl}";
+
+                        var initialUserName = string.Empty;
+                        if (userNamesDictionary.ContainsKey(userNameKey))
+                        {
+                            initialUserName = userNamesDictionary[userNameKey];
+                        }
+
+                        LoginDialogSettings loginSettings = new LoginDialogSettings { InitialUsername = initialUserName };
+                        var result = await shell.ShowLoginAsync("SIGN IN", $"Connecting to server '{endpoint.Server.ApplicationName}' at '{endpoint.EndpointUrl}'.", loginSettings);
+                        if (result != null && !string.IsNullOrEmpty(result.Username))
+                        {
+                            userNamesDictionary[userNameKey] = result.Username;
+                            RobotHmi.Properties.Settings.Default.UserNames = JsonConvert.SerializeObject(userNamesDictionary);
+                            RobotHmi.Properties.Settings.Default.Save();
+
+                            tcs.TrySetResult(new UserNameIdentity(result.Username, result.Password));
+                        }
+                        tcs.TrySetResult(new AnonymousIdentity());
+                    },
+                    DispatcherPriority.ApplicationIdle);
+                return tcs.Task;
+            }
+
+            throw new NotImplementedException("ProvideUserIdentity supports only UserName and Anonymous identity, for now.");
+        }
+
+        /// <inheritdoc/>
         protected override void OnStartup(StartupEventArgs e)
         {
 #if DEBUG
@@ -39,6 +115,7 @@ namespace RobotHmi
             this.bootstrapper.Run();
         }
 
+        /// <inheritdoc/>
         protected override void OnExit(ExitEventArgs e)
         {
             this.bootstrapper?.Dispose();

@@ -4,6 +4,7 @@
 using System;
 using System.Diagnostics.Tracing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
@@ -43,6 +44,21 @@ namespace RobotApp
             ServiceLocator.SetLocatorProvider(() => locator);
         }
 
+        /// <summary>
+        /// Gets the current instance of the local application.
+        /// </summary>
+        public static new App Current => (App)Application.Current;
+
+        /// <summary>
+        /// Gets the <see cref="ApplicationDescription"/> of the local application.
+        /// </summary>
+        public ApplicationDescription ApplicationDescription { get; } = new ApplicationDescription
+        {
+            ApplicationName = "Workstation.RobotApp",
+            ApplicationUri = $"urn:{System.Net.Dns.GetHostName()}:Workstation.RobotApp",
+            ApplicationType = ApplicationType.Client
+        };
+
         public override async Task OnInitializeAsync(IActivatedEventArgs args)
         {
             if (Window.Current.Content as ModalDialog == null)
@@ -64,19 +80,8 @@ namespace RobotApp
 
         public override Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
-            // Prepare for constructing the shared PLC1Session.
-            var appDescription = new ApplicationDescription()
-            {
-                ApplicationName = "Workstation.RobotApp",
-                ApplicationUri = $"urn:{System.Net.Dns.GetHostName()}:Workstation.RobotApp",
-                ApplicationType = ApplicationType.Client
-            };
-            var appCertificate = appDescription.GetCertificate();
-            var userIdentityProvider = new Func<EndpointDescription, Task<IUserIdentity>>(ep => this.ProvideUserIdentity(ep));
-            var session = new PLC1Session(appDescription, appCertificate, userIdentityProvider);
-
-            // Register shared services with the application's dependency injection container.
-            this.container.RegisterInstance(session);
+            // Register the shared PLC1Session with the application's dependency injection container.
+            this.container.RegisterInstance(new PLC1Session());
 
             // Register view models with the container using the name of the view.
             this.container.RegisterType<INavigable, MainPageViewModel>(nameof(MainPage), new ContainerControlledLifetimeManager());
@@ -108,7 +113,22 @@ namespace RobotApp
             return this.container.Resolve<INavigable>(page.GetType().Name);
         }
 
-        private Task<IUserIdentity> ProvideUserIdentity(EndpointDescription endpoint)
+        /// <summary>
+        /// Provides the application's certificate.
+        /// </summary>
+        /// <param name="applicationDescription">The application's description.</param>
+        /// <returns>An X509Certificate2</returns>
+        public Task<X509Certificate2> ProvideApplicationCertificate(ApplicationDescription applicationDescription)
+        {
+            return Task.FromResult(applicationDescription.GetCertificate(createIfNotFound: true));
+        }
+
+        /// <summary>
+        /// Show a Sign In dialog if the remote endpoint demands a UserNameIdentity token.
+        /// </summary>
+        /// <param name="endpoint">The remote endpoint.</param>
+        /// <returns>A UserIdentity</returns>
+        public Task<IUserIdentity> ProvideUserIdentity(EndpointDescription endpoint)
         {
             if (endpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.Anonymous))
             {
