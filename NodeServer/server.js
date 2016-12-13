@@ -25,8 +25,8 @@ var path = require("path");
 var pjson = require('./package.json');
 var homedir = require("os").homedir();
 var appdatalocal = path.join(homedir, "/AppData/Local/", pjson.name);
-var server_certificate_file = path.join(appdatalocal, "/PKI/own/certs/server.der");
-var server_certificate_privatekey_file = path.join(appdatalocal, "/PKI/own/private/server.pem");
+var server_certificate_file = "./certificates/server_selfsigned_cert_2048.pem";
+var server_certificate_privatekey_file = "./certificates/server_key_2048.pem";
 
 var port = parseInt(pjson.config.port) || 26543;
 

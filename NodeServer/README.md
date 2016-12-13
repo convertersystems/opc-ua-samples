@@ -5,6 +5,12 @@ Prereqisites:
 2. Node.js Tools for Visual Studio version 1.1 or higher - http://aka.ms/explorentvs 
 3. Build project Workstation.NodeServer to install missing NPM packages.
 
+To generate certificates:
+
+1. Right click project Workstation.NodeServer. Select 'Open Command Prompt Here...' 
+2. Execute 'node node_modules\node-opcua\bin\crypto_create_CA.js demo' 
+
+
 To run:
 
 1. Right click project Workstation.NodeServer. Select 'Open Command Prompt Here...' 
