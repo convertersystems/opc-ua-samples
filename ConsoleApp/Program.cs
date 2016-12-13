@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
-using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Threading.Tasks;
 using Workstation.ServiceModel.Ua;
@@ -30,9 +29,6 @@ namespace ConsoleApp
         {
             var discoveryUrl = "opc.tcp://localhost:26543"; // Workstation.NodeServer
             // var discoveryUrl = "opc.tcp://localhost:48010"; // UaCppServer - see  http://www.unified-automation.com/
-
-            var eventListener = new DebugEventListener();
-            eventListener.EnableEvents(Workstation.ServiceModel.Ua.EventSource.Log, EventLevel.Verbose);
 
             Console.WriteLine("Step 1 - Describe this app.");
             var appDescription = new ApplicationDescription()
@@ -78,7 +74,11 @@ namespace ConsoleApp
             }
 
             Console.WriteLine("Step 4 - Create a session with your server.");
-            using (var session = new UaTcpSessionChannel(appDescription, appDescription.GetCertificate(), userIdentity, remoteEndpoint))
+            using (var session = new UaTcpSessionChannel(
+                appDescription,
+                new DirectoryStore(Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%\Workstation.ConsoleApp\pki")),
+                userIdentity,
+                remoteEndpoint))
             {
                 try
                 {

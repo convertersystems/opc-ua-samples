@@ -1,6 +1,7 @@
 // Copyright (c) Converter Systems LLC. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using Microsoft.Extensions.Logging;
 using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Regions;
@@ -33,7 +34,7 @@ namespace RobotHmi
         public void Initialize()
         {
             // Register the shared PLC1Session with the application's dependency injection container.
-            this.container.RegisterInstance(new PLC1Session());
+            this.container.RegisterType<PLC1Session>(new ContainerControlledLifetimeManager());
 
             // Register the views with the container using the navigation string.
             this.container.RegisterTypeForNavigation<MainView>("RobotHmi.Views.MainView");

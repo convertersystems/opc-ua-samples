@@ -2,10 +2,10 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
-using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
 using RobotApp.Services;
@@ -27,15 +27,15 @@ namespace RobotApp
     /// </summary>
     public sealed partial class App : Template10.Common.BootStrapper
     {
-        private EventListener eventListener;
+        private ILoggerFactory loggerFactory;
         private UnityContainer container = new UnityContainer();
 
         public App()
         {
             this.InitializeComponent();
             this.SplashFactory = (e) => new Splash(e);
-            this.eventListener = new DebugEventListener();
-            this.eventListener.EnableEvents(Workstation.ServiceModel.Ua.EventSource.Log, EventLevel.Verbose);
+            this.loggerFactory = new LoggerFactory();
+            this.loggerFactory.AddDebug(LogLevel.Trace);
             var settings = SettingsService.Instance;
             this.RequestedTheme = settings.AppTheme;
             this.CacheMaxDuration = settings.CacheMaxDuration;
@@ -81,7 +81,8 @@ namespace RobotApp
         public override Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
             // Register the shared PLC1Session with the application's dependency injection container.
-            this.container.RegisterInstance(new PLC1Session());
+            this.container.RegisterInstance(this.loggerFactory);
+            this.container.RegisterType<PLC1Session>(new ContainerControlledLifetimeManager());
 
             // Register view models with the container using the name of the view.
             this.container.RegisterType<INavigable, MainPageViewModel>(nameof(MainPage), new ContainerControlledLifetimeManager());
@@ -111,16 +112,6 @@ namespace RobotApp
         {
             // Search container for the view model registered with the name of the given view.
             return this.container.Resolve<INavigable>(page.GetType().Name);
-        }
-
-        /// <summary>
-        /// Provides the application's certificate.
-        /// </summary>
-        /// <param name="applicationDescription">The application's description.</param>
-        /// <returns>An X509Certificate2</returns>
-        public Task<X509Certificate2> ProvideApplicationCertificate(ApplicationDescription applicationDescription)
-        {
-            return Task.FromResult(applicationDescription.GetCertificate(createIfNotFound: true));
         }
 
         /// <summary>

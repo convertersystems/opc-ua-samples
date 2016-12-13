@@ -3,13 +3,12 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using System.Windows;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Workstation.ServiceModel.Ua;
 
@@ -20,14 +19,27 @@ namespace StatusHmi
     /// </summary>
     public partial class App : Application
     {
-        private EventListener eventlistener;
+        private ILoggerFactory loggerFactory;
         private UaTcpSessionClient session;
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            // Setup a logger for the Workstation.ServiceModel.Ua.EventSource
-            this.eventlistener = new DebugEventListener();
-            this.eventlistener.EnableEvents(Workstation.ServiceModel.Ua.EventSource.Log, EventLevel.Informational);
+            // Setup a logger.
+            this.loggerFactory = new LoggerFactory();
+            this.loggerFactory.AddDebug(LogLevel.Trace);
+
+            // discover available endpoints of server.
+            var getEndpointsRequest = new GetEndpointsRequest
+            {
+                EndpointUrl = StatusHmi.Properties.Settings.Default.EndpointUrl,
+                ProfileUris = new[] { TransportProfileUris.UaTcpTransport }
+            };
+            var getEndpointsResponse = UaTcpDiscoveryClient.GetEndpointsAsync(getEndpointsRequest).Result;
+
+            var endpoint = getEndpointsResponse.Endpoints
+                .Where(d => d.SecurityPolicyUri == SecurityPolicyUris.Basic256
+                && d.SecurityMode == MessageSecurityMode.SignAndEncrypt)
+                .First();
 
             // Create the session client for the app.
             this.session = new UaTcpSessionClient(
@@ -37,15 +49,18 @@ namespace StatusHmi
                     ApplicationUri = $"urn:{System.Net.Dns.GetHostName()}:Workstation.StatusHmi",
                     ApplicationType = ApplicationType.Client
                 },
-                this.ProvideApplicationCertificate,
+                new DirectoryStore(
+                    Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%\Workstation.StatusHmi\pki"),
+                    loggerFactory: this.loggerFactory),
                 this.ProvideUserIdentity,
-                StatusHmi.Properties.Settings.Default.EndpointUrl);
+                endpoint,
+                this.loggerFactory);
 
             // Create the main view model.
-            var subscription = new MainViewModel(this.session);
+            var viewModel = new MainViewModel(this.session);
 
             // Create and show the main view.
-            var view = new MainView { DataContext = subscription };
+            var view = new MainView { DataContext = viewModel };
 
             view.Show();
 
@@ -54,19 +69,9 @@ namespace StatusHmi
 
         protected override void OnExit(ExitEventArgs e)
         {
-            this.session.Dispose();
-            this.eventlistener?.Dispose();
+            this.session?.Dispose();
+            this.loggerFactory?.Dispose();
             base.OnExit(e);
-        }
-
-        /// <summary>
-        /// Provides the application's certificate.
-        /// </summary>
-        /// <param name="applicationDescription">The application's description.</param>
-        /// <returns>A UserIdentity</returns>
-        private Task<X509Certificate2> ProvideApplicationCertificate(ApplicationDescription applicationDescription)
-        {
-            return Task.FromResult(applicationDescription.GetCertificate(createIfNotFound: true));
         }
 
         /// <summary>

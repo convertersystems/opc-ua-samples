@@ -3,7 +3,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics.Tracing;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
@@ -11,6 +10,7 @@ using System.Windows;
 using System.Windows.Threading;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Workstation.ServiceModel.Ua;
 
@@ -22,7 +22,7 @@ namespace RobotHmi
     public sealed partial class App
     {
         private AppBootstrapper bootstrapper;
-        private EventListener eventlistener;
+        private ILoggerFactory loggerFactory;
 
         /// <summary>
         /// Gets the current instance of the local application.
@@ -38,16 +38,6 @@ namespace RobotHmi
             ApplicationUri = $"urn:{System.Net.Dns.GetHostName()}:Workstation.RobotHmi",
             ApplicationType = ApplicationType.Client
         };
-
-        /// <summary>
-        /// Provides the application's certificate.
-        /// </summary>
-        /// <param name="applicationDescription">The application's description.</param>
-        /// <returns>the X509Certificate2</returns>
-        public Task<X509Certificate2> ProvideApplicationCertificate(ApplicationDescription applicationDescription)
-        {
-            return Task.FromResult(applicationDescription.GetCertificate(createIfNotFound: true));
-        }
 
         /// <summary>
         /// Show a Sign In dialog if the remote endpoint demands a UserNameIdentity token.
@@ -101,17 +91,16 @@ namespace RobotHmi
         /// <inheritdoc/>
         protected override void OnStartup(StartupEventArgs e)
         {
+            // Setup a logger.
+            this.loggerFactory = new LoggerFactory();
 #if DEBUG
-            this.eventlistener = new DebugEventListener();
-            this.eventlistener.EnableEvents(Workstation.ServiceModel.Ua.EventSource.Log, EventLevel.Verbose);
+            this.loggerFactory.AddDebug(LogLevel.Trace);
 #else
-            this.eventlistener = new FileEventListener();
-            this.eventlistener.EnableEvents(Workstation.ServiceModel.Ua.EventSource.Log, EventLevel.Informational);
             this.DispatcherUnhandledException += AppDispatcherUnhandledException;
             AppDomain.CurrentDomain.UnhandledException += AppDomainUnhandledException;
 #endif
 
-            this.bootstrapper = new AppBootstrapper();
+            this.bootstrapper = new AppBootstrapper(this.loggerFactory);
             this.bootstrapper.Run();
         }
 
@@ -119,7 +108,7 @@ namespace RobotHmi
         protected override void OnExit(ExitEventArgs e)
         {
             this.bootstrapper?.Dispose();
-            this.eventlistener?.Dispose();
+            this.loggerFactory?.Dispose();
         }
 
 #if !DEBUG

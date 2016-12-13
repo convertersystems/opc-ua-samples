@@ -3,7 +3,9 @@
 
 using System;
 using System.Windows;
+using Microsoft.Extensions.Logging;
 using Microsoft.Practices.ServiceLocation;
+using Microsoft.Practices.Unity;
 using Prism.Modularity;
 using Prism.Unity;
 using RobotHmi.Views;
@@ -15,6 +17,13 @@ namespace RobotHmi
     /// </summary>
     public class AppBootstrapper : UnityBootstrapper, IDisposable
     {
+        private ILoggerFactory loggerFactory;
+
+        public AppBootstrapper(ILoggerFactory loggerFactory)
+        {
+            this.loggerFactory = loggerFactory;
+        }
+
         /// <inheritdoc/>
         public void Dispose()
         {
@@ -37,6 +46,7 @@ namespace RobotHmi
         protected override void ConfigureContainer()
         {
             base.ConfigureContainer();
+            this.Container.RegisterInstance(this.loggerFactory);
         }
 
         /// <inheritdoc/>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Workstation.MobileHmi.MainPage"
+             Title="Workstation.MobileHmi">
+
+    <StackLayout Padding="10,0">
+      <Label Text="{Binding ServerServerStatus.BuildInfo.ProductName, Mode=OneWay}"/>
+      <Label Text="{Binding ServerServerStatus.BuildInfo.ManufacturerName, Mode=OneWay}" />
+      <Label Text="{Binding ServerServerStatus.BuildInfo.SoftwareVersion, Mode=OneWay, StringFormat=version: \{0:G\}}" />
+      <Label Text="{Binding ServerServerStatus.StartTime, Mode=OneWay, StringFormat=start: \{0:G\}}" />
+      <Label Text="{Binding ServerServerStatus.CurrentTime, Mode=OneWay, StringFormat=current: \{0:G\}}" />
+      <Label Text="{Binding ServerServerStatus.State, Mode=OneWay, StringFormat=state: \{0\}}" />
+    </StackLayout>
+
+</ContentPage>

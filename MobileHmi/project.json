@@ -1,0 +1,15 @@
+{
+  "supports": {},
+  "dependencies": {
+    "Microsoft.Extensions.Logging.Debug": "1.0.0",
+    "Xamarin.Forms": "2.3.3.168",
+    "StyleCop.Analyzers": "1.0.0",
+    "NETStandard.Library": "1.6.0",
+    "Workstation.UaClient": "1.5.0"
+  },
+  "frameworks": {
+    "netstandard1.4": {
+      "imports": "portable-net45+win8+wpa81+wp8"
+    }
+  }
+}

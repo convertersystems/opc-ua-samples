@@ -23,16 +23,6 @@ namespace StatusHmi.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("opc.tcp://localhost:26543")]
-        public string EndpointUrl {
-            get {
-                return ((string)(this["EndpointUrl"]));
-            }
-        }
-        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
@@ -42,6 +32,16 @@ namespace StatusHmi.Properties {
             }
             set {
                 this["UserNames"] = value;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("opc.tcp://localhost:26543")]
+        public string EndpointUrl {
+            get {
+                return ((string)(this["EndpointUrl"]));
             }
         }
     }

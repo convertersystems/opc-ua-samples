@@ -9,7 +9,7 @@ To run:
 
 1. Right click project Workstation.NodeServer. Select 'Open Command Prompt Here...' 
 2. Execute 'node server' 
-3. Optionally you can execute 'node server --allowAnonymous' to allow anonymous users.
+3. Optionally you can execute 'node server --a' to allow anonymous users.
 
 
 
