@@ -1,5 +1,4 @@
 {
-  "locked": false,
   "version": 2,
   "targets": {
     ".NETFramework,Version=v4.6.1": {},
@@ -9,5 +8,25 @@
   "projectFileDependencyGroups": {
     "": [],
     ".NETFramework,Version=v4.6.1": []
+  },
+  "packageFolders": {
+    "C:\\Users\\Andrew\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "restore": {
+      "projectUniqueName": "C:\\Users\\Andrew\\Source\\Repos\\opc-ua-samples\\Common.Wpf\\Workstation.Common.Wpf.csproj",
+      "projectName": "Workstation.Common.Wpf",
+      "projectPath": "C:\\Users\\Andrew\\Source\\Repos\\opc-ua-samples\\Common.Wpf\\Workstation.Common.Wpf.csproj",
+      "projectJsonPath": "C:\\Users\\Andrew\\Source\\Repos\\opc-ua-samples\\Common.Wpf\\project.json",
+      "outputType": "UAP"
+    },
+    "frameworks": {
+      "net461": {}
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      }
+    }
   }
 }

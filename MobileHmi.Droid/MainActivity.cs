@@ -47,9 +47,7 @@ namespace Workstation.MobileHmi
                         ApplicationUri = $"urn:{System.Net.Dns.GetHostName()}:Workstation.MobileHmi",
                         ApplicationType = ApplicationType.Client
                     },
-                    new DirectoryStore(
-                        Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "pki"),
-                        loggerFactory: loggerFactory),
+                    new DirectoryStore(Path.Combine(System.Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData), "pki"), loggerFactory: this.loggerFactory),
                     this.ProvideUserIdentity,
                     this.discoveryUrl,
                     this.loggerFactory);

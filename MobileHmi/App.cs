@@ -3,6 +3,7 @@
 
 using Workstation.ServiceModel.Ua;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 
 namespace Workstation.MobileHmi
 {

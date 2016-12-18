@@ -296,7 +296,10 @@ namespace Workstation.UI.Xaml.Controls
                         }
                     }
 
-                    builder.EndFigure(CanvasFigureLoop.Open);
+                    if (!isEmpty)
+                    {
+                        builder.EndFigure(CanvasFigureLoop.Open);
+                    }
 
                     if (this.AutoRange && !isEmpty)
                     {

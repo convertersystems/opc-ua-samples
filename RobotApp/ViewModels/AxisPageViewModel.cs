@@ -3,6 +3,7 @@
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using RobotApp.Services;
 using Template10.Mvvm;
 using Windows.UI.Xaml.Navigation;
 
@@ -10,9 +11,9 @@ namespace RobotApp.ViewModels
 {
     public class AxisPageViewModel : ViewModelBase
     {
-        public AxisPageViewModel(IAxisViewModel[] axes)
+        public AxisPageViewModel(PLC1Session session)
         {
-            this.Axes = axes;
+            this.Axes = new IAxisViewModel[] { new Axis1ViewModel(session), new Axis2ViewModel(session), new Axis3ViewModel(session), new Axis4ViewModel(session) };
         }
 
         public IEnumerable<IAxisViewModel> Axes { get; }
@@ -37,7 +38,7 @@ namespace RobotApp.ViewModels
     public class AxisPageViewModelDesignInstance : AxisPageViewModel
     {
         public AxisPageViewModelDesignInstance()
-            : base(new[] { new Axis1ViewModel(null) })
+            : base(null)
         {
         }
     }

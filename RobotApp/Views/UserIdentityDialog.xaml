@@ -17,7 +17,7 @@
                  Header="User name" />
         <PasswordBox Name="passwordTextBox"
                      Header="Password"
-                     IsPasswordRevealButtonEnabled="True" />
+                     PasswordRevealMode="Visible" />
         <CheckBox Name="saveUserNameCheckBox"
                   Content="Save user name" />
 

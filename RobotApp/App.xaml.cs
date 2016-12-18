@@ -87,10 +87,6 @@ namespace RobotApp
             // Register view models with the container using the name of the view.
             this.container.RegisterType<INavigable, MainPageViewModel>(nameof(MainPage), new ContainerControlledLifetimeManager());
             this.container.RegisterType<INavigable, AxisPageViewModel>(nameof(AxisPage), new ContainerControlledLifetimeManager());
-            this.container.RegisterType<IAxisViewModel, Axis1ViewModel>(nameof(Axis1ViewModel));
-            this.container.RegisterType<IAxisViewModel, Axis2ViewModel>(nameof(Axis2ViewModel));
-            this.container.RegisterType<IAxisViewModel, Axis3ViewModel>(nameof(Axis3ViewModel));
-            this.container.RegisterType<IAxisViewModel, Axis4ViewModel>(nameof(Axis4ViewModel));
             this.container.RegisterType<INavigable, SettingsPageViewModel>(nameof(SettingsPage));
 
             // Show the MainPage.

@@ -24,6 +24,8 @@ Get the companion Visual Studio extension 'Workstation.UaBrowser' and you can:
 
 ### Releases
 
+v1.5.1 UaClient upgraded to 1.5.1. Switched Xamarin Forms common project from PCL to Shared. 
+
 v1.5.0 Added support for Xamarin Forms. Introduced ICertificateStore and DirectoryStore.
 
 v1.4.2 Upgraded Trendline control for UWP. Adjusted UaTcpSessionClient constructors to use an async certificate provider. 
