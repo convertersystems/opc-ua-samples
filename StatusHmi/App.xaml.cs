@@ -37,8 +37,7 @@ namespace StatusHmi
             var getEndpointsResponse = UaTcpDiscoveryClient.GetEndpointsAsync(getEndpointsRequest).Result;
 
             var endpoint = getEndpointsResponse.Endpoints
-                .Where(d => d.SecurityPolicyUri == SecurityPolicyUris.Basic256
-                && d.SecurityMode == MessageSecurityMode.SignAndEncrypt)
+                .OrderBy(d => d.SecurityLevel)
                 .First();
 
             // Create the session client for the app.
