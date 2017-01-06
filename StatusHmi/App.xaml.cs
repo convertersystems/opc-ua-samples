@@ -28,18 +28,6 @@ namespace StatusHmi
             this.loggerFactory = new LoggerFactory();
             this.loggerFactory.AddDebug(LogLevel.Trace);
 
-            // discover available endpoints of server.
-            var getEndpointsRequest = new GetEndpointsRequest
-            {
-                EndpointUrl = StatusHmi.Properties.Settings.Default.EndpointUrl,
-                ProfileUris = new[] { TransportProfileUris.UaTcpTransport }
-            };
-            var getEndpointsResponse = UaTcpDiscoveryClient.GetEndpointsAsync(getEndpointsRequest).Result;
-
-            var endpoint = getEndpointsResponse.Endpoints
-                .OrderBy(d => d.SecurityLevel)
-                .First();
-
             // Create the session client for the app.
             this.session = new UaTcpSessionClient(
                 new ApplicationDescription()
@@ -52,7 +40,7 @@ namespace StatusHmi
                     Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%\Workstation.StatusHmi\pki"),
                     loggerFactory: this.loggerFactory),
                 this.ProvideUserIdentity,
-                endpoint,
+                StatusHmi.Properties.Settings.Default.EndpointUrl,
                 this.loggerFactory);
 
             // Create the main view model.

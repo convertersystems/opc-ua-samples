@@ -7,7 +7,7 @@
     "Workstation.UaClient": "1.5.1"
   },
   "frameworks": {
-    "MonoAndroid,Version=v7.1": {}
+    "MonoAndroid,Version=v6.0": {}
   },
   "runtimes": {
     "win": {}

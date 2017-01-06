@@ -16,12 +16,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A8EFACC3-6790-4CB0-8067-BE7574C94F09}"
 	ProjectSection(SolutionItems) = preProject
 		LICENSE = LICENSE
-		..\opc-ua-client\LICENSE.txt = ..\opc-ua-client\LICENSE.txt
 		mobilehmi-droid.png = mobilehmi-droid.png
 		nodeserver.png = nodeserver.png
-		..\opc-ua-client\README.md = ..\opc-ua-client\README.md
 		README.md = README.md
-		..\opc-ua-client\robot6.jpg = ..\opc-ua-client\robot6.jpg
 		WorkstationRuntime.png = WorkstationRuntime.png
 	EndProjectSection
 EndProject
