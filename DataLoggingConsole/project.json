@@ -1,0 +1,11 @@
+﻿{
+  "dependencies": {
+    "Workstation.UaClient": "1.5.2"
+  },
+  "frameworks": {
+    ".NETFramework,Version=v4.6.1": {}
+  },
+  "runtimes": {
+    "win": {}
+  }
+}

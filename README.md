@@ -12,7 +12,8 @@ Get the companion Visual Studio extension 'Workstation.UaBrowser' and you can:
 
 
 ### Main Projects
-- ConsoleApp - An example console application. Demonstates use of SessionChannel for creating subscriptions and logging of data changes or events.
+- DataLoggingConsole - A simple example to demonstrates use of SessionChannel for reading a list of nodes and logging the values to the Console.
+- ConsoleApp - A simple example to demonstrates use of SessionChannel for creating subscriptions and logging of data changes or events.
 - StatusHmi - An simple example HMI for .NETFramework 4.6.1. Demonstrates basic subscription feature of Workstation.UaClient. 
 - RobotHMI - An more complex example HMI for .NETFramework 4.6.1. Demonstrates features of Workstation.UaClient, such as reading /writing variables, logging events, calling methods. 
 - RobotApp - An more complex example HMI for Universal Window Platform (UWP). Demonstrates features of Workstation.UaClient, such as reading /writing variables, logging events, calling methods. 
@@ -24,7 +25,7 @@ Get the companion Visual Studio extension 'Workstation.UaBrowser' and you can:
 
 ### Releases
 
-v1.5.2 Packages upgraded.
+v1.5.2 Packages upgraded. Added DataLoggingConsole app.
 
 v1.5.1 UaClient upgraded to 1.5.1. Switched Xamarin Forms common project from PCL to Shared. 
 
