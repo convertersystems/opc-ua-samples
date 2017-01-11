@@ -28,7 +28,7 @@ namespace ConsoleApp
         private static async Task TestAsync()
         {
             var discoveryUrl = "opc.tcp://localhost:26543"; // Workstation.NodeServer
-            // var discoveryUrl = "opc.tcp://localhost:48010"; // UaCppServer - see  http://www.unified-automation.com/
+            //var discoveryUrl = "opc.tcp://localhost:48010"; // UaCppServer - see  http://www.unified-automation.com/
 
             Console.WriteLine("Step 1 - Describe this app.");
             var appDescription = new ApplicationDescription()
@@ -74,25 +74,14 @@ namespace ConsoleApp
             }
 
             Console.WriteLine("Step 4 - Create a session with your server.");
-            using (var session = new UaTcpSessionChannel(
+            var session = new UaTcpSessionChannel(
                 appDescription,
                 new DirectoryStore(Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%\Workstation.ConsoleApp\pki")),
                 userIdentity,
-                remoteEndpoint))
+                remoteEndpoint);
+            try
             {
-                try
-                {
-                    await session.OpenAsync();
-                }
-                catch (ServiceResultException ex)
-                {
-                    if ((uint)ex.HResult == StatusCodes.BadSecurityChecksFailed)
-                    {
-                        Console.WriteLine("Error connecting to endpoint. Did the server reject our certificate?");
-                    }
-
-                    throw ex;
-                }
+                await session.OpenAsync();
 
                 Console.WriteLine("Step 5 - Browse the server namespace.");
                 Console.WriteLine("+ Root");
@@ -189,6 +178,16 @@ namespace ConsoleApp
                 Console.ReadKey(true);
                 Console.WriteLine("Step 10 - Close the session.");
                 await session.CloseAsync();
+            }
+            catch (ServiceResultException ex)
+            {
+                if ((uint)ex.HResult == StatusCodes.BadSecurityChecksFailed)
+                {
+                    Console.WriteLine("Error connecting to endpoint. Did the server reject our certificate?");
+                }
+
+                await session.AbortAsync();
+                throw;
             }
         }
     }

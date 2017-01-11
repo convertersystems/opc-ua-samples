@@ -25,7 +25,7 @@ namespace Workstation.MobileHmi
             // Setup a logger.
             this.loggerFactory = new LoggerFactory();
             this.loggerFactory.AddDebug(LogLevel.Trace);
-            this.logger = this.loggerFactory.CreateLogger<MainActivity>();
+            this.logger = this.loggerFactory.CreateLogger<App>();
 
             // Create the session client for the app.
             this.session = new UaTcpSessionClient(

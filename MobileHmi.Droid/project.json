@@ -1,10 +1,10 @@
 ﻿{
   "dependencies": {
+    "Microsoft.Extensions.Logging.Debug": "1.1.0",
     "NETStandard.Library": "1.6.0",
     "StyleCop.Analyzers": "1.0.0",
-    "Xamarin.Forms": "2.3.3.175",
-    "Microsoft.Extensions.Logging.Debug": "1.0.1",
-    "Workstation.UaClient": "1.5.1"
+    "Workstation.UaClient": "1.5.2",
+    "Xamarin.Forms": "2.3.3.180"
   },
   "frameworks": {
     "MonoAndroid,Version=v6.0": {}
