@@ -27,7 +27,7 @@ namespace DataLoggingConsole
 
         private static async Task TestAsync()
         {
-            // Read from CosentinoUaConsole.config
+            // Read from app.config
             var discoveryUrl = Properties.Settings.Default.EndpointUrl;
             var cycleTime = Properties.Settings.Default.CycleTime;
 
