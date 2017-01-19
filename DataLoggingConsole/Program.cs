@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Converter Systems LLC. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -27,9 +28,12 @@ namespace DataLoggingConsole
 
         private static async Task TestAsync()
         {
-            // Read from app.config
-            var discoveryUrl = Properties.Settings.Default.EndpointUrl;
-            var cycleTime = Properties.Settings.Default.CycleTime;
+            var discoveryUrl = $"opc.tcp://192.168.1.107:49320";
+            var cycleTime = 5000;
+
+            // setup logger
+            var loggerFactory = new LoggerFactory();
+            loggerFactory.AddDebug(LogLevel.Trace);
 
             // Describe this app.
             var appDescription = new ApplicationDescription()
@@ -49,10 +53,7 @@ namespace DataLoggingConsole
             {
                 NodesToRead = new[]
                 {
-                    new ReadValueId { NodeId = NodeId.Parse("ns=2;s=Demo.Dynamic.Scalar.Boolean"), AttributeId = AttributeIds.Value },
-                    new ReadValueId { NodeId = NodeId.Parse("ns=2;s=Demo.Dynamic.Scalar.Int16"), AttributeId = AttributeIds.Value },
-                    new ReadValueId { NodeId = NodeId.Parse("ns=2;s=Demo.Dynamic.Scalar.Float"), AttributeId = AttributeIds.Value },
-                    new ReadValueId { NodeId = NodeId.Parse("ns=2;s=Demo.Dynamic.Scalar.String"), AttributeId = AttributeIds.Value }
+                    new ReadValueId { NodeId = NodeId.Parse("i=2258"), AttributeId = AttributeIds.Value },
                 }
             };
 
@@ -88,7 +89,7 @@ namespace DataLoggingConsole
                     else if (remoteEndpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.UserName))
                     {
                         // If a username / password is requested, provide from .config file.
-                        userIdentity = new UserNameIdentity(Properties.Settings.Default.Username, Properties.Settings.Default.Password);
+                        userIdentity = new UserNameIdentity("root", "secret");
                     }
                     else
                     {
@@ -96,7 +97,7 @@ namespace DataLoggingConsole
                     }
 
                     // Create a session with the server.
-                    var session = new UaTcpSessionChannel(appDescription, certificateStore, userIdentity, remoteEndpoint);
+                    var session = new UaTcpSessionChannel(appDescription, certificateStore, userIdentity, remoteEndpoint, loggerFactory);
                     try
                     {
                         await session.OpenAsync();

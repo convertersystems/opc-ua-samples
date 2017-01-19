@@ -1,10 +1,11 @@
 ﻿{
   "dependencies": {
+    "System.Windows.Interactivity.WPF": "2.0.20525"
   },
   "frameworks": {
     ".NETFramework,Version=v4.6.1": {}
   },
   "runtimes": {
-    "win": { }
+    "win": {}
   }
 }

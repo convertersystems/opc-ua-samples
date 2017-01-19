@@ -1,6 +1,6 @@
 {
   "name": "workstation-nodeserver",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "an opc ua server for testing Workstation",
   "homepage": "http://github.com/convertersystems/workstation",
   "license": "MIT",
@@ -12,6 +12,6 @@
     "port": "26543"
   },
   "dependencies": {
-    "node-opcua": "0.0.57"
+    "node-opcua": "0.0.61"
   }
 }

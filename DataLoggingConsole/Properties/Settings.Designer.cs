@@ -22,53 +22,5 @@ namespace DataLoggingConsole.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("opc.tcp://localhost:48010")]
-        public string EndpointUrl {
-            get {
-                return ((string)(this["EndpointUrl"]));
-            }
-            set {
-                this["EndpointUrl"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("5000")]
-        public int CycleTime {
-            get {
-                return ((int)(this["CycleTime"]));
-            }
-            set {
-                this["CycleTime"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("root")]
-        public string Username {
-            get {
-                return ((string)(this["Username"]));
-            }
-            set {
-                this["Username"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("secret")]
-        public string Password {
-            get {
-                return ((string)(this["Password"]));
-            }
-            set {
-                this["Password"] = value;
-            }
-        }
     }
 }
