@@ -145,6 +145,7 @@ publish/
 *.nuget.props
 *.nuget.targets
 *.lock.json 
+project.lock.json
 
 # Windows Azure Build Output
 csx/

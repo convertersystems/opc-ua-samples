@@ -1,6 +1,6 @@
 ﻿{
   "dependencies": {
-    "System.Windows.Interactivity.WPF": "2.0.20525"
+    "Expression.Blend.Sdk.WPF": "1.0.1"
   },
   "frameworks": {
     ".NETFramework,Version=v4.6.1": {}
