@@ -4,6 +4,7 @@
 using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Workstation.ServiceModel.Ua;
 using Workstation.ServiceModel.Ua.Channels;
@@ -16,7 +17,11 @@ namespace DataLoggingConsole
         {
             try
             {
-                Task.Run(TestAsync).GetAwaiter().GetResult();
+                var cts = new CancellationTokenSource();
+                Console.WriteLine("Press Ctrl-C to close the program...");
+                Console.CancelKeyPress += (s, e) => { e.Cancel = true; cts.Cancel(); };
+
+                Task.Run(() => TestAsync(cts.Token)).GetAwaiter().GetResult();
             }
             catch (Exception ex)
             {
@@ -26,14 +31,15 @@ namespace DataLoggingConsole
             }
         }
 
-        private static async Task TestAsync()
+        private static async Task TestAsync(CancellationToken token = default(CancellationToken))
         {
             var discoveryUrl = $"opc.tcp://192.168.1.107:49320";
             var cycleTime = 5000;
 
             // setup logger
             var loggerFactory = new LoggerFactory();
-            loggerFactory.AddDebug(LogLevel.Trace);
+            loggerFactory.AddConsole(LogLevel.Information);
+            var logger = loggerFactory?.CreateLogger<Program>();
 
             // Describe this app.
             var appDescription = new ApplicationDescription()
@@ -46,24 +52,18 @@ namespace DataLoggingConsole
             // Create a certificate store on disk.
             var certificateStore = new DirectoryStore(
                 Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%\DataLoggingConsole\pki"));
-
-
-            // Prepare array of nodes to read.
-            var readRequest = new ReadRequest
+            
+            // Create array of NodeIds to log.
+            var nodeIds = new[]
             {
-                NodesToRead = new[]
-                {
-                    new ReadValueId { NodeId = NodeId.Parse("i=2258"), AttributeId = AttributeIds.Value },
-                }
+                NodeId.Parse("i=2258")
             };
 
-            Console.WriteLine("Press any key to end the program...");
-
-            while (!Console.KeyAvailable)
+            while (!token.IsCancellationRequested)
             {
                 try
                 {
-                    await Task.Delay(cycleTime);
+                    await Task.Delay(cycleTime, token);
 
                     // Discover endpoints.
                     var getEndpointsRequest = new GetEndpointsRequest
@@ -93,7 +93,7 @@ namespace DataLoggingConsole
                     }
                     else
                     {
-                        Console.WriteLine("Program supports servers requesting Anonymous and UserName identity.");
+                        throw new InvalidOperationException("Server must accept Anonymous or UserName identity.");
                     }
 
                     // Create a session with the server.
@@ -102,7 +102,27 @@ namespace DataLoggingConsole
                     {
                         await session.OpenAsync();
 
-                        while (!Console.KeyAvailable)
+                        RegisterNodesResponse registerNodesResponse = null;
+
+                        if (true) // True registers the nodeIds to improve performance of the server.
+                        {
+                            // Register array of nodes to read.
+                            var registerNodesRequest = new RegisterNodesRequest
+                            {
+                                NodesToRegister = nodeIds
+                            };
+                            registerNodesResponse = await session.RegisterNodesAsync(registerNodesRequest);
+                        }
+
+                        // Prepare read request.
+                        var readRequest = new ReadRequest
+                        {
+                            NodesToRead = (registerNodesResponse?.RegisteredNodeIds ?? nodeIds)
+                            .Select(n => new ReadValueId { NodeId = n, AttributeId = AttributeIds.Value })
+                            .ToArray()
+                        };
+
+                        while (!token.IsCancellationRequested)
                         {
                             // Read the nodes.
                             var readResponse = await session.ReadAsync(readRequest).ConfigureAwait(false);
@@ -110,10 +130,10 @@ namespace DataLoggingConsole
                             // Write the results.
                             for (int i = 0; i < readRequest.NodesToRead.Length; i++)
                             {
-                                Console.WriteLine($"{readRequest.NodesToRead[i].NodeId}; value: {readResponse.Results[i]}");
+                                logger?.LogInformation($"{nodeIds[i]}; value: {readResponse.Results[i]}");
                             }
 
-                            await Task.Delay(cycleTime);
+                            await Task.Delay(cycleTime, token);
                         }
                         await session.CloseAsync();
                     }
@@ -125,7 +145,7 @@ namespace DataLoggingConsole
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    logger?.LogError(ex.Message);
                 }
             }
         }

@@ -28,7 +28,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workstation.MobileHmi.Droid
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Workstation.MobileHmi", "MobileHmi\Workstation.MobileHmi.shproj", "{F093E93D-D21F-4E19-9AA6-F8ABB329D4AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataLoggingConsole", "DataLoggingConsole\DataLoggingConsole.csproj", "{0DF2289A-2734-4319-9CAF-721C55DAFFA3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workstation.DataLoggingConsole", "DataLoggingConsole\Workstation.DataLoggingConsole.csproj", "{0DF2289A-2734-4319-9CAF-721C55DAFFA3}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workstation.RobotHmi", "RobotHmi\Workstation.RobotHmi.csproj", "{343AAE17-D8F0-4B40-91B9-FC8C00B4B6C7}"
 EndProject

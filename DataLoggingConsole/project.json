@@ -1,6 +1,6 @@
 ﻿{
   "dependencies": {
-    "Microsoft.Extensions.Logging.Debug": "1.0.1",
+    "Microsoft.Extensions.Logging.Console": "1.0.1",
     "Workstation.UaClient": "1.5.2"
   },
   "frameworks": {
