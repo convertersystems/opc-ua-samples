@@ -1,9 +1,9 @@
 ﻿{
   "dependencies": {
-    "Microsoft.Extensions.Logging.Debug": "1.0.1",
-    "NETStandard.Library": "1.6.0",
+    "Microsoft.Extensions.Logging.Debug": "1.1.0",
+    "NETStandard.Library": "1.6.1",
     "StyleCop.Analyzers": "1.0.0",
-    "Workstation.UaClient": "1.5.2",
+    "Workstation.UaClient": "1.5.5",
     "Xamarin.Forms": "2.3.3.180"
   },
   "frameworks": {

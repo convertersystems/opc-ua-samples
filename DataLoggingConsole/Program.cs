@@ -63,8 +63,6 @@ namespace DataLoggingConsole
             {
                 try
                 {
-                    await Task.Delay(cycleTime, token);
-
                     // Discover endpoints.
                     var getEndpointsRequest = new GetEndpointsRequest
                     {
@@ -133,7 +131,11 @@ namespace DataLoggingConsole
                                 logger?.LogInformation($"{nodeIds[i]}; value: {readResponse.Results[i]}");
                             }
 
-                            await Task.Delay(cycleTime, token);
+                            try
+                            {
+                                await Task.Delay(cycleTime, token);
+                            }
+                            catch { }
                         }
                         await session.CloseAsync();
                     }
@@ -147,6 +149,12 @@ namespace DataLoggingConsole
                 {
                     logger?.LogError(ex.Message);
                 }
+
+                try
+                {
+                    await Task.Delay(cycleTime, token);
+                }
+                catch { }
             }
         }
     }
