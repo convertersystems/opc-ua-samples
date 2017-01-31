@@ -4,7 +4,7 @@
     "Workstation.UaClient": "1.5.5"
   },
   "frameworks": {
-    ".NETFramework,Version=v4.6.1": {}
+    ".NETFramework,Version=v4.5.1": {}
   },
   "runtimes": {
     "win": {}
