@@ -25,6 +25,8 @@ Get the companion Visual Studio extension 'Workstation.UaBrowser' and you can:
 
 ### Releases
 
+v1.5.5 Packages upgrade. Added 3d robot to UWP based RobotApp. 
+
 v1.5.2 Packages upgraded. Added DataLoggingConsole app.
 
 v1.5.1 UaClient upgraded to 1.5.1. Switched Xamarin Forms common project from PCL to Shared. 
