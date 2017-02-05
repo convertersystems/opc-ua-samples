@@ -27,7 +27,7 @@ namespace RobotApp.ViewModels
     /// <summary>
     /// A view model for MainPage.
     /// </summary>
-    [Subscription(publishingInterval: 500, keepAliveCount: 20)] // Step 2: Add a [Subscription] attribute.
+    [Subscription(publishingInterval: 250, keepAliveCount: 20)] // Step 2: Add a [Subscription] attribute.
     public class MainPageViewModel : ViewModelBase // Step 3: Add your view model base class (which implements INotifyPropertyChanged).
     {
         private PLC1Session session;

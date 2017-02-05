@@ -95,6 +95,51 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <AdditionalFiles Include="stylecop.json" />
+    <Content Include="Assets\Materials\Material0.xml" />
+    <Content Include="Assets\Materials\Material1.xml" />
+    <Content Include="Assets\Models\Base.001.mdl" />
+    <Content Include="Assets\Models\Base.002.mdl" />
+    <Content Include="Assets\Models\Base.003.mdl" />
+    <Content Include="Assets\Models\Base.004.mdl" />
+    <Content Include="Assets\Models\Base.005.mdl" />
+    <Content Include="Assets\Models\Base.006.mdl" />
+    <Content Include="Assets\Models\Base.007.mdl" />
+    <Content Include="Assets\Models\Base.008.mdl" />
+    <Content Include="Assets\Models\Link1.002.mdl" />
+    <Content Include="Assets\Models\Link1.003.mdl" />
+    <Content Include="Assets\Models\Link1.004.mdl" />
+    <Content Include="Assets\Models\Link1.005.mdl" />
+    <Content Include="Assets\Models\Link1.006.mdl" />
+    <Content Include="Assets\Models\Link1.007.mdl" />
+    <Content Include="Assets\Models\Link1.008.mdl" />
+    <Content Include="Assets\Models\Link1.009.mdl" />
+    <Content Include="Assets\Models\Link1.010.mdl" />
+    <Content Include="Assets\Models\Link1.011.mdl" />
+    <Content Include="Assets\Models\Link2.002.mdl" />
+    <Content Include="Assets\Models\Link2.003.mdl" />
+    <Content Include="Assets\Models\Link2.004.mdl" />
+    <Content Include="Assets\Models\Link2.005.mdl" />
+    <Content Include="Assets\Models\Link2.006.mdl" />
+    <Content Include="Assets\Models\Link2.007.mdl" />
+    <Content Include="Assets\Models\Link2.008.mdl" />
+    <Content Include="Assets\Models\Link2.009.mdl" />
+    <Content Include="Assets\Models\Link2.010.mdl" />
+    <Content Include="Assets\Models\Link2.011.mdl" />
+    <Content Include="Assets\Models\Link3.002.mdl" />
+    <Content Include="Assets\Models\Link3.003.mdl" />
+    <Content Include="Assets\Models\Link3.004.mdl" />
+    <Content Include="Assets\Models\Link4.002.mdl" />
+    <Content Include="Assets\Models\Link4.003.mdl" />
+    <Content Include="Assets\Models\Link4.004.mdl" />
+    <Content Include="Assets\Models\Link4.005.mdl" />
+    <Content Include="Assets\Models\Link4.006.mdl" />
+    <Content Include="Assets\Models\Link5.002.mdl" />
+    <Content Include="Assets\Models\Link5.003.mdl" />
+    <Content Include="Assets\Models\Link6.002.mdl" />
+    <Content Include="Assets\Models\LinkD1.001.mdl" />
+    <Content Include="Assets\Models\LinkD1.002.mdl" />
+    <Content Include="Assets\Models\LinkD2.001.mdl" />
+    <Content Include="Assets\Models\LinkD2.002.mdl" />
     <None Include="LICENSE" />
     <None Include="project.json" />
     <None Include="Workstation.RobotApp.snk" />
@@ -126,6 +171,10 @@
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\RobotControl.xaml.cs">
+      <DependentUpon>RobotControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RobotGame.cs" />
     <Compile Include="Views\SettingsPage.xaml.cs">
       <DependentUpon>SettingsPage.xaml</DependentUpon>
     </Compile>
@@ -145,6 +194,7 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\Scenes\irb6700_scene.xml" />
     <Content Include="Help.htm" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
@@ -178,6 +228,10 @@
     <Page Include="Views\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\RobotControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SettingsPage.xaml">
       <SubType>Designer</SubType>

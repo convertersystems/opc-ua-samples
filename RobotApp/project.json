@@ -6,6 +6,7 @@
     "StyleCop.Analyzers": "1.0.0",
     "Template10": "1.1.12",
     "Unity": "4.0.1",
+    "UrhoSharp": "1.2.21",
     "Workstation.UaClient": "1.5.5"
   },
   "frameworks": {
