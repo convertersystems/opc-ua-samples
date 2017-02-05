@@ -35,12 +35,10 @@ namespace RobotApp.Views
 
         private void CreateScene()
         {
-            var cache = this.ResourceCache;
-
             this.scene = new Scene();
 
             // Load scene content prepared in the editor (XML format).
-            this.scene.LoadXmlFromCache(cache, "Scenes/irb6700_scene.xml");
+            this.scene.LoadXmlFromCache(this.ResourceCache, "Scenes/irb6700_scene.xml");
 
             this.axis1Node = this.scene.GetChild("Link1", true);
             this.axis2Node = this.scene.GetChild("Link2", true);
@@ -53,6 +51,10 @@ namespace RobotApp.Views
 
             // Set an initial position for the camera scene node above the plane
             this.cameraNode.Position = new Vector3(0.0f, 1.2f, -6.0f);
+
+            // Don't need 200 fps for a visualization
+            this.Engine.MinFps = 4;
+            this.Engine.MaxFps = 12;
         }
 
         private void SetupViewport()
