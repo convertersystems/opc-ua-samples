@@ -1,4 +1,4 @@
-![Workstation][1] ![RobotApp][2] ![NodeServer][3] ![mobilehmi-droid][4]
+![Workstation][1] ![RobotApp][2] ![mobilehmi-droid 2][3]
 
 # opc-ua-samples
 Supports Universal Windows Platform (UWP) and Windows Presentation Framework (WPF) applications and now Xamarin Forms.
@@ -17,13 +17,15 @@ Get the companion Visual Studio extension 'Workstation.UaBrowser' and you can:
 - StatusHmi - An simple example HMI for .NETFramework 4.6.1. Demonstrates basic subscription feature of Workstation.UaClient. 
 - RobotHMI - An more complex example HMI for .NETFramework 4.6.1. Demonstrates features of Workstation.UaClient, such as reading /writing variables, logging events, calling methods. 
 - RobotApp - An more complex example HMI for Universal Window Platform (UWP). Demonstrates features of Workstation.UaClient, such as reading /writing variables, logging events, calling methods. 
-- MobileHmi.Droid - An simple example HMI for Xamarin Forms. Demonstrates basic subscription feature of Workstation.UaClient working in the Android Emulator. 
+- MobileHmi.Droid - An simple example HMI for Xamarin Forms. Demonstrates features of Workstation.UaClient working in the Android Emulator. 
 - NodeServer - An example OPC UA Server for Node.js. Demonstates features of Node-OpcUa package. Requires installation of:
 
 1. Node.js version 6.2.1 or higher - https://nodejs.org/en/
 2. Node.js Tools for Visual Studio version 1.1 or higher - http://aka.ms/explorentvs 
 
 ### Releases
+
+v1.5.6 Added 3d robot to Xamarin Forms based MobileHmi.
 
 v1.5.5 Packages upgrade. Added 3d robot to UWP based RobotApp. 
 
@@ -49,5 +51,4 @@ v1.0.0 First commit.
 
 [1]: WorkstationRuntime.png
 [2]: RobotApp.png
-[3]: nodeserver.png
-[4]: mobilehmi-droid.png  
+[3]: mobilehmi-droid 2.png  
