@@ -70,6 +70,50 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\Data\Models\Base.001.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Base.002.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Base.003.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Base.004.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Base.005.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Base.006.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Base.007.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Base.008.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link1.002.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link1.003.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link1.004.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link1.005.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link1.006.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link1.007.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link1.008.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link1.009.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link1.010.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link1.011.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link2.002.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link2.003.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link2.004.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link2.005.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link2.006.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link2.007.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link2.008.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link2.009.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link2.010.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link2.011.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link3.002.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link3.003.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link3.004.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link4.002.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link4.003.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link4.004.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link4.005.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link4.006.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link5.002.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link5.003.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\Link6.002.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\LinkD1.001.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\LinkD1.002.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\LinkD2.001.mdl" />
+    <AndroidAsset Include="Assets\Data\Models\LinkD2.002.mdl" />
+    <AndroidAsset Include="Assets\Data\Scenes\irb6700_scene.xml" />
     <None Include="project.json">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </None>
@@ -98,6 +142,10 @@
     <None Include="Properties\AndroidManifest.xml">
       <SubType>Designer</SubType>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\Data\Materials\Material0.xml" />
+    <AndroidAsset Include="Assets\Data\Materials\Material1.xml" />
   </ItemGroup>
   <Import Project="..\MobileHmi\MobileHmi.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

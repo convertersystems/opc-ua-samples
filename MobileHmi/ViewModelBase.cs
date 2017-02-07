@@ -53,6 +53,54 @@ namespace Workstation.MobileHmi
             return true;
         }
 
+        protected virtual bool SetProperty(ref double storage, double value, double deadband, [CallerMemberName] string propertyName = null)
+        {
+            if (Math.Abs(storage - value) < deadband)
+            {
+                return false;
+            }
+
+            storage = value;
+            this.NotifyPropertyChanged(propertyName);
+            return true;
+        }
+
+        protected virtual bool SetProperty(ref float storage, float value, float deadband, [CallerMemberName] string propertyName = null)
+        {
+            if (Math.Abs(storage - value) < deadband)
+            {
+                return false;
+            }
+
+            storage = value;
+            this.NotifyPropertyChanged(propertyName);
+            return true;
+        }
+
+        protected virtual bool SetProperty(ref int storage, int value, int deadband, [CallerMemberName] string propertyName = null)
+        {
+            if (Math.Abs(storage - value) < deadband)
+            {
+                return false;
+            }
+
+            storage = value;
+            this.NotifyPropertyChanged(propertyName);
+            return true;
+        }
+
+        protected virtual bool SetProperty(ref short storage, short value, short deadband, [CallerMemberName] string propertyName = null)
+        {
+            if (Math.Abs(storage - value) < deadband)
+            {
+                return false;
+            }
+
+            storage = value;
+            this.NotifyPropertyChanged(propertyName);
+            return true;
+        }
+
         /// <summary>
         /// Notifies listeners that a property value has changed.
         /// </summary>

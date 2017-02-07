@@ -9,7 +9,7 @@ namespace Workstation.MobileHmi
     {
         public MainPage()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }

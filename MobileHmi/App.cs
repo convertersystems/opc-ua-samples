@@ -14,7 +14,7 @@ namespace Workstation.MobileHmi
 {
     public class App : Application
     {
-        private string discoveryUrl = @"opc.tcp://10.0.2.2:48010"; // Use ip address ( or '10.0.2.2' for accessing local host computer from emulator. hostname, localhost or 127.0.0.1 will not work on Android emu!)
+        private string discoveryUrl = @"opc.tcp://10.0.2.2:26543"; // Use ip address ( or '10.0.2.2' for accessing local host computer from emulator. hostname, localhost or 127.0.0.1 will not work on Android emu!)
 
         private ILoggerFactory loggerFactory;
         private ILogger logger;
@@ -41,7 +41,7 @@ namespace Workstation.MobileHmi
                 this.loggerFactory);
 
             // Show the MainPage
-            var viewModel = new MainViewModel(this.session);
+            var viewModel = new MainPageViewModel(this.session);
             var view = new MainPage { BindingContext = viewModel };
 
             this.MainPage = new NavigationPage(view);

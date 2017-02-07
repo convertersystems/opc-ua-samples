@@ -13,7 +13,6 @@ namespace Workstation.MobileHmi
         protected override void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
-
             global::Xamarin.Forms.Forms.Init(this, bundle);
             this.LoadApplication(new App());
         }
