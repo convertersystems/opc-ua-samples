@@ -1,4 +1,4 @@
-![Workstation][1] ![RobotApp][2] ![mobilehmi-droid 2][3]
+![Workstation][1] ![RobotApp][2] ![mobilehmi-droid][3]
 
 # opc-ua-samples
 Supports Universal Windows Platform (UWP) and Windows Presentation Framework (WPF) applications and now Xamarin Forms.
@@ -51,4 +51,4 @@ v1.0.0 First commit.
 
 [1]: WorkstationRuntime.png
 [2]: RobotApp.png
-[3]: mobilehmi-droid 2.png  
+[3]: mobilehmi-droid.png  
