@@ -155,7 +155,7 @@ namespace ConsoleApp
                     {
                         foreach (var min in dcn.MonitoredItems)
                         {
-                            Console.WriteLine($"clientHandle: {min.ClientHandle}; value: {min.Value}");
+                            Console.WriteLine($"subscription: {publishResponse.SubscriptionId}; clientHandle: {min.ClientHandle}; value: {min.Value}");
                         }
                     }
 
