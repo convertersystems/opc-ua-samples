@@ -1,13 +1,13 @@
 ﻿{
   "dependencies": {
-    "MahApps.Metro": "1.4.1",
-    "Microsoft.Extensions.Logging.Debug": "1.1.0",
+    "MahApps.Metro": "1.4.3",
+    "Microsoft.Extensions.Logging.Debug": "1.1.1",
     "Newtonsoft.Json": "9.0.1",
     "Prism.Core": "6.2.0",
     "Prism.Unity": "6.2.0",
     "Prism.Wpf": "6.2.0",
     "StyleCop.Analyzers": "1.0.0",
-    "Workstation.UaClient": "1.5.5"
+    "Workstation.UaClient": "1.5.7"
   },
   "frameworks": {
     ".NETFramework,Version=v4.6.1": {}

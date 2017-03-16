@@ -1,7 +1,7 @@
 ﻿{
   "dependencies": {
     "StyleCop.Analyzers": "1.0.0",
-    "Workstation.UaClient": "1.5.5"
+    "Workstation.UaClient": "1.5.7"
   },
   "frameworks": {
     ".NETFramework,Version=v4.5": {}

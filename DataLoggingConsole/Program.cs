@@ -33,7 +33,7 @@ namespace DataLoggingConsole
 
         private static async Task TestAsync(CancellationToken token = default(CancellationToken))
         {
-            var discoveryUrl = $"opc.tcp://localhost:48010";
+            var discoveryUrl = $"opc.tcp://localhost:26543";
             var cycleTime = 5000;
 
             // setup logger
