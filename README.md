@@ -22,6 +22,8 @@ Get the companion Visual Studio extension 'Workstation.UaBrowser' and you can:
 
 ### Releases
 
+v1.5.8 Packages upgraded.
+
 v1.5.7 Replaced NodeServer with RobotServer to demonstrate interopability with the OPCFoundation Reference Server.
 
 v1.5.6 Added 3d robot to Xamarin Forms based MobileHmi.

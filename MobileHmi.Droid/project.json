@@ -1,10 +1,11 @@
 ﻿{
   "dependencies": {
+    "Microsoft.Extensions.Logging": "1.1.1",
     "Microsoft.Extensions.Logging.Debug": "1.1.1",
     "NETStandard.Library": "1.6.1",
     "StyleCop.Analyzers": "1.0.0",
     "UrhoSharp.Forms": "1.2.21",
-    "Workstation.UaClient": "1.5.7",
+    "Workstation.UaClient": "1.5.8",
     "Xamarin.Forms": "2.3.3.193"
   },
   "frameworks": {
