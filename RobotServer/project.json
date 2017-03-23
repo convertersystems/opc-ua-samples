@@ -1,6 +1,6 @@
 ﻿{
   "dependencies": {
-    "OPCFoundation.NetStandard.Opc.Ua.SDK": "0.2.2"
+    "OPCFoundation.NetStandard.Opc.Ua.SDK": "0.2.3"
   },
   "frameworks": {
     ".NETFramework,Version=v4.6.1": {}

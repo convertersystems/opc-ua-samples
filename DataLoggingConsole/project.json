@@ -1,7 +1,8 @@
 ﻿{
   "dependencies": {
+    "Microsoft.Extensions.Logging": "1.1.1",
     "Microsoft.Extensions.Logging.Console": "1.1.1",
-    "Workstation.UaClient": "1.5.7"
+    "Workstation.UaClient": "1.5.8"
   },
   "frameworks": {
     ".NETFramework,Version=v4.5.1": {}

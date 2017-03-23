@@ -174,7 +174,8 @@ namespace RobotServer
             }
 
             if (!((userName == "user1" && password == "password") ||
-                 (userName == "user2" && password == "password1")))
+                 (userName == "user2" && password == "password1") ||
+                 (userName == "root" && password == "secret")))
             {
                 // construct translation object with default text.
                 TranslationInfo info = new TranslationInfo(
