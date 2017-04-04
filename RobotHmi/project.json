@@ -8,7 +8,7 @@
     "Prism.Unity": "6.2.0",
     "Prism.Wpf": "6.2.0",
     "StyleCop.Analyzers": "1.0.0",
-    "Workstation.UaClient": "1.5.8"
+    "Workstation.UaClient": "1.5.9"
   },
   "frameworks": {
     ".NETFramework,Version=v4.6.1": {}

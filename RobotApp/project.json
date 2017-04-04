@@ -8,7 +8,7 @@
     "Template10": "1.1.12",
     "Unity": "4.0.1",
     "UrhoSharp": "1.2.21",
-    "Workstation.UaClient": "1.5.8"
+    "Workstation.UaClient": "1.5.9"
   },
   "frameworks": {
     "uap10.0": {}
