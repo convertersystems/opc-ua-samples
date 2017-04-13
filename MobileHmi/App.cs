@@ -66,7 +66,8 @@ namespace Workstation.MobileHmi
         {
             // Due to problem with dns on android emulator, the endpoint url's hostname is rewritten with an ip address.
             endpoint.EndpointUrl = this.discoveryUrl;
-
+            
+            // Due to problem with security on server, security is turned off. This is not recommended!
             endpoint.SecurityMode = MessageSecurityMode.None;
             endpoint.SecurityPolicyUri = SecurityPolicyUris.None;
             endpoint.SecurityLevel = 0;
