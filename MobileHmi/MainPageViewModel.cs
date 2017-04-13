@@ -1,8 +1,6 @@
 ﻿// Copyright (c) Converter Systems LLC. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using System;
-using System.Collections;
 using System.Linq;
 using Workstation.ServiceModel.Ua;
 
@@ -11,8 +9,8 @@ namespace Workstation.MobileHmi
     /// <summary>
     /// A model for MainView.
     /// </summary>
-    [Subscription(publishingInterval: 500, keepAliveCount: 20)] // Step 2: Add a [Subscription] attribute.
-    public class MainPageViewModel : ViewModelBase // Step 3: Add your base class (which implements INotifyPropertyChanged).
+    [Subscription(publishingInterval: 500, keepAliveCount: 20)]
+    public class MainPageViewModel : ViewModelBase
     {
         private readonly UaTcpSessionClient session;
 
@@ -33,7 +31,8 @@ namespace Workstation.MobileHmi
             // Update UI when Item has errors. This is not necessary with WPF.
             this.ErrorsChanged += (s, e) =>
             {
-                this.NotifyPropertyChanged(nameof(this.Robot1ModeErrors));
+                this.NotifyPropertyChanged(nameof(this.Robot1ModeHasError));
+                this.NotifyPropertyChanged(nameof(this.Robot1ModeError));
             };
         }
 
@@ -48,7 +47,7 @@ namespace Workstation.MobileHmi
         /// <summary>
         /// Gets or sets the value of Robot1Mode.
         /// </summary>
-        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")] // Step 4: Add a [MonitoredItem] attribute.
+        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")]
         public short Robot1Mode
         {
             get { return this.robot1Mode; }
@@ -58,10 +57,14 @@ namespace Workstation.MobileHmi
         private short robot1Mode;
 
         /// <summary>
-        /// Gets the OPCUA errors reading or writing the value of Robot1Mode.
-        /// This is not necessary with WPF.
+        /// Gets a value indicating whether Robot1Mode has OPCUA errors. This is not necessary with WPF.
         /// </summary>
-        public IEnumerable Robot1ModeErrors => this.GetErrors(nameof(this.Robot1Mode));
+        public bool Robot1ModeHasError => this.GetErrors(nameof(this.Robot1Mode)).OfType<string>().Any();
+
+        /// <summary>
+        /// Gets the first OPCUA error of Robot1Mode. This is not necessary with WPF.
+        /// </summary>
+        public string Robot1ModeError => this.GetErrors(nameof(this.Robot1Mode)).OfType<string>().FirstOrDefault();
 
         /// <summary>
         /// Gets or sets the value of Robot1Axis1.

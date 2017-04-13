@@ -35,7 +35,9 @@
                         <x:String>Auto</x:String>
                     </Picker.Items>
                 </Picker>
-                <ListView ItemsSource="{Binding Robot1ModeErrors}" VerticalOptions="StartAndExpand" RowHeight="40"/>
+                <Label Text="{Binding Robot1ModeError}"
+                       IsVisible="{Binding Robot1ModeHasError}"
+                       TextColor="Red"/>
                 <Label Text="Axis1, &#0176;" />
                 <Slider Minimum="-180"
                         Maximum="180"
