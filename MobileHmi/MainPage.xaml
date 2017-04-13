@@ -5,44 +5,58 @@
              xmlns:local="clr-namespace:Workstation.MobileHmi"
              xmlns:urho="clr-namespace:Urho.Forms;assembly=Urho.Forms"
              Title="Workstation.MobileHmi">
-  <ContentPage.Resources>
-    <ResourceDictionary>
-      <local:IsModeHandConverter x:Key="IsModeHandConverter" />
-    </ResourceDictionary>
-  </ContentPage.Resources>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:IsModeHandConverter x:Key="IsModeHandConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-  <StackLayout Orientation="Vertical">
-
-    <local:RobotView x:Name="RobotView"
-                      VerticalOptions="FillAndExpand"
-                      Axis1="{Binding Robot1Axis1, Mode=OneWay}"
-                      Axis2="{Binding Robot1Axis2, Mode=OneWay}"
-                      Axis3="{Binding Robot1Axis3, Mode=OneWay}"
-                      Axis4="{Binding Robot1Axis4, Mode=OneWay}"/>
-
-    <ScrollView>
-      <StackLayout Spacing="10" Padding="10" VerticalOptions="FillAndExpand">
-        <Label Text="Robot1 Mode"/>
-        <Picker SelectedIndex="{Binding Robot1Mode, Mode=TwoWay}">
-          <Picker.Items>
-            <x:String>Off</x:String>
-            <x:String>Hand</x:String>
-            <x:String>Auto</x:String>
-          </Picker.Items>
-        </Picker>
-        <Label Text="Axis1, &#0176;"/>
-        <Slider Minimum="-180" Maximum="180" Value="{Binding Robot1Axis1, Mode=TwoWay}" 
-                IsEnabled="{Binding Robot1Mode, Converter={StaticResource IsModeHandConverter}}"/>
-        <Label Text="Axis2, &#0176;"/>
-        <Slider Minimum="-45" Maximum="45" Value="{Binding Robot1Axis2, Mode=TwoWay}" 
-                IsEnabled="{Binding Robot1Mode, Converter={StaticResource IsModeHandConverter}}"/>
-        <Label Text="Axis3, &#0176;"/>
-        <Slider Minimum="-45" Maximum="45" Value="{Binding Robot1Axis3, Mode=TwoWay}" 
-                IsEnabled="{Binding Robot1Mode, Converter={StaticResource IsModeHandConverter}}"/>
-        <Label Text="Axis4, &#0176;"/>
-        <Slider Minimum="-180" Maximum="180" Value="{Binding Robot1Axis4, Mode=TwoWay}" 
-                IsEnabled="{Binding Robot1Mode, Converter={StaticResource IsModeHandConverter}}"/>
-      </StackLayout>
-    </ScrollView>
-  </StackLayout>
+    <StackLayout Orientation="Vertical">
+        <AbsoluteLayout VerticalOptions="FillAndExpand">
+            <local:RobotView x:Name="RobotView"
+                             VerticalOptions="FillAndExpand"
+                             Axis1="{Binding Robot1Axis1, Mode=OneWay}"
+                             Axis2="{Binding Robot1Axis2, Mode=OneWay}"
+                             Axis3="{Binding Robot1Axis3, Mode=OneWay}"
+                             Axis4="{Binding Robot1Axis4, Mode=OneWay}" />
+            <Label Text="Disconnected"
+                   TextColor="Red"
+                   IsVisible="{Binding IsDisconnected}" />
+        </AbsoluteLayout>
+        <ScrollView HeightRequest="320">
+            <StackLayout Spacing="10"
+                         Padding="10"
+                         VerticalOptions="FillAndExpand">
+                <Label Text="Robot1 Mode" />
+                <Picker SelectedIndex="{Binding Robot1Mode, Mode=TwoWay}" >
+                    <Picker.Items>
+                        <x:String>Off</x:String>
+                        <x:String>Hand</x:String>
+                        <x:String>Auto</x:String>
+                    </Picker.Items>
+                </Picker>
+                <ListView ItemsSource="{Binding Robot1ModeErrors}" VerticalOptions="StartAndExpand" RowHeight="40"/>
+                <Label Text="Axis1, &#0176;" />
+                <Slider Minimum="-180"
+                        Maximum="180"
+                        Value="{Binding Robot1Axis1, Mode=TwoWay}"
+                        IsEnabled="{Binding Robot1Mode, Converter={StaticResource IsModeHandConverter}}" />
+                <Label Text="Axis2, &#0176;" />
+                <Slider Minimum="-45"
+                        Maximum="45"
+                        Value="{Binding Robot1Axis2, Mode=TwoWay}"
+                        IsEnabled="{Binding Robot1Mode, Converter={StaticResource IsModeHandConverter}}" />
+                <Label Text="Axis3, &#0176;" />
+                <Slider Minimum="-45"
+                        Maximum="45"
+                        Value="{Binding Robot1Axis3, Mode=TwoWay}"
+                        IsEnabled="{Binding Robot1Mode, Converter={StaticResource IsModeHandConverter}}" />
+                <Label Text="Axis4, &#0176;" />
+                <Slider Minimum="-180"
+                        Maximum="180"
+                        Value="{Binding Robot1Axis4, Mode=TwoWay}"
+                        IsEnabled="{Binding Robot1Mode, Converter={StaticResource IsModeHandConverter}}" />
+            </StackLayout>
+        </ScrollView>
+    </StackLayout>
 </ContentPage>

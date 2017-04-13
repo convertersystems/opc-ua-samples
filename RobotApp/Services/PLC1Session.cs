@@ -19,7 +19,12 @@ namespace RobotApp.Services
         /// </summary>
         public PLC1Session(ILoggerFactory loggerFactory)
             : base(
-                  App.Current.ApplicationDescription,
+                  new ApplicationDescription
+                  {
+                      ApplicationName = "Workstation.RobotApp",
+                      ApplicationUri = $"urn:{System.Net.Dns.GetHostName()}:Workstation.RobotApp",
+                      ApplicationType = ApplicationType.Client
+                  },
                 new DirectoryStore(
                     Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "pki"),
                     loggerFactory: loggerFactory),

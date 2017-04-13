@@ -1,8 +1,9 @@
 ﻿// Copyright (c) Converter Systems LLC. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-// Step 1: Add the following namespaces.
-using Microsoft.Extensions.Logging;
+using System;
+using System.Collections;
+using System.Linq;
 using Workstation.ServiceModel.Ua;
 
 namespace Workstation.MobileHmi
@@ -10,16 +11,38 @@ namespace Workstation.MobileHmi
     /// <summary>
     /// A model for MainView.
     /// </summary>
-    [Subscription(publishingInterval: 250, keepAliveCount: 20)] // Step 2: Add a [Subscription] attribute.
+    [Subscription(publishingInterval: 500, keepAliveCount: 20)] // Step 2: Add a [Subscription] attribute.
     public class MainPageViewModel : ViewModelBase // Step 3: Add your base class (which implements INotifyPropertyChanged).
     {
-        private readonly ILogger<MainPageViewModel> logger;
         private readonly UaTcpSessionClient session;
 
         public MainPageViewModel(UaTcpSessionClient session)
         {
             this.session = session;
-            session?.Subscribe(this);
+            if (session != null)
+            {
+                session.Subscribe(this);
+
+                // Update UI when connection state changes
+                session.StateChanged += (s, e) =>
+                {
+                    this.NotifyPropertyChanged(nameof(this.IsDisconnected));
+                };
+            }
+
+            // Update UI when Item has errors. This is not necessary with WPF.
+            this.ErrorsChanged += (s, e) =>
+            {
+                this.NotifyPropertyChanged(nameof(this.Robot1ModeErrors));
+            };
+        }
+
+        /// <summary>
+        /// Gets a value indicating whether the channel is disconnected.
+        /// </summary>
+        public bool IsDisconnected
+        {
+            get { return this.session.State != CommunicationState.Opened; }
         }
 
         /// <summary>
@@ -33,6 +56,12 @@ namespace Workstation.MobileHmi
         }
 
         private short robot1Mode;
+
+        /// <summary>
+        /// Gets the OPCUA errors reading or writing the value of Robot1Mode.
+        /// This is not necessary with WPF.
+        /// </summary>
+        public IEnumerable Robot1ModeErrors => this.GetErrors(nameof(this.Robot1Mode));
 
         /// <summary>
         /// Gets or sets the value of Robot1Axis1.

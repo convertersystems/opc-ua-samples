@@ -49,16 +49,6 @@ namespace RobotApp
         /// </summary>
         public static new App Current => (App)Application.Current;
 
-        /// <summary>
-        /// Gets the <see cref="ApplicationDescription"/> of the local application.
-        /// </summary>
-        public ApplicationDescription ApplicationDescription { get; } = new ApplicationDescription
-        {
-            ApplicationName = "Workstation.RobotApp",
-            ApplicationUri = $"urn:{System.Net.Dns.GetHostName()}:Workstation.RobotApp",
-            ApplicationType = ApplicationType.Client
-        };
-
         public override async Task OnInitializeAsync(IActivatedEventArgs args)
         {
             if (Window.Current.Content as ModalDialog == null)
@@ -115,18 +105,18 @@ namespace RobotApp
         /// </summary>
         /// <param name="endpoint">The remote endpoint.</param>
         /// <returns>A UserIdentity</returns>
-        public Task<IUserIdentity> ProvideUserIdentity(EndpointDescription endpoint)
+        public async Task<IUserIdentity> ProvideUserIdentity(EndpointDescription endpoint)
         {
             if (endpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.Anonymous))
             {
-                return Task.FromResult<IUserIdentity>(new AnonymousIdentity());
+                return new AnonymousIdentity();
             }
 
             if (endpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.UserName))
             {
                 var tcs = new TaskCompletionSource<IUserIdentity>();
 
-                this.NavigationService.Dispatcher.DispatchIdleAsync(async () =>
+                await this.NavigationService.Dispatcher.DispatchIdleAsync(async () =>
                 {
                     var d = new UserIdentityDialog(endpoint);
                     var result = await d.ShowAsync();
@@ -136,7 +126,8 @@ namespace RobotApp
                     }
                     tcs.TrySetResult(new AnonymousIdentity());
                 });
-                return tcs.Task;
+
+                return await tcs.Task;
             }
 
             throw new NotImplementedException("ProvideUserIdentity supports only UserName and Anonymous identity, for now.");

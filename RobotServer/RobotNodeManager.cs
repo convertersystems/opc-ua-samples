@@ -560,7 +560,7 @@ namespace RobotServer
                 lock (Lock)
                 {
                     var now = DateTime.Now;
-                    double dt = (now - timestamp).Milliseconds;
+                    double dt = (now - timestamp).TotalMilliseconds;
                     timestamp = now;
 
                     var mode = (short)modeState.Value;
@@ -587,19 +587,19 @@ namespace RobotServer
                             masterAxis = (masterAxis + dt / period) % 1.0; // 0.0 to 1.0
                         }
                         axis1State.Value = (float)(Math.Sin(masterAxis * 2.0 * Math.PI) * 45.0);
-                        axis1State.Timestamp = now;
-                        axis1State.ClearChangeMasks(SystemContext, false);
                         axis2State.Value = (float)(Math.Cos(masterAxis * 2.0 * Math.PI) * 45.0);
-                        axis2State.Timestamp = now;
-                        axis2State.ClearChangeMasks(SystemContext, false);
                         axis3State.Value = (float)(Math.Sin(((masterAxis * 2.0) % 1.0) * 2.0 * Math.PI) * 45.0);
-                        axis3State.Timestamp = now;
-                        axis3State.ClearChangeMasks(SystemContext, false);
                         axis4State.Value = (float)(Math.Cos(masterAxis * 2.0 * Math.PI) * -180.0);
-                        axis4State.Timestamp = now;
-                        axis4State.ClearChangeMasks(SystemContext, false);
 
                     }
+                    axis1State.Timestamp = now;
+                    axis1State.ClearChangeMasks(SystemContext, false);
+                    axis2State.Timestamp = now;
+                    axis2State.ClearChangeMasks(SystemContext, false);
+                    axis3State.Timestamp = now;
+                    axis3State.ClearChangeMasks(SystemContext, false);
+                    axis4State.Timestamp = now;
+                    axis4State.ClearChangeMasks(SystemContext, false);
 
                     if (mode != prevmode)
                     {

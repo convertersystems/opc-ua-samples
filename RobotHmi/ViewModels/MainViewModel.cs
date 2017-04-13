@@ -127,14 +127,18 @@ namespace RobotHmi.ViewModels
         /// capacity: 240 = 60 seconds storage /  0.250 seconds publishing interval
         /// isFixedSize: true = circular queue, oldest values are overwitten
         /// </remarks>
-        [MonitoredItem(nodeId: "ns=2;s=Robot1_Axis1", dataChangeTrigger: DataChangeTrigger.StatusValueTimestamp)]
         public ObservableQueue<DataValue> Robot1Axis1Queue { get; } = new ObservableQueue<DataValue>(capacity: 240, isFixedSize: true);
+
+        [MonitoredItem(nodeId: "ns=2;s=Robot1_Axis1", dataChangeTrigger: DataChangeTrigger.StatusValueTimestamp)]
+        private DataValue Robot1Axis1Stream { set { this.Robot1Axis1Queue.Enqueue(value); } }
 
         /// <summary>
         /// Gets the events of Robot1.
         /// </summary>
-        [MonitoredItem(nodeId: "ns=2;s=Robot1", attributeId: AttributeIds.EventNotifier)]
         public ObservableQueue<AlarmCondition> Robot1Events { get; } = new ObservableQueue<AlarmCondition>(capacity: 16, isFixedSize: true);
+
+        [MonitoredItem(nodeId: "ns=2;s=Robot1", attributeId: AttributeIds.EventNotifier)]
+        private AlarmCondition Robot1EventStream { set { this.Robot1Events.Enqueue(value); } }
 
         /// <summary>
         /// Gets the command to set the value of Robot1Mode to Off.
@@ -250,7 +254,7 @@ namespace RobotHmi.ViewModels
                         var response = await this.session.CallAsync(new CallRequest
                         {
                             MethodsToCall = new[]
-                        {
+                            {
                                 new CallMethodRequest
                                 {
                                     ObjectId = NodeId.Parse("ns=2;s=Robot1"),

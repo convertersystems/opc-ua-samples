@@ -67,6 +67,10 @@ namespace Workstation.MobileHmi
             // Due to problem with dns on android emulator, the endpoint url's hostname is rewritten with an ip address.
             endpoint.EndpointUrl = this.discoveryUrl;
 
+            endpoint.SecurityMode = MessageSecurityMode.None;
+            endpoint.SecurityPolicyUri = SecurityPolicyUris.None;
+            endpoint.SecurityLevel = 0;
+
             if (endpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.Anonymous))
             {
                 return Task.FromResult<IUserIdentity>(new AnonymousIdentity());

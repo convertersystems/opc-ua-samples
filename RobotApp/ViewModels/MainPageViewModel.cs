@@ -126,39 +126,44 @@ namespace RobotApp.ViewModels
         /// <summary>
         /// Gets the recent history of Robot1Axis1.
         /// </summary>
-        [MonitoredItem(nodeId: "ns=2;s=Robot1_Axis1", dataChangeTrigger: DataChangeTrigger.StatusValueTimestamp)]
         public ObservableQueue<DataValue> Robot1Axis1Queue { get; } = new ObservableQueue<DataValue>(capacity: 240, isFixedSize: true);
+
+        [MonitoredItem(nodeId: "ns=2;s=Robot1_Axis1", dataChangeTrigger: DataChangeTrigger.StatusValueTimestamp)]
+        private DataValue Robot1Axis1Stream { set { this.Robot1Axis1Queue.Enqueue(value); }}
 
         /// <summary>
         /// Gets the recent history of Robot1Axis2.
         /// </summary>
-        [MonitoredItem(nodeId: "ns=2;s=Robot1_Axis2", dataChangeTrigger: DataChangeTrigger.StatusValueTimestamp)]
         public ObservableQueue<DataValue> Robot1Axis2Queue { get; } = new ObservableQueue<DataValue>(capacity: 240, isFixedSize: true);
+
+        [MonitoredItem(nodeId: "ns=2;s=Robot1_Axis2", dataChangeTrigger: DataChangeTrigger.StatusValueTimestamp)]
+        private DataValue Robot1Axis2Stream { set { this.Robot1Axis2Queue.Enqueue(value); }}
 
         /// <summary>
         /// Gets the recent history of Robot1Axis3.
         /// </summary>
-        [MonitoredItem(nodeId: "ns=2;s=Robot1_Axis3", dataChangeTrigger: DataChangeTrigger.StatusValueTimestamp)]
         public ObservableQueue<DataValue> Robot1Axis3Queue { get; } = new ObservableQueue<DataValue>(capacity: 240, isFixedSize: true);
+
+        [MonitoredItem(nodeId: "ns=2;s=Robot1_Axis3", dataChangeTrigger: DataChangeTrigger.StatusValueTimestamp)]
+        private DataValue Robot1Axis3Stream { set { this.Robot1Axis3Queue.Enqueue(value); }}
 
         /// <summary>
         /// Gets the recent history of Robot1Axis4.
         /// </summary>
-        [MonitoredItem(nodeId: "ns=2;s=Robot1_Axis4", dataChangeTrigger: DataChangeTrigger.StatusValueTimestamp)]
         public ObservableQueue<DataValue> Robot1Axis4Queue { get; } = new ObservableQueue<DataValue>(capacity: 240, isFixedSize: true);
+
+        [MonitoredItem(nodeId: "ns=2;s=Robot1_Axis4", dataChangeTrigger: DataChangeTrigger.StatusValueTimestamp)]
+        private DataValue Robot1Axis4Stream { set { this.Robot1Axis4Queue.Enqueue(value); }}
 
         /// <summary>
         /// Gets the current events of Robot1.
         /// </summary>
-        public ObservableCollection<AlarmCondition> Robot1Events { get; } = new ObservableCollection<AlarmCondition>();
-
-        /// <summary>
-        /// Sets the latest event of Robot1 into the Robot1Events collection.
-        /// </summary>
         /// <remarks>
-        /// In this sample, we wish to display only current events. So after 5 seconds the event is removed.
+        /// In this sample, we wish to display only recent events. So after 5 seconds the event is removed.
         /// This works nicely with the ItemsControl's AddDeleteThemeTransition.
         /// </remarks>
+        public ObservableCollection<AlarmCondition> Robot1Events { get; } = new ObservableCollection<AlarmCondition>();
+
         [MonitoredItem(nodeId: "ns=2;s=Robot1", attributeId: AttributeIds.EventNotifier, queueSize: 8)]
         private AlarmCondition Robot1EventStream
         {
