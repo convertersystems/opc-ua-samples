@@ -5,8 +5,7 @@ using System;
 using System.Diagnostics;
 using System.Windows.Input;
 using Prism.Commands;
-using RobotHmi.Services;
-using Workstation.Collections; // Step 1: Add these namespaces
+using Workstation.Collections;
 using Workstation.ServiceModel.Ua;
 
 namespace RobotHmi.ViewModels
@@ -24,26 +23,18 @@ namespace RobotHmi.ViewModels
     /// <summary>
     /// A view model for MainView.
     /// </summary>
-    [Subscription(publishingInterval: 250, keepAliveCount: 40)] // Step 2: Add a [Subscription] attribute.
-    public class MainViewModel : ViewModelBase // Step 3: Add your base class (which implements INotifyPropertyChanged).
+    [Subscription(endpointName: "PLC1", publishingInterval: 500, keepAliveCount: 20)]
+    public class MainViewModel : SubscriptionBase
     {
-        private UaTcpSessionClient session;
-        private IDisposable subscriptionToken;
-
-        public MainViewModel(PLC1Session session)
-        {
-            this.session = session;
-            this.subscriptionToken = this.session?.Subscribe(this);
-        }
 
         /// <summary>
         /// Gets or sets the value of Robot1Mode.
         /// </summary>
-        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")] // Step 4: Add a [MonitoredItem] attribute.
+        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")]
         public short Robot1Mode
         {
             get { return this.robot1Mode; }
-            set { this.SetProperty(ref this.robot1Mode, value); }
+            set { this.SetValue(ref this.robot1Mode, value); }
         }
 
         private short robot1Mode;
@@ -55,7 +46,7 @@ namespace RobotHmi.ViewModels
         public float Robot1Axis1
         {
             get { return this.robot1Axis1; }
-            set { this.SetProperty(ref this.robot1Axis1, value); }
+            set { this.SetValue(ref this.robot1Axis1, value); }
         }
 
         private float robot1Axis1;
@@ -67,7 +58,7 @@ namespace RobotHmi.ViewModels
         public float Robot1Axis2
         {
             get { return this.robot1Axis2; }
-            set { this.SetProperty(ref this.robot1Axis2, value); }
+            set { this.SetValue(ref this.robot1Axis2, value); }
         }
 
         private float robot1Axis2;
@@ -79,7 +70,7 @@ namespace RobotHmi.ViewModels
         public float Robot1Axis3
         {
             get { return this.robot1Axis3; }
-            set { this.SetProperty(ref this.robot1Axis3, value); }
+            set { this.SetValue(ref this.robot1Axis3, value); }
         }
 
         private float robot1Axis3;
@@ -91,7 +82,7 @@ namespace RobotHmi.ViewModels
         public float Robot1Axis4
         {
             get { return this.robot1Axis4; }
-            set { this.SetProperty(ref this.robot1Axis4, value); }
+            set { this.SetValue(ref this.robot1Axis4, value); }
         }
 
         private float robot1Axis4;
@@ -103,7 +94,7 @@ namespace RobotHmi.ViewModels
         public short Robot1Speed
         {
             get { return this.robot1Speed; }
-            set { this.SetProperty(ref this.robot1Speed, value); }
+            set { this.SetValue(ref this.robot1Speed, value); }
         }
 
         private short robot1Speed;
@@ -115,7 +106,7 @@ namespace RobotHmi.ViewModels
         public bool Robot1Laser
         {
             get { return this.robot1Laser; }
-            set { this.SetProperty(ref this.robot1Laser, value); }
+            set { this.SetValue(ref this.robot1Laser, value); }
         }
 
         private bool robot1Laser;
@@ -151,7 +142,7 @@ namespace RobotHmi.ViewModels
                 {
                     try
                     {
-                        await this.session.WriteAsync(new WriteRequest
+                        await this.InnerChannel.WriteAsync(new WriteRequest
                         {
                             NodesToWrite = new[]
                             {
@@ -184,7 +175,7 @@ namespace RobotHmi.ViewModels
                 {
                     try
                     {
-                        await this.session.WriteAsync(new WriteRequest
+                        await this.InnerChannel.WriteAsync(new WriteRequest
                         {
                             NodesToWrite = new[]
                             {
@@ -212,7 +203,7 @@ namespace RobotHmi.ViewModels
         public double InputA
         {
             get { return this.inputA; }
-            set { this.SetProperty(ref this.inputA, value); }
+            set { this.SetValue(ref this.inputA, value); }
         }
 
         private double inputA;
@@ -223,7 +214,7 @@ namespace RobotHmi.ViewModels
         public double InputB
         {
             get { return this.inputB; }
-            set { this.SetProperty(ref this.inputB, value); }
+            set { this.SetValue(ref this.inputB, value); }
         }
 
         private double inputB;
@@ -234,7 +225,7 @@ namespace RobotHmi.ViewModels
         public double Result
         {
             get { return this.result; }
-            set { this.SetProperty(ref this.result, value); }
+            set { this.SetValue(ref this.result, value); }
         }
 
         private double result;
@@ -251,7 +242,7 @@ namespace RobotHmi.ViewModels
                     try
                     {
                         // Call the method, passing the input arguments in a Variant[].
-                        var response = await this.session.CallAsync(new CallRequest
+                        var response = await this.InnerChannel.CallAsync(new CallRequest
                         {
                             MethodsToCall = new[]
                             {
@@ -290,17 +281,6 @@ namespace RobotHmi.ViewModels
                     GC.Collect();
                 });
             }
-        }
-    }
-
-    /// <summary>
-    /// A design instance for MainView.
-    /// </summary>
-    internal class MainViewModelDesignInstance : MainViewModel
-    {
-        public MainViewModelDesignInstance()
-            : base(null)
-        {
         }
     }
 }

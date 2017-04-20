@@ -8,7 +8,6 @@
              xmlns:v="clr-namespace:RobotHmi.Views"
              xmlns:vm="clr-namespace:RobotHmi.ViewModels"
              xmlns:prism="http://prismlibrary.com/"
-             prism:ViewModelLocator.AutoWireViewModel="False"
              d:DataContext="{d:DesignInstance Type=vm:AxisViewModelDesignInstance, IsDesignTimeCreatable=True}"
              d:DesignHeight="600"
              d:DesignWidth="800">
@@ -38,11 +37,9 @@
         </TextBlock>
         <TextBlock Grid.Row="2"
                    Grid.ColumnSpan="2"
-                   Style="{StaticResource BasicTextStyle}" Margin="5">
-            <Run>When navigating to a view, you can pass parameters in the query string that may be used by the view or view-model. In this example, the navigation command passed parameter '</Run>
-            <Run Text="{Binding DisplayName, Mode=OneWay}" FontStyle="Italic"/>
-            <Run>' that the view-model used to select the correct axis to view.</Run>
-        </TextBlock>
+                   Style="{StaticResource BasicTextStyle}"
+                   Margin="5"><Run Text="When navigating to a view, you can pass parameters in the query string that may be used by the view or view-model. In this example, the navigation command passed parameter '" /><Run Text=" " /><Run FontStyle="Italic"
+                                                                                                                                                                                                                                               Text="{Binding DisplayName, Mode=OneWay}" /><Run Text=" " /><Run Text="' that the view used to select the correct view-model." /></TextBlock>
 
         <Label Grid.Row="3"
                HorizontalAlignment="Left"

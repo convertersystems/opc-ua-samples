@@ -114,7 +114,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Services\PLC1Session.cs" />
     <Compile Include="ViewModels\Axis1ViewModel.cs" />
     <Compile Include="ViewModels\Axis2ViewModel.cs" />
     <Compile Include="ViewModels\Axis3ViewModel.cs" />
@@ -303,6 +302,8 @@
       <Name>Workstation.Common.Wpf</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Services\" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

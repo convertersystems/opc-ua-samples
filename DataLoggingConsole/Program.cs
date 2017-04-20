@@ -69,7 +69,7 @@ namespace DataLoggingConsole
                         EndpointUrl = discoveryUrl,
                         ProfileUris = new[] { TransportProfileUris.UaTcpTransport }
                     };
-                    var getEndpointsResponse = await UaTcpDiscoveryClient.GetEndpointsAsync(getEndpointsRequest).ConfigureAwait(false);
+                    var getEndpointsResponse = await UaTcpDiscoveryService.GetEndpointsAsync(getEndpointsRequest).ConfigureAwait(false);
                     if (getEndpointsResponse.Endpoints == null || getEndpointsResponse.Endpoints.Length == 0)
                     {
                         throw new InvalidOperationException($"'{discoveryUrl}' returned no endpoints.");
@@ -95,7 +95,7 @@ namespace DataLoggingConsole
                     }
 
                     // Create a session with the server.
-                    var session = new UaTcpSessionChannel(appDescription, certificateStore, userIdentity, remoteEndpoint, loggerFactory);
+                    var session = new UaTcpSessionChannel(appDescription, certificateStore, async e => userIdentity, remoteEndpoint, loggerFactory);
                     try
                     {
                         await session.OpenAsync();

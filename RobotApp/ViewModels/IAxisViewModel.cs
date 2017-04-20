@@ -6,7 +6,7 @@ using Template10.Services.NavigationService;
 
 namespace RobotApp.ViewModels
 {
-    public interface IAxisViewModel : INavigable
+    public interface IAxisViewModel
     {
         float Axis { get; }
 

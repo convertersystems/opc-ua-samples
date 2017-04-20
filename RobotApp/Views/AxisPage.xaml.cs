@@ -15,7 +15,7 @@ namespace RobotApp.Views
         {
             this.InitializeComponent();
             this.serializationService = Template10.Services.SerializationService.SerializationService.Json;
-            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Disabled;
         }
 
         public AxisPageViewModel ViewModel => this.DataContext as AxisPageViewModel;

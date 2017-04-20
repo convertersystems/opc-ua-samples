@@ -2,13 +2,14 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using RobotApp.Services;
-using Template10.Mvvm;
-
-// Step 1: Add the following namespaces.
+using Newtonsoft.Json;
+using Template10.Common;
+using Template10.Services.NavigationService;
+using Windows.UI.Xaml.Navigation;
 using Workstation.Collections;
 using Workstation.ServiceModel.Ua;
 
@@ -27,26 +28,17 @@ namespace RobotApp.ViewModels
     /// <summary>
     /// A view model for MainPage.
     /// </summary>
-    [Subscription(publishingInterval: 250, keepAliveCount: 20)] // Step 2: Add a [Subscription] attribute.
-    public class MainPageViewModel : ViewModelBase // Step 3: Add your view model base class (which implements INotifyPropertyChanged).
+    [Subscription(endpointName: "PLC1", publishingInterval: 250, keepAliveCount: 20)]
+    public class MainPageViewModel : SubscriptionBase, INavigable
     {
-        private PLC1Session session;
-        private IDisposable subscriptionToken;
-
-        public MainPageViewModel(PLC1Session session)
-        {
-            this.session = session;
-            this.subscriptionToken = this.session?.Subscribe(this);
-        }
-
         /// <summary>
         /// Gets or sets the value of Robot1Mode.
         /// </summary>
-        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")] // Step 4: Add a [MonitoredItem] attribute.
+        [MonitoredItem(nodeId: "ns=2;s=Robot1_Mode")]
         public short Robot1Mode
         {
             get { return this.robot1Mode; }
-            set { this.Set(ref this.robot1Mode, value); }
+            set { this.SetValue(ref this.robot1Mode, value); }
         }
 
         private short robot1Mode;
@@ -58,7 +50,7 @@ namespace RobotApp.ViewModels
         public float Robot1Axis1
         {
             get { return this.robot1Axis1; }
-            set { this.Set(ref this.robot1Axis1, value); }
+            set { this.SetValue(ref this.robot1Axis1, value); }
         }
 
         private float robot1Axis1;
@@ -70,7 +62,7 @@ namespace RobotApp.ViewModels
         public float Robot1Axis2
         {
             get { return this.robot1Axis2; }
-            set { this.Set(ref this.robot1Axis2, value); }
+            set { this.SetValue(ref this.robot1Axis2, value); }
         }
 
         private float robot1Axis2;
@@ -82,7 +74,7 @@ namespace RobotApp.ViewModels
         public float Robot1Axis3
         {
             get { return this.robot1Axis3; }
-            set { this.Set(ref this.robot1Axis3, value); }
+            set { this.SetValue(ref this.robot1Axis3, value); }
         }
 
         private float robot1Axis3;
@@ -94,7 +86,7 @@ namespace RobotApp.ViewModels
         public float Robot1Axis4
         {
             get { return this.robot1Axis4; }
-            set { this.Set(ref this.robot1Axis4, value); }
+            set { this.SetValue(ref this.robot1Axis4, value); }
         }
 
         private float robot1Axis4;
@@ -106,7 +98,7 @@ namespace RobotApp.ViewModels
         public short Robot1Speed
         {
             get { return this.robot1Speed; }
-            set { this.Set(ref this.robot1Speed, value); }
+            set { this.SetValue(ref this.robot1Speed, value); }
         }
 
         private short robot1Speed;
@@ -118,7 +110,7 @@ namespace RobotApp.ViewModels
         public bool Robot1Laser
         {
             get { return this.robot1Laser; }
-            set { this.Set(ref this.robot1Laser, value); }
+            set { this.SetValue(ref this.robot1Laser, value); }
         }
 
         private bool robot1Laser;
@@ -185,7 +177,7 @@ namespace RobotApp.ViewModels
         {
             try
             {
-                await UaTcpSessionClient.FromModel(this).WriteAsync(new WriteRequest
+                await this.InnerChannel.WriteAsync(new WriteRequest
                 {
                     NodesToWrite = new[]
                     {
@@ -212,7 +204,7 @@ namespace RobotApp.ViewModels
         {
             try
             {
-                await UaTcpSessionClient.FromModel(this).WriteAsync(new WriteRequest
+                await this.InnerChannel.WriteAsync(new WriteRequest
                 {
                     NodesToWrite = new[]
                     {
@@ -238,7 +230,7 @@ namespace RobotApp.ViewModels
         public double InputA
         {
             get { return this.inputA; }
-            set { this.Set(ref this.inputA, value); }
+            set { this.SetValue(ref this.inputA, value); }
         }
 
         private double inputA;
@@ -249,7 +241,7 @@ namespace RobotApp.ViewModels
         public double InputB
         {
             get { return this.inputB; }
-            set { this.Set(ref this.inputB, value); }
+            set { this.SetValue(ref this.inputB, value); }
         }
 
         private double inputB;
@@ -260,7 +252,7 @@ namespace RobotApp.ViewModels
         public double Result
         {
             get { return this.result; }
-            set { this.Set(ref this.result, value); }
+            set { this.SetValue(ref this.result, value); }
         }
 
         private double result;
@@ -273,7 +265,7 @@ namespace RobotApp.ViewModels
             try
             {
                 // Call the method, passing the input arguments in a Variant[].
-                var response = await UaTcpSessionClient.FromModel(this).CallAsync(new CallRequest
+                var response = await this.InnerChannel.CallAsync(new CallRequest
                 {
                     MethodsToCall = new[]
                     {
@@ -301,6 +293,9 @@ namespace RobotApp.ViewModels
             this.InputA = 0d;
             this.InputB = 0d;
             this.Result = 0d;
+#if DEBUG
+            GC.Collect();
+#endif
         }
 
         public void GotoSettings() =>
@@ -311,5 +306,30 @@ namespace RobotApp.ViewModels
 
         public void GotoAbout() =>
             this.NavigationService.Navigate(typeof(Views.SettingsPage), 2);
+
+        // INavigable
+        [JsonIgnore]
+        public virtual INavigationService NavigationService { get; set; }
+
+        [JsonIgnore]
+        public virtual IDispatcherWrapper Dispatcher { get; set; }
+
+        [JsonIgnore]
+        public virtual IStateItems SessionState { get; set; }
+
+        public virtual Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
+        {
+            return Task.CompletedTask;
+        }
+
+        public virtual Task OnNavigatedFromAsync(IDictionary<string, object> pageState, bool suspending)
+        {
+            return Task.CompletedTask;
+        }
+
+        public virtual Task OnNavigatingFromAsync(NavigatingEventArgs args)
+        {
+            return Task.CompletedTask;
+        }
     }
 }

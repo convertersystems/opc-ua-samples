@@ -100,12 +100,13 @@ namespace RobotApp.Views
             {
                 this.robotGame = this.UrhoSurface.Run<RobotGame>(new ApplicationOptions("Assets") { Width = (int)this.UrhoSurface.ActualWidth, Height = (int)this.UrhoSurface.ActualHeight });
             }
+
+            this.UrhoSurface.Resume();
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
-            this.robotGame?.Exit();
-            this.robotGame = null;
+            this.UrhoSurface.Pause();
         }
     }
 }

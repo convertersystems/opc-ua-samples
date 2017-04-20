@@ -2,13 +2,13 @@
   "dependencies": {
     "Microsoft.Extensions.Logging": "1.1.1",
     "Microsoft.Extensions.Logging.Debug": "1.1.1",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.1",
-    "Newtonsoft.Json": "10.0.1",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.2",
+    "Newtonsoft.Json": "10.0.2",
     "StyleCop.Analyzers": "1.0.0",
     "Template10": "1.1.12",
     "Unity": "4.0.1",
-    "UrhoSharp": "1.2.21",
-    "Workstation.UaClient": "1.5.11"
+    "UrhoSharp": "1.3.0",
+    "Workstation.UaClient": "2.0.0-RC1"
   },
   "frameworks": {
     "uap10.0": {}

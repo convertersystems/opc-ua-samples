@@ -1,11 +1,13 @@
 ﻿{
   "dependencies": {
     "Microsoft.Extensions.Logging": "1.1.1",
+    "Microsoft.Extensions.Logging.Debug": "1.1.1",
     "StyleCop.Analyzers": "1.0.0",
-    "Workstation.UaClient": "1.5.11"
+    "System.Reactive": "3.1.1",
+    "Workstation.UaClient": "2.0.0-RC1"
   },
   "frameworks": {
-    ".NETFramework,Version=v4.5": {}
+    ".NETFramework,Version=v4.5.1": {}
   },
   "runtimes": {
     "win": {}

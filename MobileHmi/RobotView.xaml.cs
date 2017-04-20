@@ -1,7 +1,6 @@
 ﻿// Copyright (c) Converter Systems LLC. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using System.Runtime.CompilerServices;
 using Urho;
 using Xamarin.Forms;
 
@@ -10,18 +9,23 @@ namespace Workstation.MobileHmi
     public partial class RobotView : ContentView
     {
         private RobotGame robotGame;
+        private bool initialized;
 
         public RobotView()
         {
             this.InitializeComponent();
         }
 
-        protected async override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        protected async override void OnSizeAllocated(double width, double height)
         {
-            base.OnPropertyChanged(propertyName);
-            if (propertyName == "Renderer")
+            base.OnSizeAllocated(width, height);
+            if (!this.initialized)
             {
-                this.robotGame = await this.UrhoSurface.Show<RobotGame>(new ApplicationOptions(assetsFolder: "Data") { Orientation = ApplicationOptions.OrientationType.LandscapeAndPortrait });
+                if (height > 0 && width > 0)
+                {
+                    this.initialized = true;
+                    this.robotGame = await this.UrhoSurface.Show<RobotGame>(new ApplicationOptions(assetsFolder: "Data") { Orientation = ApplicationOptions.OrientationType.LandscapeAndPortrait });
+                }
             }
         }
 

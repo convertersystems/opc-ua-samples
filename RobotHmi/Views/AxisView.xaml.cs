@@ -1,7 +1,7 @@
 ﻿// Copyright (c) Converter Systems LLC. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using Microsoft.Practices.ServiceLocation;
+using System;
 using Prism.Regions;
 using RobotHmi.ViewModels;
 
@@ -35,19 +35,16 @@ namespace RobotHmi.Views
             switch (name)
             {
                 case "Axis 1":
-                    this.DataContext = ServiceLocator.Current.GetInstance<Axis1ViewModel>();
+                    this.DataContext = new Axis1ViewModel();
                     break;
                 case "Axis 2":
-                    this.DataContext = ServiceLocator.Current.GetInstance<Axis2ViewModel>();
+                    this.DataContext = new Axis2ViewModel();
                     break;
                 case "Axis 3":
-                    this.DataContext = ServiceLocator.Current.GetInstance<Axis3ViewModel>();
+                    this.DataContext = new Axis3ViewModel();
                     break;
                 case "Axis 4":
-                    this.DataContext = ServiceLocator.Current.GetInstance<Axis4ViewModel>();
-                    break;
-
-                default:
+                    this.DataContext = new Axis4ViewModel();
                     break;
             }
         }
@@ -55,6 +52,8 @@ namespace RobotHmi.Views
         /// <inheritdoc/>
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
+            (this.DataContext as IDisposable)?.Dispose();
+            this.DataContext = null;
         }
     }
 }

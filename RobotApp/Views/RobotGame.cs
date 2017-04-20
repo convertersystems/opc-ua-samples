@@ -27,10 +27,21 @@ namespace RobotApp.Views
 
         protected override void Start()
         {
-            this.Log.LogMessage += e => Debug.WriteLine($"[{e.Level}] {e.Message}");
             base.Start();
             this.CreateScene();
             this.SetupViewport();
+        }
+
+        protected override void Stop()
+        {
+            base.Stop();
+            this.scene?.Dispose();
+            this.scene = null;
+            this.cameraNode = null;
+            this.axis1Node = null;
+            this.axis2Node = null;
+            this.axis3Node = null;
+            this.axis4Node = null;
         }
 
         private void CreateScene()

@@ -57,7 +57,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ViewModelBase.cs" />
     <Page Include="MainView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -106,6 +105,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\robot.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UaClient\Workstation.UaClient.csproj">
+      <Project>{04b8d717-4f15-4486-86e5-e33d8b8bf57d}</Project>
+      <Name>Workstation.UaClient</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

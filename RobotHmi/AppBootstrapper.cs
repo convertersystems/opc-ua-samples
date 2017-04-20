@@ -47,6 +47,7 @@ namespace RobotHmi
         {
             base.ConfigureContainer();
             this.Container.RegisterInstance(this.loggerFactory);
+            this.Container.RegisterType(typeof(ILogger<>), typeof(Logger<>));
         }
 
         /// <inheritdoc/>
