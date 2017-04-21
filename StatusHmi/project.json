@@ -1,11 +1,11 @@
 ﻿{
   "dependencies": {
-    "MahApps.Metro": "1.4.3",
+    "MahApps.Metro": "1.5.0",
     "Microsoft.Extensions.Logging": "1.1.1",
     "Microsoft.Extensions.Logging.Debug": "1.1.1",
-    "Newtonsoft.Json": "10.0.1",
+    "Newtonsoft.Json": "10.0.2",
     "StyleCop.Analyzers": "1.0.0",
-    "Workstation.UaClient": "1.5.11"
+    "Workstation.UaClient": "1.5.12"
   },
   "frameworks": {
     ".NETFramework,Version=v4.6.1": {}
