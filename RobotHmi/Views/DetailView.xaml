@@ -7,11 +7,13 @@
              xmlns:v="clr-namespace:RobotHmi.Views"
              xmlns:vm="clr-namespace:RobotHmi.ViewModels"
              xmlns:prism="http://prismlibrary.com/"
-             prism:ViewModelLocator.AutoWireViewModel="True"
              d:DataContext="{d:DesignInstance Type=vm:DetailViewModel}"
              d:DesignHeight="600"
              d:DesignWidth="800"
              mc:Ignorable="d">
+    <UserControl.DataContext>
+        <vm:DetailViewModel />
+    </UserControl.DataContext>
     <Grid x:Name="LayoutRoot">
         <StackPanel VerticalAlignment="Top" Orientation="Horizontal">
             <Button Command="NavigationCommands.BrowseBack" Content="Back" />

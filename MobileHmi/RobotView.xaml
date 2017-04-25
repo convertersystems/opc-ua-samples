@@ -5,6 +5,6 @@
              xmlns:urho="clr-namespace:Urho.Forms;assembly=Urho.Forms"             
              x:Class="Workstation.MobileHmi.RobotView">
   <ContentView.Content>
-    <urho:UrhoSurface x:Name="UrhoSurface" VerticalOptions="FillAndExpand"/>
+    <urho:UrhoSurface x:Name="UrhoSurface" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>
   </ContentView.Content>
 </ContentView>

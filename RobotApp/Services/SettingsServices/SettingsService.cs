@@ -68,10 +68,5 @@ namespace RobotApp.Services.SettingsServices
                 BootStrapper.Current.CacheMaxDuration = value;
             }
         }
-
-        public string EndpointUrl
-        {
-            get { return this.helper.Read<string>(nameof(this.EndpointUrl), "opc.tcp://localhost:26543"); }
-        }
     }
 }

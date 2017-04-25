@@ -13,7 +13,7 @@
       xmlns:csData="using:Workstation.UI.Xaml.Data"
       x:Class="RobotApp.Views.MainPage"
       mc:Ignorable="d"
-      d:DataContext="{d:DesignInstance vm:MainPageViewModel}">
+      d:DataContext="{d:DesignInstance vm:MainPageViewModel, IsDesignTimeCreatable=False}">
 
     <Page.Resources>
         <local:IsModeHandConverter x:Key="IsModeHandConverter" />
@@ -235,17 +235,17 @@
                                    HorizontalAlignment="Left"
                                    FontWeight="Bold" />
                         <TextBlock HorizontalAlignment="Right"
-                                   Text="{Binding MaxValue, ElementName=Trend1, Converter={StaticResource StringFormatConverter}, ConverterParameter=\{0:F1\}}" />
+                                   Text="{x:Bind Trend1.MaxValue, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter=\{0:F1\}}" />
                         <csControls:Trendline x:Name="Trend1"
                                               Grid.Row="1"
                                               Height="100"
                                               ItemsSource="{x:Bind ViewModel.Robot1Axis1Queue}" />
                         <TextBlock Grid.Row="2"
-                                   Text="{Binding TimeSpan.TotalSeconds, ElementName=Trend1, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter=\{0:F0\} s}"
+                                   Text="{x:Bind Trend1.TimeSpan.TotalSeconds, Converter={StaticResource StringFormatConverter}, ConverterParameter=\{0:F0\} s}"
                                    HorizontalAlignment="Left" />
                         <TextBlock Grid.Row="2"
                                    HorizontalAlignment="Right"
-                                   Text="{Binding MinValue, ElementName=Trend1, Converter={StaticResource StringFormatConverter}, ConverterParameter=\{0:F1\}}" />
+                                   Text="{x:Bind Trend1.MinValue, Mode=OneWay, Converter={StaticResource StringFormatConverter}, ConverterParameter=\{0:F1\}}" />
                     </Grid>
                     <TextBlock Grid.Row="11"
                                Grid.Column="0"
@@ -291,10 +291,10 @@
                                     RelativePanel.AlignLeftWithPanel="True"
                                     RelativePanel.AlignBottomWithPanel="True"
                                     RelativePanel.LeftOf="controlPanel"
-                                    Axis1="{Binding Robot1Axis1}"
-                                    Axis2="{Binding Robot1Axis2}"
-                                    Axis3="{Binding Robot1Axis3}"
-                                    Axis4="{Binding Robot1Axis4}"/>
+                                    Axis1="{x:Bind ViewModel.Robot1Axis1, Mode=OneWay}"
+                                    Axis2="{x:Bind ViewModel.Robot1Axis2, Mode=OneWay}"
+                                    Axis3="{x:Bind ViewModel.Robot1Axis3, Mode=OneWay}"
+                                    Axis4="{x:Bind ViewModel.Robot1Axis4, Mode=OneWay}"/>
 
             </RelativePanel>
         </ScrollViewer>

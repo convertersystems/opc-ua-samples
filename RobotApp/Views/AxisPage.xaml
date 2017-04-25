@@ -13,7 +13,7 @@
       xmlns:csData="using:Workstation.UI.Xaml.Data"
       x:Class="RobotApp.Views.AxisPage"
       mc:Ignorable="d"
-      d:DataContext="{d:DesignInstance vm:AxisPageViewModelDesignInstance, IsDesignTimeCreatable=True}">
+      d:DataContext="{d:DesignInstance vm:AxisPageViewModel, IsDesignTimeCreatable=True}">
 
     <Page.Resources>
         <conv:StringFormatConverter x:Key="StringFormatConverter" />

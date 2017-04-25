@@ -3,14 +3,16 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using Workstation.ServiceModel.Ua;
+using Workstation.ServiceModel.Ua; // Install-Package Workstation.UaClient
 
 namespace StatusHmi
 {
@@ -20,7 +22,7 @@ namespace StatusHmi
     public partial class App : Application
     {
         private ILoggerFactory loggerFactory;
-        private UaTcpSessionClient session;
+        private UaApplication application;
 
         protected override void OnStartup(StartupEventArgs e)
         {
@@ -28,57 +30,50 @@ namespace StatusHmi
             this.loggerFactory = new LoggerFactory();
             this.loggerFactory.AddDebug(LogLevel.Trace);
 
-            // Create the session client for the app.
-            this.session = new UaTcpSessionClient(
-                new ApplicationDescription()
-                {
-                    ApplicationName = "Workstation.StatusHmi",
-                    ApplicationUri = $"urn:{System.Net.Dns.GetHostName()}:Workstation.StatusHmi",
-                    ApplicationType = ApplicationType.Client
-                },
-                new DirectoryStore(
-                    Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%\Workstation.StatusHmi\pki"),
-                    loggerFactory: this.loggerFactory),
-                this.ProvideUserIdentity,
-                StatusHmi.Properties.Settings.Default.EndpointUrl,
-                this.loggerFactory);
+            // Build and run an OPC UA application instance.
+            this.application = new UaApplicationBuilder()
+                .UseApplicationUri($"urn:{Dns.GetHostName()}:Workstation.StatusHmi")
+                .UseDirectoryStore(Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    "Workstation.StatusHmi",
+                    "pki"))
+                .UseIdentity(this.ShowSignInDialog)
+                .UseLoggerFactory(this.loggerFactory)
+                .Build();
 
-            // Create the main view model.
-            var viewModel = new MainViewModel(this.session);
+            this.application.Run();
 
             // Create and show the main view.
-            var view = new MainView { DataContext = viewModel };
-
+            var view = new MainView();
             view.Show();
-
             base.OnStartup(e);
         }
 
         protected override void OnExit(ExitEventArgs e)
         {
-            this.session?.Dispose();
+            this.application?.Dispose();
             this.loggerFactory?.Dispose();
             base.OnExit(e);
         }
 
         /// <summary>
-        /// Shows a Sign In dialog if the remote endpoint demands a UserNameIdentity token.
+        /// Shows a Sign-In dialog if the remote endpoint demands a UserNameIdentity token.
         /// Requires MainWindow to derive from MahApps.Metro.Controls.MetroWindow.
         /// </summary>
         /// <param name="endpoint">The remote endpoint.</param>
         /// <returns>A UserIdentity</returns>
-        private Task<IUserIdentity> ProvideUserIdentity(EndpointDescription endpoint)
+        private async Task<IUserIdentity> ShowSignInDialog(EndpointDescription endpoint)
         {
             if (endpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.Anonymous))
             {
-                return Task.FromResult<IUserIdentity>(new AnonymousIdentity());
+                return new AnonymousIdentity();
             }
 
             if (endpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.UserName))
             {
                 var tcs = new TaskCompletionSource<IUserIdentity>();
 
-                this.Dispatcher.InvokeAsync(
+                await this.Dispatcher.InvokeAsync(
                     async () =>
                     {
                         var shell = (MetroWindow)this.MainWindow;
@@ -104,7 +99,8 @@ namespace StatusHmi
                         tcs.TrySetResult(new AnonymousIdentity());
                     },
                     System.Windows.Threading.DispatcherPriority.ApplicationIdle);
-                return tcs.Task;
+
+                return await tcs.Task;
             }
 
             throw new NotImplementedException("ProvideUserIdentity supports only UserName and Anonymous identity, for now.");

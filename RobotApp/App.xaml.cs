@@ -2,13 +2,13 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
+using System.IO;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.Practices.ServiceLocation;
 using Microsoft.Practices.Unity;
-using RobotApp.Services;
 using RobotApp.Services.SettingsServices;
 using RobotApp.ViewModels;
 using RobotApp.Views;
@@ -16,6 +16,7 @@ using Template10.Controls;
 using Template10.Services.NavigationService;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Workstation.ServiceModel.Ua;
@@ -28,14 +29,13 @@ namespace RobotApp
     public sealed partial class App : Template10.Common.BootStrapper
     {
         private ILoggerFactory loggerFactory;
+        private UaApplication application;
         private UnityContainer container = new UnityContainer();
 
         public App()
         {
             this.InitializeComponent();
             this.SplashFactory = (e) => new Splash(e);
-            this.loggerFactory = new LoggerFactory();
-            this.loggerFactory.AddDebug(LogLevel.Trace);
             var settings = SettingsService.Instance;
             this.RequestedTheme = settings.AppTheme;
             this.CacheMaxDuration = settings.CacheMaxDuration;
@@ -70,9 +70,19 @@ namespace RobotApp
 
         public override Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
-            // Register the shared PLC1Session with the application's dependency injection container.
-            this.container.RegisterInstance(this.loggerFactory);
-            this.container.RegisterType<PLC1Session>(new ContainerControlledLifetimeManager());
+            // Setup a logger.
+            this.loggerFactory = new LoggerFactory();
+            this.loggerFactory.AddDebug(LogLevel.Trace);
+
+            // Build and run an OPC UA application instance.
+            this.application = new UaApplicationBuilder()
+                .UseApplicationUri($"urn:{Dns.GetHostName()}:Workstation.RobotApp")
+                .UseDirectoryStore(Path.Combine(ApplicationData.Current.LocalFolder.Path, "pki"))
+                .UseIdentity(this.ShowSignInDialog)
+                .UseLoggerFactory(this.loggerFactory)
+                .Build();
+
+            this.application.Run();
 
             // Register view models with the container using the name of the view.
             this.container.RegisterType<INavigable, MainPageViewModel>(nameof(MainPage), new ContainerControlledLifetimeManager());
@@ -86,12 +96,12 @@ namespace RobotApp
 
         public async override Task OnSuspendingAsync(object s, SuspendingEventArgs e, bool prelaunchActivated)
         {
-            await this.container.Resolve<PLC1Session>().SuspendAsync();
+            await this.application.SuspendAsync();
         }
 
         public override void OnResuming(object s, object e, AppExecutionState previousExecutionState)
         {
-            this.container.Resolve<PLC1Session>().Resume();
+            this.application.Run();
         }
 
         public override INavigable ResolveForPage(Page page, NavigationService navigationService)
@@ -105,7 +115,7 @@ namespace RobotApp
         /// </summary>
         /// <param name="endpoint">The remote endpoint.</param>
         /// <returns>A UserIdentity</returns>
-        public async Task<IUserIdentity> ProvideUserIdentity(EndpointDescription endpoint)
+        public async Task<IUserIdentity> ShowSignInDialog(EndpointDescription endpoint)
         {
             if (endpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.Anonymous))
             {

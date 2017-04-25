@@ -3,7 +3,6 @@
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using RobotApp.Services;
 using Template10.Mvvm;
 using Windows.UI.Xaml.Navigation;
 
@@ -11,35 +10,32 @@ namespace RobotApp.ViewModels
 {
     public class AxisPageViewModel : ViewModelBase
     {
-        public AxisPageViewModel(PLC1Session session)
+        public AxisPageViewModel()
         {
-            this.Axes = new IAxisViewModel[] { new Axis1ViewModel(session), new Axis2ViewModel(session), new Axis3ViewModel(session), new Axis4ViewModel(session) };
+            this.Axes = new IAxisViewModel[] { new Axis1ViewModel(), new Axis2ViewModel(), new Axis3ViewModel(), new Axis4ViewModel() };
         }
 
-        public IEnumerable<IAxisViewModel> Axes { get; }
+        public IEnumerable<IAxisViewModel> Axes { get; set; }
 
         public async override Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
         {
-            foreach (var axis in this.Axes)
-            {
-                await axis.OnNavigatedToAsync(parameter, mode, state);
-            }
+            //foreach (var axis in this.Axes)
+            //{
+            //    await axis.OnNavigatedToAsync(parameter, mode, state);
+            //}
+
+            //this.Axes = new IAxisViewModel[] { new Axis1ViewModel(), new Axis2ViewModel(), new Axis3ViewModel(), new Axis4ViewModel() };
+
         }
 
         public async override Task OnNavigatedFromAsync(IDictionary<string, object> pageState, bool suspending)
         {
-            foreach (var axis in this.Axes)
-            {
-                await axis.OnNavigatedFromAsync(pageState, suspending);
-            }
+            //foreach (var axis in this.Axes)
+            //{
+            //    await axis.OnNavigatedFromAsync(pageState, suspending);
+            //}
+            //this.Axes = null;
         }
-    }
 
-    public class AxisPageViewModelDesignInstance : AxisPageViewModel
-    {
-        public AxisPageViewModelDesignInstance()
-            : base(null)
-        {
-        }
     }
 }

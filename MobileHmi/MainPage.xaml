@@ -10,34 +10,33 @@
             <local:IsModeHandConverter x:Key="IsModeHandConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <local:MainPageViewModel />
+    </ContentPage.BindingContext>
 
-    <StackLayout Orientation="Vertical">
-        <AbsoluteLayout VerticalOptions="FillAndExpand">
-            <local:RobotView x:Name="RobotView"
-                             VerticalOptions="FillAndExpand"
-                             Axis1="{Binding Robot1Axis1, Mode=OneWay}"
-                             Axis2="{Binding Robot1Axis2, Mode=OneWay}"
-                             Axis3="{Binding Robot1Axis3, Mode=OneWay}"
-                             Axis4="{Binding Robot1Axis4, Mode=OneWay}" />
-            <Label Text="Disconnected"
-                   TextColor="Red"
-                   IsVisible="{Binding IsDisconnected}" />
-        </AbsoluteLayout>
-        <ScrollView HeightRequest="320">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="320" />
+        </Grid.RowDefinitions>
+        <local:RobotView x:Name="RobotView"
+                         Axis1="{Binding Robot1Axis1, Mode=OneWay}"
+                         Axis2="{Binding Robot1Axis2, Mode=OneWay}"
+                         Axis3="{Binding Robot1Axis3, Mode=OneWay}"
+                         Axis4="{Binding Robot1Axis4, Mode=OneWay}" />
+        <Label Text="{Binding State}" />
+        <ScrollView Grid.Row="1">
             <StackLayout Spacing="10"
                          Padding="10"
                          VerticalOptions="FillAndExpand">
                 <Label Text="Robot1 Mode" />
-                <Picker SelectedIndex="{Binding Robot1Mode, Mode=TwoWay}" >
+                <Picker SelectedIndex="{Binding Robot1Mode, Mode=TwoWay}">
                     <Picker.Items>
                         <x:String>Off</x:String>
                         <x:String>Hand</x:String>
                         <x:String>Auto</x:String>
                     </Picker.Items>
                 </Picker>
-                <Label Text="{Binding Robot1ModeError}"
-                       IsVisible="{Binding Robot1ModeHasError}"
-                       TextColor="Red"/>
                 <Label Text="Axis1, &#0176;" />
                 <Slider Minimum="-180"
                         Maximum="180"
@@ -60,5 +59,5 @@
                         IsEnabled="{Binding Robot1Mode, Converter={StaticResource IsModeHandConverter}}" />
             </StackLayout>
         </ScrollView>
-    </StackLayout>
+    </Grid>
 </ContentPage>

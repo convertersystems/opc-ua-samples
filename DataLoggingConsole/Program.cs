@@ -3,6 +3,7 @@
 
 using Microsoft.Extensions.Logging;
 using System;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -51,8 +52,8 @@ namespace DataLoggingConsole
 
             // Create a certificate store on disk.
             var certificateStore = new DirectoryStore(
-                Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%\DataLoggingConsole\pki"));
-            
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DataLoggingConsole", "pki"));
+
             // Create array of NodeIds to log.
             var nodeIds = new[]
             {
@@ -69,7 +70,7 @@ namespace DataLoggingConsole
                         EndpointUrl = discoveryUrl,
                         ProfileUris = new[] { TransportProfileUris.UaTcpTransport }
                     };
-                    var getEndpointsResponse = await UaTcpDiscoveryClient.GetEndpointsAsync(getEndpointsRequest).ConfigureAwait(false);
+                    var getEndpointsResponse = await UaTcpDiscoveryService.GetEndpointsAsync(getEndpointsRequest).ConfigureAwait(false);
                     if (getEndpointsResponse.Endpoints == null || getEndpointsResponse.Endpoints.Length == 0)
                     {
                         throw new InvalidOperationException($"'{discoveryUrl}' returned no endpoints.");
@@ -95,7 +96,7 @@ namespace DataLoggingConsole
                     }
 
                     // Create a session with the server.
-                    var session = new UaTcpSessionChannel(appDescription, certificateStore, userIdentity, remoteEndpoint, loggerFactory);
+                    var session = new UaTcpSessionChannel(appDescription, certificateStore, async e => userIdentity, remoteEndpoint, loggerFactory);
                     try
                     {
                         await session.OpenAsync();
