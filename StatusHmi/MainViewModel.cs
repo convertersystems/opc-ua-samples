@@ -8,7 +8,7 @@ namespace StatusHmi
     /// <summary>
     /// A model for MainView.
     /// </summary>
-    [Subscription(endpointName: "PLC1", publishingInterval: 500, keepAliveCount: 20)]
+    [Subscription(endpointUrl: "opc.tcp://localhost:26543", publishingInterval: 500, keepAliveCount: 20)]
     public class MainViewModel : SubscriptionBase
     {
         /// <summary>
@@ -18,7 +18,7 @@ namespace StatusHmi
         public ServerStatusDataType ServerServerStatus
         {
             get { return this.serverServerStatus; }
-            private set { this.SetValue(ref this.serverServerStatus, value); }
+            private set { this.SetProperty(ref this.serverServerStatus, value); }
         }
 
         private ServerStatusDataType serverServerStatus;

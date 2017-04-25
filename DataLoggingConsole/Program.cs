@@ -3,6 +3,7 @@
 
 using Microsoft.Extensions.Logging;
 using System;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -51,8 +52,8 @@ namespace DataLoggingConsole
 
             // Create a certificate store on disk.
             var certificateStore = new DirectoryStore(
-                Environment.ExpandEnvironmentVariables(@"%LOCALAPPDATA%\DataLoggingConsole\pki"));
-            
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "DataLoggingConsole", "pki"));
+
             // Create array of NodeIds to log.
             var nodeIds = new[]
             {

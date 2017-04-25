@@ -3,7 +3,9 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
 using MahApps.Metro.Controls;
@@ -30,11 +32,13 @@ namespace StatusHmi
 
             // Build and run an OPC UA application instance.
             this.application = new UaApplicationBuilder()
-                .UseApplicationUri(@"urn:%COMPUTERNAME%:Workstation.StatusHmi")
-                .UseDirectoryStore(@"%LOCALAPPDATA%\Workstation.StatusHmi\pki")
-                .UseIdentityProvider(this.ShowSignInDialog)
+                .UseApplicationUri($"urn:{Dns.GetHostName()}:Workstation.StatusHmi")
+                .UseDirectoryStore(Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    "Workstation.StatusHmi",
+                    "pki"))
+                .UseIdentity(this.ShowSignInDialog)
                 .UseLoggerFactory(this.loggerFactory)
-                .AddEndpoint("PLC1", StatusHmi.Properties.Settings.Default.EndpointUrl, SecurityPolicyUris.None)
                 .Build();
 
             this.application.Run();

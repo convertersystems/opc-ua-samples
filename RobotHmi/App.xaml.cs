@@ -3,12 +3,15 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Threading;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Workstation.ServiceModel.Ua;
@@ -31,13 +34,22 @@ namespace RobotHmi
             this.loggerFactory = new LoggerFactory();
             this.loggerFactory.AddDebug(LogLevel.Trace);
 
+            // Read 'appSettings.json' for endpoint configuration
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appSettings.json", true)
+                .Build();
+
             // Build and run an OPC UA application instance.
             this.application = new UaApplicationBuilder()
-                .UseApplicationUri(@"urn:%COMPUTERNAME%:Workstation.RobotHmi")
-                .UseDirectoryStore(@"%LOCALAPPDATA%\Workstation.RobotHmi\pki")
-                .UseIdentityProvider(this.ShowSignInDialog)
+                .UseApplicationUri($"urn:{Dns.GetHostName()}:Workstation.RobotHmi")
+                .UseDirectoryStore(Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    "Workstation.RobotHmi",
+                    "pki"))
+                .UseIdentity(this.ShowSignInDialog)
                 .UseLoggerFactory(this.loggerFactory)
-                .AddEndpoint("PLC1", RobotHmi.Properties.Settings.Default.EndpointUrl)
+                .Map(config)
                 .Build();
 
             this.application.Run();

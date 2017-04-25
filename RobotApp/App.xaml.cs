@@ -4,6 +4,7 @@
 using System;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Microsoft.Practices.ServiceLocation;
@@ -15,6 +16,7 @@ using Template10.Controls;
 using Template10.Services.NavigationService;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
+using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Workstation.ServiceModel.Ua;
@@ -74,11 +76,10 @@ namespace RobotApp
 
             // Build and run an OPC UA application instance.
             this.application = new UaApplicationBuilder()
-                .UseApplicationUri($"urn:{System.Net.Dns.GetHostName()}:Workstation.RobotApp")
-                .UseDirectoryStore(Path.Combine(Windows.Storage.ApplicationData.Current.LocalFolder.Path, "pki"))
-                .UseIdentityProvider(this.ShowSignInDialog)
+                .UseApplicationUri($"urn:{Dns.GetHostName()}:Workstation.RobotApp")
+                .UseDirectoryStore(Path.Combine(ApplicationData.Current.LocalFolder.Path, "pki"))
+                .UseIdentity(this.ShowSignInDialog)
                 .UseLoggerFactory(this.loggerFactory)
-                .AddEndpoint("PLC1", SettingsService.Instance.EndpointUrl)
                 .Build();
 
             this.application.Run();

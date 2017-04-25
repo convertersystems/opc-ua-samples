@@ -183,6 +183,9 @@
       <SubType>Designer</SubType>
     </None>
     <AdditionalFiles Include="stylecop.json" />
+    <Content Include="appSettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="LICENSE" />
     <None Include="project.json" />
     <None Include="Properties\Settings.settings">

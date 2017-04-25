@@ -1,11 +1,11 @@
 ﻿// Copyright (c) Converter Systems LLC. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using MahApps.Metro;
-using Prism.Mvvm;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using MahApps.Metro;
+using Prism.Mvvm;
 
 namespace RobotHmi.ViewModels
 {

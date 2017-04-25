@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
+using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
@@ -43,10 +44,14 @@ namespace ConsoleApp
                 ApplicationType = ApplicationType.Client,
             };
 
-            Console.WriteLine("Step 2 - Create a session with your server.");
+            Console.WriteLine("Step 2 - Create a certificate store.");
+            var certificateStore = new DirectoryStore(
+                Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Workstation.ConsoleApp", "pki"));
+
+            Console.WriteLine("Step 3 - Create a session with your server.");
             var channel = new UaTcpSessionChannel(
                 appDescription,
-                new DirectoryStore(@"%LOCALAPPDATA%\Workstation.ConsoleApp\pki"),
+                certificateStore,
                 ShowSignInDialog,
                 discoveryUrl,
                 loggerFactory: loggerFactory);
@@ -62,7 +67,7 @@ namespace ConsoleApp
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey(true);
 
-                Console.WriteLine("Step 3 - Browse the server namespace.");
+                Console.WriteLine("Step 4 - Browse the server namespace.");
                 Console.WriteLine("+ Root");
                 BrowseRequest browseRequest = new BrowseRequest
                 {
@@ -95,7 +100,7 @@ namespace ConsoleApp
                 Console.WriteLine("Press any key to continue...");
                 Console.ReadKey(true);
 
-                Console.WriteLine("Step 4 - Create a subscription.");
+                Console.WriteLine("Step 5 - Create a subscription.");
                 var subscriptionRequest = new CreateSubscriptionRequest
                 {
                     RequestedPublishingInterval = 1000,
@@ -106,7 +111,7 @@ namespace ConsoleApp
                 var subscriptionResponse = await channel.CreateSubscriptionAsync(subscriptionRequest);
                 var id = subscriptionResponse.SubscriptionId;
 
-                Console.WriteLine("Step 5 - Add items to the subscription.");
+                Console.WriteLine("Step 6 - Add items to the subscription.");
                 var itemsToCreate = new MonitoredItemCreateRequest[]
                 {
                     new MonitoredItemCreateRequest { ItemToMonitor = new ReadValueId { NodeId = NodeId.Parse("i=2258"), AttributeId = AttributeIds.Value }, MonitoringMode = MonitoringMode.Reporting, RequestedParameters = new MonitoringParameters { ClientHandle = 12345, SamplingInterval = -1, QueueSize = 0, DiscardOldest = true } }
@@ -118,7 +123,7 @@ namespace ConsoleApp
                 };
                 var itemsResponse = await channel.CreateMonitoredItemsAsync(itemsRequest);
 
-                Console.WriteLine("Step 6 - Subscribe to PublishResponse stream.");
+                Console.WriteLine("Step 7 - Subscribe to PublishResponse stream.");
                 var token = channel.Where(pr => pr.SubscriptionId == id).Subscribe(pr =>
                 {
                     // loop thru all the data change notifications
@@ -140,7 +145,7 @@ namespace ConsoleApp
 
                 Console.ReadKey(true);
 
-                Console.WriteLine("Step 7 - Delete the subscription.");
+                Console.WriteLine("Step 8 - Delete the subscription.");
                 var request = new DeleteSubscriptionsRequest
                 {
                     SubscriptionIds = new uint[] { id }
@@ -151,7 +156,7 @@ namespace ConsoleApp
                 Console.WriteLine("Press any key to close the session...");
                 Console.ReadKey(true);
 
-                Console.WriteLine("Step 8 - Close the session.");
+                Console.WriteLine("Step 9 - Close the session.");
                 await channel.CloseAsync();
             }
             catch (ServiceResultException ex)

@@ -219,7 +219,7 @@
                 <Button x:Name="MultiplyButton"
                         Command="{Binding Robot1MultiplyCommand}"
                         Content="Multiply"
-                        IsDefault="True" />
+                        IsDefault="False" />
                 <Button x:Name="ClearButton"
                         Command="{Binding ClearCommand}"
                         Content="Clear" />

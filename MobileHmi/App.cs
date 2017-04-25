@@ -2,7 +2,9 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using System;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Logging;
 using Workstation.ServiceModel.Ua;
@@ -12,8 +14,6 @@ namespace Workstation.MobileHmi
 {
     public class App : Application
     {
-        private string discoveryUrl = @"opc.tcp://10.0.2.2:26543"; // Use ip address ( or '10.0.2.2' for accessing local host computer from emulator. hostname, localhost or 127.0.0.1 will not work on Android emu!)
-
         private ILoggerFactory loggerFactory;
         private UaApplication application;
 
@@ -25,11 +25,13 @@ namespace Workstation.MobileHmi
 
             // Build and run an OPC UA application instance.
             this.application = new UaApplicationBuilder()
-                .UseApplicationUri($"urn:localhost:Workstation.MobileHmi")
-                .UseDirectoryStore(@"%HOME%/.local/share/pki")
-                .UseIdentityProvider(this.ShowSignInDialog)
+                .UseApplicationUri($"urn:{Dns.GetHostName()}:Workstation.MobileHmi")
+                .UseDirectoryStore(Path.Combine(
+                    Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    "pki"))
+                .UseIdentity(this.ShowSignInDialog)
                 .UseLoggerFactory(this.loggerFactory)
-                .AddEndpoint("PLC1", this.discoveryUrl)
+                .Map("opc.tcp://localhost:26543", "opc.tcp://10.0.2.2:26543")
                 .Build();
 
             this.application.Run();

@@ -5,7 +5,7 @@
     "Microsoft.Extensions.Logging.Debug": "1.1.1",
     "Newtonsoft.Json": "10.0.2",
     "StyleCop.Analyzers": "1.0.0",
-    "Workstation.UaClient": "2.0.0-RC1"
+    "Workstation.UaClient": "2.0.0-RC2"
   },
   "frameworks": {
     ".NETFramework,Version=v4.6.1": {}

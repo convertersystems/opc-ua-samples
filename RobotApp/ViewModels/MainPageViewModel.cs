@@ -28,7 +28,7 @@ namespace RobotApp.ViewModels
     /// <summary>
     /// A view model for MainPage.
     /// </summary>
-    [Subscription(endpointName: "PLC1", publishingInterval: 250, keepAliveCount: 20)]
+    [Subscription(endpointUrl: "opc.tcp://localhost:26543", publishingInterval: 250, keepAliveCount: 20)]
     public class MainPageViewModel : SubscriptionBase, INavigable
     {
         /// <summary>
@@ -38,7 +38,7 @@ namespace RobotApp.ViewModels
         public short Robot1Mode
         {
             get { return this.robot1Mode; }
-            set { this.SetValue(ref this.robot1Mode, value); }
+            set { this.SetProperty(ref this.robot1Mode, value); }
         }
 
         private short robot1Mode;
@@ -50,7 +50,7 @@ namespace RobotApp.ViewModels
         public float Robot1Axis1
         {
             get { return this.robot1Axis1; }
-            set { this.SetValue(ref this.robot1Axis1, value); }
+            set { this.SetProperty(ref this.robot1Axis1, value); }
         }
 
         private float robot1Axis1;
@@ -62,7 +62,7 @@ namespace RobotApp.ViewModels
         public float Robot1Axis2
         {
             get { return this.robot1Axis2; }
-            set { this.SetValue(ref this.robot1Axis2, value); }
+            set { this.SetProperty(ref this.robot1Axis2, value); }
         }
 
         private float robot1Axis2;
@@ -74,7 +74,7 @@ namespace RobotApp.ViewModels
         public float Robot1Axis3
         {
             get { return this.robot1Axis3; }
-            set { this.SetValue(ref this.robot1Axis3, value); }
+            set { this.SetProperty(ref this.robot1Axis3, value); }
         }
 
         private float robot1Axis3;
@@ -86,7 +86,7 @@ namespace RobotApp.ViewModels
         public float Robot1Axis4
         {
             get { return this.robot1Axis4; }
-            set { this.SetValue(ref this.robot1Axis4, value); }
+            set { this.SetProperty(ref this.robot1Axis4, value); }
         }
 
         private float robot1Axis4;
@@ -98,7 +98,7 @@ namespace RobotApp.ViewModels
         public short Robot1Speed
         {
             get { return this.robot1Speed; }
-            set { this.SetValue(ref this.robot1Speed, value); }
+            set { this.SetProperty(ref this.robot1Speed, value); }
         }
 
         private short robot1Speed;
@@ -110,7 +110,7 @@ namespace RobotApp.ViewModels
         public bool Robot1Laser
         {
             get { return this.robot1Laser; }
-            set { this.SetValue(ref this.robot1Laser, value); }
+            set { this.SetProperty(ref this.robot1Laser, value); }
         }
 
         private bool robot1Laser;
@@ -230,7 +230,7 @@ namespace RobotApp.ViewModels
         public double InputA
         {
             get { return this.inputA; }
-            set { this.SetValue(ref this.inputA, value); }
+            set { this.SetProperty(ref this.inputA, value); }
         }
 
         private double inputA;
@@ -241,7 +241,7 @@ namespace RobotApp.ViewModels
         public double InputB
         {
             get { return this.inputB; }
-            set { this.SetValue(ref this.inputB, value); }
+            set { this.SetProperty(ref this.inputB, value); }
         }
 
         private double inputB;
@@ -252,7 +252,7 @@ namespace RobotApp.ViewModels
         public double Result
         {
             get { return this.result; }
-            set { this.SetValue(ref this.result, value); }
+            set { this.SetProperty(ref this.result, value); }
         }
 
         private double result;

@@ -10,7 +10,7 @@ namespace Workstation.MobileHmi
     /// <summary>
     /// A model for MainView.
     /// </summary>
-    [Subscription(endpointName: "PLC1", publishingInterval: 500, keepAliveCount: 20)]
+    [Subscription(endpointUrl: "opc.tcp://localhost:26543", publishingInterval: 500, keepAliveCount: 20)]
     public class MainPageViewModel : SubscriptionBase
     {
         /// <summary>
@@ -20,7 +20,7 @@ namespace Workstation.MobileHmi
         public short Robot1Mode
         {
             get { return this.robot1Mode; }
-            set { this.SetValue(ref this.robot1Mode, value); }
+            set { this.SetProperty(ref this.robot1Mode, value); }
         }
 
         private short robot1Mode;
@@ -32,7 +32,7 @@ namespace Workstation.MobileHmi
         public float Robot1Axis1
         {
             get { return this.robot1Axis1; }
-            set { this.SetValueWithDeadband(ref this.robot1Axis1, value, 1.0f); }
+            set { this.SetPropertyWithDeadband(ref this.robot1Axis1, value, 1.0f); }
         }
 
         private float robot1Axis1;
@@ -44,7 +44,7 @@ namespace Workstation.MobileHmi
         public float Robot1Axis2
         {
             get { return this.robot1Axis2; }
-            set { this.SetValueWithDeadband(ref this.robot1Axis2, value, 1.0f); }
+            set { this.SetPropertyWithDeadband(ref this.robot1Axis2, value, 1.0f); }
         }
 
         private float robot1Axis2;
@@ -56,7 +56,7 @@ namespace Workstation.MobileHmi
         public float Robot1Axis3
         {
             get { return this.robot1Axis3; }
-            set { this.SetValueWithDeadband(ref this.robot1Axis3, value, 1.0f); }
+            set { this.SetPropertyWithDeadband(ref this.robot1Axis3, value, 1.0f); }
         }
 
         private float robot1Axis3;
@@ -68,7 +68,7 @@ namespace Workstation.MobileHmi
         public float Robot1Axis4
         {
             get { return this.robot1Axis4; }
-            set { this.SetValueWithDeadband(ref this.robot1Axis4, value, 1.0f); }
+            set { this.SetPropertyWithDeadband(ref this.robot1Axis4, value, 1.0f); }
         }
 
         private float robot1Axis4;
@@ -76,7 +76,7 @@ namespace Workstation.MobileHmi
         /// <summary>
         /// Added to help with Xamarin Forms implementation of Slider.
         /// </summary>
-        protected virtual bool SetValueWithDeadband(ref float storage, float value, float deadband, [CallerMemberName] string propertyName = null)
+        protected virtual bool SetPropertyWithDeadband(ref float storage, float value, float deadband, [CallerMemberName] string propertyName = null)
         {
             if (Math.Abs(storage - value) < deadband)
             {

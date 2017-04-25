@@ -8,7 +8,7 @@ namespace RobotApp.ViewModels
     /// <summary>
     /// A view model for Axis1.
     /// </summary>
-    [Subscription(endpointName: "PLC1", publishingInterval: 500, keepAliveCount: 20)]
+    [Subscription(endpointUrl: "opc.tcp://localhost:26543", publishingInterval: 500, keepAliveCount: 20)]
     public class Axis1ViewModel : SubscriptionBase, IAxisViewModel
     {
         /// <summary>
@@ -18,7 +18,7 @@ namespace RobotApp.ViewModels
         public float Axis
         {
             get { return this.axis; }
-            private set { this.SetValue(ref this.axis, value); }
+            private set { this.SetProperty(ref this.axis, value); }
         }
 
         private float axis;
