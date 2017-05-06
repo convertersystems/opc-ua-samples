@@ -25,6 +25,10 @@ namespace Workstation.MobileHmi
                 {
                     this.initialized = true;
                     this.robotGame = await this.UrhoSurface.Show<RobotGame>(new ApplicationOptions(assetsFolder: "Data") { Orientation = ApplicationOptions.OrientationType.LandscapeAndPortrait });
+                    this.robotGame.Axis1 = this.Axis1;
+                    this.robotGame.Axis2 = this.Axis2;
+                    this.robotGame.Axis3 = this.Axis3;
+                    this.robotGame.Axis4 = this.Axis4;
                 }
             }
         }

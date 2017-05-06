@@ -77,7 +77,7 @@ namespace RobotApp.ViewModels
             set { this.SetProperty(ref this.robot1Axis3, value); }
         }
 
-        private float robot1Axis3;
+        private float robot1Axis3 = -45;
 
         /// <summary>
         /// Gets or sets the value of Robot1Axis4.

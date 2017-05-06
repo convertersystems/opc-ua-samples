@@ -99,6 +99,10 @@ namespace RobotApp.Views
             if (this.robotGame == null)
             {
                 this.robotGame = this.UrhoSurface.Run<RobotGame>(new ApplicationOptions("Assets") { Width = (int)this.UrhoSurface.ActualWidth, Height = (int)this.UrhoSurface.ActualHeight });
+                this.robotGame.Axis1 = this.Axis1;
+                this.robotGame.Axis2 = this.Axis2;
+                this.robotGame.Axis3 = this.Axis3;
+                this.robotGame.Axis4 = this.Axis4;
             }
 
             this.UrhoSurface.Resume();
