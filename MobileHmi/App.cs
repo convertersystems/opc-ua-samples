@@ -29,7 +29,7 @@ namespace Workstation.MobileHmi
                 .UseDirectoryStore(Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                     "pki"))
-                .UseIdentity(this.ShowSignInDialog)
+                //.UseIdentity(this.ShowSignInDialog)
                 .UseLoggerFactory(this.loggerFactory)
                 .Map("opc.tcp://localhost:26543", "opc.tcp://10.0.2.2:26543")
                 .Build();

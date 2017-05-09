@@ -4,7 +4,7 @@
     "Microsoft.Extensions.Logging.Debug": "1.1.1",
     "StyleCop.Analyzers": "1.0.0",
     "System.Reactive": "3.1.1",
-    "Workstation.UaClient": "2.0.0-RC5"
+    "Workstation.UaClient": "2.0.0-RC6"
   },
   "frameworks": {
     ".NETFramework,Version=v4.5.1": {}
