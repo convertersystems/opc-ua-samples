@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Workstation.MobileHmi.LoginPage"
+             xmlns:local="clr-namespace:Workstation.MobileHmi"
+             Title="SIGN IN">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:EndpointToStringConverter x:Key="EndpointToStringConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Spacing="10"
+                 Padding="10"
+                 VerticalOptions="FillAndExpand">
+        <Label Text="User name"
+               FontSize="Medium" />
+        <Entry x:Name="userNameEntry"
+               Placeholder="Username"
+               Text="{Binding UserName, Mode=TwoWay}"/>
+        <Label Text="Password"
+               FontSize="Medium" />
+        <Entry x:Name="passwordEntry"
+               Placeholder="Password"
+               IsPassword = "True" 
+               Text="{Binding Password, Mode=TwoWay}" />
+        <Button x:Name="signinButton"
+                Text="Sign In"
+                Command="{Binding LoginCommand}"/>
+        <!--<CheckBox Name="saveUserNameCheckBox"
+                  Content="Save user name" />-->
+
+        <Label x:Name="message"
+               Text="{Binding Endpoint, Converter={StaticResource EndpointToStringConverter}}"
+               FontSize="Medium"
+               LineBreakMode ="WordWrap"/>
+    </StackLayout>
+</ContentPage>

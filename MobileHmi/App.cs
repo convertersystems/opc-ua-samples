@@ -29,7 +29,7 @@ namespace Workstation.MobileHmi
                 .UseDirectoryStore(Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                     "pki"))
-                //.UseIdentity(this.ShowSignInDialog)
+                .UseIdentity(this.ShowSignInDialog)
                 .UseLoggerFactory(this.loggerFactory)
                 .Map("opc.tcp://localhost:26543", "opc.tcp://10.0.2.2:26543")
                 .Build();
@@ -51,11 +51,11 @@ namespace Workstation.MobileHmi
         }
 
         /// <summary>
-        /// Shows a Sign In dialog if the remote endpoint demands a UserNameIdentity token.
+        /// Show a Sign In dialog if the remote endpoint demands a UserNameIdentity token.
         /// </summary>
         /// <param name="endpoint">The remote endpoint.</param>
         /// <returns>A UserIdentity</returns>
-        private async Task<IUserIdentity> ShowSignInDialog(EndpointDescription endpoint)
+        public async Task<IUserIdentity> ShowSignInDialog(EndpointDescription endpoint)
         {
             if (endpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.Anonymous))
             {
@@ -64,10 +64,25 @@ namespace Workstation.MobileHmi
 
             if (endpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.UserName))
             {
-                return new UserNameIdentity("root", "secret");
+                var vm = new LoginPageViewModel { Endpoint = endpoint };
+                if (Application.Current.Properties.ContainsKey("UserName"))
+                {
+                    vm.UserName = Application.Current.Properties["UserName"] as string;
+                }
+
+                Device.BeginInvokeOnMainThread(async () =>
+                {
+                    var v = new LoginPage { BindingContext = vm };
+                    await this.MainPage.Navigation.PushModalAsync(v);
+                    await vm.Task;
+                    await this.MainPage.Navigation.PopModalAsync();
+                    Application.Current.Properties["UserName"] = vm.UserName;
+                });
+
+                return await vm.Task;
             }
 
-            return new AnonymousIdentity();
+            throw new NotImplementedException("ProvideUserIdentity supports only UserName and Anonymous identity, for now.");
         }
     }
 }

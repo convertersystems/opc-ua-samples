@@ -65,8 +65,8 @@ namespace Workstation.MobileHmi
             this.cameraNode.Position = new Vector3(0.0f, 1.2f, -6.0f);
 
             // Don't need 200 fps for a visualization
-            this.Engine.MinFps = 4;
-            this.Engine.MaxFps = 12;
+            this.Engine.MinFps = 2;
+            this.Engine.MaxFps = 4;
         }
 
         private void SetupViewport()

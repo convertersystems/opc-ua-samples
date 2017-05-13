@@ -10,9 +10,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EndpointToStringConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IsModeHandConverter .cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ChangeTypeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LoginPage.xaml.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LoginPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPageViewModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RobotGame.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)RobotView.xaml.cs">
@@ -21,6 +24,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)LoginPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Include="$(MSBuildThisFileDirectory)MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
