@@ -1,12 +1,12 @@
 ﻿{
   "dependencies": {
-    "Microsoft.Extensions.Logging": "1.1.1",
-    "Microsoft.Extensions.Logging.Debug": "1.1.1",
+    "Microsoft.Extensions.Logging": "1.1.2",
+    "Microsoft.Extensions.Logging.Debug": "1.1.2",
     "NETStandard.Library": "1.6.1",
-    "StyleCop.Analyzers": "1.0.0",
-    "UrhoSharp.Forms": "1.4.18",
-    "Workstation.UaClient": "2.0.0-RC6",
-    "Xamarin.Forms": "2.3.4.231"
+    "StyleCop.Analyzers": "1.0.2",
+    "UrhoSharp.Forms": "1.4.47",
+    "Workstation.UaClient": "2.0.0",
+    "Xamarin.Forms": "2.3.4.247"
   },
   "frameworks": {
     "MonoAndroid,Version=v6.0": {}

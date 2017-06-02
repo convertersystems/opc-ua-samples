@@ -1,14 +1,14 @@
 ﻿{
   "dependencies": {
-    "Microsoft.Extensions.Logging": "1.1.1",
-    "Microsoft.Extensions.Logging.Debug": "1.1.1",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
+    "Microsoft.Extensions.Logging": "1.1.2",
+    "Microsoft.Extensions.Logging.Debug": "1.1.2",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
     "Newtonsoft.Json": "10.0.2",
-    "StyleCop.Analyzers": "1.0.0",
+    "StyleCop.Analyzers": "1.0.2",
     "Template10": "1.1.12",
     "Unity": "4.0.1",
-    "UrhoSharp": "1.4.18",
-    "Workstation.UaClient": "2.0.0-RC6"
+    "UrhoSharp": "1.4.47",
+    "Workstation.UaClient": "2.0.0"
   },
   "frameworks": {
     "uap10.0": {}
