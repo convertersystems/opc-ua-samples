@@ -5,7 +5,7 @@
     "NETStandard.Library": "1.6.1",
     "StyleCop.Analyzers": "1.0.2",
     "UrhoSharp.Forms": "1.4.47",
-    "Workstation.UaClient": "2.0.1",
+    "Workstation.UaClient": "2.0.2",
     "Xamarin.Forms": "2.3.4.247"
   },
   "frameworks": {
