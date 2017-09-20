@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Workstation.Common.Wpf</name>
+    </assembly>
+    <members>
+        <member name="M:Workstation.Windows.Controls.Trendline.TryMakePropertyGetFromObjectDelegate``1(System.Type,System.String)">
+            <summary>
+            Builds a delegate that casts an object to a target type and then gets the value a property or field.
+            </summary>
+            <typeparam name="T">The expected return type of the property or field.</typeparam>
+            <param name="targetType">The expected target instance type.</param>
+            <param name="propertyOrField">The name of the target property or field.</param>
+            <returns>A delegate.</returns>
+        </member>
+        <member name="T:Workstation.Windows.Data.BooleanToVisibilityCollapsedConverter">
+            <summary>
+            Returns Visibility.Collapsed if Value equals true
+            </summary>
+        </member>
+        <member name="T:Workstation.Windows.Data.BooleanToVisibilityHiddenConverter">
+            <summary>
+            Return Visibility.Hidden if Value equals true
+            </summary>
+        </member>
+        <member name="T:Workstation.Windows.Data.BooleanToStringConverter">
+            <summary>
+            Returns TrueResult if Value equals true, FalseResult if Value equals false
+            </summary>
+        </member>
+        <member name="T:Workstation.Windows.Data.NullToVisibilityHiddenConverter">
+            <summary>
+            Returns Visibility.Hidden if Value is Null
+            </summary>
+        </member>
+        <member name="T:Workstation.Windows.Data.NullToVisibilityCollapsedConverter">
+            <summary>
+            Returns Visibility.Collapsed if Value is Null
+            </summary>
+        </member>
+        <member name="T:Workstation.Windows.Data.IsEqualConverter">
+            <summary>
+            Return true if Value equals Parameter
+            </summary>
+        </member>
+        <member name="T:Workstation.Windows.Data.IsGreaterThanConverter">
+            <summary>
+            Return true if Value is greater than Parameter
+            </summary>
+        </member>
+        <member name="T:Workstation.Windows.Data.IsLessThanConverter">
+            <summary>
+            Return true if Value is less than Parameter
+            </summary>
+        </member>
+        <member name="T:Workstation.Windows.Data.IsMatchConverter">
+            <summary>
+            Return true if Value matches the regular expression (=Parameter) ?
+            </summary>
+        </member>
+        <member name="T:Workstation.Windows.Data.IsNotConverter">
+            <summary>
+            Return inverted boolean (=!Value)
+            </summary>
+        </member>
+        <member name="T:Workstation.Windows.Data.IsNotEqualConverter">
+            <summary>
+            Return true if Value is not equal Parameter
+            </summary>
+        </member>
+        <member name="T:Workstation.Windows.Data.ScalingConverter">
+            <summary>
+            Returns a double scaled by two points.
+            Provide string parameter in form of "0.0,0.0 1.0,1.0"
+            </summary>
+        </member>
+        <member name="T:Workstation.Windows.Data.StringSelectionConverter">
+            <summary>
+            Returns a string selected by index.
+            Provide list of strings in parameter, eg "string0,string1,string2".
+            </summary>
+        </member>
+    </members>
+</doc>

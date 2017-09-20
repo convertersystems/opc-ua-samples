@@ -42,14 +42,14 @@ namespace RobotHmi
 
             // Build and run an OPC UA application instance.
             this.application = new UaApplicationBuilder()
-                .UseApplicationUri($"urn:{Dns.GetHostName()}:Workstation.RobotHmi")
-                .UseDirectoryStore(Path.Combine(
+                .SetApplicationUri($"urn:{Dns.GetHostName()}:Workstation.RobotHmi")
+                .SetDirectoryStore(Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                     "Workstation.RobotHmi",
                     "pki"))
-                .UseIdentity(this.ShowSignInDialog)
-                .UseLoggerFactory(this.loggerFactory)
-                .Map(config)
+                .SetIdentity(this.ShowSignInDialog)
+                .SetLoggerFactory(this.loggerFactory)
+                .AddMappedEndpoints(config)
                 .Build();
 
             this.application.Run();

@@ -8,7 +8,7 @@ namespace RobotHmi.ViewModels
     /// <summary>
     /// A view model for Axis1.
     /// </summary>
-    [Subscription(endpointUrl: "opc.tcp://localhost:26543", publishingInterval: 500, keepAliveCount: 20)]
+    [Subscription("opc.tcp://localhost:26543", publishingInterval: 500, keepAliveCount: 20)]
     public class Axis1ViewModel : SubscriptionBase, IAxisViewModel
     {
         /// <summary>

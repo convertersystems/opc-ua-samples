@@ -35,6 +35,7 @@ namespace RobotApp.Views
         protected override void Stop()
         {
             base.Stop();
+            this.scene?.Clear();
             this.scene?.Dispose();
             this.scene = null;
             this.cameraNode = null;
@@ -42,6 +43,7 @@ namespace RobotApp.Views
             this.axis2Node = null;
             this.axis3Node = null;
             this.axis4Node = null;
+            this.UnsubscribeFromAllEvents();
         }
 
         private void CreateScene()

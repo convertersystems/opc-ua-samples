@@ -21,24 +21,19 @@ namespace StatusHmi
     /// </summary>
     public partial class App : Application
     {
-        private ILoggerFactory loggerFactory;
         private UaApplication application;
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            // Setup a logger.
-            this.loggerFactory = new LoggerFactory();
-            this.loggerFactory.AddDebug(LogLevel.Trace);
-
             // Build and run an OPC UA application instance.
             this.application = new UaApplicationBuilder()
-                .UseApplicationUri($"urn:{Dns.GetHostName()}:Workstation.StatusHmi")
-                .UseDirectoryStore(Path.Combine(
+                .SetApplicationUri($"urn:{Dns.GetHostName()}:Workstation.StatusHmi")
+                .SetDirectoryStore(Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                     "Workstation.StatusHmi",
                     "pki"))
-                .UseIdentity(this.ShowSignInDialog)
-                .UseLoggerFactory(this.loggerFactory)
+                .SetIdentity(this.ShowSignInDialog)
+                .ConfigureLoggerFactory(o => o.AddDebug(LogLevel.Trace))
                 .Build();
 
             this.application.Run();
@@ -52,7 +47,6 @@ namespace StatusHmi
         protected override void OnExit(ExitEventArgs e)
         {
             this.application?.Dispose();
-            this.loggerFactory?.Dispose();
             base.OnExit(e);
         }
 

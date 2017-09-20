@@ -12,7 +12,7 @@ using Xamarin.Forms;
 
 namespace Workstation.MobileHmi
 {
-    public class App : Application
+    public class App : Xamarin.Forms.Application
     {
         private ILoggerFactory loggerFactory;
         private UaApplication application;
@@ -25,13 +25,13 @@ namespace Workstation.MobileHmi
 
             // Build and run an OPC UA application instance.
             this.application = new UaApplicationBuilder()
-                .UseApplicationUri($"urn:{Dns.GetHostName()}:Workstation.MobileHmi")
-                .UseDirectoryStore(Path.Combine(
+                .SetApplicationUri($"urn:{Dns.GetHostName()}:Workstation.MobileHmi")
+                .SetDirectoryStore(Path.Combine(
                     Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                     "pki"))
-                .UseIdentity(this.ShowSignInDialog)
-                .UseLoggerFactory(this.loggerFactory)
-                .Map("opc.tcp://localhost:26543", "opc.tcp://10.0.2.2:26543")
+                .SetIdentity(this.ShowSignInDialog)
+                .SetLoggerFactory(this.loggerFactory)
+                .AddMappedEndpoint("opc.tcp://localhost:26543", "opc.tcp://10.0.2.2:26543")
                 .Build();
 
             this.application.Run();
@@ -65,9 +65,9 @@ namespace Workstation.MobileHmi
             if (endpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.UserName))
             {
                 var vm = new LoginPageViewModel { Endpoint = endpoint };
-                if (Application.Current.Properties.ContainsKey("UserName"))
+                if (Xamarin.Forms.Application.Current.Properties.ContainsKey("UserName"))
                 {
-                    vm.UserName = Application.Current.Properties["UserName"] as string;
+                    vm.UserName = Xamarin.Forms.Application.Current.Properties["UserName"] as string;
                 }
 
                 Device.BeginInvokeOnMainThread(async () =>
@@ -76,7 +76,7 @@ namespace Workstation.MobileHmi
                     await this.MainPage.Navigation.PushModalAsync(v);
                     await vm.Task;
                     await this.MainPage.Navigation.PopModalAsync();
-                    Application.Current.Properties["UserName"] = vm.UserName;
+                    Xamarin.Forms.Application.Current.Properties["UserName"] = vm.UserName;
                 });
 
                 return await vm.Task;

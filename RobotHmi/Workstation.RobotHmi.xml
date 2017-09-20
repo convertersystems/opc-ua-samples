@@ -1,0 +1,472 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Workstation.RobotHmi</name>
+    </assembly>
+    <members>
+        <member name="T:RobotHmi.App">
+            <summary>
+            Interaction logic for App.xaml
+            </summary>
+            <summary>
+            App
+            </summary>
+        </member>
+        <member name="M:RobotHmi.App.OnStartup(System.Windows.StartupEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="M:RobotHmi.App.OnExit(System.Windows.ExitEventArgs)">
+            <inheritdoc/>
+        </member>
+        <member name="M:RobotHmi.App.ShowSignInDialog(Workstation.ServiceModel.Ua.EndpointDescription)">
+            <summary>
+            Show a Sign In dialog if the remote endpoint demands a UserNameIdentity token.
+            Requires MainWindow to derive from MahApps.Metro.Controls.MetroWindow.
+            </summary>
+            <param name="endpoint">The remote endpoint.</param>
+            <returns>A UserIdentity</returns>
+        </member>
+        <member name="M:RobotHmi.App.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="M:RobotHmi.App.Main">
+            <summary>
+            Application Entry Point.
+            </summary>
+        </member>
+        <member name="T:RobotHmi.AppBootstrapper">
+            <summary>
+            Runs a bootstrapping sequence that initializes the Prism services.
+            </summary>
+        </member>
+        <member name="M:RobotHmi.AppBootstrapper.Dispose">
+            <inheritdoc/>
+        </member>
+        <member name="M:RobotHmi.AppBootstrapper.ConfigureModuleCatalog">
+            <inheritdoc/>
+        </member>
+        <member name="M:RobotHmi.AppBootstrapper.ConfigureContainer">
+            <inheritdoc/>
+        </member>
+        <member name="M:RobotHmi.AppBootstrapper.CreateShell">
+            <inheritdoc/>
+        </member>
+        <member name="M:RobotHmi.AppBootstrapper.InitializeShell">
+            <inheritdoc/>
+        </member>
+        <member name="T:RobotHmi.MainModule">
+            <summary>
+            The module that initializes the MainView and required services.
+            </summary>
+        </member>
+        <member name="M:RobotHmi.MainModule.#ctor(Prism.Regions.IRegionManager,Microsoft.Practices.Unity.IUnityContainer)">
+            <summary>
+            Initializes a new instance of the <see cref="T:RobotHmi.MainModule"/> class.
+            </summary>
+            <param name="regionManager">The region manager.</param>
+            <param name="container">The Unity container.</param>
+        </member>
+        <member name="M:RobotHmi.MainModule.Initialize">
+            <inheritdoc/>
+        </member>
+        <member name="T:RobotHmi.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.Properties.Resources.ApplicationError">
+            <summary>
+              Looks up a localized string similar to Application Error.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.Properties.Resources.UnhandledException">
+            <summary>
+              Looks up a localized string similar to An unhandled exception occurred, and the application is terminating. For more information, see your Application log..
+            </summary>
+        </member>
+        <member name="T:RobotHmi.ViewModels.Axis1ViewModel">
+            <summary>
+            A view model for Axis1.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.Axis1ViewModel.Axis">
+            <summary>
+            Gets the value of Axis.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.Axis1ViewModel.DisplayName">
+            <summary>
+            Gets the DisplayName.
+            </summary>
+        </member>
+        <member name="T:RobotHmi.ViewModels.Axis2ViewModel">
+            <summary>
+            A view model for Axis2.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.Axis2ViewModel.Axis">
+            <summary>
+            Gets the value of Axis.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.Axis2ViewModel.DisplayName">
+            <summary>
+            Gets the DisplayName.
+            </summary>
+        </member>
+        <member name="T:RobotHmi.ViewModels.Axis3ViewModel">
+            <summary>
+            A view model for Axis3.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.Axis3ViewModel.Axis">
+            <summary>
+            Gets the value of Axis.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.Axis3ViewModel.DisplayName">
+            <summary>
+            Gets the DisplayName.
+            </summary>
+        </member>
+        <member name="T:RobotHmi.ViewModels.Axis4ViewModel">
+            <summary>
+            A view model for Axis4.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.Axis4ViewModel.Axis">
+            <summary>
+            Gets the value of Axis.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.Axis4ViewModel.DisplayName">
+            <summary>
+            Gets the DisplayName.
+            </summary>
+        </member>
+        <member name="T:RobotHmi.ViewModels.ViewModelBase">
+            <summary>
+            A base class for ViewModels.
+            </summary>
+        </member>
+        <member name="M:RobotHmi.ViewModels.ViewModelBase.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:RobotHmi.ViewModels.ViewModelBase"/> class.
+            </summary>
+        </member>
+        <member name="E:RobotHmi.ViewModels.ViewModelBase.PropertyChanged">
+            <inheritdoc/>
+        </member>
+        <member name="M:RobotHmi.ViewModels.ViewModelBase.SetProperty``1(``0@,``0,System.String)">
+            <summary>
+            Checks if a property already matches a desired value. Sets the property and
+            notifies listeners when necessary.
+            </summary>
+            <typeparam name="T">Type of the property.</typeparam>
+            <param name="storage">Reference to a property with both getter and setter.</param>
+            <param name="value">Desired value for the property.</param>
+            <param name="propertyName">Name of the property used to notify listeners. This
+            value is optional and can be provided automatically when invoked from compilers that
+            support CallerMemberName.</param>
+            <returns>True if the value was changed, false if the existing value matched the
+            desired value.</returns>
+        </member>
+        <member name="M:RobotHmi.ViewModels.ViewModelBase.NotifyPropertyChanged(System.String)">
+            <summary>
+            Notifies listeners that a property value has changed.
+            </summary>
+            <param name="propertyName">Name of the property used to notify listeners. This
+            value is optional and can be provided automatically when invoked from compilers
+            that support <see cref="T:System.Runtime.CompilerServices.CallerMemberNameAttribute" />.</param>
+        </member>
+        <member name="E:RobotHmi.ViewModels.ViewModelBase.ErrorsChanged">
+            <summary>
+            Occurs when the validation errors have changed for a property or entity.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.ViewModelBase.HasErrors">
+            <summary>
+            Gets a value indicating whether the entity has validation errors.
+            </summary>
+        </member>
+        <member name="M:RobotHmi.ViewModels.ViewModelBase.GetErrors(System.String)">
+            <summary>
+            Gets the validation errors for a specified property or for the entire entity.
+            </summary>
+            <param name="propertyName">The name of the property to retrieve validation errors for, or null or System.String.Empty to retrieve entity-level errors.</param>
+            <returns>The validation errors for the property or entity.</returns>
+        </member>
+        <member name="M:RobotHmi.ViewModels.ViewModelBase.SetErrors(System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Sets the validation errors for a specified property or for the entire entity.
+            </summary>
+            <param name="propertyName">The name of the property, or null or System.String.Empty to set entity-level errors.</param>
+            <param name="errors">The validation errors for the property or entity.</param>
+        </member>
+        <member name="T:RobotHmi.ViewModels.HandOffAuto">
+            <summary>
+            A type of switch with three positions
+            </summary>
+        </member>
+        <member name="T:RobotHmi.ViewModels.MainViewModel">
+            <summary>
+            A view model for MainView.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.MainViewModel.Robot1Mode">
+            <summary>
+            Gets or sets the value of Robot1Mode.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.MainViewModel.Robot1Axis1">
+            <summary>
+            Gets or sets the value of Robot1Axis1.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.MainViewModel.Robot1Axis2">
+            <summary>
+            Gets or sets the value of Robot1Axis2.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.MainViewModel.Robot1Axis3">
+            <summary>
+            Gets or sets the value of Robot1Axis3.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.MainViewModel.Robot1Axis4">
+            <summary>
+            Gets or sets the value of Robot1Axis4.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.MainViewModel.Robot1Speed">
+            <summary>
+            Gets or sets the value of Robot1Speed.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.MainViewModel.Robot1Laser">
+            <summary>
+            Gets or sets a value indicating whether Robot1Laser is active.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.MainViewModel.Robot1Axis1Queue">
+            <summary>
+            Gets the recent history of the value of Robot1Axis1.
+            </summary>
+            <remarks>
+            capacity: 240 = 60 seconds storage /  0.250 seconds publishing interval
+            isFixedSize: true = circular queue, oldest values are overwitten
+            </remarks>
+        </member>
+        <member name="P:RobotHmi.ViewModels.MainViewModel.Robot1Events">
+            <summary>
+            Gets the events of Robot1.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.MainViewModel.Robot1ModeOffCommand">
+            <summary>
+            Gets the command to set the value of Robot1Mode to Off.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.MainViewModel.Robot1ModeAutoCommand">
+            <summary>
+            Gets the command to set the value of Robot1Mode to Auto.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.MainViewModel.InputA">
+            <summary>
+            Gets or sets the value of InputA.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.MainViewModel.InputB">
+            <summary>
+            Gets or sets the value of InputB.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.MainViewModel.Result">
+            <summary>
+            Gets or sets the value of Result.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.MainViewModel.Robot1MultiplyCommand">
+            <summary>
+            Gets the command to call the method named Robot1Multiply.
+            </summary>
+        </member>
+        <member name="P:RobotHmi.ViewModels.MainViewModel.ClearCommand">
+            <summary>
+            Gets the command to clear the form.
+            </summary>
+        </member>
+        <member name="T:RobotHmi.ViewModels.DetailViewModel">
+            <summary>
+            A view model for DetailView.
+            </summary>
+        </member>
+        <member name="T:RobotHmi.ViewModels.ShellViewModel">
+            <summary>
+            A view model for Shell.
+            </summary>
+        </member>
+        <member name="T:RobotHmi.Views.RegionNames">
+            <summary>
+            Some names that might be used by the RegionManager to perform navigation.
+            </summary>
+        </member>
+        <member name="T:RobotHmi.Views.AxisView">
+            <summary>
+            A view for an Axis.
+            </summary>
+            <summary>
+            AxisView
+            </summary>
+        </member>
+        <member name="P:RobotHmi.Views.AxisView.KeepAlive">
+            <summary>
+            Gets a value indicating whether this view and viewmodel are kept alive while in the navigation history.
+            </summary>
+        </member>
+        <member name="M:RobotHmi.Views.AxisView.IsNavigationTarget(Prism.Regions.NavigationContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:RobotHmi.Views.AxisView.OnNavigatedTo(Prism.Regions.NavigationContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:RobotHmi.Views.AxisView.OnNavigatedFrom(Prism.Regions.NavigationContext)">
+            <inheritdoc/>
+        </member>
+        <member name="M:RobotHmi.Views.AxisView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:RobotHmi.Views.DetailView">
+            <summary>
+            An empty page.
+            </summary>
+            <summary>
+            DetailView
+            </summary>
+        </member>
+        <member name="P:RobotHmi.Views.DetailView.KeepAlive">
+            <summary>
+            Gets a value indicating whether this view and viewmodel are kept alive while in the navigation history.
+            </summary>
+        </member>
+        <member name="M:RobotHmi.Views.DetailView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:RobotHmi.Views.MainView">
+            <summary>
+            The main page of the application.
+            </summary>
+            <summary>
+            MainView
+            </summary>
+        </member>
+        <member name="P:RobotHmi.Views.MainView.KeepAlive">
+            <summary>
+            Gets a value indicating whether this view and viewmodel are kept alive while in the navigation history.
+            </summary>
+        </member>
+        <member name="M:RobotHmi.Views.MainView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:RobotHmi.Views.AboutWorkstation">
+            <summary>
+            Interaction logic for AboutWorkstation.xaml
+            </summary>
+            <summary>
+            AboutWorkstation
+            </summary>
+        </member>
+        <member name="M:RobotHmi.Views.AboutWorkstation.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:RobotHmi.Views.ControlPanelView">
+            <summary>
+            Interaction logic for ControlPanelView.xaml
+            </summary>
+            <summary>
+            ControlPanelView
+            </summary>
+        </member>
+        <member name="M:RobotHmi.Views.ControlPanelView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:RobotHmi.Views.SignInFlyout">
+            <summary>
+            Interaction logic for SignInFlyout.xaml
+            </summary>
+            <summary>
+            SignInFlyout
+            </summary>
+        </member>
+        <member name="M:RobotHmi.Views.SignInFlyout.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:RobotHmi.Views.SettingsFlyout">
+            <summary>
+            Interaction logic for SettingsFlyout.xaml
+            </summary>
+            <summary>
+            SettingsFlyout
+            </summary>
+        </member>
+        <member name="M:RobotHmi.Views.SettingsFlyout.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:RobotHmi.Views.Shell">
+            <summary>
+            Interaction logic for Shell.xaml
+            </summary>
+            <summary>
+            Shell
+            </summary>
+        </member>
+        <member name="M:RobotHmi.Views.Shell.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:RobotHmi.Views.RobotView">
+            <summary>
+            RobotView
+            </summary>
+        </member>
+        <member name="M:RobotHmi.Views.RobotView.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:RobotHmi.Views.RobotView"/> class.
+            </summary>
+        </member>
+        <member name="M:RobotHmi.Views.RobotView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+    </members>
+</doc>

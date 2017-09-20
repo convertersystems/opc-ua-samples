@@ -6,7 +6,7 @@ using Urho;
 
 namespace Workstation.MobileHmi
 {
-    public class RobotGame : Application
+    public class RobotGame : Urho.Application
     {
         private Scene scene;
         private Node cameraNode;

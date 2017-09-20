@@ -52,7 +52,7 @@ namespace RobotApp.Views
             var game = control.robotGame;
             if (game != null)
             {
-                control.robotGame.Axis2 = (float)e.NewValue;
+                game.Axis2 = (float)e.NewValue;
             }
         }
 
@@ -71,7 +71,7 @@ namespace RobotApp.Views
             var game = control.robotGame;
             if (game != null)
             {
-                control.robotGame.Axis3 = (float)e.NewValue;
+                game.Axis3 = (float)e.NewValue;
             }
         }
 
@@ -90,7 +90,7 @@ namespace RobotApp.Views
             var game = control.robotGame;
             if (game != null)
             {
-                control.robotGame.Axis4 = (float)e.NewValue;
+                game.Axis4 = (float)e.NewValue;
             }
         }
 

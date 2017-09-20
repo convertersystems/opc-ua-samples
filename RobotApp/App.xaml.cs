@@ -76,10 +76,10 @@ namespace RobotApp
 
             // Build and run an OPC UA application instance.
             this.application = new UaApplicationBuilder()
-                .UseApplicationUri($"urn:{Dns.GetHostName()}:Workstation.RobotApp")
-                .UseDirectoryStore(Path.Combine(ApplicationData.Current.LocalFolder.Path, "pki"))
-                .UseIdentity(this.ShowSignInDialog)
-                .UseLoggerFactory(this.loggerFactory)
+                .SetApplicationUri($"urn:{Dns.GetHostName()}:Workstation.RobotApp")
+                .SetDirectoryStore(Path.Combine(ApplicationData.Current.LocalFolder.Path, "pki"))
+                .SetIdentity(this.ShowSignInDialog)
+                .SetLoggerFactory(this.loggerFactory)
                 .Build();
 
             this.application.Run();
@@ -140,7 +140,7 @@ namespace RobotApp
                 return await tcs.Task;
             }
 
-            throw new NotImplementedException("ProvideUserIdentity supports only UserName and Anonymous identity, for now.");
+            throw new NotImplementedException("SignInDialog supports only UserName and Anonymous identity, for now.");
         }
     }
 }

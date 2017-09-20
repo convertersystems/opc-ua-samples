@@ -11,6 +11,6 @@
     d:DesignWidth="400">
 
     <Grid>
-        <urho:UrhoSurface x:Name="UrhoSurface"/>
+        <local:RobotSurface x:Name="UrhoSurface"/>
     </Grid>
 </UserControl>
