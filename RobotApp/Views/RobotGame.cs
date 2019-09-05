@@ -83,10 +83,11 @@ namespace RobotApp.Views
 
             set
             {
-                if (this.axis1Node != null && this.axis1 != value)
+                if (this.axis1 != value)
                 {
+                    var delta = value - this.axis1;
                     this.axis1 = value;
-                    InvokeOnMain(() => this.axis1Node.Rotation = new Quaternion(0, -this.axis1, 0));
+                    InvokeOnMain(() => this.axis1Node?.Yaw(delta));
                 }
             }
         }
@@ -100,11 +101,11 @@ namespace RobotApp.Views
 
             set
             {
-                if (this.axis2Node != null && this.axis2 != value)
+                if (this.axis2 != value)
                 {
                     var delta = value - this.axis2;
                     this.axis2 = value;
-                    InvokeOnMain(() => this.axis2Node.RotateAround(this.axis2axis, Quaternion.FromAxisAngle(Vector3.Left, delta), TransformSpace.Local));
+                    InvokeOnMain(() => this.axis2Node?.RotateAround(this.axis2axis, Quaternion.FromAxisAngle(Vector3.Left, delta), TransformSpace.Local));
                 }
             }
         }
@@ -118,11 +119,11 @@ namespace RobotApp.Views
 
             set
             {
-                if (this.axis3Node != null && this.axis3 != value)
+                if (this.axis3 != value)
                 {
                     var delta = value - this.axis3;
                     this.axis3 = value;
-                    InvokeOnMain(() => this.axis3Node.RotateAround(this.axis3axis, Quaternion.FromAxisAngle(Vector3.Left, delta), TransformSpace.Local));
+                    InvokeOnMain(() => this.axis3Node?.RotateAround(this.axis3axis, Quaternion.FromAxisAngle(Vector3.Left, delta), TransformSpace.Local));
                 }
             }
         }
@@ -136,11 +137,11 @@ namespace RobotApp.Views
 
             set
             {
-                if (this.axis4Node != null && this.axis4 != value)
+                if (this.axis4 != value)
                 {
                     var delta = value - this.axis4;
                     this.axis4 = value;
-                    InvokeOnMain(() => this.axis4Node.RotateAround(this.axis4axis, Quaternion.FromAxisAngle(Vector3.UnitZ, delta), TransformSpace.Local));
+                    InvokeOnMain(() => this.axis4Node?.RotateAround(this.axis4axis, Quaternion.FromAxisAngle(Vector3.UnitZ, delta), TransformSpace.Local));
                 }
             }
         }

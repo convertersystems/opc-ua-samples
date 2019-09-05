@@ -1,17 +1,9 @@
-// Copyright (c) Converter Systems LLC. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
-
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-using Template10.Common;
-using Template10.Services.NavigationService;
-using Windows.UI.Xaml.Navigation;
-using Workstation.Collections;
 using Workstation.ServiceModel.Ua;
+using Workstation.Collections;
+using System.Threading.Tasks;
 
 namespace RobotApp.ViewModels
 {
@@ -28,8 +20,8 @@ namespace RobotApp.ViewModels
     /// <summary>
     /// A view model for MainPage.
     /// </summary>
-    [Subscription(endpointUrl: "opc.tcp://localhost:26543", publishingInterval: 250, keepAliveCount: 20)]
-    public class MainPageViewModel : SubscriptionBase, INavigable
+    [Subscription(endpointUrl: "opc.tcp://localhost:26543", publishingInterval: 500, keepAliveCount: 20)]
+    public class MainPageViewModel : SubscriptionBase
     {
         /// <summary>
         /// Gets or sets the value of Robot1Mode.
@@ -121,7 +113,7 @@ namespace RobotApp.ViewModels
         public ObservableQueue<DataValue> Robot1Axis1Queue { get; } = new ObservableQueue<DataValue>(capacity: 240, isFixedSize: true);
 
         [MonitoredItem(nodeId: "ns=2;s=Robot1_Axis1", dataChangeTrigger: DataChangeTrigger.StatusValueTimestamp)]
-        private DataValue Robot1Axis1Stream { set { this.Robot1Axis1Queue.Enqueue(value); }}
+        private DataValue Robot1Axis1Stream { set { this.Robot1Axis1Queue.Enqueue(value); } }
 
         /// <summary>
         /// Gets the recent history of Robot1Axis2.
@@ -129,7 +121,7 @@ namespace RobotApp.ViewModels
         public ObservableQueue<DataValue> Robot1Axis2Queue { get; } = new ObservableQueue<DataValue>(capacity: 240, isFixedSize: true);
 
         [MonitoredItem(nodeId: "ns=2;s=Robot1_Axis2", dataChangeTrigger: DataChangeTrigger.StatusValueTimestamp)]
-        private DataValue Robot1Axis2Stream { set { this.Robot1Axis2Queue.Enqueue(value); }}
+        private DataValue Robot1Axis2Stream { set { this.Robot1Axis2Queue.Enqueue(value); } }
 
         /// <summary>
         /// Gets the recent history of Robot1Axis3.
@@ -137,7 +129,7 @@ namespace RobotApp.ViewModels
         public ObservableQueue<DataValue> Robot1Axis3Queue { get; } = new ObservableQueue<DataValue>(capacity: 240, isFixedSize: true);
 
         [MonitoredItem(nodeId: "ns=2;s=Robot1_Axis3", dataChangeTrigger: DataChangeTrigger.StatusValueTimestamp)]
-        private DataValue Robot1Axis3Stream { set { this.Robot1Axis3Queue.Enqueue(value); }}
+        private DataValue Robot1Axis3Stream { set { this.Robot1Axis3Queue.Enqueue(value); } }
 
         /// <summary>
         /// Gets the recent history of Robot1Axis4.
@@ -145,7 +137,7 @@ namespace RobotApp.ViewModels
         public ObservableQueue<DataValue> Robot1Axis4Queue { get; } = new ObservableQueue<DataValue>(capacity: 240, isFixedSize: true);
 
         [MonitoredItem(nodeId: "ns=2;s=Robot1_Axis4", dataChangeTrigger: DataChangeTrigger.StatusValueTimestamp)]
-        private DataValue Robot1Axis4Stream { set { this.Robot1Axis4Queue.Enqueue(value); }}
+        private DataValue Robot1Axis4Stream { set { this.Robot1Axis4Queue.Enqueue(value); } }
 
         /// <summary>
         /// Gets the current events of Robot1.
@@ -161,12 +153,17 @@ namespace RobotApp.ViewModels
         {
             set
             {
-                this.Dispatcher.DispatchAsync(async () =>
+                var dispatcher = Windows.ApplicationModel.Core.CoreApplication.GetCurrentView().CoreWindow.Dispatcher;
+                if (dispatcher != null)
                 {
-                    this.Robot1Events.Add(value);
-                    await Task.Delay(5000);
-                    this.Robot1Events.Remove(value);
-                });
+                    dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, async () =>
+                    {
+                        this.Robot1Events.Add(value);
+                        await Task.Delay(5000);
+                        this.Robot1Events.Remove(value);
+                    });
+                }
+
             }
         }
 
@@ -293,43 +290,7 @@ namespace RobotApp.ViewModels
             this.InputA = 0d;
             this.InputB = 0d;
             this.Result = 0d;
-#if DEBUG
-            GC.Collect();
-#endif
         }
 
-        public void GotoSettings() =>
-            this.NavigationService.Navigate(typeof(Views.SettingsPage), 0);
-
-        public void GotoPrivacy() =>
-            this.NavigationService.Navigate(typeof(Views.SettingsPage), 1);
-
-        public void GotoAbout() =>
-            this.NavigationService.Navigate(typeof(Views.SettingsPage), 2);
-
-        // INavigable
-        [JsonIgnore]
-        public virtual INavigationService NavigationService { get; set; }
-
-        [JsonIgnore]
-        public virtual IDispatcherWrapper Dispatcher { get; set; }
-
-        [JsonIgnore]
-        public virtual IStateItems SessionState { get; set; }
-
-        public virtual Task OnNavigatedToAsync(object parameter, NavigationMode mode, IDictionary<string, object> state)
-        {
-            return Task.CompletedTask;
-        }
-
-        public virtual Task OnNavigatedFromAsync(IDictionary<string, object> pageState, bool suspending)
-        {
-            return Task.CompletedTask;
-        }
-
-        public virtual Task OnNavigatingFromAsync(NavigatingEventArgs args)
-        {
-            return Task.CompletedTask;
-        }
     }
 }

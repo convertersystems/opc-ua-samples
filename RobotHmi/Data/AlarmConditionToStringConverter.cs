@@ -2,7 +2,6 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using Workstation.ServiceModel.Ua;
-using Workstation.Windows.Data;
 using System;
 using System.Globalization;
 using System.Windows.Data;

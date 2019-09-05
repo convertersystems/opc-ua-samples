@@ -104,13 +104,10 @@ namespace RobotApp.Views
                 this.robotGame.Axis3 = this.Axis3;
                 this.robotGame.Axis4 = this.Axis4;
             }
-
-            this.UrhoSurface.Resume();
         }
 
         private void OnUnloaded(object sender, RoutedEventArgs e)
         {
-            this.UrhoSurface.Pause();
         }
     }
 }

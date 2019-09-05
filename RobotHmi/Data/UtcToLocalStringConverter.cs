@@ -4,7 +4,6 @@
 using System;
 using System.Globalization;
 using System.Windows.Data;
-using Workstation.Windows.Data;
 
 namespace RobotHmi.Data
 {

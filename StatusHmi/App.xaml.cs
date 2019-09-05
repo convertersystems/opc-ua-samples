@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Workstation.ServiceModel.Ua; // Install-Package Workstation.UaClient
@@ -25,6 +26,12 @@ namespace StatusHmi
 
         protected override void OnStartup(StartupEventArgs e)
         {
+            // build a loggerFactory.
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddLogging(builder => builder.AddDebug());
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+            var loggerFactory = serviceProvider.GetService<ILoggerFactory>();
+
             // Build and run an OPC UA application instance.
             this.application = new UaApplicationBuilder()
                 .SetApplicationUri($"urn:{Dns.GetHostName()}:Workstation.StatusHmi")
@@ -33,7 +40,7 @@ namespace StatusHmi
                     "Workstation.StatusHmi",
                     "pki"))
                 .SetIdentity(this.ShowSignInDialog)
-                .ConfigureLoggerFactory(o => o.AddDebug(LogLevel.Trace))
+                .SetLoggerFactory(loggerFactory)
                 .Build();
 
             this.application.Run();

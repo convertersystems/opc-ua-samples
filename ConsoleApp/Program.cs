@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 using Workstation.ServiceModel.Ua;
 using Workstation.ServiceModel.Ua.Channels;
 
@@ -30,12 +29,8 @@ namespace ConsoleApp
 
         private static async Task TestAsync()
         {
-            var loggerFactory = new LoggerFactory();
-            loggerFactory.AddDebug(LogLevel.Trace);
-
-            var discoveryUrl = "opc.tcp://localhost:26543"; // Workstation.NodeServer
-            //var discoveryUrl = "opc.tcp://localhost:48010"; // UaCppServer - see  http://www.unified-automation.com/
-            //var discoveryUrl = "opc.tcp://localhost:16664"; // open62541
+            var discoveryUrl = "opc.tcp://localhost:48010"; // UaCppServer - see  http://www.unified-automation.com/
+            // var discoveryUrl = $"opc.tcp://localhost:26543"; // Workstation.RobotServer
 
             Console.WriteLine("Step 1 - Describe this app.");
             var appDescription = new ApplicationDescription()
@@ -54,8 +49,7 @@ namespace ConsoleApp
                 appDescription,
                 certificateStore,
                 ShowSignInDialog,
-                discoveryUrl,
-                loggerFactory: loggerFactory);
+                discoveryUrl);
             try
             {
                 await channel.OpenAsync();
@@ -180,10 +174,14 @@ namespace ConsoleApp
         private static async Task<IUserIdentity> ShowSignInDialog(EndpointDescription endpoint)
         {
             IUserIdentity userIdentity = null;
+
+            // if server accepts anonymous identity, then choose to remain anonymous.
             if (endpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.Anonymous))
             {
                 userIdentity = new AnonymousIdentity();
             }
+
+            // if server accepts username and password identity, then ask the user.
             else if (endpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.UserName))
             {
                 Console.WriteLine("Server is requesting UserName identity...");
@@ -193,6 +191,7 @@ namespace ConsoleApp
                 var password = Console.ReadLine();
                 userIdentity = new UserNameIdentity(userName, password);
             }
+
             else
             {
                 Console.WriteLine("Program supports servers requesting Anonymous and UserName identity.");

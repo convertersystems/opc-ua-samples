@@ -1,29 +1,25 @@
-// Copyright (c) Converter Systems LLC. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+﻿using System;
 
 using RobotApp.ViewModels;
+
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
 
 namespace RobotApp.Views
 {
+    // TODO WTS: Change the URL for your privacy policy in the Resource File, currently set to https://YourPrivacyUrlGoesHere
     public sealed partial class SettingsPage : Page
     {
-        Template10.Services.SerializationService.ISerializationService _SerializationService;
+        public SettingsViewModel ViewModel { get; } = new SettingsViewModel();
 
         public SettingsPage()
         {
-            this.InitializeComponent();
-            this._SerializationService = Template10.Services.SerializationService.SerializationService.Json;
-            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+            InitializeComponent();
         }
 
-        public SettingsPageViewModel ViewModel => this.DataContext as SettingsPageViewModel;
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        protected override async void OnNavigatedTo(NavigationEventArgs e)
         {
-            var index = int.Parse(this._SerializationService.Deserialize(e.Parameter?.ToString()).ToString());
-            this.MyPivot.SelectedIndex = index;
+            await ViewModel.InitializeAsync();
         }
     }
 }

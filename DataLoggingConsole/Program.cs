@@ -34,13 +34,9 @@ namespace DataLoggingConsole
 
         private static async Task TestAsync(CancellationToken token = default(CancellationToken))
         {
-            var discoveryUrl = $"opc.tcp://localhost:26543";
+            var discoveryUrl = "opc.tcp://localhost:48010"; // UaCppServer - see  http://www.unified-automation.com/
+            // var discoveryUrl = $"opc.tcp://localhost:26543"; // Workstation.RobotServer
             var cycleTime = 5000;
-
-            // setup logger
-            var loggerFactory = new LoggerFactory();
-            loggerFactory.AddConsole(LogLevel.Information);
-            var logger = loggerFactory?.CreateLogger<Program>();
 
             // Describe this app.
             var appDescription = new ApplicationDescription()
@@ -57,105 +53,63 @@ namespace DataLoggingConsole
             // Create array of NodeIds to log.
             var nodeIds = new[]
             {
-                NodeId.Parse("i=2258")
+                NodeId.Parse("i=2258") // CurrentTime
             };
 
-            while (!token.IsCancellationRequested)
+            // Create a session with the server.
+            var session = new UaTcpSessionChannel(
+                appDescription,
+                certificateStore,
+                new AnonymousIdentity(),
+                discoveryUrl);
+            try
             {
-                try
+                await session.OpenAsync();
+
+                RegisterNodesResponse registerNodesResponse = null;
+
+                if (true) // True registers the nodeIds to improve performance of the server.
                 {
-                    // Discover endpoints.
-                    var getEndpointsRequest = new GetEndpointsRequest
+                    // Register array of nodes to read.
+                    var registerNodesRequest = new RegisterNodesRequest
                     {
-                        EndpointUrl = discoveryUrl,
-                        ProfileUris = new[] { TransportProfileUris.UaTcpTransport }
+                        NodesToRegister = nodeIds
                     };
-                    var getEndpointsResponse = await UaTcpDiscoveryService.GetEndpointsAsync(getEndpointsRequest).ConfigureAwait(false);
-                    if (getEndpointsResponse.Endpoints == null || getEndpointsResponse.Endpoints.Length == 0)
-                    {
-                        throw new InvalidOperationException($"'{discoveryUrl}' returned no endpoints.");
-                    }
-
-                    // Choose the endpoint with highest security level.
-                    var remoteEndpoint = getEndpointsResponse.Endpoints.OrderBy(e => e.SecurityLevel).Last();
-
-                    // Choose a User Identity.
-                    IUserIdentity userIdentity = null;
-                    if (remoteEndpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.Anonymous))
-                    {
-                        userIdentity = new AnonymousIdentity();
-                    }
-                    else if (remoteEndpoint.UserIdentityTokens.Any(p => p.TokenType == UserTokenType.UserName))
-                    {
-                        // If a username / password is requested, provide from .config file.
-                        userIdentity = new UserNameIdentity("root", "secret");
-                    }
-                    else
-                    {
-                        throw new InvalidOperationException("Server must accept Anonymous or UserName identity.");
-                    }
-
-                    // Create a session with the server.
-                    var session = new UaTcpSessionChannel(appDescription, certificateStore, async e => userIdentity, remoteEndpoint, loggerFactory);
-                    try
-                    {
-                        await session.OpenAsync();
-
-                        RegisterNodesResponse registerNodesResponse = null;
-
-                        if (true) // True registers the nodeIds to improve performance of the server.
-                        {
-                            // Register array of nodes to read.
-                            var registerNodesRequest = new RegisterNodesRequest
-                            {
-                                NodesToRegister = nodeIds
-                            };
-                            registerNodesResponse = await session.RegisterNodesAsync(registerNodesRequest);
-                        }
-
-                        // Prepare read request.
-                        var readRequest = new ReadRequest
-                        {
-                            NodesToRead = (registerNodesResponse?.RegisteredNodeIds ?? nodeIds)
-                            .Select(n => new ReadValueId { NodeId = n, AttributeId = AttributeIds.Value })
-                            .ToArray()
-                        };
-
-                        while (!token.IsCancellationRequested)
-                        {
-                            // Read the nodes.
-                            var readResponse = await session.ReadAsync(readRequest).ConfigureAwait(false);
-
-                            // Write the results.
-                            for (int i = 0; i < readRequest.NodesToRead.Length; i++)
-                            {
-                                logger?.LogInformation($"{nodeIds[i]}; value: {readResponse.Results[i]}");
-                            }
-
-                            try
-                            {
-                                await Task.Delay(cycleTime, token);
-                            }
-                            catch { }
-                        }
-                        await session.CloseAsync();
-                    }
-                    catch
-                    {
-                        await session.AbortAsync();
-                        throw;
-                    }
-                }
-                catch (Exception ex)
-                {
-                    logger?.LogError(ex.Message);
+                    registerNodesResponse = await session.RegisterNodesAsync(registerNodesRequest);
                 }
 
-                try
+                // Prepare read request.
+                var readRequest = new ReadRequest
                 {
+                    NodesToRead = (registerNodesResponse?.RegisteredNodeIds ?? nodeIds)
+                    .Select(n => new ReadValueId { NodeId = n, AttributeId = AttributeIds.Value })
+                    .ToArray()
+                };
+
+                while (!token.IsCancellationRequested)
+                {
+                    // Read the nodes.
+                    var readResponse = await session.ReadAsync(readRequest).ConfigureAwait(false);
+
+                    // Write the results.
+                    for (int i = 0; i < readRequest.NodesToRead.Length; i++)
+                    {
+                        Console.WriteLine($"{nodeIds[i]}; value: {readResponse.Results[i]}");
+                    }
+
                     await Task.Delay(cycleTime, token);
                 }
-                catch { }
+                await session.CloseAsync();
+            }
+            catch (TaskCanceledException)
+            {
+                // Ctrl-C was pressed.
+                await session.CloseAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                await session.AbortAsync();
             }
         }
     }

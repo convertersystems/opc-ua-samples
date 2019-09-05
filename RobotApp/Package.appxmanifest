@@ -1,28 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" IgnorableNamespaces="uap mp">
-  <Identity Name="72ab3e62-8994-4af2-ab52-3dd0484248b5" Publisher="CN=awcul" Version="1.0.0.0" />
-  <mp:PhoneIdentity PhoneProductId="72ab3e62-8994-4af2-ab52-3dd0484248b5" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  xmlns:genTemplate="http://schemas.microsoft.com/appx/developer/windowsTemplateStudio"
+  IgnorableNamespaces="uap mp genTemplate">
+
+  <Identity
+    Name="B27581D0-F15F-4D7F-931B-0D998D492B49"
+    Publisher="CN=awcul"
+    Version="1.0.0.0" />
+
+  <mp:PhoneIdentity PhoneProductId="B27581D0-F15F-4D7F-931B-0D998D492B49" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
   <Properties>
-    <DisplayName>Workstation.RobotApp</DisplayName>
-    <PublisherDisplayName>Andrew</PublisherDisplayName>
+    <DisplayName>RobotApp</DisplayName>
+    <PublisherDisplayName>awcul</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
+
   <Dependencies>
     <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
   </Dependencies>
+
   <Resources>
-    <Resource Language="x-generate" />
+    <Resource Language="x-generate"/>
   </Resources>
+
   <Applications>
-    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="RobotApp.App">
-      <uap:VisualElements DisplayName="Workstation.RobotApp" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="A sample app to demonstrate communications with Opc Ua servers." BackgroundColor="transparent">
-        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
-        </uap:DefaultTile>
+    <Application Id="App"
+      Executable="$targetnametoken$.exe"
+      EntryPoint="RobotApp.App">
+      <uap:VisualElements
+        DisplayName="RobotApp"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png"
+        Description="ms-resource:AppDescription"
+        BackgroundColor="transparent">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>
+
+      <Extensions>
+      </Extensions>
     </Application>
   </Applications>
+
   <Capabilities>
     <Capability Name="internetClient" />
   </Capabilities>
+
+  <genTemplate:Metadata>
+    <genTemplate:Item Name="generator" Value="Windows Template Studio"/>
+    <genTemplate:Item Name="wizardVersion" Version="v3.3.19200.1" />
+    <genTemplate:Item Name="templatesVersion" Version="v3.3.19200.1" />
+    <genTemplate:Item Name="projectType" Value="SplitView" />
+    <genTemplate:Item Name="framework" Value="MVVMBasic" />
+    <genTemplate:Item Name="platform" Value="Uwp" />
+  </genTemplate:Metadata>
 </Package>

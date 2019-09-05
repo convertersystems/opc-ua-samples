@@ -2,9 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Workstation.MobileHmi.MainPage"
-             xmlns:local="clr-namespace:Workstation.MobileHmi"
-             xmlns:urho="clr-namespace:Urho.Forms;assembly=Urho.Forms"
-             Title="Workstation.MobileHmi">
+             xmlns:local="clr-namespace:Workstation.MobileHmi">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:IsModeHandConverter x:Key="IsModeHandConverter" />
@@ -13,18 +11,16 @@
     <ContentPage.BindingContext>
         <local:MainPageViewModel />
     </ContentPage.BindingContext>
-
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="320" />
+            <RowDefinition Height="160" />
+            <RowDefinition Height="160" />
         </Grid.RowDefinitions>
         <local:RobotView x:Name="RobotView"
                          Axis1="{Binding Robot1Axis1, Mode=OneWay}"
                          Axis2="{Binding Robot1Axis2, Mode=OneWay}"
                          Axis3="{Binding Robot1Axis3, Mode=OneWay}"
                          Axis4="{Binding Robot1Axis4, Mode=OneWay}" />
-        <Label Text="{Binding State}" />
         <ScrollView Grid.Row="1">
             <StackLayout Spacing="10"
                          Padding="10"

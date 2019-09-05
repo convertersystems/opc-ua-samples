@@ -5,12 +5,13 @@
     xmlns:local="using:RobotApp.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:urho="using:Urho.UWP"
+    xmlns:uwp="using:Urho.UWP"
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
 
     <Grid>
-        <local:RobotSurface x:Name="UrhoSurface"/>
+        <uwp:UrhoSurface x:Name="UrhoSurface"/>
+        <!--<local:RobotSurface x:Name="UrhoSurface"/>-->
     </Grid>
 </UserControl>

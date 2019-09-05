@@ -4,7 +4,6 @@
               xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
               xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
-              xmlns:prism="http://prismlibrary.com/"
               Width="346"
               Background="{DynamicResource HighlightBrush}"
               FontSize="14.667"

@@ -2,7 +2,7 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Workstation.MobileHmi"
-             xmlns:urho="clr-namespace:Urho.Forms;assembly=Urho.Forms"             
+             xmlns:urho="clr-namespace:Urho.Forms;assembly=UrhoSharp.Forms"             
              x:Class="Workstation.MobileHmi.RobotView">
   <ContentView.Content>
     <urho:UrhoSurface x:Name="UrhoSurface" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"/>

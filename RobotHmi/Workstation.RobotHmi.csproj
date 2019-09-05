@@ -9,13 +9,14 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>RobotHmi</RootNamespace>
     <AssemblyName>Workstation.RobotHmi</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <ApplicationIcon>Properties\application.ico</ApplicationIcon>
     <StartupObject>RobotHmi.App</StartupObject>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup>
     <!--
@@ -100,15 +101,28 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AppBootstrapper.cs" />
+    <Compile Include="Controls\Trendline.cs" />
     <Compile Include="Data\AccentToBrushConverter.cs" />
     <Compile Include="Data\AlarmConditionToStringConverter.cs" />
+    <Compile Include="Data\BooleanToStringConverter.cs" />
+    <Compile Include="Data\BooleanToVisibilityCollapsedConverter.cs" />
+    <Compile Include="Data\BooleanToVisibilityHiddenConverter.cs" />
+    <Compile Include="Data\IsEqualConverter.cs" />
+    <Compile Include="Data\IsGreaterThanConverter.cs" />
+    <Compile Include="Data\IsLessThanConverter.cs" />
+    <Compile Include="Data\IsMatchConverter.cs" />
+    <Compile Include="Data\IsNotConverter.cs" />
+    <Compile Include="Data\IsNotEqualConverter.cs" />
+    <Compile Include="Data\NullIntToNegOneConverter.cs" />
+    <Compile Include="Data\NullToVisibilityCollapsedConverter.cs" />
+    <Compile Include="Data\NullToVisibilityHiddenConverter.cs" />
+    <Compile Include="Data\ScalingConverter.cs" />
+    <Compile Include="Data\SingleToDoubleConverter.cs" />
+    <Compile Include="Data\StringSelectionConverter.cs" />
     <Compile Include="Data\UtcToLocalStringConverter.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="MainModule.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Data\ThemeToBrushConverter.cs" />
+    <Compile Include="Data\ValueConverter.cs" />
+    <Compile Include="Interactivity\DisableMouseWheelAndArrowKeysBehavior.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -182,7 +196,6 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <AdditionalFiles Include="stylecop.json" />
     <Content Include="appSettings.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -299,38 +312,35 @@
     <Resource Include="Properties\application.ico" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common.Wpf\Workstation.Common.Wpf.csproj">
-      <Project>{caf39a86-ca6a-4fbe-84ff-96871edde0de}</Project>
-      <Name>Workstation.Common.Wpf</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Services\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MahApps.Metro">
-      <Version>1.5.0</Version>
+      <Version>1.6.5</Version>
     </PackageReference>
-    <PackageReference Include="Microsoft.Extensions.Configuration.Binder">
-      <Version>2.0.0</Version>
+    <PackageReference Include="Microsoft.Extensions.Configuration">
+      <Version>2.2.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Configuration.Json">
-      <Version>2.0.0</Version>
+      <Version>2.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection">
+      <Version>2.2.0</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Logging.Debug">
-      <Version>2.0.0</Version>
+      <Version>2.2.0</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>10.0.3</Version>
+      <Version>12.0.2</Version>
     </PackageReference>
     <PackageReference Include="Prism.Unity">
-      <Version>6.3.0</Version>
+      <Version>7.2.0.1367</Version>
     </PackageReference>
     <PackageReference Include="Prism.Wpf">
-      <Version>6.3.0</Version>
+      <Version>7.2.0.1367</Version>
     </PackageReference>
     <PackageReference Include="Workstation.UaClient">
-      <Version>2.1.1</Version>
+      <Version>2.4.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

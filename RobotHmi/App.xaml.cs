@@ -12,8 +12,11 @@ using System.Windows.Threading;
 using MahApps.Metro.Controls;
 using MahApps.Metro.Controls.Dialogs;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Prism.Ioc;
+using RobotHmi.Views;
 using Workstation.ServiceModel.Ua;
 
 namespace RobotHmi
@@ -23,16 +26,16 @@ namespace RobotHmi
     /// </summary>
     public sealed partial class App
     {
-        private ILoggerFactory loggerFactory;
         private UaApplication application;
-        private AppBootstrapper bootstrapper;
 
         /// <inheritdoc/>
         protected override void OnStartup(StartupEventArgs e)
         {
             // Setup a logger.
-            this.loggerFactory = new LoggerFactory();
-            this.loggerFactory.AddDebug(LogLevel.Trace);
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddLogging(builder => builder.AddDebug());
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+            var loggerFactory = serviceProvider.GetService<ILoggerFactory>();
 
             // Read 'appSettings.json' for endpoint configuration
             var config = new ConfigurationBuilder()
@@ -48,23 +51,19 @@ namespace RobotHmi
                     "Workstation.RobotHmi",
                     "pki"))
                 .SetIdentity(this.ShowSignInDialog)
-                .SetLoggerFactory(this.loggerFactory)
+                .SetLoggerFactory(loggerFactory)
                 .AddMappedEndpoints(config)
                 .Build();
 
             this.application.Run();
 
-            // Start Prism bootstrapper
-            this.bootstrapper = new AppBootstrapper(this.loggerFactory);
-            this.bootstrapper.Run();
+            base.OnStartup(e);
         }
 
         /// <inheritdoc/>
         protected override void OnExit(ExitEventArgs e)
         {
-            this.bootstrapper?.Dispose();
             this.application?.Dispose();
-            this.loggerFactory?.Dispose();
         }
 
         /// <summary>
@@ -114,6 +113,18 @@ namespace RobotHmi
             }
 
             throw new NotImplementedException("ProvideUserIdentity supports only UserName and Anonymous identity, for now.");
+        }
+
+        protected override void RegisterTypes(IContainerRegistry containerRegistry)
+        {
+            containerRegistry.RegisterForNavigation<MainView>("RobotHmi.Views.MainView");
+            containerRegistry.RegisterForNavigation<DetailView>("RobotHmi.Views.DetailView");
+            containerRegistry.RegisterForNavigation<AxisView>("RobotHmi.Views.AxisView");
+        }
+
+        protected override Window CreateShell()
+        {
+            return Container.Resolve<Shell>();
         }
     }
 }

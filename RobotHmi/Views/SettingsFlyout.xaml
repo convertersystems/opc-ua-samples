@@ -8,7 +8,6 @@
               xmlns:metro2="clr-namespace:MahApps.Metro;assembly=MahApps.Metro"
               xmlns:v="clr-namespace:RobotHmi.Views"
               xmlns:vm="clr-namespace:RobotHmi.ViewModels"
-              xmlns:prism="http://prismlibrary.com/"
               Width="346"
               Background="{DynamicResource HighlightBrush}"
               FontSize="14.667"

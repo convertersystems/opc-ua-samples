@@ -1,7 +1,6 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:controls="using:Template10.Controls"
-                    xmlns:csControls="using:Workstation.UI.Xaml.Controls">
+                    xmlns:controls="using:RobotApp.Controls">
 
     <x:Double x:Key="NarrowMinWidth">0</x:Double>
     <x:Double x:Key="NormalMinWidth">521</x:Double>
@@ -20,29 +19,10 @@
             <SolidColorBrush x:Key="ExtendedSplashBackground" Color="{ThemeResource CustomColor}" />
             <SolidColorBrush x:Key="ExtendedSplashForeground" Color="{ThemeResource ContrastColor}" />
 
-            <Style TargetType="controls:HamburgerMenu">
-                <Setter Property="AccentColor" Value="{ThemeResource CustomColor}" />
-                <Setter Property="VisualStateNarrowMinWidth" Value="{ThemeResource NarrowMinWidth}" />
-                <Setter Property="VisualStateNormalMinWidth" Value="{ThemeResource NormalMinWidth}" />
-                <Setter Property="VisualStateWideMinWidth" Value="{ThemeResource WideMinWidth}" />
-            </Style>
-
-            <Style TargetType="controls:PageHeader">
-                <Setter Property="Background" Value="{ThemeResource CustomColorBrush}" />
-                <Setter Property="Foreground" Value="{ThemeResource ContrastColorBrush}" />
-                <Setter Property="VisualStateNarrowMinWidth" Value="{ThemeResource NarrowMinWidth}" />
-                <Setter Property="VisualStateNormalMinWidth" Value="{ThemeResource NormalMinWidth}" />
-            </Style>
-
-            <Style TargetType="controls:Resizer">
-                <Setter Property="GrabberBrush" Value="{ThemeResource CustomColorBrush}" />
-                <Setter Property="GrabberVisibility" Value="Visible" />
-            </Style>
-
             <SolidColorBrush x:Key="ControlBackgroundBrush"
                              Color="LightGray" />
             
-            <Style TargetType="csControls:Trendline">
+            <Style TargetType="controls:Trendline">
                 <Setter Property="Background"
                         Value="{ThemeResource SystemControlBackgroundListLowBrush}" />
                 <Setter Property="Stroke"
@@ -57,29 +37,10 @@
             <SolidColorBrush x:Key="ExtendedSplashBackground" Color="{ThemeResource CustomColor}" />
             <SolidColorBrush x:Key="ExtendedSplashForeground" Color="{ThemeResource ContrastColor}" />
 
-            <Style TargetType="controls:HamburgerMenu">
-                <Setter Property="AccentColor" Value="{ThemeResource CustomColor}" />
-                <Setter Property="VisualStateNarrowMinWidth" Value="{ThemeResource NarrowMinWidth}" />
-                <Setter Property="VisualStateNormalMinWidth" Value="{ThemeResource NormalMinWidth}" />
-                <Setter Property="VisualStateWideMinWidth" Value="{ThemeResource WideMinWidth}" />
-            </Style>
-
-            <Style TargetType="controls:PageHeader">
-                <Setter Property="Background" Value="{ThemeResource CustomColorBrush}" />
-                <Setter Property="Foreground" Value="{ThemeResource ContrastColorBrush}" />
-                <Setter Property="VisualStateNarrowMinWidth" Value="{ThemeResource NarrowMinWidth}" />
-                <Setter Property="VisualStateNormalMinWidth" Value="{ThemeResource NormalMinWidth}" />
-            </Style>
-
-            <Style TargetType="controls:Resizer">
-                <Setter Property="GrabberBrush" Value="{ThemeResource CustomColorBrush}" />
-                <Setter Property="GrabberVisibility" Value="Visible" />
-            </Style>
-
             <SolidColorBrush x:Key="ControlBackgroundBrush"
                              Color="LightGray" />
 
-            <Style TargetType="csControls:Trendline">
+            <Style TargetType="controls:Trendline">
                 <Setter Property="Background"
                         Value="{ThemeResource SystemControlBackgroundListLowBrush}" />
                 <Setter Property="Stroke"
@@ -92,30 +53,10 @@
             <SolidColorBrush x:Key="ExtendedSplashBackground" Color="Black" />
             <SolidColorBrush x:Key="ExtendedSplashForeground" Color="White" />
 
-            <Style TargetType="controls:HamburgerMenu">
-                <Setter Property="PaneBorderThickness" Value="0" />
-                <Setter Property="SecondarySeparator" Value="{ThemeResource SystemColorWindowTextColor}" />
-                <Setter Property="NavButtonBackground" Value="{ThemeResource SystemColorWindowColor}" />
-                <Setter Property="NavButtonForeground" Value="{ThemeResource SystemColorWindowTextColor}" />
-                <Setter Property="NavAreaBackground" Value="{ThemeResource SystemColorWindowColor}" />
-                <Setter Property="HamburgerForeground" Value="{ThemeResource SystemColorWindowColor}" />
-                <Setter Property="HamburgerBackground" Value="{ThemeResource SystemColorWindowTextColor}" />
-                <Setter Property="VisualStateNarrowMinWidth" Value="{ThemeResource NarrowMinWidth}" />
-                <Setter Property="VisualStateNormalMinWidth" Value="{ThemeResource NormalMinWidth}" />
-                <Setter Property="VisualStateWideMinWidth" Value="{ThemeResource WideMinWidth}" />
-            </Style>
-
-            <Style TargetType="controls:PageHeader">
-                <Setter Property="Background" Value="{ThemeResource SystemColorWindowColor}" />
-                <Setter Property="Foreground" Value="{ThemeResource SystemColorWindowTextColor}" />
-                <Setter Property="VisualStateNarrowMinWidth" Value="{ThemeResource NarrowMinWidth}" />
-                <Setter Property="VisualStateNormalMinWidth" Value="{ThemeResource NormalMinWidth}" />
-            </Style>
-
             <SolidColorBrush x:Key="ControlBackgroundBrush"
                              Color="LightGray" />
 
-            <Style TargetType="csControls:Trendline">
+            <Style TargetType="controls:Trendline">
                 <Setter Property="Background"
                         Value="{ThemeResource SystemColorWindowColor}" />
                 <Setter Property="Stroke"

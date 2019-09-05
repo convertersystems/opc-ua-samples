@@ -1,6 +1,4 @@
-// Copyright (c) Converter Systems LLC. All rights reserved.
-// Licensed under the MIT license. See LICENSE file in the project root for full license information.
-
+﻿using System;
 using RobotApp.ViewModels;
 using Windows.UI.Xaml.Controls;
 
@@ -8,12 +6,11 @@ namespace RobotApp.Views
 {
     public sealed partial class MainPage : Page
     {
+        public MainPageViewModel ViewModel { get; } = Helpers.Singleton<MainPageViewModel>.Instance;
+
         public MainPage()
         {
-            this.InitializeComponent();
-            this.NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
+            InitializeComponent();
         }
-
-        public MainPageViewModel ViewModel => this.DataContext as MainPageViewModel;
     }
 }

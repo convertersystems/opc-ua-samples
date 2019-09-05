@@ -27,6 +27,7 @@ namespace RobotHmi.Views
         private void OnLoaded(object sender, RoutedEventArgs e)
         {
             this.RegionManager.Regions[RegionNames.MainContent].NavigationService.NavigationFailed += this.OnNavigationFailed;
+            this.RegionManager.RequestNavigate(RegionNames.MainContent, "RobotHmi.Views.MainView");
         }
 
         private async void OnAboutExecuted(object sender, ExecutedRoutedEventArgs e)
