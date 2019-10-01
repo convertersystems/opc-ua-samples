@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Workstation.ServiceModel.Ua;
 using Xamarin.Forms;
@@ -14,14 +15,15 @@ namespace Workstation.MobileHmi
 {
     public class App : Xamarin.Forms.Application
     {
-        private ILoggerFactory loggerFactory;
         private UaApplication application;
 
         protected override void OnStart()
         {
-            // Setup a logger.
-            this.loggerFactory = new LoggerFactory();
-            this.loggerFactory.AddDebug(LogLevel.Trace);
+            // build a loggerFactory.
+            var serviceCollection = new ServiceCollection();
+            serviceCollection.AddLogging(builder => builder.AddDebug());
+            var serviceProvider = serviceCollection.BuildServiceProvider();
+            var loggerFactory = serviceProvider.GetService<ILoggerFactory>();
 
             // Build and run an OPC UA application instance.
             this.application = new UaApplicationBuilder()
@@ -30,7 +32,7 @@ namespace Workstation.MobileHmi
                     Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
                     "pki"))
                 .SetIdentity(this.ShowSignInDialog)
-                .SetLoggerFactory(this.loggerFactory)
+                .SetLoggerFactory(loggerFactory)
                 .AddMappedEndpoint("opc.tcp://localhost:26543", "opc.tcp://10.0.2.2:26543")
                 .Build();
 

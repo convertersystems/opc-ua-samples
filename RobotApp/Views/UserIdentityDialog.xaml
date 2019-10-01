@@ -13,9 +13,9 @@
     <StackPanel VerticalAlignment="Stretch"
                 HorizontalAlignment="Stretch">
         <TextBox Name="userNameTextBox"
-                 Header="User name" />
+                 Header="User name ('root')" />
         <PasswordBox Name="passwordTextBox"
-                     Header="Password"
+                     Header="Password ('secret')"
                      PasswordRevealMode="Visible" />
         <CheckBox Name="saveUserNameCheckBox"
                   Content="Save user name" />

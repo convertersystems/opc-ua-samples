@@ -16,12 +16,12 @@
         <Label Text="User name"
                FontSize="Medium" />
         <Entry x:Name="userNameEntry"
-               Placeholder="Username"
+               Placeholder="root"
                Text="{Binding UserName, Mode=TwoWay}"/>
         <Label Text="Password"
                FontSize="Medium" />
         <Entry x:Name="passwordEntry"
-               Placeholder="Password"
+               Placeholder="secret"
                IsPassword = "True" 
                Text="{Binding Password, Mode=TwoWay}" />
         <Button x:Name="signinButton"

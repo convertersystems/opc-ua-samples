@@ -17,10 +17,10 @@ namespace StatusHmi
         [MonitoredItem(nodeId: "i=2256")]
         public ServerStatusDataType ServerServerStatus
         {
-            get { return this.serverServerStatus; }
-            private set { this.SetProperty(ref this.serverServerStatus, value); }
+            get { return this._serverServerStatus; }
+            private set { this.SetProperty(ref _serverServerStatus, value); }
         }
 
-        private ServerStatusDataType serverServerStatus;
+        private ServerStatusDataType _serverServerStatus;
     }
 }

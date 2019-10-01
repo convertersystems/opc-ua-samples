@@ -87,7 +87,7 @@ namespace StatusHmi
                             initialUserName = userNamesDictionary[userNameKey];
                         }
 
-                        LoginDialogSettings loginSettings = new LoginDialogSettings { InitialUsername = initialUserName };
+                        LoginDialogSettings loginSettings = new LoginDialogSettings { InitialUsername = initialUserName, UsernameWatermark = "root", PasswordWatermark = "secret" };
                         var result = await shell.ShowLoginAsync("SIGN IN", $"Connecting to server '{endpoint.Server.ApplicationName}' at '{endpoint.EndpointUrl}'.", loginSettings);
                         if (result != null && !string.IsNullOrEmpty(result.Username))
                         {
