@@ -6,6 +6,8 @@ using System.Linq;
 using System.Windows;
 using MahApps.Metro;
 using Prism.Mvvm;
+using ControlzEx.Theming;
+using System.Windows.Media;
 
 namespace RobotHmi.ViewModels
 {
@@ -14,30 +16,42 @@ namespace RobotHmi.ViewModels
     /// </summary>
     public class ShellViewModel : BindableBase
     {
-        private Accent selectedAccent;
-        private AppTheme selectedTheme;
+        private AppThemeMenuData selectedTheme;
+        private AccentColorMenuData selectedAccent;
 
         public ShellViewModel()
         {
-            this.AppThemes = ThemeManager.AppThemes.ToList();
-            this.Accents = ThemeManager.Accents.ToList();
+            // create metro theme color menu items for the demo
+            this.AppThemes = ThemeManager.Current.Themes
+                                         .GroupBy(x => x.BaseColorScheme)
+                                         .Select(x => x.First())
+                                         .Select(a => new AppThemeMenuData() { Name = a.BaseColorScheme, BorderColorBrush = a.Resources["MahApps.Brushes.ThemeForeground"] as Brush, ColorBrush = a.Resources["MahApps.Brushes.ThemeBackground"] as Brush })
+                                         .ToList();
 
-            var current = ThemeManager.DetectAppStyle(Application.Current);
+            // create accent color menu items for the demo
+            this.Accents = ThemeManager.Current.Themes
+                                            .GroupBy(x => x.ColorScheme)
+                                            .OrderBy(a => a.Key)
+                                            .Select(a => new AccentColorMenuData { Name = a.Key, ColorBrush = a.First().ShowcaseBrush })
+                                            .ToList();
+
+
+            var current = ThemeManager.Current.DetectTheme(Application.Current);
             if (current != null)
             {
-                this.selectedTheme = current.Item1;
-                this.selectedAccent = current.Item2;
+                //this.selectedTheme = current;
+                //this.selectedAccent = current.;
             }
-            else
-            {
-                this.selectedTheme = ThemeManager.GetAppTheme("BaseLight");
-                this.selectedAccent = ThemeManager.GetAccent("Blue");
-            }
+            //else
+            //{
+            //    this.selectedTheme = ThemeManager.Current.GetTheme("BaseLight");
+            //    //this.selectedAccent = ThemeManager.Current.GetAccent("Blue");
+            //}
         }
 
-        public IEnumerable<AppTheme> AppThemes { get; private set; }
+        public IEnumerable<AppThemeMenuData> AppThemes { get; private set; }
 
-        public AppTheme SelectedTheme
+        public AppThemeMenuData SelectedTheme
         {
             get
             {
@@ -47,13 +61,13 @@ namespace RobotHmi.ViewModels
             set
             {
                 this.SetProperty(ref this.selectedTheme, value);
-                ThemeManager.ChangeAppStyle(Application.Current, this.selectedAccent, this.selectedTheme);
+                ThemeManager.Current.ChangeThemeBaseColor(Application.Current, this.selectedTheme.Name);
             }
         }
 
-        public IEnumerable<Accent> Accents { get; private set; }
+        public IEnumerable<AccentColorMenuData> Accents { get; private set; }
 
-        public Accent SelectedAccent
+        public AccentColorMenuData SelectedAccent
         {
             get
             {
@@ -63,8 +77,36 @@ namespace RobotHmi.ViewModels
             set
             {
                 this.SetProperty(ref this.selectedAccent, value);
-                ThemeManager.ChangeAppStyle(Application.Current, this.selectedAccent, this.selectedTheme);
+                ThemeManager.Current.ChangeThemeColorScheme(Application.Current, this.selectedAccent.Name);
             }
         }
+    }
+    public class AccentColorMenuData
+    {
+        public string Name { get; set; }
+
+        public Brush BorderColorBrush { get; set; }
+
+        public Brush ColorBrush { get; set; }
+
+        //public AccentColorMenuData()
+        //{
+        //    this.ChangeAccentCommand = new SimpleCommand(o => true, this.DoChangeTheme);
+        //}
+
+        //public ICommand ChangeAccentCommand { get; }
+
+        //protected virtual void DoChangeTheme(object sender)
+        //{
+        //    ThemeManager.Current.ChangeThemeColorScheme(Application.Current, this.Name);
+        //}
+    }
+
+    public class AppThemeMenuData : AccentColorMenuData
+    {
+        //protected override void DoChangeTheme(object sender)
+        //{
+        //    ThemeManager.Current.ChangeThemeBaseColor(Application.Current, this.Name);
+        //}
     }
 }

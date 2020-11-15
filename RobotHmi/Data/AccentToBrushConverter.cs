@@ -2,6 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using MahApps.Metro;
+using RobotHmi.ViewModels;
 using System;
 using System.Globalization;
 using System.Windows.Data;
@@ -9,17 +10,17 @@ using System.Windows.Media;
 
 namespace RobotHmi.Data
 {
-    [ValueConversion(typeof(Accent), typeof(Brush))]
-    public class AccentToBrushConverter : ValueConverter<Accent, Brush>
+    [ValueConversion(typeof(AccentColorMenuData), typeof(Brush))]
+    public class AccentToBrushConverter : ValueConverter<AccentColorMenuData, Brush>
     {
-        protected override Brush Convert(Accent value, object parameter, CultureInfo culture)
+        protected override Brush Convert(AccentColorMenuData value, object parameter, CultureInfo culture)
         {
             if (value == null)
             {
                 throw new ArgumentNullException("value");
             }
 
-            return value.Resources["AccentColorBrush"] as Brush ?? Brushes.Blue;
+            return value.ColorBrush;
         }
     }
 }

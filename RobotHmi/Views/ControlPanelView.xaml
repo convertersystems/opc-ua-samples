@@ -138,8 +138,8 @@
                        Text="Laser" />
             <metro:ToggleSwitch Grid.Row="4"
                                 Grid.Column="1"
-                                Margin="0,2"
-                                IsChecked="{Binding Robot1Laser, Mode=TwoWay}" />
+                                Margin="0,2" 
+                                IsOn="{Binding Robot1Laser, Mode=TwoWay}" />
             <TextBlock Grid.Row="5"
                        Grid.Column="0"
                        Text="Speed" />
@@ -179,9 +179,9 @@
                           Grid.Column="0"
                           Grid.ColumnSpan="2"
                           Height="100"
-                          Background="{DynamicResource GrayBrush10}"
+                          Background="{DynamicResource MahApps.Brushes.Gray10}"
                           ItemsSource="{Binding Robot1Axis1Queue}"
-                          Stroke="{DynamicResource HighlightBrush}" />
+                          Stroke="{DynamicResource MahApps.Brushes.Highlight}" />
             <TextBlock Grid.Row="9"
                        Grid.Column="0"
                        Text="{Binding TimeSpan.TotalSeconds,

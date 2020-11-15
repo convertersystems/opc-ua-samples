@@ -24,13 +24,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workstation.RobotServer", "
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Workstation.MobileHmi", "MobileHmi\Workstation.MobileHmi.shproj", "{F093E93D-D21F-4E19-9AA6-F8ABB329D4AA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workstation.MobileHmi.iOS", "MobileHmi.iOS\Workstation.MobileHmi.iOS.csproj", "{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Workstation.RobotApp", "RobotApp\Workstation.RobotApp.csproj", "{97710D6E-C85C-44BF-83B1-3C78E44EE1F5}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		MobileHmi\MobileHmi.Shared.projitems*{7fd32d6e-6fa8-4b21-82a4-366f244a80fa}*SharedItemsImports = 4
 		MobileHmi\MobileHmi.Shared.projitems*{f093e93d-d21f-4e19-9aa6-f8abb329d4aa}*SharedItemsImports = 13
 		MobileHmi\MobileHmi.Shared.projitems*{f694d0fa-0786-4c90-8e21-5079fced4a24}*SharedItemsImports = 4
 	EndGlobalSection
@@ -325,38 +322,6 @@ Global
 		{42EF4F25-29BF-4AB7-B403-8523694A3B36}.Release|x64.Build.0 = Release|Any CPU
 		{42EF4F25-29BF-4AB7-B403-8523694A3B36}.Release|x86.ActiveCfg = Release|Any CPU
 		{42EF4F25-29BF-4AB7-B403-8523694A3B36}.Release|x86.Build.0 = Release|Any CPU
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Ad-Hoc|Any CPU.ActiveCfg = Ad-Hoc|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Ad-Hoc|ARM.ActiveCfg = Ad-Hoc|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Ad-Hoc|iPhone.ActiveCfg = Ad-Hoc|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Ad-Hoc|iPhone.Build.0 = Ad-Hoc|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Ad-Hoc|iPhoneSimulator
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Ad-Hoc|iPhoneSimulator.Build.0 = Ad-Hoc|iPhoneSimulator
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Ad-Hoc|x64.ActiveCfg = Ad-Hoc|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Ad-Hoc|x86.ActiveCfg = Ad-Hoc|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.AppStore|Any CPU.ActiveCfg = AppStore|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.AppStore|ARM.ActiveCfg = AppStore|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.AppStore|iPhone.ActiveCfg = AppStore|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.AppStore|iPhone.Build.0 = AppStore|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.AppStore|iPhoneSimulator.ActiveCfg = AppStore|iPhoneSimulator
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.AppStore|iPhoneSimulator.Build.0 = AppStore|iPhoneSimulator
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.AppStore|x64.ActiveCfg = AppStore|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.AppStore|x86.ActiveCfg = AppStore|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Debug|Any CPU.ActiveCfg = Debug|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Debug|ARM.ActiveCfg = Debug|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Debug|iPhone.ActiveCfg = Debug|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Debug|iPhone.Build.0 = Debug|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Debug|iPhoneSimulator.ActiveCfg = Debug|iPhoneSimulator
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Debug|iPhoneSimulator.Build.0 = Debug|iPhoneSimulator
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Debug|x64.ActiveCfg = Debug|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Debug|x86.ActiveCfg = Debug|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Release|Any CPU.ActiveCfg = Release|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Release|ARM.ActiveCfg = Release|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Release|iPhone.ActiveCfg = Release|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Release|iPhone.Build.0 = Release|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Release|iPhoneSimulator.ActiveCfg = Release|iPhoneSimulator
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Release|x64.ActiveCfg = Release|iPhone
-		{7FD32D6E-6FA8-4B21-82A4-366F244A80FA}.Release|x86.ActiveCfg = Release|iPhone
 		{97710D6E-C85C-44BF-83B1-3C78E44EE1F5}.Ad-Hoc|Any CPU.ActiveCfg = Release|x64
 		{97710D6E-C85C-44BF-83B1-3C78E44EE1F5}.Ad-Hoc|Any CPU.Build.0 = Release|x64
 		{97710D6E-C85C-44BF-83B1-3C78E44EE1F5}.Ad-Hoc|Any CPU.Deploy.0 = Release|x64

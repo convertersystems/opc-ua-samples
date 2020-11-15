@@ -9,9 +9,7 @@
               xmlns:v="clr-namespace:RobotHmi.Views"
               xmlns:vm="clr-namespace:RobotHmi.ViewModels"
               Width="346"
-              Background="{DynamicResource HighlightBrush}"
               FontSize="14.667"
-              Foreground="{DynamicResource IdealForegroundColorBrush}"
               Header="Settings"
               d:DataContext="{d:DesignInstance Type=vm:ShellViewModel}"
               d:DesignHeight="600"
@@ -44,7 +42,7 @@
                       ScrollViewer.VerticalScrollBarVisibility="Disabled"
                       SelectedItem="{Binding SelectedTheme}">
                 <ListView.Resources>
-                    <DataTemplate DataType="{x:Type metro2:AppTheme}">
+                    <DataTemplate DataType="{x:Type vm:AppThemeMenuData}">
                         <Rectangle Width="28"
                                    Height="28"
                                    Margin="2"
@@ -72,7 +70,7 @@
                       ScrollViewer.VerticalScrollBarVisibility="Disabled"
                       SelectedItem="{Binding SelectedAccent}">
                 <ListView.Resources>
-                    <DataTemplate DataType="{x:Type metro2:Accent}">
+                    <DataTemplate DataType="{x:Type vm:AccentColorMenuData}">
                         <Rectangle Width="28"
                                    Height="28"
                                    Margin="2"

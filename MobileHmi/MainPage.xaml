@@ -13,8 +13,8 @@
     </ContentPage.BindingContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="160" />
-            <RowDefinition Height="160" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <local:RobotView x:Name="RobotView"
                          Axis1="{Binding Robot1Axis1, Mode=OneWay}"

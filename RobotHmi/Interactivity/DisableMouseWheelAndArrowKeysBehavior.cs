@@ -1,9 +1,10 @@
 ﻿// Copyright (c) Converter Systems LLC. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using Microsoft.Xaml.Behaviors;
 using System.Windows;
 using System.Windows.Input;
-using System.Windows.Interactivity;
+//using System.Windows.Interactivity;
 
 namespace RobotHmi.Interactivity
 {

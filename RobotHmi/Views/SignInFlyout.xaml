@@ -5,9 +5,7 @@
               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
               xmlns:metro="http://metro.mahapps.com/winfx/xaml/controls"
               Width="346"
-              Background="{DynamicResource HighlightBrush}"
               FontSize="14.667"
-              Foreground="{DynamicResource IdealForegroundColorBrush}"
               Header="Sign In"
               d:DesignHeight="600"
               mc:Ignorable="d">
@@ -36,7 +34,8 @@
                         MinWidth="80"
                         Click="OnOk"
                         Content="Ok"
-                        IsDefault="True" />
+                        IsDefault="True" 
+                        Style="{DynamicResource MahApps.Styles.Button.Dialogs}"/>
             </StackPanel>
         </StackPanel>
     </ScrollViewer>

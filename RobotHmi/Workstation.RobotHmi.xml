@@ -36,40 +36,81 @@
             Application Entry Point.
             </summary>
         </member>
-        <member name="T:RobotHmi.AppBootstrapper">
+        <member name="M:RobotHmi.Controls.Trendline.TryMakePropertyGetFromObjectDelegate``1(System.Type,System.String)">
             <summary>
-            Runs a bootstrapping sequence that initializes the Prism services.
+            Builds a delegate that casts an object to a target type and then gets the value a property or field.
+            </summary>
+            <typeparam name="T">The expected return type of the property or field.</typeparam>
+            <param name="targetType">The expected target instance type.</param>
+            <param name="propertyOrField">The name of the target property or field.</param>
+            <returns>A delegate.</returns>
+        </member>
+        <member name="T:RobotHmi.Data.BooleanToStringConverter">
+            <summary>
+            Returns TrueResult if Value equals true, FalseResult if Value equals false
             </summary>
         </member>
-        <member name="M:RobotHmi.AppBootstrapper.Dispose">
-            <inheritdoc/>
-        </member>
-        <member name="M:RobotHmi.AppBootstrapper.ConfigureModuleCatalog">
-            <inheritdoc/>
-        </member>
-        <member name="M:RobotHmi.AppBootstrapper.ConfigureContainer">
-            <inheritdoc/>
-        </member>
-        <member name="M:RobotHmi.AppBootstrapper.CreateShell">
-            <inheritdoc/>
-        </member>
-        <member name="M:RobotHmi.AppBootstrapper.InitializeShell">
-            <inheritdoc/>
-        </member>
-        <member name="T:RobotHmi.MainModule">
+        <member name="T:RobotHmi.Data.BooleanToVisibilityCollapsedConverter">
             <summary>
-            The module that initializes the MainView and required services.
+            Returns Visibility.Collapsed if Value equals true
             </summary>
         </member>
-        <member name="M:RobotHmi.MainModule.#ctor(Prism.Regions.IRegionManager,Microsoft.Practices.Unity.IUnityContainer)">
+        <member name="T:RobotHmi.Data.BooleanToVisibilityHiddenConverter">
             <summary>
-            Initializes a new instance of the <see cref="T:RobotHmi.MainModule"/> class.
+            Return Visibility.Hidden if Value equals true
             </summary>
-            <param name="regionManager">The region manager.</param>
-            <param name="container">The Unity container.</param>
         </member>
-        <member name="M:RobotHmi.MainModule.Initialize">
-            <inheritdoc/>
+        <member name="T:RobotHmi.Data.IsEqualConverter">
+            <summary>
+            Return true if Value equals Parameter
+            </summary>
+        </member>
+        <member name="T:RobotHmi.Data.IsGreaterThanConverter">
+            <summary>
+            Return true if Value is greater than Parameter
+            </summary>
+        </member>
+        <member name="T:RobotHmi.Data.IsLessThanConverter">
+            <summary>
+            Return true if Value is less than Parameter
+            </summary>
+        </member>
+        <member name="T:RobotHmi.Data.IsMatchConverter">
+            <summary>
+            Return true if Value matches the regular expression (=Parameter) ?
+            </summary>
+        </member>
+        <member name="T:RobotHmi.Data.IsNotConverter">
+            <summary>
+            Return inverted boolean (=!Value)
+            </summary>
+        </member>
+        <member name="T:RobotHmi.Data.IsNotEqualConverter">
+            <summary>
+            Return true if Value is not equal Parameter
+            </summary>
+        </member>
+        <member name="T:RobotHmi.Data.NullToVisibilityCollapsedConverter">
+            <summary>
+            Returns Visibility.Collapsed if Value is Null
+            </summary>
+        </member>
+        <member name="T:RobotHmi.Data.NullToVisibilityHiddenConverter">
+            <summary>
+            Returns Visibility.Hidden if Value is Null
+            </summary>
+        </member>
+        <member name="T:RobotHmi.Data.ScalingConverter">
+            <summary>
+            Returns a double scaled by two points.
+            Provide string parameter in form of "0.0,0.0 1.0,1.0"
+            </summary>
+        </member>
+        <member name="T:RobotHmi.Data.StringSelectionConverter">
+            <summary>
+            Returns a string selected by index.
+            Provide list of strings in parameter, eg "string0,string1,string2".
+            </summary>
         </member>
         <member name="T:RobotHmi.Properties.Resources">
             <summary>
@@ -466,6 +507,36 @@
         <member name="M:RobotHmi.Views.RobotView.InitializeComponent">
             <summary>
             InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>

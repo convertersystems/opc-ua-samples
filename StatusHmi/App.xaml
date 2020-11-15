@@ -6,11 +6,9 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/FlatButton.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.FlatButton.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Fonts.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Colors.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Themes/Light.Blue.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <system:Boolean x:Key="BooleanTrue">True</system:Boolean>
             <system:Double x:Key="ContentFontSize">14.667</system:Double>
@@ -20,8 +18,7 @@
                    TargetType="{x:Type TextBlock}">
                 <Setter Property="FontSize"
                         Value="{StaticResource ContentFontSize}" />
-                <Setter Property="FontFamily"
-                        Value="{DynamicResource ContentFontFamily}" />
+                <Setter Property="FontFamily" Value="{DynamicResource MahApps.Fonts.Family.Control}" />
                 <Setter Property="TextTrimming"
                         Value="WordEllipsis" />
                 <Setter Property="TextWrapping"
@@ -106,25 +103,12 @@
                         Value="12" />
             </Style>
 
-            <Style BasedOn="{StaticResource MetroFlatButton}"
-                   TargetType="{x:Type Button}">
-                <Style.Triggers>
-                    <Trigger Property="IsDefault"
-                             Value="True">
-                        <Setter Property="Foreground"
-                                Value="{DynamicResource AccentSelectedColorBrush}" />
-                        <Setter Property="BorderBrush"
-                                Value="{DynamicResource AccentSelectedColorBrush}" />
-                        <Setter Property="Background"
-                                Value="{DynamicResource AccentColorBrush}" />
-                    </Trigger>
-                </Style.Triggers>
+            <Style BasedOn="{StaticResource MahApps.Styles.Button.MetroSquare.Accent}" TargetType="{x:Type Button}">
             </Style>
 
             <Style x:Key="TextButtonStyle"
                    TargetType="{x:Type Button}">
-                <Setter Property="Background"
-                        Value="{DynamicResource TransparentWhiteBrush}" />
+                <Setter Property="Background" Value="{DynamicResource MahApps.Brushes.Transparent}" />
                 <Setter Property="Foreground"
                         Value="{Binding (TextElement.Foreground), RelativeSource={RelativeSource AncestorType={x:Type FrameworkElement}}}" />
                 <Setter Property="HorizontalContentAlignment"
@@ -151,12 +135,12 @@
                     <Trigger Property="IsMouseOver"
                              Value="True">
                         <Setter Property="Background"
-                                Value="{DynamicResource SemiTransparentWhiteBrush}" />
+                                Value="{DynamicResource MahApps.Brushes.SemiTransparent}" />
                     </Trigger>
                     <Trigger Property="IsPressed"
                              Value="True">
                         <Setter Property="Background"
-                                Value="{DynamicResource HighlightBrush}" />
+                                Value="{DynamicResource MahApps.Brushes.Highlight}" />
                         <Setter Property="Foreground"
                                 Value="White" />
                     </Trigger>
@@ -178,10 +162,8 @@
 
             <Style x:Key="RadioButtonList"
                    TargetType="{x:Type ListBox}">
-                <Setter Property="Foreground"
-                        Value="{DynamicResource BlackBrush}" />
-                <Setter Property="Background"
-                        Value="{DynamicResource WhiteBrush}" />
+                <Setter Property="Foreground" Value="Transparent" />
+                <Setter Property="Background" Value="Transparent" />
                 <Setter Property="BorderBrush"
                         Value="Transparent" />
                 <Setter Property="BorderThickness"

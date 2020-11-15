@@ -36,9 +36,9 @@
                 </Storyboard>
             </DataTemplate.Resources>
             <Border x:Name="border"
-                    Background="{DynamicResource AccentColorBrush}"
+                    Background="{DynamicResource MahApps.Brushes.Accent}"
                     Padding="5">
-                <TextBlock Foreground="{DynamicResource AccentSelectedColorBrush}"
+                <TextBlock Foreground="{DynamicResource MahApps.Brushes.Selected.Foreground}"
                            Text="{Binding Converter={StaticResource AlarmConditionToStringConverter}, Mode=OneWay}" />
             </Border>
             <DataTemplate.Triggers>
