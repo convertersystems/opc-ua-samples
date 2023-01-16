@@ -1,6 +1,8 @@
 ﻿// Copyright (c) Converter Systems LLC. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
+using System;
+using System.Threading.Tasks;
 using Workstation.ServiceModel.Ua; // Install-Package Workstation.UaClient
 
 namespace StatusHmi
@@ -8,7 +10,7 @@ namespace StatusHmi
     /// <summary>
     /// A model for MainView.
     /// </summary>
-    [Subscription(endpointUrl: "opc.tcp://localhost:26543", publishingInterval: 500, keepAliveCount: 20)]
+    [Subscription(endpointUrl: "opc.tcp://localhost:48010", publishingInterval: 500, keepAliveCount: 20)]
     public class MainViewModel : SubscriptionBase
     {
         /// <summary>

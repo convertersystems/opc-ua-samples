@@ -87,6 +87,7 @@ namespace RobotApp.Views
                 {
                     var delta = value - this.axis1;
                     this.axis1 = value;
+                    if (!base.IsActive) return;
                     InvokeOnMain(() => this.axis1Node?.Yaw(delta));
                 }
             }
@@ -105,6 +106,7 @@ namespace RobotApp.Views
                 {
                     var delta = value - this.axis2;
                     this.axis2 = value;
+                    if (!base.IsActive) return;
                     InvokeOnMain(() => this.axis2Node?.RotateAround(this.axis2axis, Quaternion.FromAxisAngle(Vector3.Left, delta), TransformSpace.Local));
                 }
             }
@@ -123,6 +125,7 @@ namespace RobotApp.Views
                 {
                     var delta = value - this.axis3;
                     this.axis3 = value;
+                    if (!base.IsActive) return;
                     InvokeOnMain(() => this.axis3Node?.RotateAround(this.axis3axis, Quaternion.FromAxisAngle(Vector3.Left, delta), TransformSpace.Local));
                 }
             }
@@ -141,6 +144,7 @@ namespace RobotApp.Views
                 {
                     var delta = value - this.axis4;
                     this.axis4 = value;
+                    if (!base.IsActive) return;
                     InvokeOnMain(() => this.axis4Node?.RotateAround(this.axis4axis, Quaternion.FromAxisAngle(Vector3.UnitZ, delta), TransformSpace.Local));
                 }
             }

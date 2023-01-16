@@ -1,18 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
-    <AssemblyName>Workstation.ConsoleApp</AssemblyName>
-    <RootNamespace>ConsoleApp</RootNamespace>
-    <Version>2.0.0</Version>
-    <AssemblyVersion>2.0.0.0</AssemblyVersion>
-    <ApplicationIcon />
     <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
     <StartupObject>ConsoleApp.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Workstation.UaClient" Version="3.1.0" />
+    <PackageReference Include="Workstation.UaClient" Version="3.2.0" />
   </ItemGroup>
 
 </Project>

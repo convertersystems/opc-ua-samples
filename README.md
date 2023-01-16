@@ -1,4 +1,4 @@
-![Workstation][1] ![RobotApp][2] ![mobilehmi-droid][3]
+![Workstation][1] ![RobotApp][2]
 
 # opc-ua-samples
 Supports Universal Windows Platform (UWP) and Windows Presentation Framework (WPF) applications and Xamarin.
@@ -22,4 +22,3 @@ Get the companion Visual Studio extension 'Workstation.UaBrowser' and you can:
 
 [1]: WorkstationRuntime.png
 [2]: RobotApp.png
-[3]: mobilehmi-droid.png  

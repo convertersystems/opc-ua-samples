@@ -31,8 +31,6 @@
             <TextBlock Text="{Binding ServerServerStatus.BuildInfo.SoftwareVersion, Mode=OneWay, StringFormat=version: \{0:G\}}" />
             <TextBlock Text="{Binding ServerServerStatus.StartTime, Mode=OneWay, StringFormat=start: \{0:G\}}" />
             <TextBlock Text="{Binding ServerServerStatus.CurrentTime, Mode=OneWay, StringFormat=current: \{0:G\}}" />
-            <TextBlock Text="{Binding ServerServerStatus.State, Mode=OneWay, StringFormat=state: \{0\}}" />
-
         </StackPanel>
     </Grid>
 </metro:MetroWindow>
